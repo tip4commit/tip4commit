@@ -58,8 +58,8 @@ gem 'octokit'
 
 group :development do
   gem 'capistrano', '~> 3.0'
-  gem 'capistrano-rvm'
-  gem 'capistrano-bundler'
+  gem 'capistrano-rvm', github: 'capistrano/rvm'
+  gem 'capistrano-bundler', '>= 1.1.0'
   gem 'capistrano-rails'
 end
 
