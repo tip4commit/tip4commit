@@ -1,17 +1,17 @@
 github:
-  key: 111111111111
-  secret: 111111111111  
+  key: "111111111111"
+  secret: "111111111111"  
 
 blockchain_info:
-  guid: 111111111111
-  password: 111111111111
-  callback_secret: 111111111111
+  guid: "111111111111"
+  password: "111111111111"
+  callback_secret: "111111111111"
 
 devise:
-  secret: 111111111111
+  secret: "111111111111"
 
 application:
-  secret: 111111111111
+  secret: "111111111111"
 
 smtp_settings:
   address:              smtp.gmail.com
