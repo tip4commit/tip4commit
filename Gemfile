@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.2'
 
 # Databases
 gem 'sqlite3', group: :development
@@ -58,9 +58,9 @@ gem 'octokit'
 
 group :development do
   gem 'capistrano', '~> 3.0'
-  gem 'capistrano-rvm', '~> 0.0.2'
+  gem 'capistrano-rvm'
   gem 'capistrano-bundler'
-  # gem 'capistrano-rails'
+  gem 'capistrano-rails'
 end
 
 gem 'airbrake'
