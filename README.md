@@ -6,6 +6,7 @@ tip4commit
 Donate bitcoins to open source projects or make commits and get tips for it.
 
 Official site: http://tip4commit.com/
+
 Forum thread: https://bitcointalk.org/index.php?topic=315802
 
 todo
