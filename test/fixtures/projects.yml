@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  url: MyString
+  bitcoin_address: MyString
+
+two:
+  url: MyString
+  bitcoin_address: MyString

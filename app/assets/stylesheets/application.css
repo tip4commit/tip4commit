@@ -1,0 +1,24 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+
+@font-face {font-family: 'Code-Pro-Light-Demo';src: url('/webfonts/28BE49_0_0.eot');src: url('/webfonts/28BE49_0_0.eot?#iefix') format('embedded-opentype'),url('/webfonts/28BE49_0_0.woff') format('woff'),url('/webfonts/28BE49_0_0.ttf') format('truetype');}
+.code-pro { font-family: Code-Pro-Light-Demo; }
+
+.addthis_counter
+{
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+      box-sizing: content-box;
+}

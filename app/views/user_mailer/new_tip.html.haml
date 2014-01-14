@@ -1,0 +1,8 @@
+%h4 Hello, #{@user.full_name}!
+%p You were tipped for your commit. Please, log in and tell us your bitcoin address to get it.
+%p= link_to 'Sign In', login_users_url(token: @user.login_token)
+%p Thanks for contributing to Open Source!
+%p= link_to "tip4commit.com", "http://tip4commit.com/"
+%p
+  %small
+    = link_to "Don't notify me anymore, I don't need tips.", login_users_url(token: @user.login_token, unsubscribe: true)

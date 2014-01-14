@@ -1,0 +1,9 @@
+%ul.nav.nav-justified
+  %li{class: controller_name == 'home' ? 'active' : ''}
+    %a{href: root_path} Home
+  %li{class: controller_name == 'projects' || @project ? 'active' : ''}
+    %a{href: projects_path} Supported Projects
+  / %li
+  /   %a{href: "#"} About
+  / %li
+  /   %a{href: "#"} Contact

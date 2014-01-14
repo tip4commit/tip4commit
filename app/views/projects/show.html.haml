@@ -1,0 +1,87 @@
+- content_for :title do
+  Contribute to
+  = @project.name
+- content_for :description do
+  = @project.description
+  
+%h1
+  = @project.full_name
+  %small= link_to glyph(:github), @project.github_url, target: '_blank'
+
+.row
+  .col-md-4
+    .panel.panel-default
+      .panel-heading
+        %h4.panel-title
+          Project Sponsors
+      .panel-body
+        %iframe{:src => "http://coingiving.com/project_sponsors?url=#{project_url @project.id}", :scrolling => "no", :style => 'width:100%; height:500px; border:0px; padding:0;overflow:hidden'}
+        .hidden
+          %span(data-coingiving="title")= "[tip4commit] " + @project.full_name
+          %span(data-coingiving="description")= @project.description
+          %span(data-coingiving="bitcoin-address")= @project.bitcoin_address
+        %p #{100-(CONFIG["our_fee"]*100).round}% of deposited funds will be used to tip for new commits. 
+  .col-md-8
+    - unless @project.description.blank?
+      .well.well-sm= @project.description
+    %h4 Balance
+    = btc_human @project.available_amount
+    (each new commit receives #{(CONFIG["tip"]*100).round}% of available balance)
+    - if (unconfirmed_amount = @project.unconfirmed_amount) > 0
+      (#{btc_human unconfirmed_amount} unconfirmed)
+
+    %h4 Tips Paid
+    = btc_human @project.tips_paid_amount
+
+    - if @project.tips.count > 0
+      %h4
+        Last Tips
+        - if @project.tips.count > 5
+          = link_to 'see all', project_tips_path(@project)
+      %ul
+        - @project.tips.includes(:user).order(created_at: :desc).first(5).each do |tip|
+          %li
+            = l tip.created_at, format: :short
+            - if tip.user.nickname.blank?
+              = tip.user.full_name
+            - else
+              = link_to tip.user.full_name, "https://github.com/#{tip.user.nickname}", target: '_blank'
+            received
+            = btc_human tip.amount
+            for commit
+            = link_to tip.commit[0..6], "https://github.com/#{@project.full_name}/commit/#{tip.commit}", target: :blank
+
+    - if @project.next_tip_amount > 0
+      %h4 Next Tip
+      = btc_human @project.next_tip_amount
+
+    %h4 Contribute and Earn
+    Donate bitcoins to this project or
+    = link_to 'make commits', @project.github_url, target: '_blank'
+    and get tips for it. If your commit is accepted by project maintainer and there are bitcoins on its balance, you will get a tip!
+
+    - if current_user
+      - if current_user.bitcoin_address.blank?
+        Just 
+        = link_to 'tell us', current_user
+        your bitcoin address.      
+    - else
+      Just check your email or 
+      %a{href: user_omniauth_authorize_path(:github)} Sign In.
+
+    %h4 Promote #{@project.full_name}
+    %p
+      / AddThis Button BEGIN
+      .addthis_toolbox.addthis_default_style.addthis_32x32_style(addthis:data_track_clickback="false" addthis:data_track_addressbar="false")
+        %a.addthis_button_preferred_1
+        %a.addthis_button_preferred_2
+        %a.addthis_button_preferred_3
+        %a.addthis_button_preferred_4
+        %a.addthis_button_compact
+        %a.addthis_counter.addthis_bubble_style
+      / AddThis Button END
+
+    %h4 Embed in README.md
+    %p= link_to image_tag(project_url(@project, format: :svg), alt: 'Tip4Commit'), project_url(@project)
+    %p
+      %input.form-control{type: 'text', value: "[![tip for next commit](#{project_url(@project, format: :svg)})](#{project_url(@project)})"}

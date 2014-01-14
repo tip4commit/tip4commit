@@ -1,0 +1,19 @@
+%h1 Top Contributors
+%p
+  %table.table
+    %thead
+      %tr
+        %th Name
+        %th Commits tipped
+        %th Withdrawn
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td 
+            - if user.nickname.blank?
+              = user.full_name
+            - else
+              = link_to user.full_name, "https://github.com/#{user.nickname}", target: '_blank'
+          %td= user.commits_count
+          %td= btc_human user.withdrawn_amount
+  = paginate @users

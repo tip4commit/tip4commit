@@ -1,0 +1,34 @@
+%h1 Supported Projects
+%p
+  = form_tag projects_path, html: {role: 'form', class: 'form-inline"'}, method: :post do |f|
+    .form-group
+      .row
+        .col-lg-10
+          = text_field_tag :full_name, '', class: 'form-control', placeholder: 'Enter GitHub project URL to find or add a project e.g. rails/rails'
+        .col-lg-2
+          %button(type="submit" class="btn form-control btn-default") Find or add project
+%p
+  %table.table
+    %thead
+      %tr
+        %th Repository
+        %th Description
+        %th Watchers
+        %th Balance
+        %th
+    %tbody
+      - @projects.each do |project|
+        %tr
+          %td
+            %strong= link_to project.full_name, project
+            - if !project.source_full_name.blank?
+              %br
+              %nobr
+                %small
+                  forked from
+                  = link_to project.source_full_name, project.source_github_url, target: '_blank'
+          %td= project.description
+          %td= project.watchers_count
+          %td= btc_human project.available_amount_cache
+          %td= link_to 'Support', project, class: 'btn btn-success'
+  = paginate @projects

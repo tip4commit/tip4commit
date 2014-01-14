@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  deposit_id: 
+  user_id: 
+  amount: 1
+  sendmany_id: 
+  is_refunded: false
+
+two:
+  deposit_id: 
+  user_id: 
+  amount: 1
+  sendmany_id: 
+  is_refunded: false

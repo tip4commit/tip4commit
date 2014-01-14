@@ -1,0 +1,62 @@
+!!!
+%html{lang: "en"}
+  %head
+    %meta{charset: "utf-8"}/
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    %meta{content: "", name: "description"}/
+    %meta{content: "", name: "author"}/
+    %link{href: "/favicon.png", rel: "shortcut icon"}/
+    
+    %title= "Tip4Commit — " + (content_for?(:title) ? yield(:title) : "Contribute to Open Source")
+
+    %meta{:name => 'description', :content => (content_for?(:title) ? yield(:title) : "Donate bitcoins to open source projects or make commits and get tips for it.")}
+    %meta{:name => 'keywords', :content => 'open source,cotribute,github,community,git,bitcoin,tips,perks'}
+    / %meta{:property => 'og:image', :content => asset_path('logo.png')}
+    / %link{:rel => 'image_src', :type => 'image/png', :href => asset_path('logo.png')}
+
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    
+    = csrf_meta_tags
+  %body
+    :javascript
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-1115214-16', 'tip4commit.com');
+      ga('send', 'pageview');
+    .container
+      .masthead
+        %div.pull-right
+          %small
+            - if current_user
+              = current_user.full_name
+              \/
+              = link_to btc_human(current_user.balance), current_user
+              \/
+              = link_to 'Sign Out', destroy_user_session_path, method: :delete
+            - else
+              %a{href: user_omniauth_authorize_path(:github)} Sign in
+        %h3.text-muted.code-pro Tip4Commit
+        = render 'common/menu'
+      - if flash[:alert]
+        %br
+        .alert= flash[:alert]
+      - if flash[:notice]
+        %br
+        .alert.alert-info= flash[:notice]
+      = yield
+      / Site footer
+      .footer
+        %p
+          ©
+          = link_to 'Anonymous Ads Team', 'http://a-ads.com/', target: '_blank'
+          2013.
+          #{link_to('Learn more', 'https://bitcointalk.org/index.php?topic=315802', target: '_blank')}
+    / /container
+    /
+      Bootstrap core JavaScript
+      \==================================================
+    / Placed at the end of the document so the pages load faster\

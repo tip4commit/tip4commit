@@ -1,0 +1,19 @@
+%h1= @user.name
+%p
+  %strong Balance
+%p
+  = btc_human @user.balance
+%p
+  %small
+    You will get your money when your balance hits the threshold of
+    = btc_human CONFIG["min_payout"]
+%p
+  %strong E-mail
+%p= @user.email
+= form_for @user, html: {role: 'form', class: 'form-inline"'} do |f|
+  - if @user.errors.size > 0
+    .alert.alert-danger Bitcoin address is invalid.
+  .form-group
+    = f.label :bitcoin_address
+    = f.text_field :bitcoin_address, class: 'form-control', placeholder: 'Your bitcoin address'
+  = f.button :update, class: 'btn btn-default'

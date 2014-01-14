@@ -1,0 +1,33 @@
+github:
+  key: 111111111111
+  secret: 111111111111  
+
+blockchain_info:
+  guid: 111111111111
+  password: 111111111111
+  callback_secret: 111111111111
+
+devise:
+  secret: 111111111111
+
+application:
+  secret: 111111111111
+
+smtp_settings:
+  address:              smtp.gmail.com
+  port:                 587
+  domain:               foobar.com
+  user_name:            example@foobar.com
+  password:             MY_PASSWORD
+  authentication:       plain
+  enable_starttls_auto: true
+
+# Uncomment to use airbrake/errbit
+
+# airbrake:
+#   api_key: 111111111111
+#   host: errbit.tip4commit.com
+
+tip: 0.01
+min_payout: 100000
+our_fee: 0.05

@@ -1,0 +1,49 @@
+/ Jumbotron
+.jumbotron
+  %h1 Contribute to Open Source
+  %p.lead Donate bitcoins to open source projects or make commits and get tips for it.
+  / - if current_user
+  /   You are logged in as
+  /   - unless current_user.image.blank?
+  /     = image_tag(current_user.image, width: 26)
+  /   = link_to current_user.name, current_user.github_url
+  /   %p
+  /     \/
+  /     Your balance
+  /     = btc_human current_user.balance
+  /     \/
+  /     = link_to current_user.bitcoin_address.blank? ? 'Please set your Bitcoin address to receive tips!' : 'Change bitcoin address', current_user
+  /     \/
+  /     = link_to 'Sign Out', destroy_user_session_path, method: :delete
+  /     \/
+  / - else
+  /   / %a.btn.btn-lg.btn-success{href: user_omniauth_authorize_path(:github)} See projects
+
+  %a.btn.btn-lg.btn-success{href: projects_path} See projects
+
+/ Example row of columns
+.row
+  .col-lg-4
+    %h2 How it works?
+    %p People donate bitcoins to projects. When someone's commit is accepted to the project repository, we automatically tip the author.
+    %p
+      %a.btn.btn-primary{href: "https://weusecoins.com/", target: '_blank'} Learn about Bitcoin »
+  .col-lg-4
+    %h2 Donate
+    %p
+      Find a project you like and deposit bitcoins to it. Your money will be accumulated with money of other donators to tip for new commits.
+    %p
+      %a.btn.btn-primary{href: projects_path} Find or add a project »
+  .col-lg-4
+    %h2 Contribute
+    %p
+      Go and fix something! If your commit is accepted by project maintainer, you will get a tip!
+      - if !current_user
+        Just check your email or 
+        %a{href: user_omniauth_authorize_path(:github)} Sign In.
+    %p
+      %a.btn.btn-primary{href: projects_path} Supported projects »
+/ - if current_user
+/         %a.btn.btn-primary{href: user_path(current_user)} Change your bitcoin address »
+/       - else
+/         %a.btn.btn-primary{href: user_omniauth_authorize_path(:github)} Sign In »      

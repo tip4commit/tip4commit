@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  txid: MyString
+  data: MyText
+  result: MyString
+  is_error: false
+
+two:
+  txid: MyString
+  data: MyText
+  result: MyString
+  is_error: false
