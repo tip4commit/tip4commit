@@ -1,4 +1,4 @@
-tip4commit
+Tip4commit
 ==========
 
 [![tip for next commit](http://tip4commit.com/projects/307.svg)](http://tip4commit.com/projects/307)
@@ -9,7 +9,7 @@ Official site: http://tip4commit.com/
 
 Forum thread: https://bitcointalk.org/index.php?topic=315802
 
-todo
+ToDo
 ====
 
 *   daemonize background task (BitcoinTipper::work)
@@ -24,7 +24,7 @@ todo
 
 tasks marked as (?) need to be thought over
 
-license
+License
 =======
 
 [MIT License](https://github.com/tip4commit/tip4commit/blob/master/LICENSE)
