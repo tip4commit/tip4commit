@@ -9,6 +9,8 @@ Official site: http://tip4commit.com/
 
 Forum thread: https://bitcointalk.org/index.php?topic=315802
 
+FAQ: https://github.com/tip4commit/tip4commit/wiki/FAQ
+
 ToDo
 ====
 
