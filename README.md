@@ -11,20 +11,7 @@ Forum thread: https://bitcointalk.org/index.php?topic=315802
 
 FAQ: https://github.com/tip4commit/tip4commit/wiki/FAQ
 
-ToDo
-====
-
-*   daemonize background task (BitcoinTipper::work)
-*   fetch and save to the database id of repository (to handle situation with project rename)
-*   automatically update information about projects (number of watchers, name, description)
-*   unsubscribe from tips for commits to particular projects
-*   (?) secure bitcoin storage (offline storage? multisig addresses?)
-*   sort by watchers/balance in the list of projects
-*   (?) enable project maintainers to customize tips via merge comments (e.g. label improvement as #tiny, #small, #average, #large or #huge)
-*   (?) bitbucket support
-*   ...
-
-tasks marked as (?) need to be thought over
+ToDo: https://github.com/tip4commit/tip4commit/issues
 
 License
 =======
