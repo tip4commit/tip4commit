@@ -105,6 +105,10 @@ class Project < ActiveRecord::Base
     self.tips.non_refunded.sum(:amount)
   end
 
+  def tips_paid_unclaimed_amount
+    self.tips.non_refunded.unclaimed.sum(:amount)
+  end
+
   def next_tip_amount
     (CONFIG["tip"]*available_amount).ceil
   end

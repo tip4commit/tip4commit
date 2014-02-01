@@ -32,6 +32,8 @@
 
     %h4 Tips Paid
     = btc_human @project.tips_paid_amount
+    - if (tips_paid_unclaimed_amount = @project.tips_paid_unclaimed_amount) > 0
+      (#{btc_human tips_paid_unclaimed_amount} of this is unclaimed, and will be refunded to the project after being unclaimed for 1 month.)
 
     - if @project.tips.count > 0
       %h4
