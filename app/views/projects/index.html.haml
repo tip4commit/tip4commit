@@ -13,8 +13,8 @@
       %tr
         %th Repository
         %th Description
-        %th Watchers
-        %th Balance
+        %th= link_to 'Watchers', by_watchers_projects_path
+        %th= link_to 'Balance', projects_path
         %th
     %tbody
       - @projects.each do |project|
