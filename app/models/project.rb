@@ -31,6 +31,8 @@ class Project < ActiveRecord::Base
         client.commits(full_name).
           # Filter merge request
           select{|c| !(c.commit.message =~ /^(Merge\s|auto\smerge)/)}.
+          # Filter freebie
+          select{|c| !(c.commit.message =~ /#freebie/i)}.
           # Filter fake emails
           select{|c| c.commit.author.email =~ Devise::email_regexp }.
           # Filter commited after t4c project creation
