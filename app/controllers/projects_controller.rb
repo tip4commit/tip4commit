@@ -4,6 +4,11 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.order(available_amount_cache: :desc, watchers_count: :desc, full_name: :asc).page(params[:page]).per(30)
   end
+  
+  def by_watchers
+    @projects = Project.order(watchers_count: :desc, available_amount_cache: :desc, full_name: :asc).page(params[:page]).per(30)
+    render "index"
+  end
 
   def show
     @project = Project.find params[:id]

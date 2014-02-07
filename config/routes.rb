@@ -9,6 +9,9 @@ T4c::Application.routes.draw do
     end
   end
   resources :projects, :only => [:show, :index, :create] do
+    collection do
+      get 'by_watchers'
+    end
     resources :tips, :only => [:index]
   end
   resources :tips, :only => [:index]
