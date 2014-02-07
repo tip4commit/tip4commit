@@ -14,6 +14,12 @@ class BitcoinTipper
       end
     end
 
+    Rails.logger.info "Updating projects info..."
+    Project.order(:updated_at => :desc).last(5).each do |project|
+      Rails.logger.info " Project #{project.id} #{project.full_name}"
+      project.update_info
+    end
+
     Rails.logger.info "Traversing users..."
     is_sendmany_needed = false
     User.find_each do |user|

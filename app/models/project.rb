@@ -119,4 +119,18 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def update_info
+    client = Octokit::Client.new \
+      :client_id     => CONFIG['github']['key'],
+      :client_secret => CONFIG['github']['secret']
+    begin
+      update_github_info(client.repo(full_name))
+    rescue Octokit::BadGateway, Octokit::NotFound, Octokit::InternalServerError,
+           Errno::ETIMEDOUT, Net::ReadTimeout, Faraday::Error::ConnectionFailed => e
+      Rails.logger.info "Project ##{id}: #{e.class} happened"
+    rescue StandardError => e
+      Airbrake.notify(e)
+    end
+  end
+
 end
