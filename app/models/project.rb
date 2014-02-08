@@ -73,6 +73,10 @@ class Project < ActiveRecord::Base
         })
       end
 
+      if commit.author && commit.author.login
+        user.update nickname: commit.author.login
+      end
+
       # create tip
       tip = Tip.create({
         project: self,
