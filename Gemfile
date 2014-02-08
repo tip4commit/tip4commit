@@ -56,6 +56,8 @@ gem 'octokit'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'factory_girl_rails', group: [:development, :test]
+
 group :development do
   gem 'capistrano', '~> 3.0'
   gem 'capistrano-rvm', github: 'capistrano/rvm'
