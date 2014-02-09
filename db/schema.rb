@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140207061855) do
+ActiveRecord::Schema.define(version: 20140209022632) do
 
   create_table "deposits", force: true do |t|
     t.integer  "project_id"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20140207061855) do
     t.string   "name"
     t.string   "full_name"
     t.string   "source_full_name"
-    t.string   "description"
+    t.text     "description"
     t.integer  "watchers_count"
     t.string   "language"
     t.string   "last_commit"
