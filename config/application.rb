@@ -26,3 +26,5 @@ module T4c
   config.autoload_paths += %W(#{config.root}/lib)
   end
 end
+
+I18n.enforce_available_locales = false
