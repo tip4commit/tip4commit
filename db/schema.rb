@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209022632) do
+ActiveRecord::Schema.define(version: 20140209041123) do
 
   create_table "deposits", force: true do |t|
     t.integer  "project_id"
@@ -42,6 +42,9 @@ ActiveRecord::Schema.define(version: 20140209022632) do
     t.integer  "available_amount_cache"
     t.string   "github_id"
   end
+
+  add_index "projects", ["full_name"], name: "index_projects_on_full_name", unique: true
+  add_index "projects", ["github_id"], name: "index_projects_on_github_id", unique: true
 
   create_table "sendmanies", force: true do |t|
     t.string   "txid"

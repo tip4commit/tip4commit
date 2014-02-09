@@ -15,7 +15,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user.name = info['name']
     @user.image = info['image']
     @user.save
-    
+
     sign_in_and_redirect @user, :event => :authentication
     set_flash_message(:notice, :success, :kind => "GitHub") if is_navigational_format?
   end

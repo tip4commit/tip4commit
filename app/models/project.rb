@@ -2,6 +2,9 @@ class Project < ActiveRecord::Base
   has_many :deposits # todo: only confirmed deposits that have amount > paid_out
   has_many :tips
 
+  validates :full_name, uniqueness: true, presence: true
+  validates :github_id, uniqueness: true, presence: true
+
   def update_github_info repo
     self.github_id = repo.id
     self.name = repo.name
@@ -69,7 +72,8 @@ class Project < ActiveRecord::Base
           user = User.create({
           email: email,
           password: generated_password,
-          name: commit.commit.author.name
+          name: commit.commit.author.name,
+          nickname: (commit.author.login rescue nil)
         })
       end
 
