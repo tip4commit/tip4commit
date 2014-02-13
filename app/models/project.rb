@@ -123,7 +123,7 @@ class Project < ActiveRecord::Base
   end
 
   def update_cache
-    update available_amount_cache: project.available_amount
+    update available_amount_cache: available_amount
   end
 
   def self.update_cache
