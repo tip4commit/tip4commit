@@ -1,6 +1,6 @@
 class UserMailer < ActionMailer::Base
   add_template_helper(ApplicationHelper)
-  
+
   def new_tip user, tip
     @user = user
     @tip  = tip

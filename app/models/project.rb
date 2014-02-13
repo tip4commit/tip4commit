@@ -122,9 +122,13 @@ class Project < ActiveRecord::Base
     (CONFIG["tip"]*available_amount).ceil
   end
 
+  def update_cache
+    update available_amount_cache: project.available_amount
+  end
+
   def self.update_cache
     find_each do |project|
-      project.update available_amount_cache: project.available_amount
+      project.update_cache
     end
   end
 

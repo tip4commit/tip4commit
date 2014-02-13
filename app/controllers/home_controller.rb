@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   # todo: check if remote IP address belongs to blockchain.info
 
     if (params[:secret]!=CONFIG["blockchain_info"]["callback_secret"])
-      render :text => "Invalid secret #{params}!" 
+      render :text => "Invalid secret #{params}!"
       return
     end
 
@@ -19,7 +19,7 @@ class HomeController < ApplicationController
 
     if deposit = Deposit.find_by_txid(params[:transaction_hash])
       deposit.update_attribute(:confirmations, confirmations = params[:confirmations]) if !test
-      if confirmations.to_i > 6 
+      if confirmations.to_i > 6
         render :text => "*ok*"
       else
         render :text => "Deposit #{deposit.id} updated!"
@@ -28,7 +28,7 @@ class HomeController < ApplicationController
     end
 
     if project = Project.find_by_bitcoin_address(params[:input_address])
-      (
+      if !test
         deposit = Deposit.create({
           project_id: project.id,
           txid: params[:transaction_hash],
@@ -38,11 +38,12 @@ class HomeController < ApplicationController
           paid_out: 0,
           paid_out_at: Time.now
         })
-      ) if !test
-      render :text => "Deposit #{deposit[:txid]} has been created!"       
+        project.update_cache
+      end
+      render :text => "Deposit #{deposit[:txid]} has been created!"
     else
       render :text => "Project with deposit address #{params[:input_address]} is not found!"
     end
   end
-  
+
 end
