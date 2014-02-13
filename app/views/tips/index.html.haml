@@ -26,17 +26,18 @@
               = link_to tip.user.full_name, "https://github.com/#{tip.user.nickname}", target: '_blank'
           - unless @project
             %td= link_to tip.project.full_name, tip.project
-          %td= link_to tip.commit[0..6], "https://github.com/#{tip.project.full_name}/commit/#{tip.commit}", target: :blank 
+          %td= link_to tip.commit[0..6], "https://github.com/#{tip.project.full_name}/commit/#{tip.commit}", target: :blank
           %td= btc_human tip.amount
           %td
             - if tip.sendmany.nil?
               - if tip.refunded_at
                 Refunded to project's deposit
+              - elsif tip.user.bitcoin_address.blank?
+                User didn't specify withdrawal address
+              - elsif tip.user.balance < CONFIG["min_payout"]
+                User's balance is below withdrawal threshold
               - else
-                - if tip.user.bitcoin_address.blank?
-                  User didn't specify withdrawal address
-                - else
-                  User's balance is below withdrawal threshold
+                Waiting for withdrawal
             - else
-              = link_to tip.sendmany.txid, "https://blockchain.info/tx/#{tip.sendmany.txid}", target: :blank 
+              = link_to tip.sendmany.txid, "https://blockchain.info/tx/#{tip.sendmany.txid}", target: :blank
   = paginate @tips
