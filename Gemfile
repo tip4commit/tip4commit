@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
@@ -56,8 +54,6 @@ gem 'octokit'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'factory_girl_rails', group: [:development, :test]
-
 group :development do
   gem 'capistrano', '~> 3.0'
   gem 'capistrano-rvm', github: 'capistrano/rvm'
@@ -66,3 +62,5 @@ group :development do
 end
 
 gem 'airbrake'
+
+gem 'httparty'
