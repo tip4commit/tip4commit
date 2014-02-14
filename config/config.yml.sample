@@ -28,6 +28,16 @@ smtp_settings:
 #   api_key: 111111111111
 #   host: errbit.tip4commit.com
 
+
+# Payout tiers, multipliers on the below tip amount
+tiers:
+  free: 0
+  tiny: 0.1
+  small: 0.5
+  average: 1
+  large: 2
+  huge: 10
+
 tip: 0.01
 min_payout: 100000
 our_fee: 0.05

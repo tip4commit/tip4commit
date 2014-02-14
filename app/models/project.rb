@@ -85,7 +85,7 @@ class Project < ActiveRecord::Base
       tip = Tip.create({
         project: self,
         user: user,
-        amount: next_tip_amount,
+        amount: next_tip_amount * (multiplier_for commit),
         commit: commit.sha
       })
 
@@ -100,6 +100,21 @@ class Project < ActiveRecord::Base
       Rails.logger.info "    Tip created #{tip.inspect}"
     end
 
+  end
+
+  def multiplier_for commit
+    hashtag = commit.commit.message[/#[a-z]*/i]
+
+    if hashtag
+      hashtag = hashtag[1..-1].downcase
+      if CONFIG['tiers'].has_key?(hashtag)
+        CONFIG['tiers'][hashtag]
+      else
+        1
+      end
+    else
+      1
+    end
   end
 
   def available_amount
