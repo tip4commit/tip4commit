@@ -3,7 +3,7 @@
   = @project.name
 - content_for :description do
   = @project.description
-  
+
 %h1
   = @project.full_name
   %small= link_to glyph(:github), @project.github_url, target: '_blank'
@@ -20,7 +20,7 @@
           %span(data-coingiving="title")= "[tip4commit] " + @project.full_name
           %span(data-coingiving="description")= @project.description
           %span(data-coingiving="bitcoin-address")= @project.bitcoin_address
-        %p #{100-(CONFIG["our_fee"]*100).round}% of deposited funds will be used to tip for new commits. 
+        %p #{100-(CONFIG["our_fee"]*100).round}% of deposited funds will be used to tip for new commits.
   .col-md-8
     - unless @project.description.blank?
       .well.well-sm= @project.description
@@ -64,11 +64,11 @@
 
     - if current_user
       - if current_user.bitcoin_address.blank?
-        Just 
+        Just
         = link_to 'tell us', current_user
-        your bitcoin address.      
+        your bitcoin address.
     - else
-      Just check your email or 
+      Just check your email or
       %a{href: user_omniauth_authorize_path(:github)} Sign In.
 
     %h4 Promote #{@project.full_name}

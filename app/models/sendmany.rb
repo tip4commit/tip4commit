@@ -1,4 +1,6 @@
 class Sendmany < ActiveRecord::Base
+  has_many :tips
+
 	def send_transaction
     return if txid || is_error
 
