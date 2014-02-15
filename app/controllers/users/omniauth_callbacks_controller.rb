@@ -2,7 +2,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def github
     # render text: "#{request.env["omniauth.auth"].to_json}"
     info = request.env["omniauth.auth"]["info"]
-    @user = User.find_by :email => info["email"]
+    @user = User.find_by :nickname => info["nickname"]
+    @user ||= User.find_by :email => info["email"]
     unless @user
       generated_password = Devise.friendly_token.first(8)
       @user = User.create!(
