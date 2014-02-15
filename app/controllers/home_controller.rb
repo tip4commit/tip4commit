@@ -27,7 +27,10 @@ class HomeController < ApplicationController
       return
     end
 
-    if project = Project.find_by_bitcoin_address(params[:input_address])
+    if params[:input_address] == CONFIG['deposit_address']
+      # Deposit from the cold wallet
+      render :text => "*ok*"
+    elsif project = Project.find_by_bitcoin_address(params[:input_address])
       if !test
         deposit = Deposit.create({
           project_id: project.id,

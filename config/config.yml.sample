@@ -1,6 +1,6 @@
 github:
   key: "111111111111"
-  secret: "111111111111"  
+  secret: "111111111111"
 
 blockchain_info:
   guid: "111111111111"
@@ -31,3 +31,5 @@ smtp_settings:
 tip: 0.01
 min_payout: 100000
 our_fee: 0.05
+
+deposit_address: 1M4bS4gPyA6Kb8w7aXsgth9oUZWcRk73tQ
