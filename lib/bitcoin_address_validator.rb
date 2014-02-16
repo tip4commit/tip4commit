@@ -13,7 +13,15 @@ class BitcoinAddressValidator < ActiveModel::EachValidator
   B58Base = B58Chars.length
 
   def valid_bitcoin_address?(address)
-    (address =~ /^[a-zA-Z1-9]{33,35}$/) and version(address)
+    if (address =~ /^[a-zA-Z1-9]{33,35}$/) and version = version(address)
+      if (expected_versions = CONFIG["address_versions"]).present?
+        expected_versions.include?(version.ord)
+      else
+        true
+      end
+    else
+      false
+    end
   end
 
   def version(address)
