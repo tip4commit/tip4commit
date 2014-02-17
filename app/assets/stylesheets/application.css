@@ -22,3 +22,6 @@
      -moz-box-sizing: content-box;
       box-sizing: content-box;
 }
+.form-actions{
+  margin-top: 12px;
+}

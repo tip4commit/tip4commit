@@ -38,7 +38,7 @@
               \/
               = link_to 'Sign Out', destroy_user_session_path, method: :delete
             - else
-              %a{href: user_omniauth_authorize_path(:github)} Sign in
+              = link_to "Sign in", new_user_session_path
         %h3.text-muted.code-pro Tip4Commit
         = render 'common/menu'
       - if flash[:alert]

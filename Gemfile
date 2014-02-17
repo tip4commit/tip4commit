@@ -44,6 +44,7 @@ end
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'simple_form'
 
 gem 'octokit'
 
