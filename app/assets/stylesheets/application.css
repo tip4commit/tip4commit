@@ -22,3 +22,9 @@
      -moz-box-sizing: content-box;
       box-sizing: content-box;
 }
+.form-devise {
+  max-width: 430px;
+  padding: 15px;
+  margin: 0 auto;
+}
+

@@ -1,0 +1,7 @@
+= twitter_bootstrap_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post, class: 'form-devise' }) do |f|
+  %h2 Resend confirmation instructions
+  = devise_error_messages!
+  = f.email_field :email, :autofocus => true
+  = f.submit "Resend confirmation instructions"
+  %p
+    = render "devise/shared/links"

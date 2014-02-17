@@ -17,6 +17,14 @@ GIT
       rails (>= 3.1)
       railties (>= 3.1)
 
+GIT
+  remote: git://github.com/stouset/twitter_bootstrap_form_for.git
+  revision: 830dbfd439ebb1194e1ae025100fc0e790be37cf
+  specs:
+    twitter_bootstrap_form_for (2.0.0.beta)
+      actionpack (~> 4)
+      railties (~> 4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -239,4 +247,5 @@ DEPENDENCIES
   therubyracer
   turbolinks
   twitter-bootstrap-rails!
+  twitter_bootstrap_form_for!
   uglifier (>= 1.3.0)
