@@ -1,0 +1,10 @@
+= twitter_bootstrap_form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-devise' }) do |f|
+  %h2 Sign in
+  = f.email_field :email, :autofocus => true
+  = f.password_field :password
+  - if devise_mapping.rememberable?
+    %div
+      = f.check_box :remember_me, "Remember me"
+  = f.submit "Sign in"
+  %p
+    = render "devise/shared/links"

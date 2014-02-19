@@ -44,6 +44,7 @@ end
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'twitter_bootstrap_form_for', github: 'stouset/twitter_bootstrap_form_for'
 
 gem 'octokit'
 
