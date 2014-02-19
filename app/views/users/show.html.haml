@@ -10,10 +10,15 @@
 %p
   %strong E-mail
 %p= @user.email
-= form_for @user, html: {role: 'form', class: 'form-inline"'} do |f|
-  - if @user.errors.size > 0
-    .alert.alert-danger Bitcoin address is invalid.
-  .form-group
-    = f.label :bitcoin_address
-    = f.text_field :bitcoin_address, class: 'form-control', placeholder: 'Your bitcoin address'
-  = f.button :update, class: 'btn btn-default'
+= twitter_bootstrap_form_for @user do |f|
+  = f.text_field :bitcoin_address, placeholder: 'Your bitcoin address'
+  = f.submit "Update Bitcoin address"
+%br
+%p
+  %strong= link_to 'Change your password', '#new_password_form', data: {toggle: "collapse"}
+
+= twitter_bootstrap_form_for @user, html: {class: (params[:new_password] ? '' : 'collapse'), id: 'new_password_form'} do |f|
+  = hidden_field_tag :new_password, :value => true
+  = f.password_field :password, :autofocus => true
+  = f.password_field :password_confirmation
+  = f.submit "Change my password"

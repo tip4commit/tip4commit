@@ -34,9 +34,9 @@ class UsersController < ApplicationController
       redirect_to root_url, alert: 'User not found'
     end
   end
- 
+
   private
     def users_params
-      params.require(:user).permit(:bitcoin_address)
+      params.require(:user).permit(:bitcoin_address, :password, :password_confirmation)
     end
 end

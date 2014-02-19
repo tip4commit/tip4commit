@@ -6,7 +6,7 @@
     %meta{content: "", name: "description"}/
     %meta{content: "", name: "author"}/
     %link{href: "/favicon.png", rel: "shortcut icon"}/
-    
+
     %title= "Tip4Commit — " + (content_for?(:title) ? yield(:title) : "Contribute to Open Source")
 
     %meta{:name => 'description', :content => (content_for?(:title) ? yield(:title) : "Donate bitcoins to open source projects or make commits and get tips for it.")}
@@ -16,7 +16,7 @@
 
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
-    
+
     = csrf_meta_tags
   %body
     :javascript

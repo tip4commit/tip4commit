@@ -3,7 +3,7 @@ T4c::Application.routes.draw do
   root 'home#index'
 
   get '/blockchain_info_callback' => "home#blockchain_info_callback", :as => "blockchain_info_callback"
-  
+
   devise_for :users,
     :controllers => {
       :omniauth_callbacks => "users/omniauth_callbacks"
@@ -60,7 +60,7 @@ T4c::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
