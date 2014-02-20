@@ -1,3 +1,27 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).ready ()->
+  $('.validate_form').bootstrapValidator
+    message: "Value is invalid"
+    fields:
+      "user[email]":
+        validators:
+          emailAddress:
+            message: "Invalid Email Address"
+          notEmpty:
+            message: 'The Email is required and can\'t be empty' 
+          
+      "user[password]":
+        validators:
+          notEmpty:
+            message: 'The password is required and can\'t be empty'
+          identical:
+            field: 'user[password_confirmation]' 
+            message: 'The password and its confirmation are not same'
+      
+      "user[password_confirmation]":
+        validators:
+          notEmpty:
+            message: 'The password is required and can\'t be empty'
+          identical:
+            field: 'user[password]' 
+            message: 'The password and its confirmation are not same'       
+     
