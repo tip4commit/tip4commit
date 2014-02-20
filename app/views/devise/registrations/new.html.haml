@@ -1,4 +1,4 @@
-= twitter_bootstrap_form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { class: 'form-devise validate_form'}) do |f|
+= twitter_bootstrap_form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { class: 'form-devise registration_form'}) do |f|
   %h2 Sign up
   = devise_error_messages!
   = f.email_field :email, :autofocus => true
