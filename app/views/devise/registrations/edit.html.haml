@@ -14,12 +14,12 @@
   %div
     = f.label :password_confirmation
     %br/
-    = f.password_field :password_confirmation
+    = f.password_field :password_confirmation, :autocomplete => "off"
   %div
     = f.label :current_password
     %i (we need your current password to confirm your changes)
     %br/
-    = f.password_field :current_password
+    = f.password_field :current_password, :autocomplete => "off"
   %div= f.submit "Update"
   %p
     %h3 Cancel my account

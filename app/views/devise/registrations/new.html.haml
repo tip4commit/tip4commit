@@ -2,8 +2,8 @@
   %h2 Sign up
   = devise_error_messages!
   = f.email_field :email, :autofocus => true
-  = f.password_field :password
-  = f.password_field :password_confirmation
+  = f.password_field :password, :autocomplete => "off"
+  = f.password_field :password_confirmation, :autocomplete => "off"
   = f.submit "Sign up"
   %p
     = render "devise/shared/links"
