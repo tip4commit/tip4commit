@@ -6,7 +6,7 @@ class UserMailerTest < ActionMailer::TestCase
 
     mail = UserMailer.new_tip tip.user, tip
     assert_equal "You received a tip for your commit", mail.subject
-    assert_equal ["john@doge.com"], mail.to
+    assert_equal [tip.user.email], mail.to
     assert_match "Hello", mail.body.encoded
   end
 

@@ -26,13 +26,7 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-    if !name.blank?
-      name
-    elsif !nickname.blank?
-      nickname
-    else
-      email
-    end
+    name.presence || nickname.presence || email
   end
 
   def self.update_cache
