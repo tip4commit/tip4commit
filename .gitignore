@@ -19,3 +19,4 @@
 /config/config.yml
 
 /public/assets
+.ruby-version

@@ -41,12 +41,11 @@
               = link_to "Sign in", new_user_session_path
         %h3.text-muted.code-pro Tip4Commit
         = render 'common/menu'
-      - if flash[:alert]
-        %br
-        .alert= flash[:alert]
-      - if flash[:notice]
-        %br
-        .alert.alert-info= flash[:notice]
+
+      %br
+
+      = render_flash_messages
+
       = yield
       / Site footer
       .footer
