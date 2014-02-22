@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   validates :bitcoin_address, :bitcoin_address => true
 
-  has_many :tips
+  has_many :tips, dependent: :destroy
 
   def github_url
     "https://github.com/#{nickname}"
