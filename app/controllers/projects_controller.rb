@@ -1,6 +1,9 @@
 require 'net/http'
 
 class ProjectsController < ApplicationController
+
+  before_filter :load_project, only: :show
+
   def index
     @projects = Project.order(available_amount_cache: :desc, watchers_count: :desc, full_name: :asc).page(params[:page]).per(30)
   end
@@ -11,8 +14,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find params[:id]
-    if @project && @project.bitcoin_address.nil?
+    if @project.bitcoin_address.nil?
       uri = URI("https://blockchain.info/merchant/#{CONFIG["blockchain_info"]["guid"]}/new_address")
       params = { password: CONFIG["blockchain_info"]["password"], label:"#{@project.full_name}@tip4commit" }
       uri.query = URI.encode_www_form(params)
@@ -39,5 +41,11 @@ class ProjectsController < ApplicationController
     rescue Octokit::NotFound
       redirect_to projects_path, alert: "Project not found"
     end
+  end
+
+  private
+
+  def load_project
+    super(params[:id])
   end
 end
