@@ -13,6 +13,7 @@ T4c::Application.routes.draw do
     collection do
       get :login
     end
+    resources :tips, :only => [:index]
   end
   resources :projects, :only => [:show, :index, :create] do
     collection do

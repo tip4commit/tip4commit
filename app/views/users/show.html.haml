@@ -7,6 +7,24 @@
   %small
     You will get your money when your balance hits the threshold of
     = btc_human CONFIG["min_payout"]
+- if @user.tips.count > 0
+  %p
+    %strong Last Tips
+    - if @user.tips.count > 5
+      = link_to 'see all', user_tips_path(@user)
+  %ul
+    - @user.tips.includes(:project).order(created_at: :desc).first(5).each do |tip|
+      %li
+        = l tip.created_at, format: :short
+        received
+        = btc_human tip.amount
+        for commit
+        = link_to tip.commit[0..6], "https://github.com/#{tip.project.full_name}/commit/#{tip.commit}", target: :blank
+        in
+        = link_to tip.project.full_name, tip.project
+
+
+
 %p
   %strong E-mail
 %p= @user.email
