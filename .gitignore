@@ -20,3 +20,4 @@
 
 /public/assets
 .ruby-version
+.rspec
