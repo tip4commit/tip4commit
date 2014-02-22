@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
-  has_many :deposits # todo: only confirmed deposits that have amount > paid_out
-  has_many :tips
+  has_many :deposits, dependent: :destroy # todo: only confirmed deposits that have amount > paid_out
+  has_many :tips, dependent: :destroy
 
   validates :full_name, uniqueness: true, presence: true
   validates :github_id, uniqueness: true, presence: true
