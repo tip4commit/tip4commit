@@ -2,8 +2,7 @@ class Project < ActiveRecord::Base
   has_many :deposits # todo: only confirmed deposits that have amount > paid_out
   has_many :tips
 
-  validates :full_name, uniqueness: true, presence: true
-  validates :github_id, uniqueness: true, presence: true
+  validates :full_name, :github_id, uniqueness: true, presence: true
 
   def update_github_info repo
     self.github_id = repo.id
@@ -64,7 +63,7 @@ class Project < ActiveRecord::Base
     user = User.find_by email: email
 
     if (next_tip_amount > 0) &&
-        Tip.find_by_commit(commit.sha).nil?
+        Tip.find_by(commit: commit.sha).nil?
 
       # create user
       unless user

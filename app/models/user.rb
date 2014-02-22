@@ -2,11 +2,10 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable
   devise :database_authenticatable, :registerable, :recoverable,
-         :rememberable, :trackable, :validatable
+         :rememberable, :trackable, :validatable, :omniauthable, 
+         :omniauth_providers => [:github]
 
-  devise :omniauthable, :omniauth_providers => [:github]
-
-  validates :bitcoin_address, :bitcoin_address => true
+  validates :bitcoin_address, bitcoin_address: true
 
   has_many :tips
 
@@ -18,8 +17,9 @@ class User < ActiveRecord::Base
   	tips.unpaid.sum(:amount)
   end
 
-  before_create :set_login_token!, unless: :login_token?
-  def set_login_token!
+  before_create :set_login_token, unless: :login_token?
+  
+  def set_login_token
     self.login_token = SecureRandom.urlsafe_base64
   end
 
@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   end
 
   def self.update_cache
-    find_each do |user|
+    includes(:tips).find_each do |user|
       user.update commits_count: user.tips.count
       user.update withdrawn_amount: user.tips.paid.sum(:amount)
     end
