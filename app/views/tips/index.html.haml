@@ -2,6 +2,9 @@
   - if @project
     = link_to @project.full_name, @project
     tips
+  - elsif @user
+    = link_to @user.full_name, @user
+    tips
   - else
     Tips
 %p
@@ -9,7 +12,8 @@
     %thead
       %tr
         %th Created At
-        %th Commiter
+        - unless @user
+          %th Commiter
         - unless @project
           %th Project
         %th Commit
@@ -19,11 +23,12 @@
       - @tips.each do |tip|
         %tr
           %td= l tip.created_at, format: :short
-          %td
-            - if tip.user.nickname.blank?
-              = tip.user.full_name
-            - else
-              = link_to tip.user.full_name, "https://github.com/#{tip.user.nickname}", target: '_blank'
+          - unless @user
+            %td
+              - if tip.user.nickname.blank?
+                = tip.user.full_name
+              - else
+                = link_to tip.user.full_name, "https://github.com/#{tip.user.nickname}", target: '_blank'
           - unless @project
             %td= link_to tip.project.full_name, tip.project
           %td= link_to tip.commit[0..6], "https://github.com/#{tip.project.full_name}/commit/#{tip.commit}", target: :blank
