@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action except: [:login, :index] do
     @user = User.find params[:id]
     unless current_user && current_user == @user
-      redirect_to root_path
+      redirect_to root_path, alert: 'You are not authorized to perform this action!'
     end
   end
 
