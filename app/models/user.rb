@@ -18,11 +18,9 @@ class User < ActiveRecord::Base
   	tips.unpaid.sum(:amount)
   end
 
-  after_create :generate_login_token!
-  def generate_login_token!
-    if login_token.blank?
-      self.update login_token: SecureRandom.urlsafe_base64
-    end
+  before_create :set_login_token!, unless: :login_token?
+  def set_login_token!
+    self.login_token = SecureRandom.urlsafe_base64
   end
 
   def full_name
