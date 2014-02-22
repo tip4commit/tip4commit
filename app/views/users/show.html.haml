@@ -30,6 +30,8 @@
 %p= @user.email
 = twitter_bootstrap_form_for @user do |f|
   = f.text_field :bitcoin_address, placeholder: 'Your bitcoin address'
+  = f.check_box :unsubscribed, 'subscribed', { checked: !f.object.unsubscribed? }, '0', '1'
+  %br
   = f.submit "Update Bitcoin address"
 %br
 %p
