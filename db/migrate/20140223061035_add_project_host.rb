@@ -5,7 +5,9 @@ class AddProjectHost < ActiveRecord::Migration
   def change
     add_column :projects, :host, :string, default: 'github'
 
-    # Update all existing projects
-    Project.where(host: nil).update_all(host: 'github')
+    reversible do |dir|
+      # Update all existing projects
+      dir.up { Project.where(host: nil).update_all(host: 'github') }
+    end
   end
 end
