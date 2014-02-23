@@ -83,7 +83,34 @@
         %a.addthis_counter.addthis_bubble_style
       / AddThis Button END
 
-    %h4 Embed in README.md
+    %h4 Embedding
     %p= link_to image_tag(project_url(@project, format: :svg), alt: 'Tip4Commit'), project_url(@project)
-    %p
-      %input.form-control{type: 'text', value: "[![tip for next commit](#{project_url(@project, format: :svg)})](#{project_url(@project)})"}
+    %form.form-horizontal
+      %div.form-group
+        %label.control-label.col-sm-2{for: 'image_url'} Image URL:
+        %div.col-sm-10
+          %input.form-control{id: 'image_url', type: 'text', value: "#{project_url(@project, format: :svg)}"}
+      %div.form-group
+        %label.control-label.col-sm-2{for: 'markdown_text'} Markdown:
+        %div.col-sm-10
+          %input.form-control{id: 'markdown_text', type: 'text', value: "[![tip for next commit](#{project_url(@project, format: :svg)})](#{project_url(@project)})"}
+      %div.form-group
+        %label.control-label.col-sm-2{for: 'textile_text'} Textile:
+        %div.col-sm-10
+          %input.form-control{id: 'textile_text', type: 'text', value: "!#{project_url(@project, format: :svg)}!:#{project_url(@project)}"}
+      %div.form-group
+        %label.control-label.col-sm-2{for: 'rdoc_text'} RDOC:
+        %div.col-sm-10
+          %input.form-control{id: 'rdoc_text', type: 'text', value: "{<img src=\"#{project_url(@project, format: :svg)}\" alt=\"tip for next commit\" />}[#{project_url(@project)}]"}
+      %div.form-group
+        %label.control-label.col-sm-2{for: 'asciidoc_text'} AsciiDoc:
+        %div.col-sm-10
+          %input.form-control{id: 'asciidoc_text', type: 'text', value: "image:#{project_url(@project, format: :svg)}[\"tip for next commit\", link=\"#{project_url(@project)}\"]"}
+      %div.form-group
+        %label.control-label.col-sm-2{for: 'rst_text'} Rst:
+        %div.col-sm-10
+          %input.form-control{id: 'rst_text', type: 'text', value: ".. image:: #{project_url(@project, format: :svg)}   :target: #{project_url(@project)}"}
+      %div.form-group
+        %label.control-label.col-sm-2{for: 'pod_text'} POD:
+        %div.col-sm-10
+          %input.form-control{id: 'pod_text', type: 'text', value: "=for HTML <a href=\"#{project_url(@project)}\"><img src=\"#{project_url(@project, format: :svg)}\"></a>"}
