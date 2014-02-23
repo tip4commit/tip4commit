@@ -20,6 +20,7 @@ gem 'devise',          '~> 3.2.2'
 gem 'omniauth',        '~> 1.1.4'
 gem 'omniauth-github', '~> 1.1.1'
 gem 'octokit',         '~> 2.7.0'
+gem 'sawyer',          '~> 0.5.2'
 gem 'twitter_bootstrap_form_for', github: 'stouset/twitter_bootstrap_form_for'
 gem 'twitter-bootstrap-rails',    github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
 gem 'sdoc', group: :doc, require: false

@@ -33,8 +33,8 @@ class ProjectsController < ApplicationController
       :client_secret => CONFIG['github']['secret']
     begin
       repo = client.repo project_name
-      @project = Project.find_or_create_by full_name: repo.full_name
-      @project.update_github_info repo
+      @project = Project.find_or_create_by host: "github", full_name: repo.full_name
+      @project.update_repository_info repo
       redirect_to @project
     rescue Octokit::NotFound
       redirect_to projects_path, alert: "Project not found"
