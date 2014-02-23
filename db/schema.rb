@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209041123) do
+ActiveRecord::Schema.define(version: 20140223061035) do
 
   create_table "deposits", force: true do |t|
     t.integer  "project_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140209041123) do
     t.string   "last_commit"
     t.integer  "available_amount_cache"
     t.string   "github_id"
+    t.string   "host",                   default: "github"
   end
 
   add_index "projects", ["full_name"], name: "index_projects_on_full_name", unique: true

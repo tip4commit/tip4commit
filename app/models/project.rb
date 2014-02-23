@@ -4,8 +4,9 @@ class Project < ActiveRecord::Base
 
   validates :full_name, uniqueness: true, presence: true
   validates :github_id, uniqueness: true, presence: true
+  validates :host, inclusion: [ "github", "bitbucket" ], presence: true
 
-  def update_github_info repo
+  def update_repository_info repo
     self.github_id = repo.id
     self.name = repo.name
     self.full_name = repo.full_name
@@ -16,22 +17,34 @@ class Project < ActiveRecord::Base
     self.save!
   end
 
+  def repository_client
+    if host == "github"
+      Github.new
+    elsif host == "bitbucket"
+      Bitbucket.new
+    end
+  end
+
   def github_url
-    "https://github.com/#{full_name}"
+    repository_client.repository_url self
   end
 
   def source_github_url
-    "https://github.com/#{source_full_name}"
+    repository_client.source_repository_url self
+  end
+
+  def raw_commits
+    repository_client.commits self
+  end
+
+  def repository_info
+    repository_client.repository_info self
   end
 
   def new_commits
     begin
       commits = Timeout::timeout(90) do
-        client = Octokit::Client.new \
-          :client_id     => CONFIG['github']['key'],
-          :client_secret => CONFIG['github']['secret'],
-          :per_page      => 100
-        client.commits(full_name).
+        raw_commits.
           # Filter merge request
           select{|c| !(c.commit.message =~ /^(Merge\s|auto\smerge)/)}.
           # Filter fake emails
@@ -132,20 +145,9 @@ class Project < ActiveRecord::Base
     end
   end
 
-  def github_info
-    client = Octokit::Client.new \
-      :client_id     => CONFIG['github']['key'],
-      :client_secret => CONFIG['github']['secret']
-    if github_id.present?
-      client.get("/repositories/#{github_id}")
-    else
-      client.repo(full_name)
-    end
-  end
-
   def update_info
     begin
-      update_github_info(github_info)
+      update_repository_info(repository_info)
     rescue Octokit::BadGateway, Octokit::NotFound, Octokit::InternalServerError,
            Errno::ETIMEDOUT, Net::ReadTimeout, Faraday::Error::ConnectionFailed => e
       Rails.logger.info "Project ##{id}: #{e.class} happened"
@@ -153,5 +155,4 @@ class Project < ActiveRecord::Base
       Airbrake.notify(e)
     end
   end
-
 end
