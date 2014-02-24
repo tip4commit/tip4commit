@@ -36,6 +36,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.create_with_omniauth!(auth_info)
+    generated_password = Devise.friendly_token.first(Devise.password_length.min)
+
+    create!( email:    auth_info.email,
+             password: generated_password,
+             nickname: auth_info.nickname)
+  end
+
   private
 
   def set_login_token!
