@@ -13,7 +13,7 @@
     - if @user.tips.count > 5
       = link_to 'see all', user_tips_path(@user)
   %ul
-    - @user.tips.includes(:project).order(created_at: :desc).first(5).each do |tip|
+    - @recent_tips.each do |tip|
       %li
         = l tip.created_at, format: :short
         received
@@ -39,7 +39,7 @@
   %strong= link_to 'Change your password', '#new_password_form', data: {toggle: "collapse"}
 
 = twitter_bootstrap_form_for @user, html: {class: (params[:new_password] ? '' : 'collapse'), id: 'new_password_form'} do |f|
-  = hidden_field_tag :new_password, :value => true
-  = f.password_field :password, :autofocus => true, :autocomplete => "off"
-  = f.password_field :password_confirmation, :autocomplete => "off"
+  = hidden_field_tag :new_password, value: true
+  = f.password_field :password, autofocus: true, autocomplete: "off"
+  = f.password_field :password_confirmation, autocomplete: "off"
   = f.submit "Change my password"

@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, :load_user, :valid_user!, except: [:login, :index]
 
   def show
+    @user.includes(:tips)
+    @recent_tips = @user.tips.includes(:project).order(created_at: :desc).first(5)
   end
 
   def index
