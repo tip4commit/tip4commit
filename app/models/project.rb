@@ -70,46 +70,21 @@ class Project < ActiveRecord::Base
   end
 
   def tip_for commit
-    email = commit.commit.author.email
-    user = User.find_by email: email
+    if (next_tip_amount > 0) && !Tip.exists?(commit: commit.sha)
 
-    if (next_tip_amount > 0) &&
-        Tip.find_by(commit: commit.sha).nil?
-
-      # create user
-      unless user
-        generated_password = Devise.friendly_token.first(8)
-          user = User.create({
-          email: email,
-          password: generated_password,
-          name: commit.commit.author.name,
-          nickname: (commit.author.login rescue nil)
-        })
-      end
-
-      if commit.author && commit.author.login
-        user.update nickname: commit.author.login
-      end
+      user = User.find_or_create_with_commit commit
+      user.update(nickname: commit.author.login) if commit.author.try(:login)
 
       # create tip
-      tip = Tip.create({
-        project: self,
-        user: user,
-        amount: next_tip_amount,
-        commit: commit.sha
-      })
+      tip = tips.create({ user: user,
+                          amount: next_tip_amount,
+                          commit: commit.sha })
 
       # notify user
-      if tip && user.bitcoin_address.blank? && !user.unsubscribed
-        if !user.notified_at || (user.notified_at < (Time.now - 30.days))
-          UserMailer.new_tip(user, tip).deliver
-          user.touch :notified_at
-        end
-      end
+      notify_user_about_tip(user, tip)
 
       Rails.logger.info "    Tip created #{tip.inspect}"
     end
-
   end
 
   def available_amount
@@ -150,6 +125,15 @@ class Project < ActiveRecord::Base
       Rails.logger.info "Project ##{id}: #{e.class} happened"
     rescue StandardError => e
       Airbrake.notify(e)
+    end
+  end
+
+  def notify_user_about_tip user, tip
+    if tip && user.bitcoin_address.blank? && user.subscribed?
+      if !user.notified_at || (user.notified_at < (Time.current - 30.days))
+        UserMailer.new_tip(user, tip).deliver
+        user.touch :notified_at
+      end
     end
   end
 end
