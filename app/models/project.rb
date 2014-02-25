@@ -2,8 +2,7 @@ class Project < ActiveRecord::Base
   has_many :deposits # todo: only confirmed deposits that have amount > paid_out
   has_many :tips
 
-  validates :full_name, uniqueness: true, presence: true
-  validates :github_id, uniqueness: true, presence: true
+  validates :full_name, :github_id, uniqueness: true, presence: true
   validates :host, inclusion: [ "github", "bitbucket" ], presence: true
 
   def update_repository_info repo
@@ -18,10 +17,8 @@ class Project < ActiveRecord::Base
   end
 
   def repository_client
-    if host == "github"
-      Github.new
-    elsif host == "bitbucket"
-      Bitbucket.new
+    if host.present?
+      host.classify.constantize.new
     end
   end
 
