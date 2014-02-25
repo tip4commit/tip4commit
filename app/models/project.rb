@@ -74,7 +74,7 @@ class Project < ActiveRecord::Base
     user = User.find_by email: email
 
     if (next_tip_amount > 0) &&
-        Tip.find_by_commit(commit.sha).nil?
+        Tip.find_by(commit: commit.sha).nil?
 
       # create user
       unless user
