@@ -15,7 +15,7 @@
         %h4.panel-title
           Project Sponsors
       .panel-body
-        %iframe{:src => "http://coingiving.com/project_sponsors?url=#{project_url @project.id}", :scrolling => "no", :style => 'width:100%; height:500px; border:0px; padding:0;overflow:hidden'}
+        %iframe{ src: "http://coingiving.com/project_sponsors?url=#{project_url @project.id}", scrolling: "no", style: 'width:100%; height:500px; border:0px; padding:0;overflow:hidden'}
         .hidden
           %span(data-coingiving="title")= "[tip4commit] " + @project.full_name
           %span(data-coingiving="description")= @project.description
@@ -41,7 +41,7 @@
         - if @project.tips.count > 5
           = link_to 'see all', project_tips_path(@project)
       %ul
-        - @project.tips.includes(:user).order(created_at: :desc).first(5).each do |tip|
+        - @recent_tips.each do |tip|
           %li
             = l tip.created_at, format: :short
             - if tip.user.nickname.blank?

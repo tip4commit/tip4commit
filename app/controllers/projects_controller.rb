@@ -23,6 +23,8 @@ class ProjectsController < ApplicationController
         @project.update_attribute :bitcoin_address, bitcoin_address
       end      
     end
+    @project.includes(:tips)
+    @recent_tips = @project.tips.includes(:user).order(created_at: :desc).first(5)
   end
 
   def create
