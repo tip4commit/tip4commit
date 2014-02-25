@@ -7,13 +7,13 @@
   %small
     You will get your money when your balance hits the threshold of
     = btc_human CONFIG["min_payout"]
-- if @user.tips.count > 0
+- if @user_tips.count > 0
   %p
     %strong Last Tips
-    - if @user.tips.count > 5
+    - if @user_tips.count > 5
       = link_to 'see all', user_tips_path(@user)
   %ul
-    - @user.tips.includes(:project).order(created_at: :desc).first(5).each do |tip|
+    - @recent_tips.each do |tip|
       %li
         = l tip.created_at, format: :short
         received
@@ -22,8 +22,6 @@
         = link_to tip.commit[0..6], "https://github.com/#{tip.project.full_name}/commit/#{tip.commit}", target: :blank
         in
         = link_to tip.project.full_name, tip.project
-
-
 
 %p
   %strong E-mail
@@ -39,7 +37,7 @@
   %strong= link_to 'Change your password', '#new_password_form', data: {toggle: "collapse"}
 
 = twitter_bootstrap_form_for @user, html: {class: (params[:new_password] ? '' : 'collapse'), id: 'new_password_form'} do |f|
-  = hidden_field_tag :new_password, '', :value => true
-  = f.password_field :password, :autofocus => true, :autocomplete => "off"
-  = f.password_field :password_confirmation, :autocomplete => "off"
+  = hidden_field_tag :new_password, value: true
+  = f.password_field :password, autofocus: true, autocomplete: "off"
+  = f.password_field :password_confirmation, autocomplete: "off"
   = f.submit "Change my password"
