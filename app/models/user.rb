@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
     name.presence || nickname.presence || email
   end
 
+  def subscribed?
+    !unsubscribed?
+  end
+
   # Class Methods
   def self.update_cache
     includes(:tips).find_each do |user|
@@ -42,6 +46,16 @@ class User < ActiveRecord::Base
     create!( email:    auth_info.email,
              password: generated_password,
              nickname: auth_info.nickname)
+  end
+
+  def self.find_or_create_with_commit commit
+    author = commit.commit.author
+    where(email: author.email).first_or_create do |user|
+      user.email    = author.email
+      user.password = Devise.friendly_token.first(Devise.password_length.min),
+      user.name     = author.name,
+      user.nickname = commit.author.try(:login)
+    end
   end
 
   private
