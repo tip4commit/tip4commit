@@ -15,6 +15,6 @@ class TipsController < ApplicationController
   private
 
   def load_project
-    super(params[:project_id])
+    super(params[:project_id]) if params[:project_id].present?
   end
 end

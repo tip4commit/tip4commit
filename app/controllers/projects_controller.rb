@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.order(available_amount_cache: :desc, watchers_count: :desc, full_name: :asc).page(params[:page]).per(30)
   end
-  
+
   def by_watchers
     @projects = Project.order(watchers_count: :desc, available_amount_cache: :desc, full_name: :asc).page(params[:page]).per(30)
     render "index"
@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
       res = Net::HTTP.get_response(uri)
       if res.is_a?(Net::HTTPSuccess) && (bitcoin_address = JSON.parse(res.body)["address"])
         @project.update_attribute :bitcoin_address, bitcoin_address
-      end      
+      end
     end
     @project_tips = @project.tips
     @recent_tips  = @project_tips.includes(:user).order(created_at: :desc).first(5)
