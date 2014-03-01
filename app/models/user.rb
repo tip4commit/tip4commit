@@ -52,8 +52,8 @@ class User < ActiveRecord::Base
     author = commit.commit.author
     where(email: author.email).first_or_create do |user|
       user.email    = author.email
-      user.password = Devise.friendly_token.first(Devise.password_length.min),
-      user.name     = author.name,
+      user.password = Devise.friendly_token.first(Devise.password_length.min)
+      user.name     = author.name
       user.nickname = commit.author.try(:login)
     end
   end
