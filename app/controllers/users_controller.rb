@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(users_params)
       redirect_to @user, notice: 'Your information saved!'
     else
+      show
       render :show, alert: 'Error updating bitcoin address'
     end
   end
