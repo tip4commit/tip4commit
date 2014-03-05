@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/alexandrz/omniauth-github.git
+  revision: 37a030aa37659831ef80af21b5c7270fe1384b3c
+  branch: provide_emails
+  specs:
+    omniauth-github (1.1.0)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.1)
+
+GIT
   remote: git://github.com/capistrano/rvm.git
   revision: 19e8d15ae3d705499c610370f159d523bbedbd94
   specs:
@@ -16,15 +25,6 @@ GIT
       execjs
       rails (>= 3.1)
       railties (>= 3.1)
-
-GIT
-  remote: git://github.com/sigmike/omniauth-github.git
-  revision: a6a3a48b5bad1f7b677e07340edee95c070da94d
-  branch: provide_emails
-  specs:
-    omniauth-github (1.1.0)
-      omniauth (~> 1.0)
-      omniauth-oauth2 (~> 1.1)
 
 GIT
   remote: git://github.com/stouset/twitter_bootstrap_form_for.git
