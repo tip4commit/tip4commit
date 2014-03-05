@@ -3,7 +3,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def github
     @user = User.find_by(nickname: @omniauth_info.nickname) ||
-            User.find_by(email: @omniauth_info.email) ||
+            User.find_by(email: @omniauth_info.emails) ||
             User.create_with_omniauth!(@omniauth_info)
 
     @user.update(@omniauth_info.slice(:name, :image).as_json)
