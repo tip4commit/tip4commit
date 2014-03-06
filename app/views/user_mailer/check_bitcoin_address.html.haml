@@ -1,13 +1,13 @@
 %h4 Hello, #{@user.full_name}!
 
-%p Recently, we discovered a security breach in our system and it's possible that someone changed your Bitcoin address. Please, check it:
+%p Recently, we discovered a security breach in our system and it's possible that someone changed your Bitcoin address. Please check it:
 
 %p
   %strong= @user.bitcoin_address
 
 %p
-  If this address is not yours, please,
-  = link_to 'update it.', login_users_url(token: @user.login_token)
+  If this address is not yours, please
+  = link_to 'update it', login_users_url(token: @user.login_token)
 
 %p Thank you for contributing to Open Source and sorry for troubles!
 
