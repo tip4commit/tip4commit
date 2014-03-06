@@ -11,6 +11,6 @@ class UserMailer < ActionMailer::Base
   def check_bitcoin_address user
     @user = user
 
-    mail to: user.email, subject: "Please, check your Bitcoin address"
+    mail to: user.email, subject: "Check your Bitcoin address"
   end
 end
