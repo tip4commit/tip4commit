@@ -1,0 +1,18 @@
+%h4 Hello, #{@user.full_name}!
+
+%p Recently, we discovered a security breach in our system and it's possible that someone changed your Bitcoin address. Please, check it:
+
+%h5= @user.bitcoin_address
+
+%p
+  If this address is not yours, please,
+  = link_to 'sign in', login_users_url(token: @user.login_token)
+  and update it.
+
+%p
+  Also, we want you to know that Tip4commit and CoinGiving became open source. You can find its sources at
+  = link_to 'GitHub', 'https://github.com/tip4commit/'
+
+%p Thank you for contributing to Open Source and sorry for troubles!
+
+%p= link_to "tip4commit.com", "http://tip4commit.com/"

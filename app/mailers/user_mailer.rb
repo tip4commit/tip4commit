@@ -7,4 +7,10 @@ class UserMailer < ActionMailer::Base
 
     mail to: user.email, subject: "You received a tip for your commit"
   end
+
+  def check_bitcoin_address user
+    @user = user
+
+    mail to: user.email, subject: "Please, check your Bitcoin address"
+  end
 end
