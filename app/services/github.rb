@@ -20,6 +20,10 @@ class Github
     end
   end
 
+  def collaborators_info project
+    client.get("/repos/#{project.full_name}/collaborators")
+  end
+
   def repository_url project
     "https://github.com/#{project.full_name}"
   end

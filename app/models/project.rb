@@ -1,10 +1,14 @@
 class Project < ActiveRecord::Base
   has_many :deposits # todo: only confirmed deposits that have amount > paid_out
   has_many :tips
-  has_many :collaborators
+  has_many :collaborators, autosave: true
 
   validates :full_name, :github_id, uniqueness: true, presence: true
   validates :host, inclusion: [ "github", "bitbucket" ], presence: true
+
+  def github?
+    host == "github"
+  end
 
   def update_repository_info repo
     self.github_id = repo.id
@@ -15,6 +19,27 @@ class Project < ActiveRecord::Base
     self.watchers_count = repo.watchers_count
     self.language = repo.language
     self.save!
+  end
+
+  def update_collaborators(repo_collaborators)
+    existing_collaborators = collaborators
+
+    repo_logins = repo_collaborators.map(&:login)
+    existing_logins = existing_collaborators.map(&:login)
+
+    existing_collaborators.each do |existing_collaborator|
+      unless repo_logins.include?(existing_collaborator.login)
+        existing_collaborator.mark_for_destruction
+      end
+    end
+
+    repo_collaborators.each do |repo_collaborator|
+      unless existing_logins.include?(repo_collaborator.login)
+        collaborators.build(login: repo_collaborator.login)
+      end
+    end
+
+    save!
   end
 
   def repository_client
@@ -37,6 +62,10 @@ class Project < ActiveRecord::Base
 
   def repository_info
     repository_client.repository_info self
+  end
+
+  def collaborators_info
+    repository_client.collaborators_info self
   end
 
   def new_commits
@@ -143,6 +172,7 @@ class Project < ActiveRecord::Base
   def update_info
     begin
       update_repository_info(repository_info)
+      update_collaborators(collaborators_info)
     rescue Octokit::BadGateway, Octokit::NotFound, Octokit::InternalServerError,
            Errno::ETIMEDOUT, Net::ReadTimeout, Faraday::Error::ConnectionFailed => e
       Rails.logger.info "Project ##{id}: #{e.class} happened"
