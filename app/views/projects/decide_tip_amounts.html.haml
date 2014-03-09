@@ -1,0 +1,27 @@
+= bootstrap_form_for @project, url: decide_tip_amounts_project_path(@project) do |f|
+  %table.table.table-hover.decide-tip-amounts-table
+    %thead
+      %tr
+        %th Commit
+        %th Author
+        %th Message
+        %th Tip (relative to the project balance)
+    %tbody
+      = f.fields_for(:tips, @project.tips.undecided) do |tip_fields|
+        = tip_fields.hidden_field :id
+        - tip = tip_fields.object
+        %tr
+          %td= link_to commit_tag(tip.commit), tip.commit_url
+          %td= tip.user.nickname
+          %td= simple_format tip.commit_message
+          %td
+            = tip_fields.radio_button :amount_percentage,    "", inline: true, label: "Undecided"
+            = tip_fields.radio_button :amount_percentage,   "0", inline: true, label: "Free: 0%"
+            = tip_fields.radio_button :amount_percentage, "0.1", inline: true, label: "Tiny: 0.1%"
+            = tip_fields.radio_button :amount_percentage, "0.5", inline: true, label: "Small: 0.5%"
+            = tip_fields.radio_button :amount_percentage,   "1", inline: true, label: "Normal: 1%"
+            = tip_fields.radio_button :amount_percentage,   "2", inline: true, label: "Big: 2%"
+            = tip_fields.radio_button :amount_percentage,   "5", inline: true, label: "Huge: 5%"
+
+  .text-center
+    = f.submit 'Send the selected tip amounts'

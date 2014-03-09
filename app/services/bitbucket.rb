@@ -27,6 +27,11 @@ class Bitbucket
       data.language)
   end
 
+  def collaborators_info project
+    # TODO
+    []
+  end
+
   def commits repository
     data = request :get, changesets_path(repository.full_name)
 
@@ -46,6 +51,10 @@ class Bitbucket
 
   def source_repository_url project
     "https://bitbucket.org/#{project.source_full_name}"
+  end
+
+  def commit_url project, commit
+    "https://bitbucket.org/#{project.full_name}/commits/#{commit}"
   end
 
   protected

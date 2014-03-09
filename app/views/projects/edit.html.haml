@@ -1,0 +1,12 @@
+- content_for :title do
+  = @project.name
+  settings
+
+%h1 #{@project.full_name} project settings
+.row
+  .col-md-12
+    = bootstrap_form_for @project do |f|
+      = f.fields_for :tipping_policies_text, @project.tipping_policies_text || @project.build_tipping_policies_text do |fields|
+        = fields.text_area :text, rows: 10, label: "Tipping policies"
+      = f.check_box :hold_tips, label: "Do not send the tips immediatly. Give collaborators the ability to modify the tips before they're sent"
+      = f.submit 'Save the project settings', class: "btn btn-default"

@@ -7,6 +7,10 @@
 %h1
   = @project.full_name
   %small= link_to glyph(:github), @project.github_url, target: '_blank'
+  - if can? :update, @project
+    = link_to "Change project settings", edit_project_path(@project), class: "btn btn-default"
+  - if can? :decide_tip_amounts, @project and @project.has_undecided_tips?
+    = link_to "Decide tip amounts", decide_tip_amounts_project_path(@project), class: "btn btn-primary"
 
 .row
   .col-md-4
@@ -26,9 +30,25 @@
       .well.well-sm= @project.description
     %h4 Balance
     = btc_human @project.available_amount
-    (each new commit receives #{(CONFIG["tip"]*100).round}% of available balance)
+    - if @project.hold_tips?
+      (each new commit receives a percentage of available balance)
+    - else
+      (each new commit receives #{(CONFIG["tip"]*100).round}% of available balance)
     - if (unconfirmed_amount = @project.unconfirmed_amount) > 0
       (#{btc_human unconfirmed_amount} unconfirmed)
+
+    - if @project.tipping_policies_text.try(:text).present?
+      %h4 Tipping policies
+      = simple_format @project.tipping_policies_text.text
+      %small
+        %em
+          - user = @project.tipping_policies_text.user
+          - name = user.nickname.presence || user.name if user
+          - date = l(@project.tipping_policies_text.updated_at)
+          - if name.present?
+            = "(Last updated by #{name} on #{date})"
+          - else
+            = "(Last updated on #{date})"
 
     %h4 Tips Paid
     = btc_human @project.tips_paid_amount
@@ -48,10 +68,15 @@
               = tip.user.full_name
             - else
               = link_to tip.user.full_name, "https://github.com/#{tip.user.nickname}", target: '_blank'
-            received
-            = btc_human tip.amount
+            - if tip.decided?
+              received
+              = btc_human tip.amount
+            - else
+              will receive a tip
             for commit
             = link_to tip.commit[0..6], "https://github.com/#{@project.full_name}/commit/#{tip.commit}", target: :blank
+            - if tip.undecided?
+              when its amount is decided
 
     - if @project.next_tip_amount > 0
       %h4 Next Tip
