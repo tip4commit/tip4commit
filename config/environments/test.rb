@@ -34,6 +34,9 @@ T4c::Application.configure do
   config.action_mailer.default_url_options = { :host => 'tip4commit.com' }
   config.action_mailer.default_options = { from: 'no-reply@tip4commit.com' }
 
+  config.action_mailer.default_url_options = {host: "www.example.com"}
+  config.action_mailer.default_options = {from: 'no-reply@example.com'}
+
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 end
