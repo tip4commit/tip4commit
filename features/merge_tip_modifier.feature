@@ -2,10 +2,13 @@ Feature: The author of a merge can alter the size of the tip of the merged commi
   Background:
     Given the tip for commit is "0.01"
     And our fee is "0"
+    And a project
+    And the project collaborators are:
+      | bob  |
+      | john |
 
   Scenario:  A simple merge without modifier
     Given the tip modifier for "huge" is "10"
-    And a project
     And a deposit of "500"
     And the last known commit is "A"
     And a new commit "B" with parent "A"
@@ -19,12 +22,12 @@ Feature: The author of a merge can alter the size of the tip of the merged commi
 
   Scenario:  A simple merge with a modifier
     Given the tip modifier for "huge" is "10"
-    And a project
     And a deposit of "500"
     And the last known commit is "A"
     And a new commit "B" with parent "A"
     And a new commit "C" with parent "A" and "B"
     And the message of commit "C" is "Great change! #huge"
+    And the author of commit "C" is "john"
     When the new commits are read
     Then there should be no tip for commit "A"
     And there should a tip of "50" for commit "B"
@@ -33,7 +36,6 @@ Feature: The author of a merge can alter the size of the tip of the merged commi
 
   Scenario:  A merge along with non merged commits
     Given the tip modifier for "tiny" is "0.1"
-    And a project
     And a deposit of "1000"
     And the last known commit is "A"
     And a new commit "B" with parent "A"
@@ -41,6 +43,7 @@ Feature: The author of a merge can alter the size of the tip of the merged commi
     And a new commit "D" with parent "C"
     And a new commit "E" with parent "C" and "D"
     And the message of commit "E" is "#tiny"
+    And the author of commit "E" is "john"
     And a new commit "F" with parent "E"
     When the new commits are read
     Then there should be no tip for commit "A"
@@ -53,7 +56,6 @@ Feature: The author of a merge can alter the size of the tip of the merged commi
 
   Scenario:  A merge with commits in the 2 branches, the modifier is ignored
     Given the tip modifier for "tiny" is "0.1"
-    And a project
     And a deposit of "1000"
     And the last known commit is "A"
     And a new commit "B" with parent "A"
@@ -61,6 +63,7 @@ Feature: The author of a merge can alter the size of the tip of the merged commi
     And a new commit "D" with parent "B"
     And a new commit "E" with parent "C" and "D"
     And the message of commit "E" is "#tiny"
+    And the author of commit "E" is "john"
     And a new commit "F" with parent "E"
     When the new commits are read
     Then there should be no tip for commit "A"
@@ -73,12 +76,27 @@ Feature: The author of a merge can alter the size of the tip of the merged commi
 
   Scenario:  A merge when no modifiers are defined
     Given there's no tip modifier defined
-    And a project
     And a deposit of "1000"
     And the last known commit is "A"
     And a new commit "B" with parent "A"
     And a new commit "C" with parent "A" and "B"
+    And the author of commit "C" is "john"
     When the new commits are read
     Then there should be no tip for commit "A"
     And there should a tip of "10" for commit "B"
     And there should be no tip for commit "C"
+
+  Scenario:  A merge from a non collaborator with a modifier
+    Given the tip modifier for "huge" is "10"
+    And a deposit of "500"
+    And the last known commit is "A"
+    And a new commit "B" with parent "A"
+    And a new commit "C" with parent "A" and "B"
+    And the message of commit "C" is "Great change! #huge"
+    And the author of commit "C" is "jerry"
+    When the new commits are read
+    Then there should be no tip for commit "A"
+    And there should a tip of "5" for commit "B"
+    And there should be no tip for commit "C"
+    And the new last known commit should be "C"
+
