@@ -77,3 +77,15 @@ Then(/^the new last known commit should be "(.*?)"$/) do |arg1|
   @project.reload.last_commit.should eq(arg1)
 end
 
+Given(/^the project collaborators are:$/) do |table|
+  @project.reload
+  @project.collaborators.each(&:destroy)
+  table.raw.each do |name,|
+    @project.collaborators.create!(login: name)
+  end
+end
+
+Given(/^the author of commit "(.*?)" is "(.*?)"$/) do |arg1, arg2|
+  find_new_commit(arg1).deep_merge!(author: {login: arg2})
+end
+
