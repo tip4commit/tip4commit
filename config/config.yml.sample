@@ -32,6 +32,13 @@ tip: 0.01
 min_payout: 100000
 our_fee: 0.05
 
+tip_modifiers:
+  free: 0
+  tiny: 0.2
+  small: 0.5
+  big: 2
+  huge: 5
+
 deposit_address: 1M4bS4gPyA6Kb8w7aXsgth9oUZWcRk73tQ
 
 address_versions: # 0/5 for bitcoin addresses, 111/196 for testnet, see chainparams.cpp

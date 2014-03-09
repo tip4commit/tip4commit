@@ -42,8 +42,6 @@ class Project < ActiveRecord::Base
     begin
       commits = Timeout::timeout(90) do
         raw_commits.
-          # Filter merge request
-          select{|c| !(c.commit.message =~ /^(Merge\s|auto\smerge)/)}.
           # Filter fake emails
           select{|c| c.commit.author.email =~ Devise::email_regexp }.
           # Filter commited after t4c project creation
@@ -61,15 +59,37 @@ class Project < ActiveRecord::Base
   end
 
   def tip_commits
-    new_commits.each do |commit|
-      Project.transaction do
-        tip_for commit
-        update_attribute :last_commit, commit.sha
+    commits = new_commits
+    sha_set = CommitShaSet.new(commits)
+    commit_modifiers = Hash.new(1.0)
+
+    merges = commits.select { |c| c.parents.size > 1 }
+
+    merges.each do |commit|
+      commit_modifiers[commit.sha] = 0
+
+      if modifier = TipModifier.find_in_message(commit.commit.message)
+        logger.info "Found modifier #{modifier.name} in commit #{commit.sha}"
+
+        if merged_commits = sha_set.merged_commits(commit.sha)
+          merged_commits.each do |modified_commit|
+            commit_modifiers[modified_commit] = modifier.value
+            logger.info "Applying modifier #{modifier} on commit #{modified_commit}"
+          end
+        end
       end
+    end
+
+    commits.each do |commit|
+      modifier = commit_modifiers[commit.sha]
+      if modifier > 0
+        tip_for commit, modifier
+      end
+      update_attribute :last_commit, commit.sha
     end
   end
 
-  def tip_for commit
+  def tip_for(commit, modifier = 1.0)
     if (next_tip_amount > 0) && !Tip.exists?(commit: commit.sha)
 
       user = User.find_or_create_with_commit commit
@@ -77,7 +97,7 @@ class Project < ActiveRecord::Base
 
       # create tip
       tip = tips.create({ user: user,
-                          amount: next_tip_amount,
+                          amount: next_tip_amount * modifier,
                           commit: commit.sha })
 
       # notify user
