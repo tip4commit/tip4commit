@@ -42,4 +42,6 @@ end
 group :test do
   gem 'simplecov'
   gem 'shoulda-matchers',   '~> 2.5.0'
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
 end
