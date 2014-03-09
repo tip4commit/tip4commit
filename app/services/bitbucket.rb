@@ -27,6 +27,11 @@ class Bitbucket
       data.language)
   end
 
+  def collaborators_info project
+    # TODO
+    []
+  end
+
   def commits repository
     data = request :get, changesets_path(repository.full_name)
 
