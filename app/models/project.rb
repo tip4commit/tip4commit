@@ -1,9 +1,14 @@
 class Project < ActiveRecord::Base
   has_many :deposits # todo: only confirmed deposits that have amount > paid_out
   has_many :tips
+  has_many :collaborators, autosave: true
 
   validates :full_name, :github_id, uniqueness: true, presence: true
   validates :host, inclusion: [ "github", "bitbucket" ], presence: true
+
+  def github?
+    host == "github"
+  end
 
   def update_repository_info repo
     self.github_id = repo.id
@@ -14,6 +19,27 @@ class Project < ActiveRecord::Base
     self.watchers_count = repo.watchers_count
     self.language = repo.language
     self.save!
+  end
+
+  def update_collaborators(repo_collaborators)
+    existing_collaborators = collaborators
+
+    repo_logins = repo_collaborators.map(&:login)
+    existing_logins = existing_collaborators.map(&:login)
+
+    existing_collaborators.each do |existing_collaborator|
+      unless repo_logins.include?(existing_collaborator.login)
+        existing_collaborator.mark_for_destruction
+      end
+    end
+
+    repo_collaborators.each do |repo_collaborator|
+      unless existing_logins.include?(repo_collaborator.login)
+        collaborators.build(login: repo_collaborator.login)
+      end
+    end
+
+    save!
   end
 
   def repository_client
@@ -38,12 +64,14 @@ class Project < ActiveRecord::Base
     repository_client.repository_info self
   end
 
+  def collaborators_info
+    repository_client.collaborators_info self
+  end
+
   def new_commits
     begin
       commits = Timeout::timeout(90) do
         raw_commits.
-          # Filter merge request
-          select{|c| !(c.commit.message =~ /^(Merge\s|auto\smerge)/)}.
           # Filter fake emails
           select{|c| c.commit.author.email =~ Devise::email_regexp }.
           # Filter commited after t4c project creation
@@ -61,15 +89,39 @@ class Project < ActiveRecord::Base
   end
 
   def tip_commits
-    new_commits.each do |commit|
-      Project.transaction do
-        tip_for commit
-        update_attribute :last_commit, commit.sha
+    commits = new_commits
+    sha_set = CommitShaSet.new(commits)
+    commit_modifiers = Hash.new(1.0)
+
+    merges = commits.select { |c| c.parents.size > 1 }
+
+    merges.each do |commit|
+      commit_modifiers[commit.sha] = 0
+
+      if modifier = TipModifier.find_in_message(commit.commit.message)
+        logger.info "Found modifier #{modifier.name} in commit #{commit.sha}"
+
+        next unless collaborators.map(&:login).include?(commit.author.try(:login))
+
+        if merged_commits = sha_set.merged_commits(commit.sha)
+          merged_commits.each do |modified_commit|
+            commit_modifiers[modified_commit] = modifier.value
+            logger.info "Applying modifier #{modifier} on commit #{modified_commit}"
+          end
+        end
       end
+    end
+
+    commits.each do |commit|
+      modifier = commit_modifiers[commit.sha]
+      if modifier > 0
+        tip_for commit, modifier
+      end
+      update_attribute :last_commit, commit.sha
     end
   end
 
-  def tip_for commit
+  def tip_for(commit, modifier = 1.0)
     if (next_tip_amount > 0) && !Tip.exists?(commit: commit.sha)
 
       user = User.find_or_create_with_commit commit
@@ -77,7 +129,7 @@ class Project < ActiveRecord::Base
 
       # create tip
       tip = tips.create({ user: user,
-                          amount: next_tip_amount,
+                          amount: next_tip_amount * modifier,
                           commit: commit.sha })
 
       # notify user
@@ -120,6 +172,7 @@ class Project < ActiveRecord::Base
   def update_info
     begin
       update_repository_info(repository_info)
+      update_collaborators(collaborators_info)
     rescue Octokit::BadGateway, Octokit::NotFound, Octokit::InternalServerError,
            Errno::ETIMEDOUT, Net::ReadTimeout, Faraday::Error::ConnectionFailed => e
       Rails.logger.info "Project ##{id}: #{e.class} happened"
