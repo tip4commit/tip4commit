@@ -14,6 +14,12 @@ Feature: The author of a merge can alter the size of the tip of the merged commi
     And a new commit "B" with parent "A"
     And a new commit "C" with parent "A" and "B"
     And the message of commit "C" is "Great change!"
+    And an illustration of the history is:
+      """
+        B
+       / \
+      A---C
+      """
     When the new commits are read
     Then there should be no tip for commit "A"
     And there should a tip of "5" for commit "B"
@@ -28,6 +34,12 @@ Feature: The author of a merge can alter the size of the tip of the merged commi
     And a new commit "C" with parent "A" and "B"
     And the message of commit "C" is "Great change! #huge"
     And the author of commit "C" is "john"
+    And an illustration of the history is:
+      """
+        B
+       / \
+      A---C
+      """
     When the new commits are read
     Then there should be no tip for commit "A"
     And there should a tip of "50" for commit "B"
@@ -45,6 +57,12 @@ Feature: The author of a merge can alter the size of the tip of the merged commi
     And the message of commit "E" is "#tiny"
     And the author of commit "E" is "john"
     And a new commit "F" with parent "E"
+    And an illustration of the history is:
+      """
+                D
+               / \
+      A---B---C---E
+      """
     When the new commits are read
     Then there should be no tip for commit "A"
     And there should a tip of "10" for commit "B"
@@ -65,6 +83,12 @@ Feature: The author of a merge can alter the size of the tip of the merged commi
     And the message of commit "E" is "#tiny"
     And the author of commit "E" is "john"
     And a new commit "F" with parent "E"
+    And an illustration of the history is:
+      """
+            D----
+           /     \
+      A---B---C---E
+      """
     When the new commits are read
     Then there should be no tip for commit "A"
     And there should a tip of "10" for commit "B"
@@ -81,6 +105,12 @@ Feature: The author of a merge can alter the size of the tip of the merged commi
     And a new commit "B" with parent "A"
     And a new commit "C" with parent "A" and "B"
     And the author of commit "C" is "john"
+    And an illustration of the history is:
+      """
+        B
+       / \
+      A---C
+      """
     When the new commits are read
     Then there should be no tip for commit "A"
     And there should a tip of "10" for commit "B"
@@ -94,6 +124,12 @@ Feature: The author of a merge can alter the size of the tip of the merged commi
     And a new commit "C" with parent "A" and "B"
     And the message of commit "C" is "Great change! #huge"
     And the author of commit "C" is "jerry"
+    And an illustration of the history is:
+      """
+        B
+       / \
+      A---C
+      """
     When the new commits are read
     Then there should be no tip for commit "A"
     And there should a tip of "5" for commit "B"

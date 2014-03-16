@@ -89,3 +89,6 @@ Given(/^the author of commit "(.*?)" is "(.*?)"$/) do |arg1, arg2|
   find_new_commit(arg1).deep_merge!(author: {login: arg2})
 end
 
+Given(/^an illustration of the history is:$/) do |string|
+  # not checked
+end
