@@ -136,3 +136,45 @@ Feature: The author of a merge can alter the size of the tip of the merged commi
     And there should be no tip for commit "C"
     And the new last known commit should be "C"
 
+  Scenario:  Merge of a commit based on an old unknown commit
+    Given the tip modifier for "huge" is "10"
+    And a deposit of "500"
+    And the last known commit is "A"
+    And a new commit "B" with parent "X"
+    And a new commit "C" with parent "A" and "B"
+    And the message of commit "C" is "#huge"
+    And the author of commit "C" is "john"
+    And an illustration of the history is:
+      """
+        ------------B
+       /             \
+      X--- ... ---A---C
+      """
+    When the new commits are read
+    Then there should be no tip for commit "A"
+    And there should a tip of "50" for commit "B"
+    And there should be no tip for commit "C"
+    And the new last known commit should be "C"
+
+  Scenario:  Merge of a commit based on head with another commit between
+    Given the tip modifier for "huge" is "10"
+    And a deposit of "500"
+    And the last known commit is "A"
+    And a new commit "B" with parent "A"
+    And a new commit "C" with parent "A"
+    And a new commit "D" with parent "B" and "C"
+    And the message of commit "D" is "#huge"
+    And the author of commit "D" is "john"
+    And an illustration of the history is:
+      """
+        ----C
+       /     \
+      A---B---D
+      """
+    When the new commits are read
+    Then there should be no tip for commit "A"
+    And there should a tip of "5" for commit "B"
+    And there should a tip of "49.5" for commit "C"
+    And there should be no tip for commit "D"
+    And the new last known commit should be "D"
+
