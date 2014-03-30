@@ -7,10 +7,11 @@
 %h1
   = @project.full_name
   %small= link_to glyph(:github), @project.github_url, target: '_blank'
-  - if can? :update, @project
-    = link_to "Change project settings", edit_project_path(@project), class: "btn btn-default"
-  - if can? :decide_tip_amounts, @project and @project.has_undecided_tips?
-    = link_to "Decide tip amounts", decide_tip_amounts_project_path(@project), class: "btn btn-primary"
+  .pull-right
+    - if can? :update, @project
+      = link_to "Change project settings", edit_project_path(@project), class: "btn btn-primary"
+    - if can? :decide_tip_amounts, @project and @project.has_undecided_tips?
+      = link_to "Decide tip amounts", decide_tip_amounts_project_path(@project), class: "btn btn-warning"
 
 .row
   .col-md-4

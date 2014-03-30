@@ -4,3 +4,6 @@ rvm:
 before_script:
   - cp config/config.yml.sample config/config.yml
   - cp config/database.yml.sample config/database.yml
+script:
+  - bundle exec rake spec
+  - bundle exec rake cucumber

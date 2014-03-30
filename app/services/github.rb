@@ -16,7 +16,7 @@ class Github
     if project.github_id.present?
       client.get "/repositories/#{project.github_id}"
     else
-      client.repo full_name
+      client.repo project.full_name
     end
   end
 
