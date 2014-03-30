@@ -1,6 +1,11 @@
 class Project < ActiveRecord::Base
   has_many :deposits # todo: only confirmed deposits that have amount > paid_out
-  has_many :tips
+  has_many :tips, inverse_of: :project
+  accepts_nested_attributes_for :tips
+  has_many :collaborators, autosave: true
+
+  has_one :tipping_policies_text, inverse_of: :project
+  accepts_nested_attributes_for :tipping_policies_text
 
   validates :full_name, :github_id, uniqueness: true, presence: true
   validates :host, inclusion: [ "github", "bitbucket" ], presence: true
@@ -14,6 +19,27 @@ class Project < ActiveRecord::Base
     self.watchers_count = repo.watchers_count
     self.language = repo.language
     self.save!
+  end
+
+  def update_collaborators(repo_collaborators)
+    existing_collaborators = collaborators
+
+    repo_logins = repo_collaborators.map(&:login)
+    existing_logins = existing_collaborators.map(&:login)
+
+    existing_collaborators.each do |existing_collaborator|
+      unless repo_logins.include?(existing_collaborator.login)
+        existing_collaborator.mark_for_destruction
+      end
+    end
+
+    repo_collaborators.each do |repo_collaborator|
+      unless existing_logins.include?(repo_collaborator.login)
+        collaborators.build(login: repo_collaborator.login)
+      end
+    end
+
+    save!
   end
 
   def repository_client
@@ -36,6 +62,10 @@ class Project < ActiveRecord::Base
 
   def repository_info
     repository_client.repository_info self
+  end
+
+  def collaborators_info
+    repository_client.collaborators_info self
   end
 
   def new_commits
@@ -75,13 +105,19 @@ class Project < ActiveRecord::Base
       user = User.find_or_create_with_commit commit
       user.update(nickname: commit.author.login) if commit.author.try(:login)
 
+      if hold_tips
+        amount = nil
+      else
+        amount = next_tip_amount
+      end
+
       # create tip
       tip = tips.create({ user: user,
-                          amount: next_tip_amount,
-                          commit: commit.sha })
+                          amount: amount,
+                          commit: commit.sha,
+                          commit_message: commit.commit.message })
 
-      # notify user
-      notify_user_about_tip(user, tip)
+      tip.notify_user
 
       Rails.logger.info "    Tip created #{tip.inspect}"
     end
@@ -96,7 +132,7 @@ class Project < ActiveRecord::Base
   end
 
   def tips_paid_amount
-    self.tips.non_refunded.sum(:amount)
+    self.tips.select(&:decided?).reject(&:refunded?).sum(&:amount)
   end
 
   def tips_paid_unclaimed_amount
@@ -120,6 +156,7 @@ class Project < ActiveRecord::Base
   def update_info
     begin
       update_repository_info(repository_info)
+      update_collaborators(collaborators_info)
     rescue Octokit::BadGateway, Octokit::NotFound, Octokit::InternalServerError,
            Errno::ETIMEDOUT, Net::ReadTimeout, Faraday::Error::ConnectionFailed => e
       Rails.logger.info "Project ##{id}: #{e.class} happened"
@@ -128,12 +165,19 @@ class Project < ActiveRecord::Base
     end
   end
 
-  def notify_user_about_tip user, tip
-    if tip && user.bitcoin_address.blank? && user.subscribed?
-      if !user.notified_at || (user.notified_at < (Time.current - 30.days))
-        UserMailer.new_tip(user, tip).deliver
-        user.touch :notified_at
-      end
-    end
+  def tips_to_pay
+    tips.to_pay
+  end
+
+  def amount_to_pay
+    tips_to_pay.sum(:amount)
+  end
+
+  def has_undecided_tips?
+    tips.undecided.any?
+  end
+
+  def commit_url(commit)
+    repository_client.commit_url(self, commit)
   end
 end

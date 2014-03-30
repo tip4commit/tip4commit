@@ -23,7 +23,9 @@ gem 'octokit',         '~> 2.7.0'
 gem 'sawyer',          '~> 0.5.2'
 gem 'twitter_bootstrap_form_for', github: 'stouset/twitter_bootstrap_form_for'
 gem 'twitter-bootstrap-rails',    github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
+gem 'bootstrap_form', github: 'sigmike/rails-bootstrap-forms', branch: 'removed_for_on_radio_label'
 gem 'sdoc', group: :doc, require: false
+gem 'cancancan'
 
 group :development do
   gem 'capistrano',         '~> 3.0.1'
@@ -42,4 +44,6 @@ end
 group :test do
   gem 'simplecov'
   gem 'shoulda-matchers',   '~> 2.5.0'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
 end

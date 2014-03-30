@@ -37,6 +37,8 @@
             - if tip.sendmany.nil?
               - if tip.refunded_at
                 Refunded to project's deposit
+              - elsif tip.undecided?
+                The amount of the tip has not been decided yet
               - elsif tip.user.bitcoin_address.blank?
                 User didn't specify withdrawal address
               - elsif tip.user.balance < CONFIG["min_payout"]

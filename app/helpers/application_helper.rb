@@ -22,4 +22,7 @@ module ApplicationHelper
     html.join("\n").html_safe
   end
 
+  def commit_tag(sha1)
+    content_tag(:span, truncate(sha1, length: 10, omission: ""), class: "commit-sha")
+  end
 end
