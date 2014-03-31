@@ -18,6 +18,7 @@ class BitcoinTipper
     Project.order(:updated_at => :desc).last(20).each do |project|
       Rails.logger.info " Project #{project.id} #{project.full_name}"
       project.update_info
+      project.touch
     end
 
     if withdraw
