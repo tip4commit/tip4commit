@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140402034521) do
+ActiveRecord::Schema.define(version: 20140402082149) do
 
   create_table "collaborators", force: true do |t|
     t.integer  "project_id"
@@ -26,12 +26,12 @@ ActiveRecord::Schema.define(version: 20140402034521) do
     t.integer  "project_id"
     t.string   "txid"
     t.integer  "confirmations"
-    t.integer  "duration",                default: 2592000
     t.integer  "paid_out",      limit: 8
     t.datetime "paid_out_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "amount",        limit: 8
+    t.float    "fee_size"
   end
 
   add_index "deposits", ["project_id"], name: "index_deposits_on_project_id"
