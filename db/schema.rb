@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140323173320) do
+ActiveRecord::Schema.define(version: 20140402034521) do
 
   create_table "collaborators", force: true do |t|
     t.integer  "project_id"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20140323173320) do
     t.string   "commit"
     t.integer  "project_id"
     t.datetime "refunded_at"
-    t.string   "commit_message"
+    t.text     "commit_message"
   end
 
   add_index "tips", ["project_id"], name: "index_tips_on_project_id"
