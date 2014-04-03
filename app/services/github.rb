@@ -1,9 +1,12 @@
 class Github
   def initialize
-    @client = Octokit::Client.new(
-      :client_id     => CONFIG['github']['key'],
-      :client_secret => CONFIG['github']['secret'],
-      :per_page      => 100)
+    options = { client_id: CONFIG['github']['key'], client_secret: CONFIG['github']['secret'] }
+    if CONFIG['github']['auto_paginate']
+      options.merge! :auto_paginate  => true
+    else
+      options.merge! :per_page => 100
+    end
+    @client = Octokit::Client.new(options)
   end
 
   attr_reader :client

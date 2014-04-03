@@ -1,6 +1,7 @@
 github:
   key: "111111111111"
   secret: "111111111111"
+  auto_paginate: false
 
 blockchain_info:
   guid: "111111111111"
