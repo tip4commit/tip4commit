@@ -39,11 +39,11 @@
     %p
       Go and fix something! If your commit is accepted by the project maintainer, you will get a tip!
       - if !current_user
-        Just check your email or 
+        Just check your email or
         %a{href: user_omniauth_authorize_path(:github)} Sign In.
     %p
       %a.btn.btn-primary{href: projects_path} Supported projects »
 / - if current_user
 /         %a.btn.btn-primary{href: user_path(current_user)} Change your bitcoin address »
 /       - else
-/         %a.btn.btn-primary{href: user_omniauth_authorize_path(:github)} Sign In »      
+/         %a.btn.btn-primary{href: user_omniauth_authorize_path(:github)} Sign In »

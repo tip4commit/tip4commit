@@ -12,7 +12,15 @@ class Github
   attr_reader :client
 
   def commits project
-    client.commits project.full_name
+    commits = client.commits project.full_name
+
+    last_resoponse = client.last_resoponse
+    (CONFIG['github']['pages'].to_i - 1).times do
+      if last_resoponse.rels[:next]
+        last_resoponse = last_resoponse.rels[:next].get
+        commits += last_resoponse.data
+      end
+    end
   end
 
   def repository_info project

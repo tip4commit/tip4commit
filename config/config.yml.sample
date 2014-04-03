@@ -2,6 +2,7 @@ github:
   key: "111111111111"
   secret: "111111111111"
   auto_paginate: false
+  pages: 1
 
 blockchain_info:
   guid: "111111111111"
