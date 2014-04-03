@@ -14,11 +14,11 @@ class Github
   def commits project
     commits = client.commits project.full_name
 
-    last_resoponse = client.last_resoponse
+    last_response = client.last_response
     (CONFIG['github']['pages'].to_i - 1).times do
-      if last_resoponse.rels[:next]
-        last_resoponse = last_resoponse.rels[:next].get
-        commits += last_resoponse.data
+      if last_response.rels[:next]
+        last_response = last_response.rels[:next].get
+        commits += last_response.data
       end
     end
 
