@@ -21,6 +21,8 @@ class Github
         commits += last_resoponse.data
       end
     end
+
+    commits
   end
 
   def repository_info project
