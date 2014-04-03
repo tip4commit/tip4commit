@@ -37,7 +37,6 @@ class HomeController < ApplicationController
           txid: params[:transaction_hash],
           confirmations: params[:confirmations],
           amount: params[:value].to_i,
-          duration: 30.days.to_i,
           paid_out: 0,
           paid_out_at: Time.now
         })
