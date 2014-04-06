@@ -167,12 +167,8 @@ class Project < ActiveRecord::Base
     end
   end
 
-  def tips_to_pay
-    tips.select(&:to_pay?)
-  end
-
   def amount_to_pay
-    tips_to_pay.sum(&:amount)
+    tips.to_pay.sum(:amount)
   end
 
   def has_undecided_tips?
