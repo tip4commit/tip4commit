@@ -10,8 +10,6 @@ class Sendmany < ActiveRecord::Base
 
   	update_attribute :is_error, true # it's a lock to prevent duplicates
 
-    raise "Not enough funds on Sendmany##{id}" if total_amount > project.available_amount
-
 		uri = URI("https://blockchain.info/merchant/#{CONFIG["blockchain_info"]["guid"]}/sendmany")
 		params = { password: CONFIG["blockchain_info"]["password"], recipients: data }
 	    uri.query = URI.encode_www_form(params)
