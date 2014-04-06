@@ -56,7 +56,7 @@ class BitcoinTipper
       outs = {}
       User.find_each do |user|
         if user.bitcoin_address.present? && user.balance > CONFIG["min_payout"]
-          user.tips.unpaid.each do |tip|
+          user.tips.decided.unpaid.each do |tip|
             tip.update_attribute :sendmany_id, sendmany.id
             outs[user.bitcoin_address] = outs[user.bitcoin_address].to_i + tip.amount
           end

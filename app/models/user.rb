@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   end
 
   def balance
-    tips.unpaid.sum(:amount)
+    tips.decided.unpaid.sum(:amount)
   end
 
   def full_name
