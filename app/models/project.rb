@@ -10,7 +10,7 @@ class Project < ActiveRecord::Base
   validates :full_name, :github_id, uniqueness: true, presence: true
   validates :host, inclusion: [ "github", "bitbucket" ], presence: true
 
-  before_save :check_tips_to_pay_against_avaiable_amount
+  # before_save :check_tips_to_pay_against_avaiable_amount
 
   def update_repository_info repo
     self.github_id = repo.id
@@ -125,8 +125,12 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def donated
+    self.deposits.where("confirmations > 0").map(&:available_amount).sum
+  end
+
   def available_amount
-    self.deposits.where("confirmations > 0").map(&:available_amount).sum - tips_paid_amount
+    donated - tips_paid_amount
   end
 
   def unconfirmed_amount
@@ -134,11 +138,11 @@ class Project < ActiveRecord::Base
   end
 
   def tips_paid_amount
-    self.tips.select(&:decided?).reject(&:refunded?).sum(&:amount)
+    self.tips.decided.non_refunded.sum(:amount)
   end
 
   def tips_paid_unclaimed_amount
-    self.tips.non_refunded.unclaimed.sum(:amount)
+    self.tips.decided.non_refunded.unclaimed.sum(:amount)
   end
 
   def next_tip_amount

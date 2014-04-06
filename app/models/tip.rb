@@ -26,7 +26,7 @@ class Tip < ActiveRecord::Base
     amount == 0
   end
 
-  scope :paid,          -> { where('sendmany_id is not ?', nil) }
+  scope :paid,          -> { where.not(sendmany_id: nil) }
   def paid?
     !!sendmany_id
   end
@@ -45,7 +45,7 @@ class Tip < ActiveRecord::Base
                              unpaid.
                              where('users.bitcoin_address' => ['', nil]) }
 
-  scope :with_address,  -> { joins(:user).where('users.bitcoin_address IS NOT NULL AND users.bitcoin_address != ?', "") }
+  scope :with_address,  -> { joins(:user).where.not('users.bitcoin_address' => ['', nil]) }
   def with_address?
     user.bitcoin_address.present?
   end
@@ -79,7 +79,7 @@ class Tip < ActiveRecord::Base
   end
 
   def amount_percentage=(percentage)
-    if undecided? and percentage.present?
+    if undecided? and percentage.present? and %w(0 0.1 0.5 1 2 5).include?(percentage)
       self.amount = project.available_amount * (percentage.to_f / 100)
     end
   end
