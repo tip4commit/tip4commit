@@ -23,5 +23,5 @@ production:
   encoding: utf8
   database: tip4commit
   username: root
-  password: 
+  password:
   socket: /var/run/mysqld/mysqld.sock

@@ -26,7 +26,7 @@ class BitcoinAddressValidator < ActiveModel::EachValidator
 
   def version(address)
     decoded = b58_decode(address, 25)
-    
+
     version = decoded[0, 1]
     checksum = decoded[-4, decoded.length]
     vh160 = decoded[0, decoded.length - 4]

@@ -5,10 +5,15 @@ class Tip < ActiveRecord::Base
 
   validates :amount, numericality: { greater_or_equal_than: 0, allow_nil: true }
 
-  scope :unpaid,        -> { non_refunded.
-                             where(sendmany_id: nil) }
+  scope :not_sent,      -> { where(sendmany_id: nil) }
+  def not_sent?
+    sendmany_id.nil?
+  end
 
-  scope :paid,          -> { where.not(sendmany_id: nil) }
+  scope :unpaid,        -> { non_refunded.not_sent }
+  def unpaid?
+    non_refunded? and not_sent?
+  end
 
   scope :to_pay,        -> { unpaid.decided.not_free.with_address }
   def to_pay?
@@ -41,6 +46,9 @@ class Tip < ActiveRecord::Base
                              where('users.bitcoin_address' => ['', nil]) }
 
   scope :with_address,  -> { joins(:user).where('users.bitcoin_address IS NOT NULL AND users.bitcoin_address != ?', "") }
+  def with_address?
+    user.bitcoin_address.present?
+  end
 
   scope :decided,       -> { where.not(amount: nil) }
   scope :undecided,     -> { where(amount: nil) }
@@ -51,9 +59,8 @@ class Tip < ActiveRecord::Base
     !decided?
   end
 
-
+  before_save :check_amount_against_project
   after_save :notify_user_if_just_decided
-
 
   def self.refund_unclaimed
     unclaimed.non_refunded.
@@ -88,5 +95,15 @@ class Tip < ActiveRecord::Base
 
   def notify_user_if_just_decided
     notify_user if amount_was.nil? and amount
+  end
+
+  def check_amount_against_project
+    if amount
+      available_amount = project.available_amount
+      available_amount -= amount_was if amount_was
+      if amount > available_amount
+        raise "Not enough funds on project to save #{inspect} (available: #{available_amount})"
+      end
+    end
   end
 end
