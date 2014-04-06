@@ -12,7 +12,7 @@ class Project < ActiveRecord::Base
 
   before_save :check_tips_to_pay_against_avaiable_amount
 
-  def update_github_info repo
+  def update_repository_info repo
     self.github_id = repo.id
     self.name = repo.name
     self.full_name = repo.full_name
