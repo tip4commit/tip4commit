@@ -114,10 +114,10 @@ class Project < ActiveRecord::Base
       end
 
       # create tip
-      tip = tips.create({ user: user,
-                          amount: amount,
-                          commit: commit.sha,
-                          commit_message: commit.commit.message })
+      tip = self.tips.create({ user: user,
+                               amount: amount,
+                               commit: commit.sha,
+                               commit_message: commit.commit.message })
 
       tip.notify_user
 
@@ -172,11 +172,11 @@ class Project < ActiveRecord::Base
   end
 
   def amount_to_pay
-    tips.to_pay.sum(:amount)
+    self.tips.to_pay.sum(:amount)
   end
 
   def has_undecided_tips?
-    tips.undecided.any?
+    self.tips.undecided.any?
   end
 
   def commit_url(commit)
