@@ -80,7 +80,7 @@ class Tip < ActiveRecord::Base
 
   def amount_percentage=(percentage)
     if undecided? and percentage.present? and %w(0 0.1 0.5 1 2 5).include?(percentage)
-      self.amount = project.available_amount * (percentage.to_f / 100)
+      self.amount = (project.available_amount * (percentage.to_f / 100)).ceil
     end
   end
 

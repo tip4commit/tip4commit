@@ -184,8 +184,8 @@ class Project < ActiveRecord::Base
   end
 
   def check_tips_to_pay_against_avaiable_amount
-    if amount_to_pay > available_amount
-      raise "Not enough funds to pay the pending tips on #{inspect} (#{amount_to_pay} > #{available_amount}"
+    if available_amount < 0
+      raise "Not enough funds to pay the pending tips on #{inspect} (#{available_amount} < 0)"
     end
   end
 end

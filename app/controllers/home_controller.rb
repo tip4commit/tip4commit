@@ -12,12 +12,18 @@ class HomeController < ApplicationController
 
     test = params[:test]
 
-    if (params[:value].to_i < 0) || Sendmany.find_by_txid(params[:transaction_hash])
+    if (params[:value].to_i < 0) || Sendmany.find_by(txid: params[:transaction_hash])
       render :text => "*ok*";
       return
     end
 
-    if deposit = Deposit.find_by_txid(params[:transaction_hash])
+    if project = Project.find_by(bitcoin_address: params[:input_address])
+      deposit = project.deposits.find_by(txid: params[:transaction_hash])
+    else
+      deposit = nil
+    end
+
+    if deposit
       deposit.update_attribute(:confirmations, confirmations = params[:confirmations]) if !test
       if confirmations.to_i > 6
         render :text => "*ok*"
@@ -30,15 +36,14 @@ class HomeController < ApplicationController
     if params[:input_address] == CONFIG['deposit_address']
       # Deposit from the cold wallet
       render :text => "*ok*"
-    elsif project = Project.find_by_bitcoin_address(params[:input_address])
+    elsif project
       if !test
         deposit = Deposit.create({
           project_id: project.id,
           txid: params[:transaction_hash],
           confirmations: params[:confirmations],
           amount: params[:value].to_i,
-          paid_out: 0,
-          paid_out_at: Time.now
+          paid_out: 0, paid_out_at: Time.now
         })
         project.update_cache
       end
