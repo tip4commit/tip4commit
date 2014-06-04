@@ -43,7 +43,8 @@ class HomeController < ApplicationController
           txid: params[:transaction_hash],
           confirmations: params[:confirmations],
           amount: params[:value].to_i,
-          paid_out: 0, paid_out_at: Time.now
+          paid_out: 0,
+          paid_out_at: Time.now
         })
         project.update_cache
       end
