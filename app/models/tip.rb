@@ -60,11 +60,13 @@ class Tip < ActiveRecord::Base
   end
 
   before_save :check_amount_against_project
+  before_save :touch_decided_at_if_decided
   after_save :notify_user_if_just_decided
 
   def self.refund_unclaimed
     unclaimed.non_refunded.
-    where('tips.created_at < ?', Time.now - 1.month).
+    where.not(decided_at: nil).
+    where('tips.decided_at < ?', Time.now - 1.month).
     find_each do |tip|
       tip.touch :refunded_at
     end
@@ -105,5 +107,9 @@ class Tip < ActiveRecord::Base
         raise "Not enough funds on project to save #{inspect} (available: #{available_amount})"
       end
     end
+  end
+
+  def touch_decided_at_if_decided
+    self.decided_at = Time.now if amount_changed? && decided?
   end
 end
