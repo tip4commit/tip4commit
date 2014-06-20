@@ -100,7 +100,7 @@ class Tip < ActiveRecord::Base
   end
 
   def check_amount_against_project
-    if amount
+    if amount && amount_changed?
       available_amount = project.available_amount
       available_amount -= amount_was if amount_was
       if amount > available_amount
