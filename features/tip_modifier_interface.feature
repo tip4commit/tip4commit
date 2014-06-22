@@ -101,8 +101,9 @@ Feature: A project collaborator can change the tips of commits
     And I click on "Decide tip amounts"
     And I choose the amount "Huge: 5%" on all commits
     And I click on "Send the selected tip amounts"
-    Then there should be a tip of "25" for commit "BBB"
-    And there should be a tip of "8.08833862" for commit "last"
+    Then I should see "You can't assign more than 100% of available funds."
+    And the tip amount for commit "BBB" should be undecided
+    And the tip amount for commit "CCC" should be undecided
 
   Scenario Outline: A collaborator changes the amount of a tip on another project
     Given the project holds tips

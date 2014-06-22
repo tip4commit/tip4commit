@@ -48,6 +48,12 @@ class ProjectsController < ApplicationController
     authorize! :decide_tip_amounts, @project
     if request.patch?
       @project.available_amount # preload anything required to get the amount, otherwise it's loaded during the assignation and there are undesirable consequences
+      percentages = params[:project][:tips_attributes].values.map{|tip| tip['amount_percentage'].to_f}
+      if percentages.sum > 100
+        redirect_to decide_tip_amounts_project_path(@project), alert: "You can't assign more than 100% of available funds."
+        return
+      end
+      raise "wrong data" if percentages.min < 0
       @project.attributes = params.require(:project).permit(tips_attributes: [:id, :amount_percentage])
       if @project.save
         message = "The tip amounts have been defined"
