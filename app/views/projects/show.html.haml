@@ -140,3 +140,7 @@
         %label.control-label.col-sm-2{for: 'pod_text'} POD:
         %div.col-sm-10
           %input.form-control{id: 'pod_text', type: 'text', value: "=for HTML <a href=\"#{project_url(@project)}\"><img src=\"#{project_url(@project, format: :svg)}\"></a>"}
+      %div.form-group
+        %label.control-label.col-sm-2{for: 'bbcode_text'} BBCode:
+        %div.col-sm-10
+          %input.form-control{id: 'bbcode_text', type: 'text', value: "[url=#{project_url(@project)}][img]#{project_url(@project, format: :svg)}[/img][/url]"}
