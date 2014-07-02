@@ -66,9 +66,18 @@ class Tip < ActiveRecord::Base
   def self.refund_unclaimed
     unclaimed.non_refunded.
     where.not(decided_at: nil).
-    where('tips.decided_at < ?', Time.now - 1.month).
+    where('tips.decided_at < ?', 1.month.ago).
     find_each do |tip|
       tip.touch :refunded_at
+    end
+  end
+
+  def self.auto_decide_older_tips
+    undecided.non_refunded.
+    where('tips.created_at < ?', 1.month.ago).
+    find_each do |tip|
+      tip.amount_percentage = 1
+      tip.save
     end
   end
 
@@ -81,7 +90,7 @@ class Tip < ActiveRecord::Base
   end
 
   def amount_percentage=(percentage)
-    if undecided? and percentage.present? and %w(0 0.1 0.5 1 2 5).include?(percentage)
+    if undecided? and percentage.present? and %w(0 0.1 0.5 1 2 5).include?(percentage.to_s)
       self.amount = (project.available_amount * (percentage.to_f / 100)).ceil
     end
   end

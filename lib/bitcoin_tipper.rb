@@ -39,6 +39,9 @@ class BitcoinTipper
       end
     end
 
+    Rails.logger.info "Auto-deciding older tips..."
+    Tip.auto_decide_older_tips
+
     Rails.logger.info "Refunding unclaimed tips..."
     Tip.refund_unclaimed
 
