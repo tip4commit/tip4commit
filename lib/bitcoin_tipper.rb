@@ -15,10 +15,10 @@ class BitcoinTipper
     end
 
     Rails.logger.info "Updating projects info..."
-    Project.order(:updated_at => :desc).last(20).each do |project|
+    Project.order(:info_updated_at => :desc).last(20).each do |project|
       Rails.logger.info " Project #{project.id} #{project.full_name}"
       project.update_info
-      project.touch
+      project.touch(:info_updated_at)
     end
 
     if withdraw
