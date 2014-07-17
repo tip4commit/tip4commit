@@ -110,7 +110,7 @@
       / AddThis Button END
 
     %h4 Embedding
-    %p= link_to image_tag(shield_url(@project), alt: 'Tip4Commit'), project_url(@project)
+    %p= link_to image_tag(shield_url(@project), alt: 'Tip4Commit'), pretty_project_url(@project)
     %form.form-horizontal
       %div.form-group
         %label.control-label.col-sm-2{for: 'image_url'} Image URL:
@@ -119,28 +119,28 @@
       %div.form-group
         %label.control-label.col-sm-2{for: 'markdown_text'} Markdown:
         %div.col-sm-10
-          %input.form-control{id: 'markdown_text', type: 'text', value: "[![tip for next commit](#{shield_url(@project)})](#{project_url(@project)})"}
+          %input.form-control{id: 'markdown_text', type: 'text', value: "[![tip for next commit](#{shield_url(@project)})](#{pretty_project_url(@project)})"}
       %div.form-group
         %label.control-label.col-sm-2{for: 'textile_text'} Textile:
         %div.col-sm-10
-          %input.form-control{id: 'textile_text', type: 'text', value: "!#{shield_url(@project)}!:#{project_url(@project)}"}
+          %input.form-control{id: 'textile_text', type: 'text', value: "!#{shield_url(@project)}!:#{pretty_project_url(@project)}"}
       %div.form-group
         %label.control-label.col-sm-2{for: 'rdoc_text'} RDOC:
         %div.col-sm-10
-          %input.form-control{id: 'rdoc_text', type: 'text', value: "{<img src=\"#{shield_url(@project)}\" alt=\"tip for next commit\" />}[#{project_url(@project)}]"}
+          %input.form-control{id: 'rdoc_text', type: 'text', value: "{<img src=\"#{shield_url(@project)}\" alt=\"tip for next commit\" />}[#{pretty_project_url(@project)}]"}
       %div.form-group
         %label.control-label.col-sm-2{for: 'asciidoc_text'} AsciiDoc:
         %div.col-sm-10
-          %input.form-control{id: 'asciidoc_text', type: 'text', value: "image:#{shield_url(@project)}[\"tip for next commit\", link=\"#{project_url(@project)}\"]"}
+          %input.form-control{id: 'asciidoc_text', type: 'text', value: "image:#{shield_url(@project)}[\"tip for next commit\", link=\"#{pretty_project_url(@project)}\"]"}
       %div.form-group
         %label.control-label.col-sm-2{for: 'rst_text'} Rst:
         %div.col-sm-10
-          %input.form-control{id: 'rst_text', type: 'text', value: ".. image:: #{shield_url(@project)}   :target: #{project_url(@project)}"}
+          %input.form-control{id: 'rst_text', type: 'text', value: ".. image:: #{shield_url(@project)}   :target: #{pretty_project_url(@project)}"}
       %div.form-group
         %label.control-label.col-sm-2{for: 'pod_text'} POD:
         %div.col-sm-10
-          %input.form-control{id: 'pod_text', type: 'text', value: "=for HTML <a href=\"#{project_url(@project)}\"><img src=\"#{shield_url(@project)}\"></a>"}
+          %input.form-control{id: 'pod_text', type: 'text', value: "=for HTML <a href=\"#{pretty_project_url(@project)}\"><img src=\"#{shield_url(@project)}\"></a>"}
       %div.form-group
         %label.control-label.col-sm-2{for: 'bbcode_text'} BBCode:
         %div.col-sm-10
-          %input.form-control{id: 'bbcode_text', type: 'text', value: "[url=#{project_url(@project)}][img]#{shield_url(@project)}[/img][/url]"}
+          %input.form-control{id: 'bbcode_text', type: 'text', value: "[url=#{pretty_project_url(@project)}][img]#{shield_url(@project)}[/img][/url]"}
