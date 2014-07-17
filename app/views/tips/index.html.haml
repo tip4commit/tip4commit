@@ -1,6 +1,6 @@
 %h1
   - if @project
-    = link_to @project.full_name, @project
+    = link_to @project.full_name, pretty_project_path(@project)
     tips
   - elsif @user
     = link_to @user.full_name, @user
@@ -50,6 +50,6 @@
                 = link_to tip.sendmany.txid, "https://blockchain.info/tx/#{tip.sendmany.txid}", target: :blank
               - else
                 Waiting for withdrawal
-                - if tip.sendmany.created_at < 10.minutes.ago
+                - if tip.sendmany.is_error
                   (error sending transaction)
   = paginate @tips

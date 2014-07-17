@@ -20,7 +20,7 @@
         %h4.panel-title
           Project Sponsors
       .panel-body
-        %iframe{ src: "http://coingiving.com/project_sponsors?url=#{project_url @project.id}", scrolling: "no", style: 'width:100%; height:500px; border:0px; padding:0;overflow:hidden'}
+        %iframe{ src: "http://coingiving.com/project_sponsors?url=#{project_url @project}", scrolling: "no", style: 'width:100%; height:500px; border:0px; padding:0;overflow:hidden'}
         .hidden
           %span(data-coingiving="title")= "[tip4commit] " + @project.full_name
           %span(data-coingiving="description")= @project.description
@@ -110,37 +110,37 @@
       / AddThis Button END
 
     %h4 Embedding
-    %p= link_to image_tag(project_url(@project, format: :svg), alt: 'Tip4Commit'), project_url(@project)
+    %p= link_to image_tag(shield_url(@project), alt: 'Tip4Commit'), project_url(@project)
     %form.form-horizontal
       %div.form-group
         %label.control-label.col-sm-2{for: 'image_url'} Image URL:
         %div.col-sm-10
-          %input.form-control{id: 'image_url', type: 'text', value: "#{project_url(@project, format: :svg)}"}
+          %input.form-control{id: 'image_url', type: 'text', value: "#{shield_url(@project)}"}
       %div.form-group
         %label.control-label.col-sm-2{for: 'markdown_text'} Markdown:
         %div.col-sm-10
-          %input.form-control{id: 'markdown_text', type: 'text', value: "[![tip for next commit](#{project_url(@project, format: :svg)})](#{project_url(@project)})"}
+          %input.form-control{id: 'markdown_text', type: 'text', value: "[![tip for next commit](#{shield_url(@project)})](#{project_url(@project)})"}
       %div.form-group
         %label.control-label.col-sm-2{for: 'textile_text'} Textile:
         %div.col-sm-10
-          %input.form-control{id: 'textile_text', type: 'text', value: "!#{project_url(@project, format: :svg)}!:#{project_url(@project)}"}
+          %input.form-control{id: 'textile_text', type: 'text', value: "!#{shield_url(@project)}!:#{project_url(@project)}"}
       %div.form-group
         %label.control-label.col-sm-2{for: 'rdoc_text'} RDOC:
         %div.col-sm-10
-          %input.form-control{id: 'rdoc_text', type: 'text', value: "{<img src=\"#{project_url(@project, format: :svg)}\" alt=\"tip for next commit\" />}[#{project_url(@project)}]"}
+          %input.form-control{id: 'rdoc_text', type: 'text', value: "{<img src=\"#{shield_url(@project)}\" alt=\"tip for next commit\" />}[#{project_url(@project)}]"}
       %div.form-group
         %label.control-label.col-sm-2{for: 'asciidoc_text'} AsciiDoc:
         %div.col-sm-10
-          %input.form-control{id: 'asciidoc_text', type: 'text', value: "image:#{project_url(@project, format: :svg)}[\"tip for next commit\", link=\"#{project_url(@project)}\"]"}
+          %input.form-control{id: 'asciidoc_text', type: 'text', value: "image:#{shield_url(@project)}[\"tip for next commit\", link=\"#{project_url(@project)}\"]"}
       %div.form-group
         %label.control-label.col-sm-2{for: 'rst_text'} Rst:
         %div.col-sm-10
-          %input.form-control{id: 'rst_text', type: 'text', value: ".. image:: #{project_url(@project, format: :svg)}   :target: #{project_url(@project)}"}
+          %input.form-control{id: 'rst_text', type: 'text', value: ".. image:: #{shield_url(@project)}   :target: #{project_url(@project)}"}
       %div.form-group
         %label.control-label.col-sm-2{for: 'pod_text'} POD:
         %div.col-sm-10
-          %input.form-control{id: 'pod_text', type: 'text', value: "=for HTML <a href=\"#{project_url(@project)}\"><img src=\"#{project_url(@project, format: :svg)}\"></a>"}
+          %input.form-control{id: 'pod_text', type: 'text', value: "=for HTML <a href=\"#{project_url(@project)}\"><img src=\"#{shield_url(@project)}\"></a>"}
       %div.form-group
         %label.control-label.col-sm-2{for: 'bbcode_text'} BBCode:
         %div.col-sm-10
-          %input.form-control{id: 'bbcode_text', type: 'text', value: "[url=#{project_url(@project)}][img]#{project_url(@project, format: :svg)}[/img][/url]"}
+          %input.form-control{id: 'bbcode_text', type: 'text', value: "[url=#{project_url(@project)}][img]#{shield_url(@project)}[/img][/url]"}

@@ -4,6 +4,8 @@ T4c::Application.routes.draw do
 
   get '/blockchain_info_callback' => "home#blockchain_info_callback", :as => "blockchain_info_callback"
 
+  get '/:service/:repo' => 'projects#show', :constraints => {:service => /github/, :repo => /.+/}
+
   devise_for :users,
     :controllers => {
       :omniauth_callbacks => "users/omniauth_callbacks"

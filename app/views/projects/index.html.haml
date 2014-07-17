@@ -20,7 +20,7 @@
       - @projects.each do |project|
         %tr
           %td
-            %strong= link_to project.full_name, project
+            %strong= link_to project.full_name, pretty_project_path(project)
             - if !project.source_full_name.blank?
               %br
               %nobr
@@ -30,5 +30,5 @@
           %td= project.description
           %td= project.watchers_count
           %td= btc_human project.available_amount_cache
-          %td= link_to 'Support', project, class: 'btn btn-success'
+          %td= link_to 'Support', pretty_project_path(project), class: 'btn btn-success'
   = paginate @projects

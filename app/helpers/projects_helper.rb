@@ -17,4 +17,16 @@ module ProjectsHelper
       'green'
     end
   end
+
+  def pretty_project_path project
+    "/#{project.host}/#{project.full_name}"
+  end
+
+  def pretty_project_url project
+    root_url.gsub(/\/$/,'') + pretty_project_path(project)
+  end
+
+  def shield_url project
+    project_url project, format: :svg
+  end
 end

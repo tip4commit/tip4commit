@@ -13,6 +13,19 @@ class ProjectsController < ApplicationController
     render "index"
   end
 
+  # Redirect to pretty url for html format
+  include ProjectsHelper
+  before_filter only: [:show] do
+    if params[:id].present?
+      begin
+        respond_to do |format|
+          format.html { redirect_to pretty_project_path(@project) }
+        end
+      rescue ActionController::UnknownFormat
+      end
+    end
+  end
+
   def show
     if @project.bitcoin_address.nil?
       uri = URI("https://blockchain.info/merchant/#{CONFIG["blockchain_info"]["guid"]}/new_address")
@@ -78,7 +91,7 @@ class ProjectsController < ApplicationController
       repo = client.repo project_name
       @project = Project.find_or_create_by host: "github", full_name: repo.full_name
       @project.update_repository_info repo
-      redirect_to @project
+      redirect_to pretty_project_path(@project)
     rescue Octokit::NotFound
       redirect_to projects_path, alert: "Project not found"
     end
@@ -87,7 +100,14 @@ class ProjectsController < ApplicationController
   private
 
   def load_project
-    super(params[:id])
+    if params[:id].present?
+      super(params[:id])
+    elsif params[:service].present? && params[:repo].present?
+      super(
+        Project.where(host: params[:service]).
+          where('lower(`full_name`) = ?', params[:repo].downcase).first
+      )
+    end
   end
 
   def project_params

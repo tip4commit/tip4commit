@@ -9,8 +9,12 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def load_project(id)
-    @project = Project.where(id: id).first
+  def load_project(project)
+    if project.is_a? Project
+      @project = project
+    else
+      @project = Project.where(id: project).first
+    end
     unless @project
       flash[:error] = 'Project not found.'
       redirect_to projects_path
