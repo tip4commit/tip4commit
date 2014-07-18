@@ -82,7 +82,7 @@ class Project < ActiveRecord::Base
           select{|c| c.commit.committer.date > self.deposits.first.created_at }.
           to_a
       end
-    rescue Octokit::BadGateway, Octokit::NotFound, Octokit::InternalServerError,
+    rescue Octokit::BadGateway, Octokit::NotFound, Octokit::InternalServerError, Octokit::Forbidden,
            Errno::ETIMEDOUT, Net::ReadTimeout, Faraday::Error::ConnectionFailed => e
       Rails.logger.info "Project ##{id}: #{e.class} happened"
     rescue StandardError => e
@@ -163,7 +163,7 @@ class Project < ActiveRecord::Base
     begin
       update_repository_info(repository_info)
       update_collaborators(collaborators_info)
-    rescue Octokit::BadGateway, Octokit::NotFound, Octokit::InternalServerError,
+    rescue Octokit::BadGateway, Octokit::NotFound, Octokit::InternalServerError, Octokit::Forbidden,
            Errno::ETIMEDOUT, Net::ReadTimeout, Faraday::Error::ConnectionFailed => e
       Rails.logger.info "Project ##{id}: #{e.class} happened"
     rescue StandardError => e
