@@ -4,5 +4,7 @@ if CONFIG['airbrake']
     config.host    = CONFIG['airbrake']['host']
     config.port    = 80
     config.secure  = config.port == 443
+
+    config.ignore << "ArgumentError"
   end
 end
