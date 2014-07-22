@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable
+  # :lockable, :timeoutable
   devise :database_authenticatable, :registerable, :recoverable,
-         :rememberable, :trackable, :validatable
+         :rememberable, :trackable, :validatable, :confirmable
 
   devise :omniauthable, :omniauth_providers => [:github]
 
@@ -42,10 +42,12 @@ class User < ActiveRecord::Base
 
   def self.create_with_omniauth!(auth_info)
     generated_password = Devise.friendly_token.first(Devise.password_length.min)
-
-    create!( email:    auth_info.primary_email,
-             password: generated_password,
-             nickname: auth_info.nickname)
+    create do |user|
+      user.email    = auth_info.primary_email
+      user.password = generated_password
+      user.nickname = auth_info.nickname
+      user.skip_confirmation!
+    end
   end
 
   def self.find_or_create_with_commit commit
@@ -55,6 +57,7 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token.first(Devise.password_length.min)
       user.name     = author.name
       user.nickname = commit.author.try(:login)
+      user.skip_confirmation!
     end
   end
 
