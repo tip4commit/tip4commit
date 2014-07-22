@@ -26,6 +26,7 @@ gem 'twitter-bootstrap-rails',    github: 'seyhunak/twitter-bootstrap-rails', br
 gem 'bootstrap_form', github: 'sigmike/rails-bootstrap-forms', branch: 'removed_for_on_radio_label'
 gem 'sdoc', group: :doc, require: false
 gem 'cancancan'
+gem "i18n-js"
 
 group :development do
   gem 'capistrano',         '~> 3.0.1'

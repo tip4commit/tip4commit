@@ -149,6 +149,8 @@ GEM
     hike (1.2.3)
     httpauth (0.2.1)
     i18n (0.6.9)
+    i18n-js (2.1.2)
+      i18n
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -313,6 +315,7 @@ DEPENDENCIES
   devise (~> 3.2.2)
   factory_girl_rails (~> 4.3.0)
   haml-rails (~> 0.5.3)
+  i18n-js
   jbuilder (~> 1.5.3)
   jquery-rails (~> 3.0.4)
   jquery-turbolinks

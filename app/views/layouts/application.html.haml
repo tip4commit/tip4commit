@@ -17,6 +17,9 @@
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
 
+    :javascript
+      I18n.locale = #{I18n.locale.to_json};
+
     = csrf_meta_tags
   %body
     :javascript

@@ -1,41 +1,41 @@
 $(document).ready ()->
   $('.registration_form').bootstrapValidator
-    message: "Value is invalid"
+    message: I18n.t('js.errors.value.invalid')
     fields:
       "user[email]":
         validators:
           emailAddress:
-            message: "Invalid Email Address"
+            message: I18n.t('js.errors.email.invalid')
           notEmpty:
-            message: 'The Email is required and can\'t be empty' 
-          
+            message: I18n.t('js.errors.email.blank')
+
       "user[password]":
         validators:
           notEmpty:
-            message: 'The password is required and can\'t be empty'
+            message: I18n.t('js.errors.password.blank')
           identical:
-            field: 'user[password_confirmation]' 
-            message: 'The password and its confirmation are not same'
-      
+            field: 'user[password_confirmation]'
+            message: I18n.t('js.errors.password.invalid')
+
       "user[password_confirmation]":
         validators:
           notEmpty:
-            message: 'The password confirmation is required and can\'t be empty'
+            message: I18n.t('js.errors.password_confirmation.blank')
           identical:
-            field: 'user[password]' 
-            message: 'The password and its confirmation are not same'       
+            field: 'user[password]'
+            message: I18n.t('js.errors.password_confirmation.invalid')
   $('.session_form').bootstrapValidator
-    message: "Value is invalid"
+    message: I18n.t('js.errors.value.invalid')
     fields:
       "user[email]":
         validators:
           emailAddress:
-            message: "Invalid Email Address"
+            message: I18n.t('js.errors.email.invalid')
           notEmpty:
-            message: 'The Email is required and can\'t be empty' 
-          
+            message: I18n.t('js.errors.email.blank')
+
       "user[password]":
         validators:
           notEmpty:
-            message: 'The password is required and can\'t be empty'
-      
+            message: I18n.t('js.errors.password_confirmation.blank')
+
