@@ -1,43 +1,36 @@
 %h1= @user.name
 %p
-  %strong Balance
+  %strong= t('.balance')
 %p
   = btc_human @user.balance
 %p
-  %small
-    You will get your money when your balance hits the threshold of
-    = btc_human CONFIG["min_payout"]
+  %small= raw t('.threshold', threshold: btc_human(CONFIG["min_payout"]))
+
 - if @user_tips.count > 0
   %p
     %strong Last Tips
     - if @user_tips.count > 5
-      = link_to 'see all', user_tips_path(@user)
+      = link_to t('.see_all'), user_tips_path(@user)
   %ul
     - @recent_tips.each do |tip|
       %li
-        = l tip.created_at, format: :short
-        received
-        = btc_human tip.amount
-        for commit
-        = link_to tip.commit[0..6], "https://github.com/#{tip.project.full_name}/commit/#{tip.commit}", target: :blank
-        in
-        = link_to tip.project.full_name, tip.project
+        = raw t('.received', time: l(tip.created_at, format: :short), amount: btc_human(tip.amount), commit: link_to(tip.commit[0..6], "https://github.com/#{tip.project.full_name}/commit/#{tip.commit}", target: :blank), project: link_to(tip.project.full_name, tip.project))
 
 %p
-  %strong E-mail
+  %strong= User.human_attribute_name(:email)
 %p= @user.email
 = twitter_bootstrap_form_for @user do |f|
-  = f.text_field :bitcoin_address, placeholder: 'Your bitcoin address'
+  = f.text_field :bitcoin_address, placeholder: t('.bitcoin_address_placeholder')
   - if f.object.bitcoin_address.blank?
-    = f.check_box :unsubscribed, 'Notify me about new tips (no more than one email per month)', { checked: !f.object.unsubscribed? }, '0', '1'
+    = f.check_box :unsubscribed, t('.notify'), { checked: !f.object.unsubscribed? }, '0', '1'
   %br
-  = f.submit "Update Bitcoin address"
+  = f.submit t('.submit_bitcoin_address')
 %br
 %p
-  %strong= link_to 'Change your password', '#new_password_form', data: {toggle: "collapse"}
+  %strong= link_to t('.change_password'), '#new_password_form', data: {toggle: "collapse"}
 
 = twitter_bootstrap_form_for @user, html: {class: (params[:new_password] ? '' : 'collapse'), id: 'new_password_form'} do |f|
   = hidden_field_tag :new_password, value: true
   = f.password_field :password, autofocus: true, autocomplete: "off"
   = f.password_field :password_confirmation, autocomplete: "off"
-  = f.submit "Change my password"
+  = f.submit t('.submit_password')

@@ -1,49 +1,31 @@
-/ Jumbotron
 .jumbotron
-  %h1 Contribute to Open Source
-  %p.lead Donate bitcoins to open source projects or make commits and get tips for it.
-  / - if current_user
-  /   You are logged in as
-  /   - unless current_user.image.blank?
-  /     = image_tag(current_user.image, width: 26)
-  /   = link_to current_user.name, current_user.github_url
-  /   %p
-  /     \/
-  /     Your balance
-  /     = btc_human current_user.balance
-  /     \/
-  /     = link_to current_user.bitcoin_address.blank? ? 'Please set your Bitcoin address to receive tips!' : 'Change bitcoin address', current_user
-  /     \/
-  /     = link_to 'Sign Out', destroy_user_session_path, method: :delete
-  /     \/
-  / - else
-  /   / %a.btn.btn-lg.btn-success{href: user_omniauth_authorize_path(:github)} See projects
+  %h1= t('meta.title')
+  %p.lead= t('meta.description')
 
-  %a.btn.btn-lg.btn-success{href: projects_path} See projects
+  %a.btn.btn-lg.btn-success{href: projects_path}= t('.see_projects')
 
-/ Example row of columns
 .row
   .col-lg-4
-    %h2 How does it work?
-    %p People donate bitcoins to projects. When someone's commit is accepted into the project repository, we automatically tip the author.
+    %h2= t('.how_does_it_work.title')
+    %p= t('.how_does_it_work.text')
     %p
-      %a.btn.btn-primary{href: "https://weusecoins.com/", target: '_blank'} Learn about Bitcoin »
+      %a.btn.btn-primary{href: "https://weusecoins.com/", target: '_blank'}
+        = t('.how_does_it_work.button')
+        »
   .col-lg-4
-    %h2 Donate
+    %h2= t('.donate.title')
+    %p= t('.donate.text')
     %p
-      Find a project you like and deposit bitcoins into it. Your donation will be accumulated with the funds of other donators to give as tips for new commits.
-    %p
-      %a.btn.btn-primary{href: projects_path} Find or add a project »
+      %a.btn.btn-primary{href: projects_path}
+        = t('.donate.button')
+        »
   .col-lg-4
-    %h2 Contribute
+    %h2= t('.contribute.title')
     %p
-      Go and fix something! If your commit is accepted by the project maintainer, you will get a tip!
+      = t('.contribute.text')
       - if !current_user
-        Just check your email or
-        %a{href: user_omniauth_authorize_path(:github)} Sign In.
+        = raw t('.contribute.sign_in_text', sign_in_link: link_to(t('links.sign_in'), new_user_session_path))
     %p
-      %a.btn.btn-primary{href: projects_path} Supported projects »
-/ - if current_user
-/         %a.btn.btn-primary{href: user_path(current_user)} Change your bitcoin address »
-/       - else
-/         %a.btn.btn-primary{href: user_omniauth_authorize_path(:github)} Sign In »
+      %a.btn.btn-primary{href: projects_path}
+        = t('.contribute.button')
+        »

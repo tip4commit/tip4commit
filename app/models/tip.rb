@@ -3,6 +3,16 @@ class Tip < ActiveRecord::Base
   belongs_to :sendmany
   belongs_to :project, inverse_of: :tips
 
+  AVAILABLE_AMOUNTS = [
+    ['undecided', ""],
+    ['free',      0],
+    ['tiny',      0.1],
+    ['small',     0.5],
+    ['normal',    1],
+    ['big',       2],
+    ['huge',      5]
+  ]
+
   validates :amount, numericality: { greater_or_equal_than: 0, allow_nil: true }
 
   scope :not_sent,      -> { where(sendmany_id: nil) }
@@ -90,7 +100,7 @@ class Tip < ActiveRecord::Base
   end
 
   def amount_percentage=(percentage)
-    if undecided? and percentage.present? and %w(0 0.1 0.5 1 2 5).include?(percentage.to_s)
+    if undecided? and percentage.present? and AVAILABLE_AMOUNTS.map(&:last).compact.map(&:to_s).include?(percentage.to_s)
       self.amount = (project.available_amount * (percentage.to_f / 100)).ceil
     end
   end

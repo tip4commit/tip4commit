@@ -9,7 +9,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       if @omniauth_info.primary_email.present?
         @user = User.create_with_omniauth!(@omniauth_info)
       else
-        set_flash_message(:error, :failure, kind: 'GitHub', reason: 'your primary email address should be verified.')
+        set_flash_message(:error, :failure, kind: 'GitHub', reason: I18n.t('devise.errors.primary_email'))
         redirect_to new_user_session_path and return
       end
     end
@@ -25,7 +25,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def load_omniauth_info
     @omniauth_info = request.env['omniauth.auth']['info']
     unless @omniauth_info
-      set_flash_message(:error, :failure, kind: 'GitHub', reason: 'we were unable to fetch your information.')
+      set_flash_message(:error, :failure, kind: 'GitHub', reason: I18n.t('devise.errors.omniauth_info'))
       redirect_to new_user_session_path and return
     end
   end

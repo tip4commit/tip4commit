@@ -21,7 +21,7 @@ When(/^I send a forged request to enable tip holding on the project$/) do
 end
 
 Then(/^I should see an access denied$/) do
-  page.should have_content("Access denied")
+  page.should have_content("You are not authorized to perform this action!")
 end
 
 Then(/^the project should not hold tips$/) do

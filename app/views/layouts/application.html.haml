@@ -7,9 +7,9 @@
     %meta{content: "", name: "author"}/
     %link{href: "/favicon.png", rel: "shortcut icon"}/
 
-    %title= "Tip4Commit — " + (content_for?(:title) ? yield(:title) : "Contribute to Open Source")
+    %title= t('tip4commit') + " — " + (content_for?(:title) ? yield(:title) : " " + t('meta.title'))
 
-    %meta{name: 'description', content: (content_for?(:title) ? yield(:title) : "Donate bitcoins to open source projects or make commits and get tips for it.")}
+    %meta{name: 'description', content: (content_for?(:description) ? yield(:description) : t('meta.description'))}
     %meta{name: 'keywords', content: 'open source,contribute,github,community,git,bitcoin,tips,perks'}
     / %meta{:property => 'og:image', :content => asset_path('logo.png')}
     / %link{:rel => 'image_src', :type => 'image/png', :href => asset_path('logo.png')}
@@ -36,10 +36,11 @@
               \/
               = link_to btc_human(current_user.balance), current_user
               \/
-              = link_to 'Sign Out', destroy_user_session_path, method: :delete
+              = link_to t('sign_out'), destroy_user_session_path, method: :delete
             - else
-              = link_to "Sign in", new_user_session_path
-        %h3.text-muted.code-pro Tip4Commit
+              = link_to t('sign_in'), new_user_session_path
+
+        %h3.text-muted.code-pro= t('tip4commit')
         = render 'common/menu'
 
       %br
@@ -47,17 +48,11 @@
       = render_flash_messages
 
       = yield
-      / Site footer
+
       .footer
         %p
           ©
-          = link_to 'Tip4commit', 'http://tip4commit.com/', target: '_blank'
-          2013-2014. Source code is available at #{link_to('GitHub', 'https://github.com/tip4commit/tip4commit', target: '_blank')} and you can also
-          = link_to('support', 'http://tip4commit.com/projects/307')
-          its development.
-          = link_to 'Follow @tip4commit', 'https://twitter.com/tip4commit', target: '_blank'
-    / /container
-    /
-      Bootstrap core JavaScript
-      \==================================================
-    / Placed at the end of the document so the pages load faster\
+          = link_to t('tip4commit'), 'http://tip4commit.com/', target: '_blank'
+          2013-#{Date.today.year}.
+          = raw t('footer.text', github_link: link_to(t('footer.github_link'), 'https://github.com/tip4commit/tip4commit', target: '_blank'), support_link: link_to(t('footer.support_link'), 'http://tip4commit.com/projects/307'))
+          = link_to t('footer.follow_link'), 'https://twitter.com/tip4commit', target: '_blank'

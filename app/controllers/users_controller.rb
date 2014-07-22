@@ -13,10 +13,10 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(users_params)
-      redirect_to @user, notice: 'Your information saved!'
+      redirect_to @user, notice: I18n.t('notices.user_updated')
     else
       show
-      render :show, alert: 'Error updating bitcoin address'
+      render :show, alert: I18n.t('errors.wrong_bitcoin_address')
     end
   end
 
@@ -26,10 +26,10 @@ class UsersController < ApplicationController
       sign_in_and_redirect @user, event: :authentication
       if params[:unsubscribe]
         @user.update unsubscribed: true
-        flash[:alert] = 'You unsubscribed! Sorry for bothering you. Although, you still can leave us your bitcoin address to get your tips.'
+        flash[:alert] = I18n.t('notices.user_unsubscribed')
       end
     else
-      redirect_to root_url, alert: 'User not found'
+      redirect_to root_url, alert: I18n.t('errors.user_not_found')
     end
   end
 
@@ -41,14 +41,14 @@ class UsersController < ApplicationController
     def load_user
       @user = User.where(id: params[:id]).first
       unless @user
-        flash[:error] = 'User not found.'
+        flash[:error] = I18n.t('errors.user_not_found')
         redirect_to root_path and return
       end
     end
 
     def valid_user!
       if current_user != @user
-        flash[:error] = 'You are not authorized to perform this action!'
+        flash[:error] = I18n.t('errors.access_denied')
         redirect_to root_path and return
       end
     end

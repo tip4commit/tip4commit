@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_path, :alert => "Access denied"
+    redirect_to root_path, :alert => I18n.t('errors.access_denied')
   end
 
   private
@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
       @project = Project.where(id: project).first
     end
     unless @project
-      flash[:error] = 'Project not found.'
+      flash[:error] = I18n.t('errors.project_not_found')
       redirect_to projects_path
     end
   end

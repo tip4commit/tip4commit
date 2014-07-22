@@ -1,14 +1,14 @@
-%h1 Last Withdrawals
+%h1= t('.title')
 %p
   %table.table
     %thead
       %tr
-        %th Created At
-        %th Transaction
-        %th Result
+        %th= t('.created_at')
+        %th= t('.transaction')
+        %th= t('.result')
     %tbody
       - @sendmanies.each do |sendmany|
         %tr
-          %td= l sendmany.created_at, format: :short
-          %td= link_to sendmany.txid, "https://blockchain.info/tx/#{sendmany.txid}", target: '_blank'
-          %td= sendmany.is_error ? "Error" : "Success"
+          %td= l(sendmany.created_at, format: :short)
+          %td= link_to(sendmany.txid, "https://blockchain.info/tx/#{sendmany.txid}", target: '_blank')
+          %td= sendmany.is_error ? t('.error') : t('.success')

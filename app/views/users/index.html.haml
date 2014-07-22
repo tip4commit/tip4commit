@@ -1,15 +1,15 @@
-%h1 Top Contributors
+%h1= t('.title')
 %p
   %table.table
     %thead
       %tr
-        %th Name
-        %th Commits tipped
-        %th Withdrawn
+        %th= t('.name')
+        %th= t('.commits_count')
+        %th= t('.withdrawn')
     %tbody
       - @users.each do |user|
         %tr
-          %td 
+          %td
             - if user.nickname.blank?
               = user.full_name
             - else

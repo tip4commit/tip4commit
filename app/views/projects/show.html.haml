@@ -1,6 +1,5 @@
 - content_for :title do
-  Contribute to
-  = @project.name
+  = t('.title', project: @project.name)
 - content_for :description do
   = @project.description
 
@@ -9,37 +8,36 @@
   %small= link_to glyph(:github), @project.github_url, target: '_blank'
   .pull-right
     - if can? :update, @project
-      = link_to "Change project settings", edit_project_path(@project), class: "btn btn-primary"
+      = link_to t('.edit_project'), edit_project_path(@project), class: "btn btn-primary"
     - if can? :decide_tip_amounts, @project and @project.has_undecided_tips?
-      = link_to "Decide tip amounts", decide_tip_amounts_project_path(@project), class: "btn btn-warning"
+      = link_to t('.decide_tip_amounts'), decide_tip_amounts_project_path(@project), class: "btn btn-warning"
 
 .row
   .col-md-4
     .panel.panel-default
       .panel-heading
-        %h4.panel-title
-          Project Sponsors
+        %h4.panel-title= t('.project_sponsors')
       .panel-body
         %iframe{ src: "http://coingiving.com/project_sponsors?url=#{project_url @project}", scrolling: "no", style: 'width:100%; height:500px; border:0px; padding:0;overflow:hidden'}
         .hidden
           %span(data-coingiving="title")= "[tip4commit] " + @project.full_name
           %span(data-coingiving="description")= @project.description
           %span(data-coingiving="bitcoin-address")= @project.bitcoin_address
-        %p #{100-(CONFIG["our_fee"]*100).round}% of deposited funds will be used to tip for new commits.
+        %p= t('.fee', percentage: number_to_percentage(100-CONFIG["our_fee"]*100, precision: 0))
   .col-md-8
     - unless @project.description.blank?
       .well.well-sm= @project.description
-    %h4 Balance
+    %h4= t('.balance')
     = btc_human @project.available_amount
     - if @project.hold_tips?
-      (each new commit receives a percentage of available balance)
+      = t('.custom_tip_size')
     - else
-      (each new commit receives #{(CONFIG["tip"]*100).round}% of available balance)
-    - if (unconfirmed_amount = @project.unconfirmed_amount) > 0
-      (#{btc_human unconfirmed_amount} unconfirmed)
+      = t('.default_tip_size', percentage: number_to_percentage(CONFIG["tip"]*100, precision: 0))
+    - if @project.unconfirmed_amount > 0
+      = raw t('.unconfirmed_amount', amount: btc_human(@project.unconfirmed_amount))
 
     - if @project.tipping_policies_text.try(:text).present?
-      %h4 Tipping policies
+      %h4= t('.tipping_policies')
       = simple_format @project.tipping_policies_text.text
       %small
         %em
@@ -47,20 +45,20 @@
           - name = user.nickname.presence || user.name if user
           - date = l(@project.tipping_policies_text.updated_at)
           - if name.present?
-            = "(Last updated by #{name} on #{date})"
+            = t('.updated_by_user', name: name, date: date)
           - else
-            = "(Last updated on #{date})"
+            = t('.updated_by_unknown', date: date)
 
-    %h4 Tips Paid
+    %h4= t('.tips_paid')
     = btc_human @project.tips_paid_amount
     - if (tips_paid_unclaimed_amount = @project.tips_paid_unclaimed_amount) > 0
-      (#{btc_human tips_paid_unclaimed_amount} of this is unclaimed, and will be refunded to the project after being unclaimed for 1 month.)
+      = raw t('.unclaimed_amount', amount: btc_human(tips_paid_unclaimed_amount))
 
     - if @project_tips.count > 0
       %h4
-        Last Tips
+        =t('.last_tips')
         - if @project_tips.count > 5
-          = link_to 'see all', project_tips_path(@project)
+          = link_to t('.see_all'), project_tips_path(@project)
       %ul
         - @recent_tips.each do |tip|
           %li
@@ -70,34 +68,28 @@
             - else
               = link_to tip.user.full_name, "https://github.com/#{tip.user.nickname}", target: '_blank'
             - if tip.decided?
-              received
-              = btc_human tip.amount
+              = raw t('.received', amount: btc_human(tip.amount))
             - else
-              will receive a tip
-            for commit
+              = t('.will_receive')
+            = t('.for_commit')
             = link_to tip.commit[0..6], "https://github.com/#{@project.full_name}/commit/#{tip.commit}", target: :blank
             - if tip.undecided?
-              when its amount is decided
+              = t('.when_decided')
 
     - if @project.next_tip_amount > 0
-      %h4 Next Tip
+      %h4= t('.next_tip')
       = btc_human @project.next_tip_amount
 
-    %h4 Contribute and Earn
-    Donate bitcoins to this project or
-    = link_to 'make commits', @project.github_url, target: '_blank'
-    and get tips for it. If your commit is accepted by the project maintainer and there are bitcoins on its balance, you will get a tip!
+    %h4= t('.contribute_and_earn')
+    = raw t('.cocontribute_and_earn_description', make_commits_link: link_to(t('.make_commits_link'), @project.github_url, target: '_blank'))
 
     - if current_user
       - if current_user.bitcoin_address.blank?
-        Just
-        = link_to 'tell us', current_user
-        your bitcoin address.
+        = raw t('.tell_us_bitcoin_address', tell_us_link: link_to(t('.tell_us_link'), current_user))
     - else
-      Just check your email or
-      %a{href: new_user_session_path } Sign In.
+      = t('.sign_in', sign_in_link: link_to(new_user_session_path, t('links.sign_in')))
 
-    %h4 Promote #{@project.full_name}
+    %h4= t('.promote_project', project: @project.full_name)
     %p
       / AddThis Button BEGIN
       .addthis_toolbox.addthis_default_style.addthis_32x32_style(addthis:data_track_clickback="false" addthis:data_track_addressbar="false")
@@ -109,17 +101,17 @@
         %a.addthis_counter.addthis_bubble_style
       / AddThis Button END
 
-    %h4 Embedding
-    %p= link_to image_tag(shield_url(@project), alt: 'Tip4Commit'), pretty_project_url(@project)
+    %h4= t('.embedding')
+    %p= link_to image_tag(shield_url(@project), alt: t('tip4commit')), pretty_project_url(@project)
     %form.form-horizontal
       %div.form-group
-        %label.control-label.col-sm-2{for: 'image_url'} Image URL:
+        %label.control-label.col-sm-2{for: 'image_url'}= t('.image_url')
         %div.col-sm-10
           %input.form-control{id: 'image_url', type: 'text', value: "#{shield_url(@project)}"}
       %div.form-group
         %label.control-label.col-sm-2{for: 'markdown_text'} Markdown:
         %div.col-sm-10
-          %input.form-control{id: 'markdown_text', type: 'text', value: "[![tip for next commit](#{shield_url(@project)})](#{pretty_project_url(@project)})"}
+          %input.form-control{id: 'markdown_text', type: 'text', value: "[![#{t('.shield_title')}](#{shield_url(@project)})](#{pretty_project_url(@project)})"}
       %div.form-group
         %label.control-label.col-sm-2{for: 'textile_text'} Textile:
         %div.col-sm-10
@@ -127,11 +119,11 @@
       %div.form-group
         %label.control-label.col-sm-2{for: 'rdoc_text'} RDOC:
         %div.col-sm-10
-          %input.form-control{id: 'rdoc_text', type: 'text', value: "{<img src=\"#{shield_url(@project)}\" alt=\"tip for next commit\" />}[#{pretty_project_url(@project)}]"}
+          %input.form-control{id: 'rdoc_text', type: 'text', value: "{<img src=\"#{shield_url(@project)}\" alt=\"#{t('.shield_title')}\" />}[#{pretty_project_url(@project)}]"}
       %div.form-group
         %label.control-label.col-sm-2{for: 'asciidoc_text'} AsciiDoc:
         %div.col-sm-10
-          %input.form-control{id: 'asciidoc_text', type: 'text', value: "image:#{shield_url(@project)}[\"tip for next commit\", link=\"#{pretty_project_url(@project)}\"]"}
+          %input.form-control{id: 'asciidoc_text', type: 'text', value: "image:#{shield_url(@project)}[\"#{t('.shield_title')}\", link=\"#{pretty_project_url(@project)}\"]"}
       %div.form-group
         %label.control-label.col-sm-2{for: 'rst_text'} Rst:
         %div.col-sm-10

@@ -42,7 +42,7 @@ describe UsersController do
 
         it 'sets flash error message' do
           subject
-          expect(flash[:error]).to eq('User not found.')
+          expect(flash[:error]).to eq('User not found')
         end
       end
     end

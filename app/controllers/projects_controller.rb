@@ -51,7 +51,7 @@ class ProjectsController < ApplicationController
       @project.tipping_policies_text.user = current_user
     end
     if @project.save
-      redirect_to project_path(@project), notice: "The project settings have been updated"
+      redirect_to project_path(@project), notice: I18n.t('notices.project_updated')
     else
       render 'edit'
     end
@@ -63,13 +63,13 @@ class ProjectsController < ApplicationController
       @project.available_amount # preload anything required to get the amount, otherwise it's loaded during the assignation and there are undesirable consequences
       percentages = params[:project][:tips_attributes].values.map{|tip| tip['amount_percentage'].to_f}
       if percentages.sum > 100
-        redirect_to decide_tip_amounts_project_path(@project), alert: "You can't assign more than 100% of available funds."
+        redirect_to decide_tip_amounts_project_path(@project), alert: I18n.t('errors.can_assign_more_tips')
         return
       end
       raise "wrong data" if percentages.min < 0
       @project.attributes = params.require(:project).permit(tips_attributes: [:id, :amount_percentage])
       if @project.save
-        message = "The tip amounts have been defined"
+        message = I18n.t('notices.tips_decided')
         if @project.has_undecided_tips?
           redirect_to decide_tip_amounts_project_path(@project), notice: message
         else
@@ -93,7 +93,7 @@ class ProjectsController < ApplicationController
       @project.update_repository_info repo
       redirect_to pretty_project_path(@project)
     rescue Octokit::NotFound
-      redirect_to projects_path, alert: "Project not found"
+      redirect_to projects_path, alert: I18n.t('errors.project_not_found')
     end
   end
 
