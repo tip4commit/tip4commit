@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   def login
     @user = User.find_by(login_token: params[:token])
     if @user
+      @user.confirm!
       sign_in_and_redirect @user, event: :authentication
       if params[:unsubscribe]
         @user.update unsubscribed: true
