@@ -35,7 +35,7 @@
         %div.pull-right
           %small
             - if current_user
-              = current_user.full_name
+              = current_user.display_name
               \/
               = link_to btc_human(current_user.balance), current_user
               \/

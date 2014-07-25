@@ -24,8 +24,8 @@ class User < ActiveRecord::Base
     tips.decided.unpaid.sum(:amount)
   end
 
-  def full_name
-    name.presence || nickname.presence || email
+  def display_name
+    attributes['display_name'].presence || name.presence || nickname.presence || email
   end
 
   def subscribed?

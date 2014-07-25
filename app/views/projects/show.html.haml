@@ -64,9 +64,9 @@
           %li
             = l tip.created_at, format: :short
             - if tip.user.nickname.blank?
-              = tip.user.full_name
+              = tip.user.display_name
             - else
-              = link_to tip.user.full_name, "https://github.com/#{tip.user.nickname}", target: '_blank'
+              = link_to tip.user.display_name, "https://github.com/#{tip.user.nickname}", target: '_blank'
             - if tip.decided?
               = raw t('.received', amount: btc_human(tip.amount))
             - else

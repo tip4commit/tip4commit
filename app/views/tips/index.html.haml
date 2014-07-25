@@ -2,7 +2,7 @@
   - if @project
     = raw t('.project_tips', project: link_to(@project.full_name, pretty_project_path(@project)))
   - elsif @user
-    = raw t('.user_tips', user: link_to(@user.full_name, @user))
+    = raw t('.user_tips', user: link_to(@user.display_name, @user))
   - else
     = t('.tips')
 %p
@@ -24,9 +24,9 @@
           - unless @user
             %td
               - if tip.user.nickname.blank?
-                = tip.user.full_name
+                = tip.user.display_name
               - else
-                = link_to tip.user.full_name, "https://github.com/#{tip.user.nickname}", target: '_blank'
+                = link_to tip.user.display_name, "https://github.com/#{tip.user.nickname}", target: '_blank'
           - unless @project
             %td= link_to tip.project.full_name, tip.project
           %td= link_to tip.commit[0..6], "https://github.com/#{tip.project.full_name}/commit/#{tip.commit}", target: :blank

@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
   private
     def users_params
-      params.require(:user).permit(:bitcoin_address, :password, :password_confirmation, :unsubscribed)
+      params.require(:user).permit(:bitcoin_address, :password, :password_confirmation, :unsubscribed, :display_name)
     end
 
     def load_user

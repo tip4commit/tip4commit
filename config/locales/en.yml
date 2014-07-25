@@ -146,7 +146,7 @@ en:
       received: "%{time} received %{amount} for commit %{commit} in %{project}"
       bitcoin_address_placeholder: Your bitcoin address
       notify: Notify me about new tips (no more than one email per month)
-      submit_bitcoin_address: Update Bitcoin address
+      submit_user: Update user info
       change_password: Change your password
       submit_password: Change my password
   withdrawals:
@@ -194,3 +194,4 @@ en:
         bitcoin_address: Bitcoin address
         password: Password
         password_confirmation: Password confirmation
+        display_name: Display name

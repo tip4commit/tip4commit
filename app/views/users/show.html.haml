@@ -1,4 +1,4 @@
-%h1= @user.name
+%h1= @user.display_name
 %p
   %strong= t('.balance')
 %p
@@ -21,10 +21,11 @@
 %p= @user.email
 = twitter_bootstrap_form_for @user do |f|
   = f.text_field :bitcoin_address, placeholder: t('.bitcoin_address_placeholder')
+  = f.text_field :display_name
   - if f.object.bitcoin_address.blank?
     = f.check_box :unsubscribed, t('.notify'), { checked: !f.object.unsubscribed? }, '0', '1'
   %br
-  = f.submit t('.submit_bitcoin_address')
+  = f.submit t('.submit_user')
 %br
 %p
   %strong= link_to t('.change_password'), '#new_password_form', data: {toggle: "collapse"}
