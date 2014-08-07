@@ -1,6 +1,15 @@
 class Deposit < ActiveRecord::Base
   belongs_to :project
 
+  CONFIRMATIONS_NEEDED = 2
+
+  scope :confirmed, -> { where("confirmations >= #{CONFIRMATIONS_NEEDED}") }
+  scope :unconfirmed, -> { where("confirmations < #{CONFIRMATIONS_NEEDED}") }
+
+  def confirmed?
+    confirmations.to_i >= CONFIRMATIONS_NEEDED
+  end
+
   def fee
     (amount * fee_size).to_i
   end

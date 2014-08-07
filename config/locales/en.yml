@@ -81,6 +81,7 @@ en:
       project_sponsors: Project Sponsors
       fee: "%{percentage} of deposited funds will be used to tip for new commits."
       balance: Balance
+      deposits: deposits
       custom_tip_size: (each new commit receives a percentage of available balance)
       default_tip_size: "(each new commit receives %{percentage} of available balance)"
       unconfirmed_amount: "(%{amount} unconfirmed)"
@@ -120,7 +121,7 @@ en:
   tips:
     index:
       tips: Tips
-      project_tips: "%{project} tips"
+      project_tips: '%{project} tips'
       user_tips: "%{user} tips"
       created_at: Created At
       commiter: Commiter
@@ -133,6 +134,17 @@ en:
       below_threshold: "User's balance is below withdrawal threshold"
       waiting: Waiting for withdrawal
       error: (error sending transaction)
+  deposits:
+    index:
+      project_deposits: '%{project} deposits'
+      deposits: Deposits
+      created_at: Created At
+      project: Project
+      amount: Amount
+      transaction: Transaction
+      confirmed: Confirmed
+      confirmed_yes: 'Yes'
+      confirmed_no: 'No'
   users:
     index:
       title: Top Contributors

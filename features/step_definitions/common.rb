@@ -27,7 +27,7 @@ Given(/^a project "(.*?)"$/) do |arg1|
 end
 
 Given(/^a deposit of "(.*?)"$/) do |arg1|
-  Deposit.create!(project: @project, amount: arg1.to_d * 1e8, confirmations: 1)
+  Deposit.create!(project: @project, amount: arg1.to_d * 1e8, confirmations: 2)
 end
 
 Given(/^the last known commit is "(.*?)"$/) do |arg1|

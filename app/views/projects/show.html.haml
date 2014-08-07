@@ -27,7 +27,10 @@
   .col-md-8
     - unless @project.description.blank?
       .well.well-sm= @project.description
-    %h4= t('.balance')
+    %h4
+      = t('.balance')
+      - if @project.deposits.count > 0
+        %small= link_to t('.deposits'), project_deposits_path(@project)
     = btc_human @project.available_amount
     - if @project.hold_tips?
       = t('.custom_tip_size')
@@ -58,7 +61,7 @@
       %h4
         =t('.last_tips')
         - if @project_tips.count > 5
-          = link_to t('.see_all'), project_tips_path(@project)
+          %small= link_to t('.see_all'), project_tips_path(@project)
       %ul
         - @recent_tips.each do |tip|
           %li

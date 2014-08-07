@@ -26,8 +26,10 @@ T4c::Application.routes.draw do
       patch :decide_tip_amounts
     end
     resources :tips, :only => [:index]
+    resources :deposits, :only => [:index]
   end
   resources :tips, :only => [:index]
+  resources :deposits, :only => [:index]
   resources :withdrawals, :only => [:index]
 
   # The priority is based upon order of creation: first created -> highest priority.

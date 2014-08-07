@@ -126,7 +126,7 @@ class Project < ActiveRecord::Base
   end
 
   def donated
-    self.deposits.where("confirmations > 0").map(&:available_amount).sum
+    self.deposits.confirmed.map(&:available_amount).sum
   end
 
   def available_amount
@@ -134,7 +134,7 @@ class Project < ActiveRecord::Base
   end
 
   def unconfirmed_amount
-    self.deposits.where(:confirmations => 0).where('created_at > ?', 7.days.ago).map(&:available_amount).sum
+    self.deposits.unconfirmed.where('created_at > ?', 7.days.ago).map(&:available_amount).sum
   end
 
   def tips_paid_amount
