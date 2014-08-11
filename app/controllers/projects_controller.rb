@@ -5,12 +5,16 @@ class ProjectsController < ApplicationController
   before_filter :load_project, only: [:show, :edit, :update, :decide_tip_amounts]
 
   def index
-    @projects = Project.order(available_amount_cache: :desc, watchers_count: :desc, full_name: :asc).page(params[:page]).per(30)
+    @projects = Project.order(projects_order).page(params[:page]).per(30)
   end
 
-  def by_watchers
-    @projects = Project.order(watchers_count: :desc, available_amount_cache: :desc, full_name: :asc).page(params[:page]).per(30)
-    render "index"
+  def search
+    if project = Project.find_or_create_by_url(params[:query])
+      redirect_to pretty_project_path(project)
+    else
+      @projects = Project.search(params[:query]).order(projects_order).page(params[:page]).per(30)
+      render :index
+    end
   end
 
   # Redirect to pretty url for html format
@@ -79,15 +83,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def search
-    if project = Project.find_or_create_by_url(params[:query])
-      redirect_to project
-    else
-      @projects = Project.search(params[:query]).page(params[:page]).per(30)
-      render :index
-    end
-  end
-
   private
 
   def load_project
@@ -103,5 +98,14 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:hold_tips, tipping_policies_text_attributes: [:text])
+  end
+
+  def projects_order
+    {
+      'balance'     => {available_amount_cache: :desc, watchers_count: :desc, full_name: :asc},
+      'watchers'    => {watchers_count: :desc, available_amount_cache: :desc, full_name: :asc},
+      'repository'  => {full_name: :asc, available_amount_cache: :desc, watchers_count: :desc},
+      'description' => {description: :desc, available_amount_cache: :desc, watchers_count: :desc, full_name: :asc}
+    }.[](params[:order] || 'balance')
   end
 end
