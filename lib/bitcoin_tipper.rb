@@ -27,11 +27,13 @@ class BitcoinTipper
       User.find_each do |user|
         if user.bitcoin_address.present? && user.balance > CONFIG["min_payout"]
           users_waiting_for_withdrawal += 1
-          Rails.logger.info "Sendmany is needed"
+          Rails.logger.info "User ##{user.id} is waiting for withdrawal"
         end
       end
 
-      self.create_sendmany if users_waiting_for_withdrawal > 2
+      if users_waiting_for_withdrawal > 2
+        self.create_sendmany
+      end
 
       Rails.logger.info "Traversing sendmanies..."
       Sendmany.where(txid: nil).each do |sendmany|
