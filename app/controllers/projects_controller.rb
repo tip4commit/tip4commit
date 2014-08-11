@@ -105,7 +105,7 @@ class ProjectsController < ApplicationController
       'balance'     => {available_amount_cache: :desc, watchers_count: :desc, full_name: :asc},
       'watchers'    => {watchers_count: :desc, available_amount_cache: :desc, full_name: :asc},
       'repository'  => {full_name: :asc, available_amount_cache: :desc, watchers_count: :desc},
-      'description' => {description: :desc, available_amount_cache: :desc, watchers_count: :desc, full_name: :asc}
+      'description' => {description: :asc, available_amount_cache: :desc, watchers_count: :desc, full_name: :asc}
     }.[](params[:order] || 'balance')
   end
 end
