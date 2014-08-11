@@ -17,9 +17,10 @@ T4c::Application.routes.draw do
     end
     resources :tips, :only => [:index]
   end
-  resources :projects, :only => [:show, :index, :create, :edit, :update] do
+  resources :projects, :only => [:show, :index, :edit, :update] do
     collection do
       get 'by_watchers'
+      post 'search'
     end
     member do
       get :decide_tip_amounts

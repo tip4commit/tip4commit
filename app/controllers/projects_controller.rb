@@ -79,21 +79,12 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def create
-    project_name = params[:full_name].
-      gsub(/https?\:\/\/github.com\//, '').
-      gsub(/\#.+$/, '').
-      gsub(' ', '')
-    client = Octokit::Client.new \
-      :client_id     => CONFIG['github']['key'],
-      :client_secret => CONFIG['github']['secret']
-    begin
-      repo = client.repo project_name
-      @project = Project.find_or_create_by host: "github", full_name: repo.full_name
-      @project.update_repository_info repo
-      redirect_to pretty_project_path(@project)
-    rescue Octokit::NotFound
-      redirect_to projects_path, alert: I18n.t('errors.project_not_found')
+  def search
+    if project = Project.find_or_create_by_url(params[:query])
+      redirect_to project
+    else
+      @projects = Project.search(params[:query]).page(params[:page]).per(30)
+      render :index
     end
   end
 

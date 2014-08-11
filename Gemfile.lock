@@ -127,6 +127,11 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    dusen (0.4.10)
+      activerecord
+      edge_rider (>= 0.2.5)
+    edge_rider (0.3.0)
+      activerecord
     erubis (2.7.0)
     execjs (2.0.2)
     factory_girl (4.3.0)
@@ -313,6 +318,7 @@ DEPENDENCIES
   database_cleaner
   debugger (~> 1.6.5)
   devise (~> 3.2.2)
+  dusen
   factory_girl_rails (~> 4.3.0)
   haml-rails (~> 0.5.3)
   i18n-js

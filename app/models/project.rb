@@ -10,6 +10,13 @@ class Project < ActiveRecord::Base
   validates :full_name, :github_id, uniqueness: true, presence: true
   validates :host, inclusion: [ "github", "bitbucket" ], presence: true
 
+  search_syntax do
+    search_by :text do |scope, phrases|
+      columns = [:full_name, :host, :description, :language]
+      scope.where_like(columns => phrases)
+    end
+  end
+
   # before_save :check_tips_to_pay_against_avaiable_amount
 
   def update_repository_info repo
@@ -187,5 +194,16 @@ class Project < ActiveRecord::Base
     if available_amount < 0
       raise "Not enough funds to pay the pending tips on #{inspect} (#{available_amount} < 0)"
     end
+  end
+
+  def self.find_or_create_by_url project_url
+
+    project_name = project_url.
+      gsub(/https?\:\/\/github.com\//, '').
+      gsub(/\#.+$/, '').
+      gsub(' ', '')
+
+    Github.new.find_or_create_project project_name
+
   end
 end

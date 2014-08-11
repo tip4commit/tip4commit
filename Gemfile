@@ -27,6 +27,7 @@ gem 'bootstrap_form', github: 'sigmike/rails-bootstrap-forms', branch: 'removed_
 gem 'sdoc', group: :doc, require: false
 gem 'cancancan'
 gem "i18n-js"
+gem 'dusen'
 
 group :development do
   gem 'capistrano',         '~> 3.0.1'

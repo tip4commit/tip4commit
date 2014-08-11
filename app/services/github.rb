@@ -27,10 +27,33 @@ class Github
   end
 
   def repository_info project
-    if project.github_id.present?
-      client.get "/repositories/#{project.github_id}"
+    if project.is_a?(String)
+      client.repo project
+    elsif project.is_a?(Project)
+      if project.github_id.present?
+        client.get "/repositories/#{project.github_id}"
+      else
+        client.repo project.full_name
+      end
     else
-      client.repo project.full_name
+      raise 'Unknown parameter class'
+    end
+  end
+
+  def find_or_create_project project_name
+    if project = Project.find_by(host: "github", full_name: project_name)
+      project
+    elsif project_name =~ /\w+\/\w+/
+      begin
+        repo = repository_info project_name
+        project = Project.find_or_create_by host: "github", full_name: repo.full_name
+        project.update_repository_info repo
+        project
+      rescue Octokit::NotFound
+        nil
+      end
+    else
+      nil
     end
   end
 
