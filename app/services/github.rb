@@ -15,7 +15,8 @@ class Github
     commits = client.commits project.full_name
 
     last_response = client.last_response
-    (CONFIG['github']['pages'].to_i - 1).times do
+    pages = (CONFIG['github']['project_pages'][project.full_name] || CONFIG['github']['pages'] || 1).to_i
+    (pages - 1).times do
       if last_response.rels[:next]
         last_response = last_response.rels[:next].get
         commits += last_response.data

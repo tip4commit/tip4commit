@@ -2,7 +2,9 @@ github:
   key: "111111111111"
   secret: "111111111111"
   auto_paginate: false
-  pages: 1
+  pages: 3
+  project_pages:
+    "torvalds/linux": 30
 
 blockchain_info:
   guid: "111111111111"
