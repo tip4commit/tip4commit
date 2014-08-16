@@ -5,7 +5,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.find_by(nickname: @omniauth_info.nickname) ||
             User.find_by(email: @omniauth_info.verified_emails)
 
-    if @user.blank?
+    if @user.present?
+      if @omniauth_info.primary_email.present? && @user.email != @omniauth_info.primary_email
+        # update email if it has been changed
+        @user.update email: @omniauth_info.primary_email
+      end
+    else # user not found
       if @omniauth_info.primary_email.present?
         @user = User.create_with_omniauth!(@omniauth_info)
       else

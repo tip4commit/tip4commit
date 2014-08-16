@@ -52,11 +52,13 @@ class User < ActiveRecord::Base
 
   def self.find_or_create_with_commit commit
     author = commit.commit.author
-    where(email: author.email).first_or_create do |user|
+    nickname = commit.author.try(:login)
+    user = find_by(nickname: nickname) if nickname
+    user || where(email: author.email).first_or_create do |user|
       user.email    = author.email
       user.password = Devise.friendly_token.first(Devise.password_length.min)
       user.name     = author.name
-      user.nickname = commit.author.try(:login)
+      user.nickname = nickname
       user.skip_confirmation!
     end
   end
