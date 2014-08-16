@@ -9,10 +9,10 @@ class ProjectsController < ApplicationController
   end
 
   def search
-    if project = Project.find_or_create_by_url(params[:query])
+    if params[:query].present? && project = Project.find_or_create_by_url(params[:query])
       redirect_to pretty_project_path(project)
     else
-      @projects = Project.search(params[:query]).order(projects_order).page(params[:page]).per(30)
+      @projects = Project.search(params[:query].to_s).order(projects_order).page(params[:page]).per(30)
       render :index
     end
   end
