@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  has_many :deposits # todo: only confirmed deposits that have amount > paid_out
+  has_many :deposits # todo: only confirmed deposits
   has_many :tips, inverse_of: :project
   accepts_nested_attributes_for :tips
   has_many :collaborators, autosave: true

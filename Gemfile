@@ -28,6 +28,7 @@ gem 'sdoc', group: :doc, require: false
 gem 'cancancan'
 gem "i18n-js"
 gem 'dusen'
+gem 'render_csv'
 
 group :development do
   gem 'capistrano',         '~> 3.0.1'

@@ -54,6 +54,12 @@ class Tip < ActiveRecord::Base
   scope :unclaimed,     -> { joins(:user).
                              unpaid.
                              where('users.bitcoin_address' => ['', nil]) }
+  def claimed?
+    paid? || user.bitcoin_address.present?
+  end
+  def unclaimed?
+    !claimed?
+  end
 
   scope :with_address,  -> { joins(:user).where.not('users.bitcoin_address' => ['', nil]) }
   def with_address?
@@ -135,4 +141,17 @@ class Tip < ActiveRecord::Base
   def touch_decided_at_if_decided
     self.decided_at = Time.now if amount_changed? && decided?
   end
+
+  def project_name
+    project.full_name
+  end
+
+  def user_name
+    user.display_name
+  end
+
+  def txid
+    try(:sendmany).try(:txid)
+  end
+
 end

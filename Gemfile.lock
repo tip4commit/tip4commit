@@ -228,6 +228,8 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     ref (1.0.5)
+    render_csv (2.0.0)
+      rails (>= 3.0)
     rspec-collection_matchers (0.0.2)
       rspec-expectations (>= 2.99.0.beta1)
     rspec-core (3.0.0.beta1)
@@ -332,6 +334,7 @@ DEPENDENCIES
   omniauth (~> 1.1.4)
   omniauth-github!
   rails (= 4.0.2)
+  render_csv
   rspec-rails (~> 3.0.0.beta)
   sass-rails (~> 4.0.0)
   sawyer (~> 0.5.2)

@@ -3,9 +3,16 @@ class DepositsController < ApplicationController
 
   def index
     if params[:project_id]
-      @deposits = @project.deposits.order(created_at: :desc).page(params[:page]).per(30)
+      @deposits = @project.deposits
     else
-      @deposits = Deposit.includes(:project).order(created_at: :desc).page(params[:page]).per(30)
+      @deposits = Deposit.includes(:project)
+    end
+    @deposits = @deposits.order(created_at: :desc).
+                          page(params[:page]).
+                          per(params[:per_page] || 30)
+    respond_to do |format|
+      format.html
+      format.csv  { render csv: @deposits, except: [:updated_at, :confirmations, :fee_size], add_methods: [:project_name, :fee, :confirmed?] }
     end
   end
 

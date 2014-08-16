@@ -22,4 +22,8 @@ class Deposit < ActiveRecord::Base
     self.fee_size = CONFIG["our_fee"]
   end
 
+  def project_name
+    project.full_name
+  end
+
 end
