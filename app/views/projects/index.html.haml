@@ -10,7 +10,7 @@
           = button_tag t('.find_project.button'), class: "btn form-control btn-default", name: nil
 %p
   - if @projects.count > 0
-    %table.table
+    %table.table.table-striped
       %thead
         %tr
           %th= link_to_unless_current t('.repository'), params.merge(:order => 'repository')
