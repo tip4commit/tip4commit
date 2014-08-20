@@ -90,7 +90,7 @@
       - if current_user.bitcoin_address.blank?
         = raw t('.tell_us_bitcoin_address', tell_us_link: link_to(t('.tell_us_link'), current_user))
     - else
-      = t('.sign_in', sign_in_link: link_to(new_user_session_path, t('links.sign_in')))
+      = raw t('.sign_in', sign_in_link: link_to(t('links.sign_in'), new_user_session_path))
 
     %h4= t('.promote_project', project: @project.full_name)
     %p
