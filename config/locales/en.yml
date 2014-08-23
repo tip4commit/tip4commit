@@ -98,7 +98,8 @@ en:
       when_decided: when its amount is decided
       next_tip: Next Tip
       contribute_and_earn: Contribute and Earn
-      contribute_and_earn_description: "Donate bitcoins to this project or %{make_commits_link} and get tips for it. If your commit is accepted by the project maintainer (merged into <strong>%{branch}</strong> branch) and there are bitcoins on its balance, you will get a tip!"
+      contribute_and_earn_description: "Donate bitcoins to this project or %{make_commits_link} and get tips for it. If your commit is accepted %{branch} by a project maintainer and there are bitcoins on its balance, you will get a tip!"
+      contribute_and_earn_branch: "to <strong>%{branch}</strong> branch"
       make_commits_link: make commits
       tell_us_bitcoin_address: "Just %{tell_us_link} your bitcoin address."
       tell_us_link: tell us
@@ -110,6 +111,7 @@ en:
     edit:
       project_settings: "%{project} project settings"
       branch: Branch
+      default_branch: Default branch
       tipping_policies: Tipping policies
       hold_tips: "Do not send the tips immediatly. Give collaborators the ability to modify the tips before they're sent"
       save: Save the project settings

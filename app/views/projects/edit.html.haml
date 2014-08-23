@@ -5,7 +5,7 @@
 .row
   .col-md-12
     = bootstrap_form_for @project do |f|
-      = f.select :branch, @project.branches, label: t('.branch')
+      = f.select :branch, @project.branches, label: t('.branch'), include_blank: t('.default_branch')
       = f.fields_for :tipping_policies_text, @project.tipping_policies_text || @project.build_tipping_policies_text do |fields|
         = fields.text_area :text, rows: 10, label: t('.tipping_policies')
       = f.check_box :hold_tips, label: t('.hold_tips')

@@ -12,7 +12,11 @@ class Github
   attr_reader :client
 
   def commits project
-    commits = client.commits project.full_name
+    if project.branch.blank?
+      commits = client.commits project.full_name
+    else
+      commits = client.commits project.full_name, sha: project.branch
+    end
 
     last_response = client.last_response
     pages = (CONFIG['github']['project_pages'][project.full_name] || CONFIG['github']['pages'] || 1).to_i

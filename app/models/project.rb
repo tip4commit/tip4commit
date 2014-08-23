@@ -9,7 +9,6 @@ class Project < ActiveRecord::Base
 
   validates :full_name, :github_id, uniqueness: true, presence: true
   validates :host, inclusion: [ "github", "bitbucket" ], presence: true
-  validates :branch, presence: true
 
   search_syntax do
     search_by :text do |scope, phrases|
