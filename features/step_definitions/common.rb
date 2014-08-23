@@ -1,5 +1,8 @@
 Before do
   ActionMailer::Base.deliveries.clear
+
+  # mock branches method to prevent api call
+  Project.any_instance.stub(:branches).and_return(%w(master))
 end
 
 Then(/^there should be (\d+) email sent$/) do |arg1|

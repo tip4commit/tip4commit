@@ -62,6 +62,10 @@ class Github
     (client.get("/orgs/#{project.full_name.split('/').first}/members") rescue [])
   end
 
+  def branches project
+    client.get("/repos/#{project.full_name}/branches").map(&:name)
+  end
+
   def repository_url project
     "https://github.com/#{project.full_name}"
   end

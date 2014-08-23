@@ -84,7 +84,7 @@
       = btc_human @project.next_tip_amount
 
     %h4= t('.contribute_and_earn')
-    = raw t('.cocontribute_and_earn_description', make_commits_link: link_to(t('.make_commits_link'), @project.github_url, target: '_blank'))
+    = raw t('.contribute_and_earn_description', make_commits_link: link_to(t('.make_commits_link'), @project.github_url, target: '_blank'), branch: @project.branch)
 
     - if current_user
       - if current_user.bitcoin_address.blank?

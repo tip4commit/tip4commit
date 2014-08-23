@@ -9,6 +9,7 @@ class Project < ActiveRecord::Base
 
   validates :full_name, :github_id, uniqueness: true, presence: true
   validates :host, inclusion: [ "github", "bitbucket" ], presence: true
+  validates :branch, presence: true
 
   search_syntax do
     search_by :text do |scope, phrases|
@@ -77,6 +78,10 @@ class Project < ActiveRecord::Base
     repository_client.collaborators_info self
   end
 
+  def branches
+    repository_client.branches self
+  end
+
   def new_commits
     begin
       commits = Timeout::timeout(90) do
@@ -87,7 +92,9 @@ class Project < ActiveRecord::Base
           select{|c| c.commit.author.email =~ Devise::email_regexp }.
           # Filter commited after t4c project creation
           select{|c| c.commit.committer.date > self.deposits.first.created_at }.
-          to_a
+          to_a.
+          # tip for older commits first
+          reverse
       end
     rescue Octokit::BadGateway, Octokit::NotFound, Octokit::InternalServerError, Octokit::Forbidden,
            Errno::ETIMEDOUT, Net::ReadTimeout, Faraday::Error::ConnectionFailed => e

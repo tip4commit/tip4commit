@@ -32,7 +32,13 @@ class Bitbucket
     []
   end
 
+  def branches project
+    # TODO
+    ['master']
+  end
+
   def commits repository
+    # todo use repository.branch
     data = request :get, changesets_path(repository.full_name)
 
     data.changesets.map do |cs|

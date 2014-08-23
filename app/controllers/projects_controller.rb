@@ -97,7 +97,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:hold_tips, tipping_policies_text_attributes: [:text])
+    params.require(:project).permit(:branch, :hold_tips, tipping_policies_text_attributes: [:text])
   end
 
   def projects_order
