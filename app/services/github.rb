@@ -67,7 +67,7 @@ class Github
   end
 
   def branches project
-    Octokit::Client.new(:auto_paginate  => true).get("/repos/#{project.full_name}/branches").map(&:name)
+    Octokit::Client.new(client_id: CONFIG['github']['key'], client_secret: CONFIG['github']['secret'], auto_paginate: true).get("/repos/#{project.full_name}/branches").map(&:name)
   end
 
   def repository_url project
