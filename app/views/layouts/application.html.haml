@@ -53,6 +53,9 @@
       = yield
 
       .footer
+        %p.pull-right
+          - ::Rails.application.config.available_locales.each do |locale|
+            = link_to image_tag("flags/#{locale}.png"), "?locale=#{locale}"
         %p
           ©
           = link_to t('tip4commit'), 'http://tip4commit.com/', target: '_blank'
