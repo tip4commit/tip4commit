@@ -18,7 +18,7 @@
     = javascript_include_tag "application"
 
     :javascript
-      I18n.locale = #{I18n.locale.to_json};
+      I18n.locale = "#{I18n.locale}";
 
     = csrf_meta_tags
   %body

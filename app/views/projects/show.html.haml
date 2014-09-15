@@ -18,7 +18,7 @@
       .panel-heading
         %h4.panel-title= t('.project_sponsors')
       .panel-body
-        %iframe{ src: "//coingiving.com/project_sponsors?url=#{project_url(@project, :protocol => 'https')}", scrolling: "no", style: 'width:100%; height:500px; border:0px; padding:0;overflow:hidden'}
+        %iframe{ src: "//coingiving.com/project_sponsors?url=#{project_url(@project, :protocol => 'https')}?locale=#{I18n.locale}", scrolling: "no", style: 'width:100%; height:500px; border:0px; padding:0;overflow:hidden'}
         .hidden
           %span(data-coingiving="title")= "[tip4commit] " + @project.full_name
           %span(data-coingiving="description")= @project.description
@@ -95,7 +95,8 @@
     %h4= t('.promote_project', project: @project.full_name)
     %p
       / AddThis Button BEGIN
-      .addthis_toolbox.addthis_default_style.addthis_32x32_style(addthis:data_track_clickback="false" addthis:data_track_addressbar="false")
+      .addthis_toolbox.addthis_default_style.addthis_32x32_style(addthis:data_track_clickback="false" addthis:data_track_addressbar="false"
+      addthis:ui_language="#{I18n.locale}")
         %a.addthis_button_preferred_1
         %a.addthis_button_preferred_2
         %a.addthis_button_preferred_3
