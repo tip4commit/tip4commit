@@ -1,4 +1,4 @@
-$(document).ready ()->
+load_bootstrap_validator = ->
   $('.registration_form').bootstrapValidator
     message: I18n.t('js.errors.value.invalid')
     fields:
@@ -39,3 +39,4 @@ $(document).ready ()->
           notEmpty:
             message: I18n.t('js.errors.password_confirmation.blank')
 
+$(document).on "ready page:load", load_bootstrap_validator

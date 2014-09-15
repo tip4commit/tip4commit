@@ -6,5 +6,4 @@ init = () ->
   $('.qrcode').each () ->
     $(this).qrcode($(this).attr('data-qrcode'));
 
-$ init
-$(document).on 'page:load', init
+$(document).on 'ready page:load', init

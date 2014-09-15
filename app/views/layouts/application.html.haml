@@ -14,11 +14,7 @@
     / %meta{:property => 'og:image', :content => asset_path('logo.png')}
     / %link{:rel => 'image_src', :type => 'image/png', :href => asset_path('logo.png')}
 
-    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "application", "data-turbolinks-track" => true
-
-    :javascript
-      I18n.locale = #{I18n.locale.to_json};
+    = stylesheet_link_tag    "application", media: "all"
 
     = csrf_meta_tags
   %body
@@ -62,3 +58,8 @@
           2013-#{Date.today.year}.
           = raw t('footer.text', github_link: link_to(t('footer.github_link'), 'https://github.com/tip4commit/tip4commit', target: '_blank'), support_link: link_to(t('footer.support_link'), 'http://tip4commit.com/projects/307'))
           = link_to t('footer.follow_link'), 'https://twitter.com/tip4commit', target: '_blank'
+
+    = javascript_include_tag "application"
+
+    :javascript
+      I18n.locale = #{I18n.locale.to_json};
