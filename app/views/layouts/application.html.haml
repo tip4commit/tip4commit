@@ -61,5 +61,5 @@
 
     = javascript_include_tag "application"
 
-  %script{"data-turbolinks-track" => "true"}
-    I18n.locale = #{raw I18n.locale.to_s.to_json};
+  %script{"type" => "text/javascript", "data-turbolinks-track" => "true"}
+    I18n.locale = #{raw I18n.locale.to_json};
