@@ -35,9 +35,9 @@
               \/
               = link_to btc_human(current_user.balance), current_user
               \/
-              = link_to t('sign_out'), destroy_user_session_path, method: :delete
+              = link_to t('links.sign_out'), destroy_user_session_path, method: :delete
             - else
-              = link_to t('sign_in'), new_user_session_path
+              = link_to t('links.sign_in'), new_user_session_path
 
         %h3.text-muted.code-pro= t('tip4commit')
         = render 'common/menu'

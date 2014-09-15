@@ -33,6 +33,8 @@ gem 'demoji'
 gem "http_accept_language"
 gem 'rails-i18n'
 gem "i18n-js"
+gem 'kaminari-i18n'
+gem 'devise-i18n'
 
 group :development do
   gem 'capistrano',         '~> 3.0.1'

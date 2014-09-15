@@ -127,6 +127,7 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    devise-i18n (0.11.0)
     diff-lcs (1.2.5)
     dusen (0.4.10)
       activerecord
@@ -173,6 +174,9 @@ GEM
     kaminari (0.15.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    kaminari-i18n (0.2.0)
+      kaminari
+      rails
     less (2.4.0)
       commonjs (~> 0.2.7)
     less-rails (2.4.2)
@@ -326,6 +330,7 @@ DEPENDENCIES
   debugger (~> 1.6.5)
   demoji
   devise (~> 3.2.2)
+  devise-i18n
   dusen
   factory_girl_rails (~> 4.3.0)
   haml-rails (~> 0.5.3)
@@ -335,6 +340,7 @@ DEPENDENCIES
   jquery-rails (~> 3.0.4)
   jquery-turbolinks
   kaminari (~> 0.15.0)
+  kaminari-i18n
   less-rails (~> 2.4.2)
   mysql2
   octokit (~> 2.7.0)
