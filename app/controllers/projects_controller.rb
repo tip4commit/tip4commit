@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   before_filter :load_project, only: [:show, :edit, :update, :decide_tip_amounts]
 
   def index
-    @projects = Project.order(projects_order).page(params[:page]).per(1)
+    @projects = Project.order(projects_order).page(params[:page]).per(30)
   end
 
   def search
