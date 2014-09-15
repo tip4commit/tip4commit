@@ -8,7 +8,7 @@ Given(/^I'm logged in as "(.*?)"$/) do |arg1|
     },
   }.to_ostruct
   visit root_path
-  click_on "Sign in"
+  first(:link, "Sign in").click
   click_on "Sign in with Github"
   page.should have_content("Successfully authenticated")
 end
