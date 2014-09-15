@@ -51,7 +51,7 @@
       .footer
         %p.pull-right
           - ::Rails.application.config.available_locales.each do |locale|
-            = link_to image_tag("flags/#{locale}.png"), "?locale=#{locale}"
+            = link_to image_tag("flags/#{locale}.png"), "?locale=#{locale}", data: {no_turbolink: true}
         %p
           ©
           = link_to t('tip4commit'), 'http://tip4commit.com/', target: '_blank'
@@ -61,5 +61,5 @@
 
     = javascript_include_tag "application"
 
-    %script{"data-turbolinks-track" => "true"}
-      I18n.locale = #{raw I18n.locale.to_json};
+    :javascript
+      I18n.locale = #{I18n.locale.to_json};
