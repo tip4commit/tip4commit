@@ -22,7 +22,12 @@
         - @projects.each do |project|
           %tr
             %td
-              %strong= link_to project.full_name, pretty_project_path(project)
+              %strong
+                - if project.source_full_name.blank?
+                  %span{:class => 'label label-default'}= project.language
+                - else
+                  %span{:class => 'label label-default'}= glyph(:'code-fork') + ' Forked'
+                = link_to project.full_name, pretty_project_path(project)
               - if !project.source_full_name.blank?
                 %br
                 %nobr
