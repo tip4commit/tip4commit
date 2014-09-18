@@ -112,7 +112,9 @@ class Tip < ActiveRecord::Base
   end
 
   def notify_user
-    if amount and amount > 0 and user.bitcoin_address.blank? and !user.unsubscribed
+    if amount && amount > 0 && user.bitcoin_address.blank? &&
+        !user.unsubscribed && !project.disable_notifications &&
+        user.balance > 0.005
       if user.notified_at.nil? or user.notified_at < 30.days.ago
         begin
           UserMailer.new_tip(user, self).deliver

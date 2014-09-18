@@ -78,6 +78,7 @@ en:
       title: "Contribute to %{project}"
       edit_project: Change project settings
       decide_tip_amounts: Decide tip amounts
+      disabled_notifications: "Project maintainers have decided not to notify new contributors about tips and they probably don't like this way of funding."
       project_sponsors: Project Sponsors
       fee: "%{percentage} of deposited funds will be used to tip for new commits."
       balance: Balance
@@ -115,6 +116,7 @@ en:
       tipping_policies: Tipping policies
       hold_tips: "Do not send the tips immediatly. Give collaborators the ability to modify the tips before they're sent"
       save: Save the project settings
+      disable_notifications: Don't notify new contributors
     decide_tip_amounts:
       commit: Commit
       author: Author

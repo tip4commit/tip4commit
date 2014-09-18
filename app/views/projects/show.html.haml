@@ -3,6 +3,9 @@
 - content_for :description do
   = @project.description
 
+- if @project.disable_notifications
+  .alert.alert-danger= t('.disabled_notifications')
+
 %h1
   = @project.full_name
   %small= link_to glyph(:github), @project.github_url, target: '_blank'

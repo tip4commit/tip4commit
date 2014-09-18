@@ -78,6 +78,7 @@ fr:
       title: "Contribuer à %{project}"
       edit_project: Changer les paramètres du projet
       decide_tip_amounts: Choisir un montant de pourboire
+      disabled_notifications: "Project maintainers have decided not to notify new contributors about tips and they probably don't like this way of funding."
       project_sponsors: Sponsors du projet
       fee: "%{percentage} des fonds déposés seront utilisés pour récompenser les nouvelles contributions."
       balance: Fonds
@@ -115,6 +116,7 @@ fr:
       tipping_policies: Politique des pourboires
       hold_tips: "N'envoyez pas les bourboires tout de suite. Laissez à vos collaborateurs la possibilité de modifier les pourboires avant qu'ils ne soient envoyés"
       save: Enregistrer les paramètres du projet
+      disable_notifications: Don't notify new contributors
     decide_tip_amounts:
       commit: Contribution
       author: Auteur
