@@ -1,0 +1,214 @@
+ru:
+  tip4commit: Tip4Commit
+  meta:
+    title: Помощь проектам с открытым исходным кодом
+    description: Пожертвования в биткойнах проектам с открытым исходным кодом или создание коммита и получение чаевых за него.
+  menu:
+    home: Главная
+    projects: Проекты
+  footer:
+    text: "Исходный код доступен на %{github_link} и также вы можете %{support_link} для развития."
+    github_link: GitHub
+    support_link: поддержка
+    follow_link: Следуй за @tip4commit
+  links:
+    sign_in: Войти
+    sign_out: Выйти
+  errors:
+    project_not_found: Проект не найден.
+    access_denied: Доступ запрещен
+    can_assign_more_tips: "Нельзя использовать более чем 100% свободных средств."
+    wrong_bitcoin_address: Ошибка обновления биткоин адреса
+    user_not_found: Пользователь не найден
+    access_denied: Вы не авторизованы для выполнения данного действия!
+  notices:
+    project_updated: Настройки проекта обновлены
+    tips_decided: Сумма для чаевых определена
+    user_updated: Ваш профиль обновлен!
+    user_unsubscribed: "Вы отписались! Приносим извинения за предоставленные неудобства. Однако, вы все равно можете оставить нам свой Биткоин адрес, чтобы получать вознагрождения"
+  tip_amounts:
+    undecided: "Не определено"
+    free: "Free: 0%"
+    tiny: "Tiny: 0.1%"
+    small: "Small: 0.5%"
+    normal: "Normal: 1%"
+    big: "Big: 2%"
+    huge: "Huge: 5%"
+  js:
+    errors:
+      value:
+        invalid: Неверное значение
+      email:
+        invalid: Ошибка в Email адресе
+        blank: Email не может быть пустым
+      password:
+        blank: Пароль не может быть пустым
+        invalid: Пароль и его подтверждение не совпадают
+      password_confirmation:
+        blank: Подтверждение пароля не может быть пустым
+        invalid: Пароль и его подтверждение не совпадают
+  home:
+    index:
+      see_projects: Проекты
+      how_does_it_work:
+        title: Как это работает?
+        text: Люди жертвуют биткоин монеты на проекты. Когда кто-либо принимает коммит в проекте своего репозитория, мы автоматически начисляем чаевые автору.
+        button: Узнать о Биткоин
+      donate:
+        title: Пожертвования
+        text: Найдите проект, который вам по душе и перечислите биткоин монеты на него. Ваши пожертвования вместе с пожертвованиями других автоматически будут зачисляться в качестве чаевых за новые коммиты.
+        button: Найти или Добавить проект
+      contribute:
+        title: Сопровождение
+        text: Идите и почините что-либо! Если ваш коммит будет принят контрибьютором проекта, вам будут начислены чаевые!
+        sign_in_text: "Просто проверьте ваш email или %{sign_in_link}."
+        button: Проекты
+  projects:
+    index:
+      find_project:
+        placeholder: Введите GitHub адрес вашего проекта для добавления или ключевое слово для поиска...
+        button: Найти или добавить проект
+      repository: Репозитроий
+      description: Описание
+      watchers: Наблюдателей
+      balance: Баланс
+      forked_from: forked from
+      support: Поддержка
+    show:
+      title: "Сопровождать: %{project}"
+      edit_project: Изменить настройки проекта
+      decide_tip_amounts: Установить сумму чаевых
+      disabled_notifications: "Контрибьюторы проекта решили не уведомлять новых участников о чаевых и вероятно им не нравиться такой способ финансирования."
+      project_sponsors: Спонсоры Проекта
+      fee: "%{percentage} средств будет использоваться в качестве чаевых за новый коммит."
+      balance: Баланс
+      deposits: депозиты
+      custom_tip_size: (каждый новый коммит получает процент от доступного остатка)
+      default_tip_size: "(каждый новый коммит получает %{percentage} от доступного остатка)"
+      unconfirmed_amount: "(%{amount} не подтверждено)"
+      tipping_policies: Чаевые
+      updated_by_user: "(Последние изменения %{name} на %{date})"
+      updated_by_unknown: "(Последния изменения на %{date})"
+      tips_paid: Оплаченные Чаевые
+      unclaimed_amount: "(%{amount} от суммы являются невостребованными, и будут возвращены проекту через месяц.)"
+      last_tips: Недавние Чаевые
+      see_all: смотреть все
+      received: "получено %{amount}"
+      will_receive: получат чаевые
+      for_commit: за коммит
+      when_decided: когда сумма задана
+      next_tip: Следующие чаевые
+      contribute_and_earn: Сопровождение и Заработок
+      contribute_and_earn_description: "Пожертвовать биткойны этому проекту или %{make_commits_link} и получить чаевые. Если ваш коммит будет принят в %{branch} контрибьютором проекта и есть биткойны на балансе проекта, то вы получите чаевые!"
+      contribute_and_earn_branch: "в <strong>%{branch}</strong> ветку"
+      make_commits_link: сделать коммит
+      tell_us_bitcoin_address: "Просто %{tell_us_link} ваш биткоин адрес."
+      tell_us_link: укажите
+      sign_in: "Просто проверьте ваш email или %{sign_in_link}."
+      promote_project: Содействовать %{project}
+      embedding: Внедрять
+      image_url: "URL изображения:"
+      shield_title: чаевые за следующий коммит
+    edit:
+      project_settings: "%{project} настройки проекта"
+      branch: Ветка
+      default_branch: Ветка по умолчанию
+      tipping_policies: Чаевые
+      hold_tips: "Не отправляйте чаевые сразу. Предоставьте коллабораторам возможность изменить чаевые перед тем как они будут отправлены"
+      save: Сохранить настройки проекта
+      disable_notifications: Не оповещать новых контрибьюторов
+    decide_tip_amounts:
+      commit: Коммит
+      author: Автор
+      message: Сообщение
+      tip: Чаевые (зависят от баланса проекта)
+      submit: Отправить выбранную сумму чаевых
+  tips:
+    index:
+      tips: Чаевые
+      project_tips: '%{project} чаевые'
+      user_tips: "%{user} чаевые"
+      created_at: Создано
+      commiter: Коммитер
+      project: Проект
+      commit: Коммит
+      amount: Сумма
+      refunded: Возвращено на депозит проекта
+      undecided: Сумма чаевых пока не может быть определена
+      no_bitcoin_address: Адрес вывода не указан
+      below_threshold: "Баланс пользователя ниже порога вывода"
+      waiting: Ожидает вывода
+      error: (ошибка при отправке)
+  deposits:
+    index:
+      project_deposits: '%{project} депозиты'
+      deposits: Депозиты
+      created_at: Создано
+      project: Проект
+      amount: Сумма
+      transaction: Транзакция
+      confirmed: Подтверждена
+      confirmed_yes: 'Да'
+      confirmed_no: 'Нет'
+  users:
+    index:
+      title: Топ Контрибьюторов
+      name: Имя
+      commits_count: Чаевых за коммиты
+      withdrawn: Выведено
+    show:
+      balance: Баланс
+      threshold: "Вы получите свои деньги, когда ваш баланс достигнет %{threshold}"
+      see_all: смотреть все
+      received: "%{time} получено %{amount} за коммит %{commit} в %{project}"
+      bitcoin_address_placeholder: Ваш биткоин адрес
+      notify: Сообщать мне о новых чаевых (не больше чем одно email в месяц)
+      submit_user: Обновить информацию пользователя
+      change_password: Смена пароля
+      submit_password: Сменить пароль
+  withdrawals:
+    index:
+      title: Последние Выводы
+      created_at: Создано
+      transaction: Транзакция
+      result: Результат
+      error: Ошибка
+      success: Успешно
+  devise:
+    sessions:
+      new:
+        title: Вход
+        remember_me: Запомнить меня
+        submit: Войти
+    registrations:
+      new:
+        title: Регистрация
+        submit: Войти
+    passwords:
+      new:
+        title: Забыли ваш пароль?
+        submit: Сбросить пароль
+      edit:
+        title: Смена пароля
+        submit: Сменить пароль
+    confirmations:
+      new:
+        title: Выслать еще раз письмо с подтверждением
+        submit: Выслать
+    links:
+      sign_in: Вход
+      sign_up: Регистрация
+      recover: Забыли ваш пароль?
+      confirm: Не получили письмо с подтверждением?
+      sign_in_with: "Войти с %{provider}"
+    errors:
+      primary_email: ваш email адрес подтвержден.
+      onmiauth_info: не удалось получить информацию.
+  activerecord:
+    attributes:
+      user:
+        email: E-mail
+        bitcoin_address: Биткоин адрес
+        password: Пароль
+        password_confirmation: Пароль еще раз
+        display_name: Имя
