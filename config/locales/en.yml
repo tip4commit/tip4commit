@@ -13,6 +13,7 @@ en:
     follow_link: Follow @tip4commit
   links:
     sign_in: Sign in
+    sign_in_imp: sign in
     sign_out: Sign Out
   errors:
     project_not_found: Project not found.
