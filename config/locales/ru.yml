@@ -29,12 +29,12 @@ ru:
     user_unsubscribed: "Вы отписались! Приносим извинения за предоставленные неудобства. Однако, вы все равно можете оставить нам свой Биткоин адрес, чтобы получать вознагрождения"
   tip_amounts:
     undecided: "Не определено"
-    free: "Free: 0%"
-    tiny: "Tiny: 0.1%"
-    small: "Small: 0.5%"
-    normal: "Normal: 1%"
-    big: "Big: 2%"
-    huge: "Huge: 5%"
+    free: "Нет: 0%"
+    tiny: "Крошечные: 0.1%"
+    small: "Маленькие: 0.5%"
+    normal: "Обычные: 1%"
+    big: "Большие: 2%"
+    huge: "Огромные: 5%"
   js:
     errors:
       value:
@@ -95,9 +95,9 @@ ru:
       last_tips: Недавние чаевые
       see_all: смотреть все
       received: "получено %{amount}"
-      will_receive: получат чаевые
+      will_receive: получит чаевые
       for_commit: за коммит
-      when_decided: когда сумма задана
+      when_decided: когда сумма будет определена
       next_tip: Следующие чаевые
       contribute_and_earn: Помогайте и зарабатывайте
       contribute_and_earn_description: "Жертвуйте биткойны этому проекту или %{make_commits_link} и получайте чаевые за них. Если ваш коммит будет принят %{branch} владельцами проекта, а баланс этого проекта положительный, то вы получите чаевые!"
@@ -203,7 +203,7 @@ ru:
       confirm: Не получили письмо с подтверждением?
       sign_in_with: "Войти с %{provider}"
     errors:
-      primary_email: ваш email адрес подтвержден.
+      primary_email: ваш email адрес должен быть подтвержден.
       onmiauth_info: не удалось получить информацию.
   activerecord:
     attributes:
