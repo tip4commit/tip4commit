@@ -69,7 +69,7 @@ ru:
       find_project:
         placeholder: Введите GitHub адрес вашего проекта чтобы добавить его или ключевое слово для поиска...
         button: Найти или добавить проект
-      repository: Репозитроий
+      repository: Репозиторий
       description: Описание
       watchers: Наблюдателей
       balance: Баланс
