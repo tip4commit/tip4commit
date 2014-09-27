@@ -74,7 +74,7 @@ en:
       watchers: Watchers
       balance: Balance
       forked_from: forked from
-      support: Support
+      support: Support project
     show:
       title: "Contribute to %{project}"
       edit_project: Change project settings
