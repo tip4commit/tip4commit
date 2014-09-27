@@ -33,7 +33,7 @@
             %td= project.description
             %td= project.watchers_count
             %td= btc_human project.available_amount_cache
-            %td= link_to t('.support'), pretty_project_path(project), class: 'btn btn-success'
+            %td= link_to t('.support'), pretty_project_path(project), class: 'btn btn-xs btn-success'
     = paginate @projects
   - else
     .alert.alert-warning{role: 'alert'}= I18n.t('errors.project_not_found')
