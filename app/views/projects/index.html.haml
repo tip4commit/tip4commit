@@ -3,11 +3,12 @@
   = form_tag search_projects_path, role: 'form', method: :get do |f|
     .form-group
       .row
-        .col-lg-10
-          = text_field_tag :query, '', class: 'form-control', placeholder: t('.find_project.placeholder'), :value => params[:query]
-          = hidden_field_tag :order, params[:order] || 'balance'
-        .col-lg-2
-          = button_tag t('.find_project.button'), class: "btn form-control btn-default", name: nil
+        .col-lg-12
+          .input-group
+            = text_field_tag :query, '', class: 'form-control', placeholder: t('.find_project.placeholder'), :value => params[:query]
+            = hidden_field_tag :order, params[:order] || 'balance'
+            %span.input-group-btn
+              = button_tag t('.find_project.button'), class: "btn btn-default", name: nil
 %p
   - if @projects.count > 0
     %table.table.table-striped
