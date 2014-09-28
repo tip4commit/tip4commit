@@ -106,7 +106,7 @@ ru:
       tell_us_bitcoin_address: "Просто %{tell_us_link} ваш биткоин адрес."
       tell_us_link: укажите
       sign_in: "Просто проверьте ваш email или %{sign_in_link}."
-      promote_project: Продвигайте %{project}
+      promote_project: расскажите о %{project}
       embedding: Код для вставки
       image_url: "URL изображения:"
       shield_title: чаевые за следующий коммит
