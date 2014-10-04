@@ -13,8 +13,8 @@ en:
     follow_link: Follow @tip4commit
   links:
     sign_in: Sign in
-    sign_in_imp: sign in
-    sign_out: Sign Out
+    sign_in_imp: Sign in
+    sign_out: Sign out
   errors:
     project_not_found: Project not found.
     access_denied: Access denied
@@ -80,7 +80,7 @@ en:
       edit_project: Change project settings
       decide_tip_amounts: Decide tip amounts
       disabled_notifications: "Project maintainers have decided not to notify new contributors about tips and they probably don't like this way of funding."
-      project_sponsors: Project Sponsors
+      project_sponsors: Project sponsors
       fee: "%{percentage} of deposited funds will be used to tip for new commits."
       balance: Balance
       deposits: deposits
@@ -115,7 +115,7 @@ en:
       branch: Branch
       default_branch: Default branch
       tipping_policies: Tipping policies
-      hold_tips: "Do not send the tips immediatly. Give collaborators the ability to modify the tips before they're sent"
+      hold_tips: "Do not send the tips immediately. Give collaborators the ability to modify the tips before they're sent"
       save: Save the project settings
       disable_notifications: Don't notify new contributors
     decide_tip_amounts:
