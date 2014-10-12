@@ -1,0 +1,215 @@
+en:
+  tip4commit: Tip4Commit
+  meta:
+    title: Wspieraj Open Source
+    description: Podaruj Bitcoiny na projekty Open Source lub współpracuj tworząc nowe "commits" i otrzymuj napiwki.
+  menu:
+    home: Strona Główna
+    projects: Wspierane Projekty
+  footer:
+    text: "Kod żródłowy dostępny jest na %{github_link} możesz także %{support_link} jego rozwój."
+    github_link: GitHub
+    support_link: wsparcie
+    follow_link: Obserwuj @tip4commit
+  links:
+    sign_in: Zaloguj się
+    sign_in_imp: zaloguj się
+    sign_out: Wyloguj się
+  errors:
+    project_not_found: Nie znaleziono projektu.
+    access_denied: Odmowa dostępu
+    can_assign_more_tips: "Nie możesz przydzielić więcej niż 100% dostępnych środków."
+    wrong_bitcoin_address: Błąd w aktualizowaniu adresu bitcoin
+    user_not_found: Nie znaleziono użytkownika
+    access_denied: Nie masz uprawnień do wykonania tej czynności!
+  notices:
+    project_updated: Ustawienia prjektu zostały zaktualizowane
+    tips_decided: Rozmiary napiwków zostały zdefiniowane
+    user_updated: Informacje zostały zapisane!
+    user_unsubscribed: "Zrezygnowałeś z subskrypcji! Przepraszamy za wszelkie niedogodności. Nadal możesz zostawić swój adres bitcoin i otrzymywać napiwki."
+  tip_amounts:
+    undecided: "Nieokreślony"
+    free: "Darmowy: 0%"
+    tiny: "Bardzo mały: 0.1%"
+    small: "Mały: 0.5%"
+    normal: "Średni: 1%"
+    big: "Duży: 2%"
+    huge: "Bardzo duży: 5%"
+  js:
+    errors:
+      value:
+        invalid: Wartość jest niepoprawna
+      email:
+        invalid: Błędny adres E-mail
+        blank: E-mail jest wymagany i nie może być pusty
+      password:
+        blank: Hasło jest wymagane i nie może być puste
+        invalid: Hasło i jego potwierdzenie nie są takie same
+      password_confirmation:
+        blank: Potwierdzenie hasła jest wymagane i nie może być puste
+        invalid: Hasło i jego potwierdzenie nie są takie same
+  home:
+    index:
+      see_projects: Zobacz projekty
+      how_does_it_work:
+        title: Jak to działa?
+        text: Ludzie przesyłają bitcoiny. Kiedy kogoś "commit" zostanie zaakceptowany do repozytorium projektu, automatycznie płacimy autorowi.
+        button: Dowiedz się więcej o Bitcoin
+      donate:
+        title: Podaruj
+        text: Znajdź projekt, który ci się podoba i prześlij na niego bitcoiny. Twoje bitcoiny będzią zsumowana z innymi aby dać napiwki za nowe "commits".
+        button: Znajdż lub dodaj projekt
+      contribute:
+        title: Współpracuj
+        text: Idź i coś napraw! Jeśli twój commit zostanie zaakceptowany przez nadzorcę projektu, dostaniesz napiwek!
+        sign_in_text: "Wystarczy sprawdzić e-mail lub %{sign_in_link}."
+        button: Wspierane projekty
+  projects:
+    index:
+      find_project:
+        placeholder: Enter GitHub project URL to add a project or any keyword to find it...
+        button: Find or add project
+      repository: Repozytorium
+      description: Opis
+      watchers: Obserwujący
+      balance: Saldo
+      forked_from: "zforkowany" z
+      support: Pomoc
+    show:
+      title: "Współpracuj z %{project}"
+      edit_project: Zmień ustawienia projektu
+      decide_tip_amounts: Ustal rozmiary napiwków
+      disabled_notifications: "Nadzorcy projektów zdecydowali nie powiadamiac nowych współpracowników o napiwkach i prawdopodobnie nie lubią tego typu finansowania."
+      project_sponsors: Sponsorzy projektu
+      fee: "%{percentage} of deposited funds will be used to tip for new commits."
+      balance: Balance
+      deposits: deposits
+      custom_tip_size: (each new commit receives a percentage of available balance)
+      default_tip_size: "(each new commit receives %{percentage} of available balance)"
+      unconfirmed_amount: "(%{amount} unconfirmed)"
+      tipping_policies: Tipping policies
+      updated_by_user: "(Last updated by %{name} on %{date})"
+      updated_by_unknown: "(Last updated on %{date})"
+      tips_paid: Tips Paid
+      unclaimed_amount: "(%{amount} of this is unclaimed, and will be refunded to the project after being unclaimed for 1 month.)"
+      last_tips: Last Tips
+      see_all: see all
+      received: "received %{amount}"
+      will_receive: will receive a tip
+      for_commit: for commit
+      when_decided: when its amount is decided
+      next_tip: Next Tip
+      contribute_and_earn: Contribute and Earn
+      contribute_and_earn_description: "Donate bitcoins to this project or %{make_commits_link} and get tips for it. If your commit is accepted %{branch} by a project maintainer and there are bitcoins on its balance, you will get a tip!"
+      contribute_and_earn_branch: "to <strong>%{branch}</strong> branch"
+      make_commits_link: make commits
+      tell_us_bitcoin_address: "Just %{tell_us_link} your bitcoin address."
+      tell_us_link: tell us
+      sign_in: "Just check your email or %{sign_in_link}."
+      promote_project: Promote %{project}
+      embedding: Embedding
+      image_url: "Image URL:"
+      shield_title: tip for next commit
+    edit:
+      project_settings: "%{project} project settings"
+      branch: Branch
+      default_branch: Default branch
+      tipping_policies: Tipping policies
+      hold_tips: "Do not send the tips immediatly. Give collaborators the ability to modify the tips before they're sent"
+      save: Save the project settings
+      disable_notifications: Don't notify new contributors
+    decide_tip_amounts:
+      commit: Commit
+      author: Author
+      message: Message
+      tip: Tip (relative to the project balance)
+      submit: Send the selected tip amounts
+  tips:
+    index:
+      tips: Tips
+      project_tips: '%{project} tips'
+      user_tips: "%{user} tips"
+      created_at: Created At
+      commiter: Commiter
+      project: Project
+      commit: Commit
+      amount: Amount
+      refunded: Refunded to project's deposit
+      undecided: The amount of the tip has not been decided yet
+      no_bitcoin_address: User didn't specify withdrawal address
+      below_threshold: "User's balance is below withdrawal threshold"
+      waiting: Waiting for withdrawal
+      error: (error sending transaction)
+  deposits:
+    index:
+      project_deposits: '%{project} deposits'
+      deposits: Deposits
+      created_at: Created At
+      project: Project
+      amount: Amount
+      transaction: Transaction
+      confirmed: Confirmed
+      confirmed_yes: 'Yes'
+      confirmed_no: 'No'
+  users:
+    index:
+      title: Top Contributors
+      name: Name
+      commits_count: Commits tipped
+      withdrawn: Withdrawn
+    show:
+      balance: Balance
+      threshold: "You will get your money when your balance hits the threshold of %{threshold}"
+      see_all: see all
+      received: "%{time} received %{amount} for commit %{commit} in %{project}"
+      bitcoin_address_placeholder: Your bitcoin address
+      notify: Notify me about new tips (no more than one email per month)
+      submit_user: Update user info
+      change_password: Change your password
+      submit_password: Change my password
+  withdrawals:
+    index:
+      title: Last Withdrawals
+      created_at: Created At
+      transaction: Transaction
+      result: Result
+      error: Error
+      success: Success
+  devise:
+    sessions:
+      new:
+        title: Sign in
+        remember_me: Remember me
+        submit: Sign in
+    registrations:
+      new:
+        title: Sign up
+        submit: Sign up
+    passwords:
+      new:
+        title: Forgot your password?
+        submit: Send me reset password instructions
+      edit:
+        title: Change your password
+        submit: Change my password
+    confirmations:
+      new:
+        title: Resend confirmation instructions
+        submit: Resend confirmation instructions
+    links:
+      sign_in: Sign in
+      sign_up: Sign up
+      recover: Forgot your password?
+      confirm: Didn't receive confirmation instructions?
+      sign_in_with: "Sign in with %{provider}"
+    errors:
+      primary_email: your primary email address should be verified.
+      onmiauth_info: we were unable to fetch your information.
+  activerecord:
+    attributes:
+      user:
+        email: E-mail
+        bitcoin_address: Bitcoin address
+        password: Password
+        password_confirmation: Password confirmation
+        display_name: Display name
