@@ -6,7 +6,9 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
-CONFIG ||= YAML::load(File.open("config/config.yml"))
+# load config.yaml preprocessed
+CONFIG ||= YAML::load(ERB.new(File.read("config/config.yml")).result)
+
 
 module T4c
   class Application < Rails::Application
