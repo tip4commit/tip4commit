@@ -1,0 +1,215 @@
+en:
+  tip4commit: Tip4Commit
+  meta:
+    title: Doprinosite otvorenom izvoru
+    description: Donirajte bitcoine u otvoreni izvor projekata ili napravite cinove i dobite napojnice.
+  menu:
+    home: Pocetna stranica
+    projects: Podrzavani Projekti
+  footer:
+    text: "Izvorni kod dostupan na %{github_link} i mozete takoder %{support_link} razvoj."
+    github_link: GitHub
+    support_link: podrzi
+    follow_link: Follow @tip4commit
+  links:
+    sign_in: Prijava
+    sign_in_imp: prijava
+    sign_out: Odjava
+  errors:
+    project_not_found: Projekt nije nadjen.
+    access_denied: Pristup odbijen
+    can_assign_more_tips: "Ne mozete dodijeliti vise od 100% dostupnih sredstva." 
+    wrong_bitcoin_address: Greska u updejtanju bitcoin adrese
+    user_not_found: Korisnik nije naden
+    access_denied: Niste ovlasteni da napravite ovu akciju!
+  notices:
+    project_updated: Postavke projekta su primijenjena
+    tips_decided: Broj napojnica je bio definiran
+    user_updated: Vasa informacija je sacuvana!
+    user_unsubscribed: "Maknuli ste vasu pretplatu! Zao nam je sto smo vam smetali. Svejedno mozete ostaviti vasu bitcoin adresu da dobite svoje napojnice."
+  tip_amounts:
+    undecided: "Neodluceno"
+    free: "Besplatno: 0%"
+    tiny: "Vrlo malo: 0.1%"
+    small: "Malo: 0.5%"
+    normal: "Normalno: 1%"
+    big: "Veliko: 2%"
+    huge: "Ogromno: 5%"
+  js:
+    errors:
+      value:
+        invalid: Vrijednost nevazeca
+      email:
+        invalid: Nezaveca email adresa
+        blank: Email je potreban i ne moze biti prazno
+      password:
+        blank: Lozinka je potrebna i ne moze biti prazno
+        invalid: Lozinka i njezina potvrda nisu isti
+      password_confirmation:
+        blank: Potvrda lozinke je potrebna i ne moze biti prazno
+        invalid: Lozinka i potvrda lozinke nisu isti
+  home:
+    index:
+      see_projects: Vidjeti projekte
+      how_does_it_work:
+        title: Kako ovo radi?
+        text: Ljudi doniraju bitcoine projektima. Kada se neciji cin potvrdi u repozitorij projekta, mi automatski posaljemo napojnicu autoru.
+        button: Nauciti o Bitcoin
+      donate:
+        title: Donirati
+        text: Pronadite projekt u koji zelite posvojiti svoje bitcoine. Vase donacije ce biti akumulirane sa fundovima ostalih donatora kao napojnice za nove cinove.
+        button: Pronaci ili dodati pojekt
+      contribute:
+        title: Doprinositi
+        text: Idite i popravite nesto! Ako je vas cin odobren od odrzavatelja projekta, dobiti cete napojnicu!
+        sign_in_text: "Samo provjerite vas email ili %{sign_in_link}."
+        button: Podrzavani projekti
+  projects:
+    index:
+      find_project:
+        placeholder: Upisite GitHub URL projekta kako biste dodati projekt ili bilo koju kljucnu rijec da biste je nasli...
+        button: Nadi ili dodaj projekt
+      repository: Repozitorij
+      description: Opis
+      watchers: Gledatelji
+      balance: Ravnoteza
+      forked_from: Odvojeno od
+      support: Podrzavaj
+    show:
+      title: "Doprinosi %{project}"
+      edit_project: Promijeni postavke projekta
+      decide_tip_amounts: Odredi kolicinu napojnica
+      disabled_notifications: "Odrzavatelji projekata su odlucili da nece obavjestiti nove doprinositelje o napojnicama i najvjerovatnije ne vole ovaj nacin isplate."
+      project_sponsors: Sponzori projekta
+      fee: "%{percentage} od polozenih isplata ce se koristiti kao napojnice za nove cinove."
+      balance: Ravnoteza
+      deposits: polozenja
+      custom_tip_size: (Svaki novi cin dobiva postotak dostune ravnoteze)
+      default_tip_size: "(Svaki novi cin dobiva %{percentage} dostupne ravnoteze)"
+      unconfirmed_amount: "(%{amount} nepotvrdeno)"
+      tipping_policies: Pravila o napojnicama
+      updated_by_user: "(Zadnje updejtao %{name} na %{date})"
+      updated_by_unknown: "(Zadnje updejtano  %{date})"
+      tips_paid: Napojnice placene
+      unclaimed_amount: "(%{amount} od ovog neostvarenog, i biti ce natrag isplaceno u projekt nakon jednog mjeseca.)"
+      last_tips: Zadnje napojnice
+      see_all: Vidjeti sve
+      received: "dobiveno %{amount}"
+      will_receive: ce dobiti napojnicu
+      for_commit: za cin
+      when_decided: kada je kolicina odlucena
+      next_tip: Sljedeca Napojnica
+      contribute_and_earn: Contribute and Earn
+      contribute_and_earn_description: "Donate bitcoins to this project or %{make_commits_link} and get tips for it. If your commit is accepted %{branch} by a project maintainer and there are bitcoins on its balance, you will get a tip!"
+      contribute_and_earn_branch: "to <strong>%{branch}</strong> branch"
+      make_commits_link: make commits
+      tell_us_bitcoin_address: "Just %{tell_us_link} your bitcoin address."
+      tell_us_link: tell us
+      sign_in: "Just check your email or %{sign_in_link}."
+      promote_project: Promote %{project}
+      embedding: Embedding
+      image_url: "Image URL:"
+      shield_title: tip for next commit
+    edit:
+      project_settings: "%{project} project settings"
+      branch: Branch
+      default_branch: Default branch
+      tipping_policies: Tipping policies
+      hold_tips: "Do not send the tips immediatly. Give collaborators the ability to modify the tips before they're sent"
+      save: Save the project settings
+      disable_notifications: Don't notify new contributors
+    decide_tip_amounts:
+      commit: Commit
+      author: Author
+      message: Message
+      tip: Tip (relative to the project balance)
+      submit: Send the selected tip amounts
+  tips:
+    index:
+      tips: Tips
+      project_tips: '%{project} tips'
+      user_tips: "%{user} tips"
+      created_at: Created At
+      commiter: Commiter
+      project: Project
+      commit: Commit
+      amount: Amount
+      refunded: Refunded to project's deposit
+      undecided: The amount of the tip has not been decided yet
+      no_bitcoin_address: User didn't specify withdrawal address
+      below_threshold: "User's balance is below withdrawal threshold"
+      waiting: Waiting for withdrawal
+      error: (error sending transaction)
+  deposits:
+    index:
+      project_deposits: '%{project} deposits'
+      deposits: Deposits
+      created_at: Created At
+      project: Project
+      amount: Amount
+      transaction: Transaction
+      confirmed: Confirmed
+      confirmed_yes: 'Yes'
+      confirmed_no: 'No'
+  users:
+    index:
+      title: Top Contributors
+      name: Name
+      commits_count: Commits tipped
+      withdrawn: Withdrawn
+    show:
+      balance: Balance
+      threshold: "You will get your money when your balance hits the threshold of %{threshold}"
+      see_all: see all
+      received: "%{time} received %{amount} for commit %{commit} in %{project}"
+      bitcoin_address_placeholder: Your bitcoin address
+      notify: Notify me about new tips (no more than one email per month)
+      submit_user: Update user info
+      change_password: Change your password
+      submit_password: Change my password
+  withdrawals:
+    index:
+      title: Last Withdrawals
+      created_at: Created At
+      transaction: Transaction
+      result: Result
+      error: Error
+      success: Success
+  devise:
+    sessions:
+      new:
+        title: Sign in
+        remember_me: Remember me
+        submit: Sign in
+    registrations:
+      new:
+        title: Sign up
+        submit: Sign up
+    passwords:
+      new:
+        title: Forgot your password?
+        submit: Send me reset password instructions
+      edit:
+        title: Change your password
+        submit: Change my password
+    confirmations:
+      new:
+        title: Resend confirmation instructions
+        submit: Resend confirmation instructions
+    links:
+      sign_in: Sign in
+      sign_up: Sign up
+      recover: Forgot your password?
+      confirm: Didn't receive confirmation instructions?
+      sign_in_with: "Sign in with %{provider}"
+    errors:
+      primary_email: your primary email address should be verified.
+      onmiauth_info: we were unable to fetch your information.
+  activerecord:
+    attributes:
+      user:
+        email: E-mail
+        bitcoin_address: Bitcoin address
+        password: Password
+        password_confirmation: Password confirmation
+        display_name: Display name
