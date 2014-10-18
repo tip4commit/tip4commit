@@ -63,6 +63,7 @@ en:
         title: Doprinositi
         text: Idite i popravite nesto! Ako je vas cin odobren od odrzavatelja projekta, dobiti cete napojnicu!
         sign_in_text: "Samo provjerite vas email ili %{sign_in_link}."
+        sign_up_text: "Ako jos niste dobili pozivnicu, moze te se %{sign_up_link} sa valjanom email adresom ili GitHub-om."
         button: Podrzavani projekti
   projects:
     index:
