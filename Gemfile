@@ -42,12 +42,12 @@ group :development do
   gem 'capistrano-bundler', '>= 1.1.0'
   gem 'capistrano-rails',   '~> 1.1.0'
   gem 'sqlite3',            '~> 1.3.8'
+  gem 'debugger',           '~> 1.6.5'
 end
 
 group :development, :test do
   gem 'factory_girl_rails', '~> 4.3.0'
   gem 'rspec-rails',        '~> 3.0.0.beta'
-  gem 'debugger',           '~> 1.6.5'
 end
 
 group :test do
