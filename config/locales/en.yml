@@ -62,7 +62,8 @@ en:
       contribute:
         title: Contribute
         text: Go and fix something! If your commit is accepted by the project maintainer, you will get a tip!
-        sign_in_text: "Just check your email or %{sign_in_link}."
+        sign_in_text: "Just check your email for an invitation or %{sign_in_link}."
+        sign_up_text: "If you have not yet received an invitation, you can %{sign_up_link} with a valid email address or via GitHub."
         button: Supported projects
   projects:
     index:
