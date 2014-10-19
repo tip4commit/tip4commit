@@ -63,12 +63,13 @@ en:
         title: Współpracuj
         text: Idź i coś napraw! Jeśli twój commit zostanie zaakceptowany przez nadzorcę projektu, dostaniesz napiwek!
         sign_in_text: "Wystarczy sprawdzić e-mail lub %{sign_in_link}."
+		sign_up_text: "Jeśli nadal nie otrzymałeś zaproszenia, możesz %{sign_up_link} za pomocą adresu e-mail lub przez GitHub."
         button: Wspierane projekty
   projects:
     index:
       find_project:
         placeholder: Enter GitHub project URL to add a project or any keyword to find it...
-        button: Find or add project
+        button: Znajdź lub dodaj projekt
       repository: Repozytorium
       description: Opis
       watchers: Obserwujący
@@ -197,8 +198,8 @@ en:
         title: Resend confirmation instructions
         submit: Resend confirmation instructions
     links:
-      sign_in: Sign in
-      sign_up: Sign up
+      sign_in: Zaloguj się
+      sign_up: Zarejestruj się
       recover: Forgot your password?
       confirm: Didn't receive confirmation instructions?
       sign_in_with: "Sign in with %{provider}"
