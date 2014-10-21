@@ -1,4 +1,4 @@
-en:
+pl:
   tip4commit: Tip4Commit
   meta:
     title: Wspieraj Open Source
@@ -53,17 +53,17 @@ en:
       see_projects: Zobacz projekty
       how_does_it_work:
         title: Jak to działa?
-        text: Ludzie przesyłają bitcoiny. Kiedy kogoś "commit" zostanie zaakceptowany do repozytorium projektu, automatycznie płacimy autorowi.
+        text: 'Ludzie przesyłają bitcoiny. Kiedy kogoś "commit" zostanie zaakceptowany do repozytorium projektu, automatycznie płacimy autorowi.'
         button: Dowiedz się więcej o Bitcoin
       donate:
         title: Podaruj
-        text: Znajdź projekt, który ci się podoba i prześlij na niego bitcoiny. Twoje bitcoiny będzią zsumowana z innymi aby dać napiwki za nowe "commits".
-        button: Znajdż lub dodaj projekt
+        text: 'Znajdź projekt, który ci się podoba i prześlij na niego bitcoiny. Twoje bitcoiny będzią zsumowana z innymi aby dać napiwki za nowe "commits".'
+        button: 'Znajdż lub dodaj projekt'
       contribute:
-        title: Współpracuj
-        text: Idź i coś napraw! Jeśli twój commit zostanie zaakceptowany przez nadzorcę projektu, dostaniesz napiwek!
+        title: 'Współpracuj'
+        text: 'Idź i coś napraw! Jeśli twój commit zostanie zaakceptowany przez nadzorcę projektu, dostaniesz napiwek!'
         sign_in_text: "Wystarczy sprawdzić e-mail lub %{sign_in_link}."
-		sign_up_text: "Jeśli nadal nie otrzymałeś zaproszenia, możesz %{sign_up_link} za pomocą adresu e-mail lub przez GitHub."
+        sign_up_text: "Jeśli nadal nie otrzymałeś zaproszenia, możesz %{sign_up_link} za pomocą adresu e-mail lub przez GitHub."
         button: Wspierane projekty
   projects:
     index:
@@ -74,7 +74,7 @@ en:
       description: Opis
       watchers: Obserwujący
       balance: Saldo
-      forked_from: "zforkowany" z
+      forked_from: "zforkowany"
       support: Pomoc
     show:
       title: "Współpracuj z %{project}"
