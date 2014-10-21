@@ -159,58 +159,58 @@ hr:
       commits_count: Commits tipped
       withdrawn: Withdrawn
     show:
-      balance: Balance
-      threshold: "You will get your money when your balance hits the threshold of %{threshold}"
-      see_all: see all
-      received: "%{time} received %{amount} for commit %{commit} in %{project}"
-      bitcoin_address_placeholder: Your bitcoin address
-      notify: Notify me about new tips (no more than one email per month)
-      submit_user: Update user info
-      change_password: Change your password
-      submit_password: Change my password
+      balance: Ravnoteza
+      threshold: "Dobiti ce te vase novce kada vasa ravnoteza prijede prag od %{threshold}"
+      see_all: vidjeti sve
+      received: "%{time} primljeno %{amount} za cin %{commit} u %{project}"
+      bitcoin_address_placeholder: Vasa bitcoin adresa
+      notify: Notificirati me o novim savjetima (ne vise od jednog emaila po mjesecu)
+      submit_user: Azurirati informaciju korisnika
+      change_password: Promijeniti vasu lozinku
+      submit_password: Promijeniti moju lozinku
   withdrawals:
     index:
-      title: Last Withdrawals
-      created_at: Created At
-      transaction: Transaction
-      result: Result
-      error: Error
-      success: Success
+      title: Zadnje povlacenje
+      created_at: Stvoreno
+      transaction: Transakcije
+      result: Rezultat
+      error: Greska
+      success: Uspjesno
   devise:
     sessions:
       new:
-        title: Sign in
-        remember_me: Remember me
-        submit: Sign in
+        title: Prijava
+        remember_me: Zapamti me
+        submit: Prijava
     registrations:
       new:
-        title: Sign up
-        submit: Sign up
+        title: Prijava
+        submit: Registracija
     passwords:
       new:
-        title: Forgot your password?
-        submit: Send me reset password instructions
+        title: Zaboravili ste vasu lozinku?
+        submit: Poslati mi uputstva za resetiranje lozinke
       edit:
-        title: Change your password
-        submit: Change my password
+        title: Promijenite vasu lozinku
+        submit: Promijeniti svoju lozinku
     confirmations:
       new:
-        title: Resend confirmation instructions
-        submit: Resend confirmation instructions
+        title: Ponovno poslati uputstva za potvrdivanje
+        submit: Ponovno poslati uputstva za potvrdivanje
     links:
-      sign_in: Sign in
-      sign_up: Sign up
-      recover: Forgot your password?
-      confirm: Didn't receive confirmation instructions?
-      sign_in_with: "Sign in with %{provider}"
+      sign_in: Prijava
+      sign_up: Registracija
+      recover: Zaboravili ste vasu lozinku?
+      confirm: Niste primili uputstva za potvrdivanje?
+      sign_in_with: "Prijavi se sa %{provider}"
     errors:
-      primary_email: your primary email address should be verified.
-      onmiauth_info: we were unable to fetch your information.
+      primary_email: vasa glavna email adresa bi trebala biti potvrdena.
+      onmiauth_info: Nismo bili u stanju dohvatiti vasu informaciju.
   activerecord:
     attributes:
       user:
         email: E-mail
-        bitcoin_address: Bitcoin address
-        password: Password
-        password_confirmation: Password confirmation
-        display_name: Display name
+        bitcoin_address: Bitcoin adresa
+        password: Lozinka
+        password_confirmation: Potvrda lozinke
+        display_name: Prikazno ime
