@@ -68,7 +68,7 @@ pl:
   projects:
     index:
       find_project:
-        placeholder: Enter GitHub project URL to add a project or any keyword to find it...
+        placeholder: Wpisz URL projektu GitHub aby dodać projekt lub słowo kluczowe aby go znaleźć...
         button: Znajdź lub dodaj projekt
       repository: Repozytorium
       description: Opis
@@ -80,137 +80,137 @@ pl:
       title: "Współpracuj z %{project}"
       edit_project: Zmień ustawienia projektu
       decide_tip_amounts: Ustal rozmiary napiwków
-      disabled_notifications: "Nadzorcy projektów zdecydowali nie powiadamiac nowych współpracowników o napiwkach i prawdopodobnie nie lubią tego typu finansowania."
+      disabled_notifications: "Nadzorcy projektów zdecydowali nie powiadamiać nowych współpracowników o napiwkach i prawdopodobnie nie lubią tego typu finansowania."
       project_sponsors: Sponsorzy projektu
-      fee: "%{percentage} of deposited funds will be used to tip for new commits."
-      balance: Balance
-      deposits: deposits
-      custom_tip_size: (each new commit receives a percentage of available balance)
-      default_tip_size: "(each new commit receives %{percentage} of available balance)"
-      unconfirmed_amount: "(%{amount} unconfirmed)"
-      tipping_policies: Tipping policies
-      updated_by_user: "(Last updated by %{name} on %{date})"
-      updated_by_unknown: "(Last updated on %{date})"
-      tips_paid: Tips Paid
-      unclaimed_amount: "(%{amount} of this is unclaimed, and will be refunded to the project after being unclaimed for 1 month.)"
-      last_tips: Last Tips
-      see_all: see all
-      received: "received %{amount}"
-      will_receive: will receive a tip
-      for_commit: for commit
-      when_decided: when its amount is decided
-      next_tip: Next Tip
-      contribute_and_earn: Contribute and Earn
-      contribute_and_earn_description: "Donate bitcoins to this project or %{make_commits_link} and get tips for it. If your commit is accepted %{branch} by a project maintainer and there are bitcoins on its balance, you will get a tip!"
-      contribute_and_earn_branch: "to <strong>%{branch}</strong> branch"
-      make_commits_link: make commits
-      tell_us_bitcoin_address: "Just %{tell_us_link} your bitcoin address."
-      tell_us_link: tell us
-      sign_in: "Just check your email or %{sign_in_link}."
-      promote_project: Promote %{project}
-      embedding: Embedding
-      image_url: "Image URL:"
-      shield_title: tip for next commit
+      fee: "%{percentage} z salda zostanie użyte jako następny napiwek."
+      balance: saldo
+      deposits: wpłaty
+      custom_tip_size: (Każdy nowy "commit" dostaje część z dostępnego salda)
+      default_tip_size: "(Każdy nowy "commit" dostaje %{percentage} z dostępnego salda)"
+      unconfirmed_amount: "(%{amount} niepotwierdzone)"
+      tipping_policies: Zasady napiwków
+      updated_by_user: "(Ostatnio zaktualizowane przez %{name} w dniu %{date})"
+      updated_by_unknown: "(Ostatnia aktualizacja: %{date})"
+      tips_paid: Zapłacone napiwki
+      unclaimed_amount: "(%{amount} z tego jest niezebrane, i zostanie zwrócone do projektu po jednym miesiącu.)"
+      last_tips: Ostatnie napiwki
+      see_all: zobacz wszystko
+      received: "otrzymano %{amount}"
+      will_receive: dostanie napiwek
+      for_commit: za "commit"
+      when_decided: kiedy jego rozmiar zostanie określony
+      next_tip: Następny napiwek
+      contribute_and_earn: Pomagaj i zarabiaj
+      contribute_and_earn_description: "Wyślij bitcoiny na ten projekt lub %{make_commits_link} i otrzymaj za nie napiwki. Jeśli zostaną zaakceptowane %{branch} przez nadzorce projektu i jeśli są pieniądze na koncie projektu, otrzymasz napiwek!"
+      contribute_and_earn_branch: "do <strong>%{branch}</strong> gałęzi"
+      make_commits_link: twórz "commits"
+      tell_us_bitcoin_address: "Tylko %{tell_us_link} twój adres bitcoin."
+      tell_us_link: powiedz nam
+      sign_in: "Sprawdż e-mail lub %{sign_in_link}."
+      promote_project: Promuj %{project}
+      embedding: Umieść
+      image_url: "URL obrazka:"
+      shield_title: napiwek za następny "commit"
     edit:
-      project_settings: "%{project} project settings"
-      branch: Branch
-      default_branch: Default branch
-      tipping_policies: Tipping policies
-      hold_tips: "Do not send the tips immediatly. Give collaborators the ability to modify the tips before they're sent"
-      save: Save the project settings
-      disable_notifications: Don't notify new contributors
+      project_settings: "%{project} ustawienia projektu"
+      branch: Gałąź
+      default_branch: Domyślna gałąź
+      tipping_policies: Zasady napiwków
+      hold_tips: "Nie wysyłaj napiwków od razu. Daj współpracownikom możliwość zmiany napiwków zanim zostaną wysłane"
+      save: Zapisz ustawienia projektu
+      disable_notifications: Nie powiadamiaj nowych kontrybutorów
     decide_tip_amounts:
       commit: Commit
-      author: Author
-      message: Message
-      tip: Tip (relative to the project balance)
-      submit: Send the selected tip amounts
+      author: Autor
+      message: Wiadomość
+      tip: Napiwek (zależy od salda projektu)
+      submit: Wyślij wybrane ilości napiwków
   tips:
     index:
-      tips: Tips
-      project_tips: '%{project} tips'
-      user_tips: "%{user} tips"
-      created_at: Created At
+      tips: Napiwki
+      project_tips: '%{project} napiwki'
+      user_tips: "%{user} napiwki"
+      created_at: Utworzony Na
       commiter: Commiter
-      project: Project
+      project: Projekt
       commit: Commit
-      amount: Amount
-      refunded: Refunded to project's deposit
-      undecided: The amount of the tip has not been decided yet
-      no_bitcoin_address: User didn't specify withdrawal address
-      below_threshold: "User's balance is below withdrawal threshold"
-      waiting: Waiting for withdrawal
-      error: (error sending transaction)
+      amount: Ilość
+      refunded: Zwrócone do projektu
+      undecided: Rozmiar napiwku nie został jeszcze określony
+      no_bitcoin_address: Użytkownik nie sprecyzował adresu do wypłaty
+      below_threshold: "Saldo użytkownika jest poniżej wymaganego do wypłaty"
+      waiting: Oczekiwanie na wypłate
+      error: (błąd w wysyłaniu transakcji)
   deposits:
     index:
-      project_deposits: '%{project} deposits'
-      deposits: Deposits
-      created_at: Created At
-      project: Project
-      amount: Amount
-      transaction: Transaction
-      confirmed: Confirmed
-      confirmed_yes: 'Yes'
-      confirmed_no: 'No'
+      project_deposits: '%{project} wpłaty'
+      deposits: Wpłaty
+      created_at: Utworzono Na
+      project: Projekt
+      amount: Ilość
+      transaction: Transakcja
+      confirmed: Potwierdzone
+      confirmed_yes: 'Tak'
+      confirmed_no: 'Nie'
   users:
     index:
-      title: Top Contributors
-      name: Name
-      commits_count: Commits tipped
-      withdrawn: Withdrawn
+      title: Najlepsi kontrybutorzy
+      name: Imie
+      commits_count: Opłacone "commity"
+      withdrawn: Wypłacone
     show:
-      balance: Balance
-      threshold: "You will get your money when your balance hits the threshold of %{threshold}"
-      see_all: see all
-      received: "%{time} received %{amount} for commit %{commit} in %{project}"
-      bitcoin_address_placeholder: Your bitcoin address
+      balance: Saldo
+      threshold: "Otrzymasz pieniądze kiedy twoje saldo przekroczy limit %{threshold}"
+      see_all: zobacz wszystko
+      received: "%{time} otrzymano %{amount} za commit %{commit} w %{project}"
+      bitcoin_address_placeholder: Twój adres bitcoin
       notify: Notify me about new tips (no more than one email per month)
-      submit_user: Update user info
-      change_password: Change your password
-      submit_password: Change my password
+      submit_user: Zaktualizuj dane użytkownika
+      change_password: Zmień Twoje hasło
+      submit_password: Zmień moje hasło
   withdrawals:
     index:
-      title: Last Withdrawals
-      created_at: Created At
-      transaction: Transaction
-      result: Result
-      error: Error
-      success: Success
+      title: Ostatnie wypłaty
+      created_at: Utworzono na
+      transaction: Transakcje
+      result: Wynik
+      error: Błąd
+      success: Sukces
   devise:
     sessions:
       new:
-        title: Sign in
-        remember_me: Remember me
-        submit: Sign in
+        title: Zaloguj się
+        remember_me: Zapamiętaj mnie
+        submit: Zaloguj się
     registrations:
       new:
-        title: Sign up
-        submit: Sign up
+        title: Zarejestruj się
+        submit: Zarejestruj się
     passwords:
       new:
-        title: Forgot your password?
-        submit: Send me reset password instructions
+        title: Zapomniałeś hasło?
+        submit: Wyślij mi instrukcje resetowania hasła
       edit:
-        title: Change your password
-        submit: Change my password
+        title: Zmień Twoje hasło
+        submit: Zmień moje hasło
     confirmations:
       new:
-        title: Resend confirmation instructions
-        submit: Resend confirmation instructions
+        title: Ponownie wyślij instrukcje potwierdzenia
+        submit: Ponownie wyślij instrukcje potwierdzenia
     links:
       sign_in: Zaloguj się
       sign_up: Zarejestruj się
-      recover: Forgot your password?
-      confirm: Didn't receive confirmation instructions?
-      sign_in_with: "Sign in with %{provider}"
+      recover: Zapomniałeś hasło?
+      confirm: Nie otrzymałeś instrukcji potwierdzenia?
+      sign_in_with: "Zaloguj się za pomocą %{provider}"
     errors:
-      primary_email: your primary email address should be verified.
-      onmiauth_info: we were unable to fetch your information.
+      primary_email: Twój główny e-mail musi być potwierdzony.
+      onmiauth_info: Nie byliśmy w stanie otrzymać twoich danych.
   activerecord:
     attributes:
       user:
         email: E-mail
-        bitcoin_address: Bitcoin address
-        password: Password
-        password_confirmation: Password confirmation
-        display_name: Display name
+        bitcoin_address: AAdres Bitcoin
+        password: Hasło
+        password_confirmation: Potwierdzenie hasła
+        display_name: Wyświetlana nazwa
