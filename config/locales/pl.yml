@@ -210,7 +210,7 @@ pl:
     attributes:
       user:
         email: E-mail
-        bitcoin_address: AAdres Bitcoin
+        bitcoin_address: Adres Bitcoin
         password: Hasło
         password_confirmation: Potwierdzenie hasła
         display_name: Wyświetlana nazwa
