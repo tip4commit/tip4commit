@@ -1,9 +1,14 @@
 language: ruby
+
 rvm:
   - 2.0.0
+
+bundler_args: --without development
+
 before_script:
   - cp config/config.yml.sample config/config.yml
   - cp config/database.yml.sample config/database.yml
+
 script:
   - bundle exec rake spec
   - bundle exec rake cucumber

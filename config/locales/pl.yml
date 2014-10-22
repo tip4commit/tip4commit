@@ -1,87 +1,87 @@
-en:
+pl:
   tip4commit: Tip4Commit
   meta:
-    title: Contribute to Open Source
-    description: Donate bitcoins to open source projects or make commits and get tips for it.
+    title: Wspieraj Open Source
+    description: Podaruj Bitcoiny na projekty Open Source lub współpracuj tworząc nowe "commits" i otrzymuj napiwki.
   menu:
-    home: Home
-    projects: Supported Projects
+    home: Strona Główna
+    projects: Wspierane Projekty
   footer:
-    text: "Source code is available at %{github_link} and you can also %{support_link} its development."
+    text: "Kod żródłowy dostępny jest na %{github_link} możesz także %{support_link} jego rozwój."
     github_link: GitHub
-    support_link: support
-    follow_link: Follow @tip4commit
+    support_link: wsparcie
+    follow_link: Obserwuj @tip4commit
   links:
-    sign_in: Sign in
-    sign_in_imp: sign in
-    sign_out: Sign Out
+    sign_in: Zaloguj się
+    sign_in_imp: zaloguj się
+    sign_out: Wyloguj się
   errors:
-    project_not_found: Project not found.
-    access_denied: Access denied
-    can_assign_more_tips: "You can't assign more than 100% of available funds."
-    wrong_bitcoin_address: Error updating bitcoin address
-    user_not_found: User not found
-    access_denied: You are not authorized to perform this action!
+    project_not_found: Nie znaleziono projektu.
+    access_denied: Odmowa dostępu
+    can_assign_more_tips: "Nie możesz przydzielić więcej niż 100% dostępnych środków."
+    wrong_bitcoin_address: Błąd w aktualizowaniu adresu bitcoin
+    user_not_found: Nie znaleziono użytkownika
+    access_denied: Nie masz uprawnień do wykonania tej czynności!
   notices:
-    project_updated: The project settings have been updated
-    tips_decided: The tip amounts have been defined
-    user_updated: Your information saved!
-    user_unsubscribed: "You unsubscribed! Sorry for bothering you. Although, you still can leave us your bitcoin address to get your tips."
+    project_updated: Ustawienia prjektu zostały zaktualizowane
+    tips_decided: Rozmiary napiwków zostały zdefiniowane
+    user_updated: Informacje zostały zapisane!
+    user_unsubscribed: "Zrezygnowałeś z subskrypcji! Przepraszamy za wszelkie niedogodności. Nadal możesz zostawić swój adres bitcoin i otrzymywać napiwki."
   tip_amounts:
-    undecided: "Undecided"
-    free: "Free: 0%"
-    tiny: "Tiny: 0.1%"
-    small: "Small: 0.5%"
-    normal: "Normal: 1%"
-    big: "Big: 2%"
-    huge: "Huge: 5%"
+    undecided: "Nieokreślony"
+    free: "Darmowy: 0%"
+    tiny: "Bardzo mały: 0.1%"
+    small: "Mały: 0.5%"
+    normal: "Średni: 1%"
+    big: "Duży: 2%"
+    huge: "Bardzo duży: 5%"
   js:
     errors:
       value:
-        invalid: Value is invalid
+        invalid: Wartość jest niepoprawna
       email:
-        invalid: Invalid Email Address
-        blank: The Email is required and can't be empty
+        invalid: Błędny adres E-mail
+        blank: E-mail jest wymagany i nie może być pusty
       password:
-        blank: The password is required and can't be empty
-        invalid: The password and its confirmation are not same
+        blank: Hasło jest wymagane i nie może być puste
+        invalid: Hasło i jego potwierdzenie nie są takie same
       password_confirmation:
-        blank: The password confirmation is required and can't be empty
-        invalid: The password and its confirmation are not same
+        blank: Potwierdzenie hasła jest wymagane i nie może być puste
+        invalid: Hasło i jego potwierdzenie nie są takie same
   home:
     index:
-      see_projects: See projects
+      see_projects: Zobacz projekty
       how_does_it_work:
-        title: How does it work?
-        text: People donate bitcoins to projects. When someone's commit is accepted into the project repository, we automatically tip the author.
-        button: Learn about Bitcoin
+        title: Jak to działa?
+        text: 'Ludzie przesyłają bitcoiny. Kiedy kogoś "commit" zostanie zaakceptowany do repozytorium projektu, automatycznie płacimy autorowi.'
+        button: Dowiedz się więcej o Bitcoin
       donate:
-        title: Donate
-        text: Find a project you like and deposit bitcoins into it. Your donation will be accumulated with the funds of other donators to give as tips for new commits.
-        button: Find or add a project
+        title: Podaruj
+        text: 'Znajdź projekt, który ci się podoba i prześlij na niego bitcoiny. Twoje bitcoiny będzią zsumowana z innymi aby dać napiwki za nowe "commits".'
+        button: 'Znajdż lub dodaj projekt'
       contribute:
-        title: Contribute
-        text: Go and fix something! If your commit is accepted by the project maintainer, you will get a tip!
-        sign_in_text: "Just check your email for an invitation or %{sign_in_link}."
-        sign_up_text: "If you have not yet received an invitation, you can %{sign_up_link} with a valid email address or via GitHub."
-        button: Supported projects
+        title: 'Współpracuj'
+        text: 'Idź i coś napraw! Jeśli twój commit zostanie zaakceptowany przez nadzorcę projektu, dostaniesz napiwek!'
+        sign_in_text: "Wystarczy sprawdzić e-mail lub %{sign_in_link}."
+        sign_up_text: "Jeśli nadal nie otrzymałeś zaproszenia, możesz %{sign_up_link} za pomocą adresu e-mail lub przez GitHub."
+        button: Wspierane projekty
   projects:
     index:
       find_project:
         placeholder: Enter GitHub project URL to add a project or any keyword to find it...
-        button: Find or add project
-      repository: Repository
-      description: Description
-      watchers: Watchers
-      balance: Balance
-      forked_from: forked from
-      support: Support project
+        button: Znajdź lub dodaj projekt
+      repository: Repozytorium
+      description: Opis
+      watchers: Obserwujący
+      balance: Saldo
+      forked_from: "zforkowany"
+      support: Pomoc
     show:
-      title: "Contribute to %{project}"
-      edit_project: Change project settings
-      decide_tip_amounts: Decide tip amounts
-      disabled_notifications: "Project maintainers have decided not to notify new contributors about tips and they probably don't like this way of funding."
-      project_sponsors: Project Sponsors
+      title: "Współpracuj z %{project}"
+      edit_project: Zmień ustawienia projektu
+      decide_tip_amounts: Ustal rozmiary napiwków
+      disabled_notifications: "Nadzorcy projektów zdecydowali nie powiadamiac nowych współpracowników o napiwkach i prawdopodobnie nie lubią tego typu finansowania."
+      project_sponsors: Sponsorzy projektu
       fee: "%{percentage} of deposited funds will be used to tip for new commits."
       balance: Balance
       deposits: deposits
@@ -198,8 +198,8 @@ en:
         title: Resend confirmation instructions
         submit: Resend confirmation instructions
     links:
-      sign_in: Sign in
-      sign_up: Sign up
+      sign_in: Zaloguj się
+      sign_up: Zarejestruj się
       recover: Forgot your password?
       confirm: Didn't receive confirmation instructions?
       sign_in_with: "Sign in with %{provider}"
