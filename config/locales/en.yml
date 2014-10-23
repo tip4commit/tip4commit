@@ -12,9 +12,10 @@ en:
     support_link: support
     follow_link: Follow @tip4commit
   links:
+    sign_up: Sign up
     sign_in: Sign in
     sign_in_imp: sign in
-    sign_out: Sign Out
+    sign_out: Sign out
   errors:
     project_not_found: Project not found.
     access_denied: Access denied
@@ -63,7 +64,8 @@ en:
         title: Contribute
         text: Go and fix something! If your commit is accepted by the project maintainer, you will get a tip!
         sign_in_text: "Just check your email for an invitation or %{sign_in_link}."
-        sign_up_text: "If you have not yet received an invitation, you can %{sign_up_link} with a valid email address or via GitHub."
+        sign_up_text: "If you have not yet received an invitation, you can %{sign_up_link} with a valid email address or via "
+        or: or
         button: Supported projects
   projects:
     index:

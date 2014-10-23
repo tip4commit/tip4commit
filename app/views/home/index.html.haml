@@ -27,6 +27,7 @@
         = raw t('.contribute.sign_in_text', sign_in_link: link_to(t('links.sign_in'), new_user_session_path))
         - if Devise.mappings[:user].registerable?
           = raw t('.contribute.sign_up_text', sign_up_link: link_to(t('links.sign_up'), new_user_registration_path))
+          = "#{@providers}."
     %p
       %a.btn.btn-primary{href: projects_path}
         = t('.contribute.button')
