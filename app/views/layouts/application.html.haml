@@ -41,7 +41,12 @@
               \/
               = link_to t('links.sign_out'), destroy_user_session_path, method: :delete
             - else
-              = link_to t('links.sign_in'), new_user_session_path
+              - if controller_name != 'registrations'
+                = link_to t('links.sign_up'), new_user_registration_path
+              - unless %w{sessions registrations}.include? controller_name
+                = " or "
+              - if controller_name != 'sessions'
+                = link_to t('links.sign_in'), new_user_session_path
 
         %h3.text-muted.code-pro= t('tip4commit')
         = render 'common/menu'

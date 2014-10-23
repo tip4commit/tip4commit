@@ -63,6 +63,7 @@ ru:
         title: Участвуйте
         text: Идите и почините что-нибудь! Если ваш коммит будет принят владельцами проекта, вам будут выплачены чаевые!
         sign_in_text: "Просто проверьте ваш email или %{sign_in_link}."
+        sign_up_text: "Если вы еще не получил приглашение, вы можете %{sign_up_link} с действительным адресом электронной почты или через GitHub."
         button: Проекты
   projects:
     index:
@@ -74,7 +75,7 @@ ru:
       watchers: Наблюдателей
       balance: Баланс
       forked_from: ответвление от
-      support: Поддержать
+      support: "Поддержать проект"
     show:
       title: "Помогайте %{project}"
       edit_project: Изменить настройки проекта
@@ -106,7 +107,7 @@ ru:
       tell_us_bitcoin_address: "Просто %{tell_us_link} ваш биткоин адрес."
       tell_us_link: укажите
       sign_in: "Просто проверьте ваш email или %{sign_in_link}."
-      promote_project: Продвигайте %{project}
+      promote_project: "Расскажите о %{project}"
       embedding: Код для вставки
       image_url: "URL изображения:"
       shield_title: чаевые за следующий коммит

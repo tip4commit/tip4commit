@@ -1,105 +1,105 @@
-en:
+hr:
   tip4commit: Tip4Commit
   meta:
-    title: Contribute to Open Source
-    description: Donate bitcoins to open source projects or make commits and get tips for it.
+    title: Doprinosite otvorenom izvoru
+    description: Donirajte bitcoine u otvoreni izvor projekata ili napravite cinove i dobite napojnice.
   menu:
-    home: Home
-    projects: Supported Projects
+    home: Pocetna stranica
+    projects: Podrzavani Projekti
   footer:
-    text: "Source code is available at %{github_link} and you can also %{support_link} its development."
+    text: "Izvorni kod dostupan na %{github_link} i mozete takoder %{support_link} razvoj."
     github_link: GitHub
-    support_link: support
+    support_link: podrzi
     follow_link: Follow @tip4commit
   links:
-    sign_in: Sign in
-    sign_in_imp: sign in
-    sign_out: Sign Out
+    sign_in: Prijava
+    sign_in_imp: prijava
+    sign_out: Odjava
   errors:
-    project_not_found: Project not found.
-    access_denied: Access denied
-    can_assign_more_tips: "You can't assign more than 100% of available funds."
-    wrong_bitcoin_address: Error updating bitcoin address
-    user_not_found: User not found
-    access_denied: You are not authorized to perform this action!
+    project_not_found: Projekt nije nadjen.
+    access_denied: Pristup odbijen
+    can_assign_more_tips: "Ne mozete dodijeliti vise od 100% dostupnih sredstva." 
+    wrong_bitcoin_address: Greska u updejtanju bitcoin adrese
+    user_not_found: Korisnik nije naden
+    access_denied: Niste ovlasteni da napravite ovu akciju!
   notices:
-    project_updated: The project settings have been updated
-    tips_decided: The tip amounts have been defined
-    user_updated: Your information saved!
-    user_unsubscribed: "You unsubscribed! Sorry for bothering you. Although, you still can leave us your bitcoin address to get your tips."
+    project_updated: Postavke projekta su primijenjena
+    tips_decided: Broj napojnica je bio definiran
+    user_updated: Vasa informacija je sacuvana!
+    user_unsubscribed: "Maknuli ste vasu pretplatu! Zao nam je sto smo vam smetali. Svejedno mozete ostaviti vasu bitcoin adresu da dobite svoje napojnice."
   tip_amounts:
-    undecided: "Undecided"
-    free: "Free: 0%"
-    tiny: "Tiny: 0.1%"
-    small: "Small: 0.5%"
-    normal: "Normal: 1%"
-    big: "Big: 2%"
-    huge: "Huge: 5%"
+    undecided: "Neodluceno"
+    free: "Besplatno: 0%"
+    tiny: "Vrlo malo: 0.1%"
+    small: "Malo: 0.5%"
+    normal: "Normalno: 1%"
+    big: "Veliko: 2%"
+    huge: "Ogromno: 5%"
   js:
     errors:
       value:
-        invalid: Value is invalid
+        invalid: Vrijednost nevazeca
       email:
-        invalid: Invalid Email Address
-        blank: The Email is required and can't be empty
+        invalid: Nezaveca email adresa
+        blank: Email je potreban i ne moze biti prazno
       password:
-        blank: The password is required and can't be empty
-        invalid: The password and its confirmation are not same
+        blank: Lozinka je potrebna i ne moze biti prazno
+        invalid: Lozinka i njezina potvrda nisu isti
       password_confirmation:
-        blank: The password confirmation is required and can't be empty
-        invalid: The password and its confirmation are not same
+        blank: Potvrda lozinke je potrebna i ne moze biti prazno
+        invalid: Lozinka i potvrda lozinke nisu isti
   home:
     index:
-      see_projects: See projects
+      see_projects: Vidjeti projekte
       how_does_it_work:
-        title: How does it work?
-        text: People donate bitcoins to projects. When someone's commit is accepted into the project repository, we automatically tip the author.
-        button: Learn about Bitcoin
+        title: Kako ovo radi?
+        text: Ljudi doniraju bitcoine projektima. Kada se neciji cin potvrdi u repozitorij projekta, mi automatski posaljemo napojnicu autoru.
+        button: Nauciti o Bitcoin
       donate:
-        title: Donate
-        text: Find a project you like and deposit bitcoins into it. Your donation will be accumulated with the funds of other donators to give as tips for new commits.
-        button: Find or add a project
+        title: Donirati
+        text: Pronadite projekt u koji zelite posvojiti svoje bitcoine. Vase donacije ce biti akumulirane sa fundovima ostalih donatora kao napojnice za nove cinove.
+        button: Pronaci ili dodati pojekt
       contribute:
-        title: Contribute
-        text: Go and fix something! If your commit is accepted by the project maintainer, you will get a tip!
-        sign_in_text: "Just check your email for an invitation or %{sign_in_link}."
-        sign_up_text: "If you have not yet received an invitation, you can %{sign_up_link} with a valid email address or via GitHub."
-        button: Supported projects
+        title: Doprinositi
+        text: Idite i popravite nesto! Ako je vas cin odobren od odrzavatelja projekta, dobiti cete napojnicu!
+        sign_in_text: "Samo provjerite vas email ili %{sign_in_link}."
+        sign_up_text: "Ako jos niste dobili pozivnicu, moze te se %{sign_up_link} sa valjanom email adresom ili GitHub-om."
+        button: Podrzavani projekti
   projects:
     index:
       find_project:
-        placeholder: Enter GitHub project URL to add a project or any keyword to find it...
-        button: Find or add project
-      repository: Repository
-      description: Description
-      watchers: Watchers
-      balance: Balance
-      forked_from: forked from
-      support: Support project
+        placeholder: Upisite GitHub URL projekta kako biste dodati projekt ili bilo koju kljucnu rijec da biste je nasli...
+        button: Nadi ili dodaj projekt
+      repository: Repozitorij
+      description: Opis
+      watchers: Gledatelji
+      balance: Ravnoteza
+      forked_from: Odvojeno od
+      support: Podrzavaj
     show:
-      title: "Contribute to %{project}"
-      edit_project: Change project settings
-      decide_tip_amounts: Decide tip amounts
-      disabled_notifications: "Project maintainers have decided not to notify new contributors about tips and they probably don't like this way of funding."
-      project_sponsors: Project Sponsors
-      fee: "%{percentage} of deposited funds will be used to tip for new commits."
-      balance: Balance
-      deposits: deposits
-      custom_tip_size: (each new commit receives a percentage of available balance)
-      default_tip_size: "(each new commit receives %{percentage} of available balance)"
-      unconfirmed_amount: "(%{amount} unconfirmed)"
-      tipping_policies: Tipping policies
-      updated_by_user: "(Last updated by %{name} on %{date})"
-      updated_by_unknown: "(Last updated on %{date})"
-      tips_paid: Tips Paid
-      unclaimed_amount: "(%{amount} of this is unclaimed, and will be refunded to the project after being unclaimed for 1 month.)"
-      last_tips: Last Tips
-      see_all: see all
-      received: "received %{amount}"
-      will_receive: will receive a tip
-      for_commit: for commit
-      when_decided: when its amount is decided
-      next_tip: Next Tip
+      title: "Doprinosi %{project}"
+      edit_project: Promijeni postavke projekta
+      decide_tip_amounts: Odredi kolicinu napojnica
+      disabled_notifications: "Odrzavatelji projekata su odlucili da nece obavjestiti nove doprinositelje o napojnicama i najvjerovatnije ne vole ovaj nacin isplate."
+      project_sponsors: Sponzori projekta
+      fee: "%{percentage} od polozenih isplata ce se koristiti kao napojnice za nove cinove."
+      balance: Ravnoteza
+      deposits: polozenja
+      custom_tip_size: (Svaki novi cin dobiva postotak dostune ravnoteze)
+      default_tip_size: "(Svaki novi cin dobiva %{percentage} dostupne ravnoteze)"
+      unconfirmed_amount: "(%{amount} nepotvrdeno)"
+      tipping_policies: Pravila o napojnicama
+      updated_by_user: "(Zadnje updejtao %{name} na %{date})"
+      updated_by_unknown: "(Zadnje updejtano  %{date})"
+      tips_paid: Napojnice placene
+      unclaimed_amount: "(%{amount} od ovog neostvarenog, i biti ce natrag isplaceno u projekt nakon jednog mjeseca.)"
+      last_tips: Zadnje napojnice
+      see_all: Vidjeti sve
+      received: "dobiveno %{amount}"
+      will_receive: ce dobiti napojnicu
+      for_commit: za cin
+      when_decided: kada je kolicina odlucena
+      next_tip: Sljedeca Napojnica
       contribute_and_earn: Contribute and Earn
       contribute_and_earn_description: "Donate bitcoins to this project or %{make_commits_link} and get tips for it. If your commit is accepted %{branch} by a project maintainer and there are bitcoins on its balance, you will get a tip!"
       contribute_and_earn_branch: "to <strong>%{branch}</strong> branch"
