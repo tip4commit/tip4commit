@@ -19,12 +19,10 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    redirect_to_pretty_url
+    redirect_to_pretty_url if params[:id].present?
 
-    load_github_repo
-    update_project_avatar_url
+    @project.update_bitcoin_address if @project.bitcoin_address.nil?
 
-    update_bitcoin_address
     @project_tips = @project.tips
     @recent_tips  = @project_tips.includes(:user).order(created_at: :desc).first(5)
   end
@@ -95,53 +93,11 @@ class ProjectsController < ApplicationController
   end
 
   def redirect_to_pretty_url
-    if params[:id].present?
-      begin
-        respond_to do |format|
-          format.html { redirect_to pretty_project_path(@project) }
-        end
-      rescue ActionController::UnknownFormat
+    begin
+      respond_to do |format|
+        format.html { redirect_to pretty_project_path(@project) }
       end
+    rescue ActionController::UnknownFormat
     end
-  end
-  
-  def update_bitcoin_address
-    if @project.bitcoin_address.nil?
-      blockchain_uri       = URI BLOCKCHAIN_NEW_URL
-      blockchain_pass      = CONFIG["blockchain_info"]["password"]
-      blockchain_label     = "#{@project.full_name}@tip4commit"
-      blockchain_params    = { password: blockchain_pass, label: blockchain_label }
-      blockchain_uri.query = URI.encode_www_form blockchain_params
-      blockchain_resp      = Net::HTTP.get_response blockchain_uri
-      if blockchain_resp.is_a? Net::HTTPSuccess 
-        bitcoin_address = (JSON.parse blockchain_resp.body)["address"]
-        @project.update_attribute :bitcoin_address, bitcoin_address unless bitcoin_address.nil?
-      end
-    end
-  end
-
-  def load_github_repo
-    return if @project.nil?
-
-    github_repo_uri  = URI "#{GITHUBAPI_REPO_URL}/#{@project.full_name}"
-    github_repo_resp = Net::HTTP.get_response github_repo_uri
-    return unless github_repo_resp.is_a? Net::HTTPSuccess
-
-    github_repo_json = JSON.parse github_repo_resp.body
-    return if github_repo_json["id"].nil?
-
-    @github_repo     = github_repo_json
-    @github_owner    = @github_repo["owner"]
-    @github_org      = @github_repo["organization"]
-    @is_organization = !@github_org.nil?
-  end
-
-  def update_project_avatar_url
-    return if @project.nil? || !@is_organization
-
-    avatar_url   = @github_org["avatar_url"]
-    is_unchanged = avatar_url.eql? @project.avatar_url
-
-    @project.update_attribute :avatar_url , avatar_url unless is_unchanged
   end
 end
