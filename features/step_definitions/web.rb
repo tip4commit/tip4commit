@@ -23,8 +23,17 @@ Given(/^I'm not logged in$/) do
   end
 end
 
-Given(/^I go to the project page$/) do
-  visit project_path(@project)
+Given(/^I go to the "(.*?)" page$/) do |page_name|
+  case page_name
+  when 'projects'
+    visit projects_path
+  when 'project'
+    visit project_path(@project)
+  when 'project edit'
+    visit edit_project_path(@project)
+  else
+    throw "unknown page_name"
+  end
 end
 
 Given(/^I click on "(.*?)"$/) do |arg1|
@@ -47,3 +56,6 @@ Given(/^I fill "(.*?)" with:$/) do |arg1, string|
   fill_in arg1, with: string
 end
 
+Given(/^I fill "(.*?)" with: "(.*?)"$/) do |text_field, string|
+  fill_in text_field, with: string
+end
