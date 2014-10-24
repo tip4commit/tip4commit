@@ -1,9 +1,4 @@
 
-#  copy this file and config/config.yml.dev to config/database.yml and config/config.yml
-#      if you wish to have multiple tip4commit forks usable in the same clone
-#      the various forks have drifted apart significantly and require different configuratons
-
-
 development:
   adapter: sqlite3
   pool:    5

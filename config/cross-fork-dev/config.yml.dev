@@ -1,29 +1,11 @@
 
 <%
-=begin
-  copy this file and database.yml.dev to config/config.yml and config/database.yml
-      if you wish to have multiple tip4commit forks usable in the same clone
-      the various forks have drifted apart significantly and require different configuratons
-  if you will be workiong on only one fork
-      then use config/config.yml.sample and config/database.yml.sample instead
-  an example setup is such as:
-    * fork any of the tip4commit forks
-    * clone your fork
-    * repeat the following flow for each fork including the one you forked from
-      * git remote add tip4commit https://github.com/tip4commit/tip4commit.git
-      * git checkout -b tip4commit-master
-      * git fetch tip4commit
-      * git merge tip4commit/master
-
-  list local feature branches in their appropriate *_BRANCHES lists below
-      your local master branch would most likely be never used in this scenario
-=end
-
+# list local feature branches in their appropriate *_BRANCHES lists below
 MY_BRANCHES             = %w{master}
 TIP4COMMIT_BRANCHES     = %w{tip4commit-master tip4commit-new-feature}
 PEER4COMMIT_BRANCHES    = %w{peer4commit-master peer4commit-new-feature}
 PRIME4COMMIT_BRANCHES   = %w{prime4commit-master peer4commit-new-feature}
-BRANCHES_LISTS_LOCATION = 'config/config.yml' # DEBUG
+BRANCHES_LISTS_FILENAME = 'config/config.yml' # DEBUG
 
 BRANCH_NAME          = `git rev-parse --abbrev-ref HEAD`.strip
 IS_MYFORK            = MY_BRANCHES.include?           BRANCH_NAME
@@ -109,7 +91,7 @@ address_versions: # 23/83 for primecoin, 111/196 for testnet, see base58.h
 
 <% else %>
 <% puts "ERROR: config/config.yml - no app config defined for branch: '#{BRANCH_NAME}'" +
-        " - you must add it to one of the *_BRANCHES lists in #{BRANCHES_LISTS_LOCATION}" %>
+        " - you must add it to one of the *_BRANCHES lists in #{BRANCHES_LISTS_FILENAME}" %>
 <% end %>
 
 
@@ -122,8 +104,8 @@ application:
 smtp_settings:
   address:              smtp.gmail.com
   port:                 587
-  domain:               foobar.com
-  user_name:            example@foobar.com
+  domain:               example.com
+  user_name:            example@example.com
   password:             MY_PASSWORD
   authentication:       plain
   enable_starttls_auto: true
