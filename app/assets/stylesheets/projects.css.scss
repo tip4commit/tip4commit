@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.commit-sha {
-  font-family: monospace;
-}
+.commit-sha { font-family: monospace; }
+
+.project_avatar_img                 { position: relative ; width: 32px ; height: 32px ; }
+#projects_table .project_avatar_img { top: 3px ; }
+#project_header .project_avatar_img { top: -5px ; }

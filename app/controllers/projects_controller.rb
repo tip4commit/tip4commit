@@ -1,6 +1,7 @@
 require 'net/http'
 
 class ProjectsController < ApplicationController
+  include ProjectsHelper
 
   before_filter :load_project, only: [:show, :edit, :update, :decide_tip_amounts]
 
@@ -17,29 +18,11 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # Redirect to pretty url for html format
-  include ProjectsHelper
-  before_filter only: [:show] do
-    if params[:id].present?
-      begin
-        respond_to do |format|
-          format.html { redirect_to pretty_project_path(@project) }
-        end
-      rescue ActionController::UnknownFormat
-      end
-    end
-  end
-
   def show
-    if @project.bitcoin_address.nil?
-      uri = URI("https://blockchain.info/merchant/#{CONFIG["blockchain_info"]["guid"]}/new_address")
-      params = { password: CONFIG["blockchain_info"]["password"], label:"#{@project.full_name}@tip4commit" }
-      uri.query = URI.encode_www_form(params)
-      res = Net::HTTP.get_response(uri)
-      if res.is_a?(Net::HTTPSuccess) && (bitcoin_address = JSON.parse(res.body)["address"])
-        @project.update_attribute :bitcoin_address, bitcoin_address
-      end
-    end
+    redirect_to_pretty_url if params[:id].present?
+
+    @project.update_bitcoin_address if @project.bitcoin_address.nil?
+
     @project_tips = @project.tips
     @recent_tips  = @project_tips.includes(:user).order(created_at: :desc).first(5)
   end
@@ -107,5 +90,14 @@ class ProjectsController < ApplicationController
       'repository'  => {full_name: :asc, available_amount_cache: :desc, watchers_count: :desc},
       'description' => {description: :asc, available_amount_cache: :desc, watchers_count: :desc, full_name: :asc}
     }.[](params[:order] || 'balance')
+  end
+
+  def redirect_to_pretty_url
+    begin
+      respond_to do |format|
+        format.html { redirect_to pretty_project_path(@project) }
+      end
+    rescue ActionController::UnknownFormat
+    end
   end
 end

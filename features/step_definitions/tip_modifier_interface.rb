@@ -12,10 +12,6 @@ When(/^I choose the amount "(.*?)" on all commits$/) do |arg1|
   end
 end
 
-When(/^I go to the edit page of the project$/) do
-  visit edit_project_path(@project)
-end
-
 When(/^I send a forged request to enable tip holding on the project$/) do
   page.driver.browser.process_and_follow_redirects(:patch, project_path(@project), project: {hold_tips: "1"})
 end
