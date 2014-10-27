@@ -15,31 +15,16 @@ end
 
 Given(/^I'm not logged in$/) do
   visit root_path
-  if page.has_content?("Sign out")
-    click_on "Sign out"
+  if page.has_content?("Sign Out")
+    click_on "Sign Out"
     page.should have_content("Signed out successfully")
   else
     page.should have_content("Sign in")
   end
 end
 
-Given(/^I go to the "(.*?)" page$/) do |page_name|
-  case page_name
-  when 'home'
-    visit "/"
-  when 'sign_up'
-    visit new_user_registration_path
-  when 'sign_in'
-    visit new_user_session_path
-  when 'projects'
-    visit projects_path
-  when 'project'
-    visit project_path(@project)
-  when 'project edit'
-    visit edit_project_path(@project)
-  else
-    throw "unknown page_name"
-  end
+Given(/^I go to the project page$/) do
+  visit project_path(@project)
 end
 
 Given(/^I click on "(.*?)"$/) do |arg1|
@@ -62,6 +47,3 @@ Given(/^I fill "(.*?)" with:$/) do |arg1, string|
   fill_in arg1, with: string
 end
 
-Given(/^I fill "(.*?)" with: "(.*?)"$/) do |text_field, string|
-  fill_in text_field, with: string
-end

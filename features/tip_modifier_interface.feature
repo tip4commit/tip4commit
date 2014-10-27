@@ -21,7 +21,7 @@ Feature: A project collaborator can change the tips of commits
 
   Scenario: A collaborator wants to alter the tips
     Given I'm logged in as "seldon"
-    And I go to the "project" page
+    And I go to the project page
     And I click on "Change project settings"
     And I check "Do not send the tips immediatly. Give collaborators the ability to modify the tips before they're sent"
     And I click on "Save the project settings"
@@ -32,7 +32,7 @@ Feature: A project collaborator can change the tips of commits
     And the tip amount for commit "CCC" should be undecided
     And there should be 0 email sent
 
-    When I go to the "project" page
+    When I go to the project page
     And I click on "Decide tip amounts"
     Then I should see "BBB"
     And I should see "Tiny change"
@@ -54,18 +54,18 @@ Feature: A project collaborator can change the tips of commits
 
   Scenario: A non collaborator does not see the settings button
     Given I'm logged in as "yugo"
-    And I go to the "project" page
+    And I go to the project page
     Then I should not see "Change project settings"
 
   Scenario: A non collaborator does not see the decide tip amounts button
     Given the project has undedided tips
     And I'm logged in as "yugo"
-    And I go to the "project" page
+    And I go to the project page
     Then I should not see "Decide tip amounts"
 
   Scenario: A non collaborator goes to the edit page of a project
     Given I'm logged in as "yugo"
-    When I go to the "project edit" page
+    When I go to the edit page of the project
     Then I should see an access denied
 
   Scenario: A non collaborator sends a forged update on a project
@@ -82,7 +82,7 @@ Feature: A project collaborator can change the tips of commits
   Scenario Outline: A user sends a forged request to set a tip amount
     Given the project has 1 undecided tip
     And I'm logged in as "<user>"
-    And I go to the "project" page
+    And I go to the project page
     And I send a forged request to set the amount of the first undecided tip of the project
     Then the project should have <remaining undecided tips> undecided tips
 
@@ -97,7 +97,7 @@ Feature: A project collaborator can change the tips of commits
     And the project holds tips
     When the new commits are read
     And I'm logged in as "seldon"
-    And I go to the "project" page
+    And I go to the project page
     And I click on "Decide tip amounts"
     And I choose the amount "Huge: 5%" on all commits
     And I click on "Send the selected tip amounts"
