@@ -12,6 +12,7 @@ pl:
     support_link: wsparcie
     follow_link: Obserwuj @tip4commit
   links:
+    sign_up: Sign up
     sign_in: Zaloguj się
     sign_in_imp: zaloguj się
     sign_out: Wyloguj się
@@ -63,7 +64,8 @@ pl:
         title: 'Współpracuj'
         text: 'Idź i coś napraw! Jeśli twój commit zostanie zaakceptowany przez nadzorcę projektu, dostaniesz napiwek!'
         sign_in_text: "Wystarczy sprawdzić e-mail lub %{sign_in_link}."
-        sign_up_text: "Jeśli nadal nie otrzymałeś zaproszenia, możesz %{sign_up_link} za pomocą adresu e-mail lub przez GitHub."
+        sign_up_text: "Jeśli nadal nie otrzymałeś zaproszenia, możesz %{sign_up_link} za pomocą adresu e-mail lub przez "
+        or: czy
         button: Wspierane projekty
   projects:
     index:

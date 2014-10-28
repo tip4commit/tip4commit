@@ -1,5 +1,8 @@
 class HomeController < ApplicationController
+include HomeHelper
+
   def index
+    @providers = list_friendly_text OAUTH_FRIENDLY_NAMES
   end
 
   def blockchain_info_callback
