@@ -86,7 +86,7 @@ pl:
       balance: saldo
       deposits: wpłaty
       custom_tip_size: (Każdy nowy "commit" dostaje część z dostępnego salda)
-      default_tip_size: "(Każdy nowy "commit" dostaje %{percentage} z dostępnego salda)"
+      default_tip_size: "(Każdy nowy \"commit\" dostaje %{percentage} z dostępnego salda)"
       unconfirmed_amount: "(%{amount} niepotwierdzone)"
       tipping_policies: Zasady napiwków
       updated_by_user: "(Ostatnio zaktualizowane przez %{name} w dniu %{date})"
