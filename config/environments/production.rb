@@ -61,15 +61,15 @@ T4c::Application.configure do
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
   # config.assets.precompile += %w( search.js )
 
-  config.action_mailer.default_url_options = { :host => CONFIG['smtp_settings']['domain'] }
-
+  smtp_settings = CONFIG['smtp_settings']
+  domain        = smtp_settings['domain']
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = CONFIG['smtp_settings'].to_options
+  config.action_mailer.smtp_settings = smtp_settings.to_options
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { :host => 'tip4commit.com', :protocol => 'https' }
-  config.action_mailer.default_options = {from: 'no-reply@' + CONFIG['smtp_settings']['domain'] }
+  config.action_mailer.default_url_options = { :host => domain, :protocol => 'https' }
+  config.action_mailer.default_options = {from: 'no-reply@' + domain }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
