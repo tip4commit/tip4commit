@@ -10,6 +10,8 @@
   = @project.full_name
   %small= link_to glyph(:github), @project.github_url, target: '_blank'
   .pull-right
+    - if @project.collaborators.empty?
+      = "(Pending initial sync)"
     - if can? :update, @project
       = link_to t('.edit_project'), edit_project_path(@project), class: "btn btn-primary"
     - if can? :decide_tip_amounts, @project and @project.has_undecided_tips?

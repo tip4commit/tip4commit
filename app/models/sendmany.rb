@@ -10,7 +10,7 @@ class Sendmany < ActiveRecord::Base
 
   	update_attribute :is_error, true # it's a lock to prevent duplicates
 
-		uri = URI("https://blockchain.info/merchant/#{CONFIG["blockchain_info"]["guid"]}/sendmany")
+		uri = URI CONFIG["blockchain_info"]["sendmany_url"]
 		params = { password: CONFIG["blockchain_info"]["password"], recipients: data }
 	    uri.query = URI.encode_www_form(params)
         res = Net::HTTP.get_response(uri)

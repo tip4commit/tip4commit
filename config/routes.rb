@@ -4,7 +4,9 @@ T4c::Application.routes.draw do
 
   get '/blockchain_info_callback' => "home#blockchain_info_callback", :as => "blockchain_info_callback"
 
-  get '/:service/:repo' => 'projects#show', :constraints => {:service => /github/, :repo => /.+/}
+  get  '/:service/:repo/:action' => 'projects#edit',               :constraints => {:service => /github/, :repo => /.+/, :action => /edit/}
+  get  '/:service/:repo/:action' => 'projects#decide_tip_amounts', :constraints => {:service => /github/, :repo => /.+/, :action => /decide_tip_amounts/}
+  get  '/:service/:repo'         => 'projects#show',               :constraints => {:service => /github/, :repo => /.+/}
 
   devise_for :users,
     :controllers => {

@@ -45,7 +45,7 @@
                 = t('.waiting')
             - else
               - if tip.sendmany.txid.present?
-                = link_to tip.sendmany.txid, "https://blockchain.info/tx/#{tip.sendmany.txid}", target: :blank
+                = link_to tip.sendmany.txid, "#{CONFIG["blockchain_info"]["transfer_url"]}/#{tip.sendmany.txid}", target: :blank
               - else
                 = t('.waiting')
                 - if tip.sendmany.is_error
