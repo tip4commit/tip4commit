@@ -1,6 +1,23 @@
 require 'spec_helper'
 
 describe UsersController do
+  describe '#index' do
+    let(:subject) { get :index }
+
+    it 'renders index template' do
+      expect(subject).to render_template :index
+    end
+
+    it 'returns 200 status code' do
+      expect(subject.status).to eq 200
+    end
+
+    it 'assigns @users' do
+      subject
+      expect(assigns[:users].name).to eq 'User'
+    end
+  end
+
   describe '#show' do
     let(:user) { mock_model User, id: 100000000 }
     let(:subject) { get :show, id: user.id }
@@ -17,6 +34,21 @@ describe UsersController do
 
           it 'returns 200 status code' do
             expect(subject.status).to eq 200
+          end
+
+          it 'assigns @user' do
+            subject
+            expect(assigns[:user].name).to eq 'kd'
+          end
+
+          it 'assigns @user_tips' do
+            subject
+            expect(assigns[:user_tips].name).to eq 'Tip'
+          end
+
+          it 'assigns @recent_tips' do
+            subject
+            expect(assigns[:recent_tips].class).to eq Array
           end
         end
 
@@ -56,6 +88,34 @@ describe UsersController do
         subject
         expect(flash[:alert]).to eq('You need to sign in or sign up before continuing.')
       end
+    end
+  end
+
+  describe "routing" do
+    it "routes GET /users to Project#index" do
+      { :get => "/users" }.should route_to(
+        :controller => "users" ,
+        :action     => "index" )
+    end
+
+    it "routes GET /users to Project#show" do
+      { :get => "/users/1" }.should route_to(
+        :controller => "users" ,
+        :action     => "show"  ,
+        :id         => "1"     )
+    end
+
+    it "routes GET /login to Project#login" do
+      { :get => "/users/login" }.should route_to(
+        :controller => "users" ,
+        :action     => "login" )
+    end
+
+    it "routes GET /users/1/tips to Tips#index" do
+      { :get => "/users/1/tips" }.should route_to(
+        :controller => "tips"  ,
+        :action     => "index" ,
+        :user_id    => "1"     )
     end
   end
 end

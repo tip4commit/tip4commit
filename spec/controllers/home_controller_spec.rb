@@ -12,4 +12,12 @@ describe HomeController do
       expect(subject.status).to eq 200
     end
   end
+
+  describe "routing" do
+    it "routes GET / to Home#index" do
+      { :get => "/" }.should route_to(
+        :controller => "home"  ,
+        :action     => "index" )
+    end
+  end
 end

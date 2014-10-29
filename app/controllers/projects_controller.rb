@@ -2,7 +2,8 @@ require 'net/http'
 
 class ProjectsController < ApplicationController
 
-  before_filter :load_project, only: [:show, :edit, :update, :decide_tip_amounts]
+  before_filter :load_project, only: [:show, :edit, :update, :decide_tip_amounts,
+                                      :tips, :deposits]
 
   def index
     @projects = Project.order(projects_order).page(params[:page]).per(30)
@@ -19,11 +20,21 @@ class ProjectsController < ApplicationController
 
   # Redirect to pretty url for html format
   include ProjectsHelper
-  before_filter only: [:show] do
+  before_filter only: [:show, :edit, :decide_tip_amounts] do |controller|
+    return unless request.get?
+
     if params[:id].present?
       begin
         respond_to do |format|
-          format.html { redirect_to pretty_project_path(@project) }
+          case controller.action_name
+          when 'show'
+            path = pretty_project_path(@project)
+          when 'edit'
+            path = pretty_project_edit_path(@project)
+          when 'decide_tip_amounts'
+            path = pretty_project_decide_tip_amounts_path(@project)
+          end
+          format.html { redirect_to path }
         end
       rescue ActionController::UnknownFormat
       end
@@ -81,6 +92,20 @@ class ProjectsController < ApplicationController
         end
       end
     end
+  end
+
+  def tips
+    @tips = @project.tips.includes(:user).order(created_at: :desc).
+                                                page(params[:page]).
+                                                per(params[:per_page] || 30)
+    render :template => 'tips/index'
+  end
+
+  def deposits
+    @deposits = @project.deposits.order(created_at: :desc).
+                                        page(params[:page]).
+                                        per(params[:per_page] || 30)
+    render :template => 'deposits/index'
   end
 
   private
