@@ -1,0 +1,45 @@
+
+development:
+  adapter: sqlite3
+  pool:    5
+  timeout: 5000
+<% if    IS_MY_FORK %>
+  database: db/my_development.sqlite3
+<% elsif IS_TIP4COMMIT_FORK   %>
+  database: db/tip4commit_development.sqlite3
+<% elsif IS_PEER4COMMIT_FORK  %>
+  database: db/peer4commit_development.sqlite3
+<% elsif IS_PRIME4COMMIT_FORK %>
+  database: db/prime4commit_development.sqlite3
+<% else %>
+<% puts "ERROR: config/database.yml - no development db specified for branch: '#{branch_name}'"
+ +
+        " - you must add it to one of the *_BRANCHES lists in #{BRANCHES_LISTS_FILENAME}" %>
+<% end %>
+
+
+test:
+  adapter:  sqlite3
+  pool:     5
+  timeout:  5000
+<% if    IS_MY_FORK %>
+  database: db/my_test.sqlite3
+<% elsif IS_TIP4COMMIT_FORK   %>
+  database: db/tip4commit_test.sqlite3
+<% elsif IS_PEER4COMMIT_FORK  %>
+  database: db/peer4commit_test.sqlite3
+<% elsif IS_PRIME4COMMIT_FORK %>
+  database: db/prime4commit_test.sqlite3
+<% else %>
+<% puts "ERROR: config/database.yml - no test db specified for branch: '#{branch_name}'" +
+        " - you must add it to one of the *_BRANCHES lists in #{BRANCHES_LISTS_FILENAME}" %>
+<% end %>
+
+
+production:
+  adapter:  mysql2
+  encoding: utf8
+  database: tip4commit
+  username: root
+  password:
+  socket:   /var/run/mysqld/mysqld.sock

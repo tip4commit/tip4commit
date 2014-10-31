@@ -1,0 +1,116 @@
+
+<%
+# list local feature branches in their appropriate *_BRANCHES lists below
+MY_BRANCHES             = %w{master}
+TIP4COMMIT_BRANCHES     = %w{tip4commit-master tip4commit-new-feature}
+PEER4COMMIT_BRANCHES    = %w{peer4commit-master peer4commit-new-feature}
+PRIME4COMMIT_BRANCHES   = %w{prime4commit-master peer4commit-new-feature}
+BRANCHES_LISTS_FILENAME = 'config/config.yml' # DEBUG
+
+BRANCH_NAME          = `git rev-parse --abbrev-ref HEAD`.strip
+IS_MYFORK            = MY_BRANCHES.include?           BRANCH_NAME
+IS_TIP4COMMIT_FORK   = TIP4COMMIT_BRANCHES.include?   BRANCH_NAME
+IS_PEER4COMMIT_FORK  = PEER4COMMIT_BRANCHES.include?  BRANCH_NAME
+IS_PRIME4COMMIT_FORK = PRIME4COMMIT_BRANCHES.include? BRANCH_NAME
+%>
+
+
+<% if IS_MY_FORK %>
+<% puts "no app config defined for local branch: '#{BRANCH_NAME}'" %>
+<% elsif IS_TIP4COMMIT_FORK %>
+github:
+  key:           "111111111111"
+  secret:        "111111111111"
+  auto_paginate: false
+  pages:         3
+  project_pages: {}
+
+blockchain_info:
+  guid:            "111111111111"
+  password:        "111111111111"
+  callback_secret: "111111111111"
+
+tip:        0.01
+min_payout: 100000
+our_fee:    0.05
+
+deposit_address: 1M4bS4gPyA6Kb8w7aXsgth9oUZWcRk73tQ
+
+address_versions: # 0/5 for bitcoin addresses, 111/196 for testnet, see chainparams.cpp
+  - 0
+  - 5
+
+
+<% elsif IS_PEER4COMMIT_FORK %>
+github:
+  key:    "111111111111"
+  secret: "111111111111"
+
+daemon:
+  username: rpcuser
+  password: rpcpassword
+  host:     localhost
+  port:     9904
+  path:     /path/to/ppcoin/src/ppcoind
+
+tip:          0.01
+min_payout:   1.0 # in PPC
+our_fee:      0.05
+tipper_delay: "1.hour"
+
+address_versions: # 55/117 for peercoin, 111/196 for testnet, see base58.h
+  - 111
+  - 196
+
+# canonical_host: peer4commit.example.com # will redirect all other hostnames to this one
+
+
+<% elsif IS_PRIME4COMMIT_FORK %>
+github:
+  key:    "111111111111"
+  secret: "111111111111"
+
+daemon:
+  username: rpcuser
+  password: rpcpassword
+  host:     localhost
+  port:     9914
+  path:     /path/to/primecoin/src/primecoind
+
+tip:          0.01
+min_payout:   1.0 # in XPM
+our_fee:      0.05
+tipper_delay: "1.hour"
+
+address_versions: # 23/83 for primecoin, 111/196 for testnet, see base58.h
+  - 111
+  - 196
+
+# canonical_host: prime4commit.example.com # will redirect all other hostnames to this one
+
+
+<% else %>
+<% puts "ERROR: config/config.yml - no app config defined for branch: '#{BRANCH_NAME}'" +
+        " - you must add it to one of the *_BRANCHES lists in #{BRANCHES_LISTS_FILENAME}" %>
+<% end %>
+
+
+devise:
+  secret: "111111111111"
+
+application:
+  secret: "111111111111"
+
+smtp_settings:
+  address:              smtp.gmail.com
+  port:                 587
+  domain:               example.com
+  user_name:            example@example.com
+  password:             MY_PASSWORD
+  authentication:       plain
+  enable_starttls_auto: true
+
+# Uncomment to use airbrake/errbit
+# airbrake:
+#   api_key: 111111111111
+#   host:    errbit.tip4commit.com

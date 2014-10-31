@@ -25,7 +25,7 @@ Feature: A project collaborator can change the tips of commits
     Then  I should be on the "seldon/seldons-project github-project" page
     When  I click on "Change project settings"
     Then  I should be on the "seldon/seldons-project github-project edit" page
-    When  I check "Do not send the tips immediatly."
+    When  I check "Do not send the tips immediately. Give collaborators the ability to modify the tips before they're sent"
     And   I click on "Save the project settings"
     Then  I should be on the "seldon/seldons-project github-project" page
     And   I should see "The project settings have been updated"

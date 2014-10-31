@@ -99,17 +99,17 @@ hr:
       will_receive: ce dobiti napojnicu
       for_commit: za cin
       when_decided: kada je kolicina odlucena
-      next_tip: Sljedeca Napojnica
-      contribute_and_earn: Contribute and Earn
-      contribute_and_earn_description: "Donate bitcoins to this project or %{make_commits_link} and get tips for it. If your commit is accepted %{branch} by a project maintainer and there are bitcoins on its balance, you will get a tip!"
-      contribute_and_earn_branch: "to <strong>%{branch}</strong> branch"
+      next_tip: Sljedeca napojnica
+      contribute_and_earn: Contribute and earn
+      contribute_and_earn_description: "Doniraj Bitcone u ovaj projekt ili %{make_commits_link} i dobij napojnicu. Ako je commit prihvacen %{branch} od strane voditelja projekta i ima Bitcoina na racunu, dobit ce te napojnicu."
+      contribute_and_earn_branch: "u <strong>%{branch}</strong> branch"
       make_commits_link: make commits
-      tell_us_bitcoin_address: "Just %{tell_us_link} your bitcoin address."
+      tell_us_bitcoin_address: "Samo %{tell_us_link} vasu bitcoin adresu."
       tell_us_link: tell us
-      sign_in: "Just check your email or %{sign_in_link}."
-      promote_project: Promote %{project}
+      sign_in: "Samo provjerite vas email ili %{sign_in_link}."
+      promote_project: Promoviraj %{project}
       embedding: Embedding
-      image_url: "Image URL:"
+      image_url: "URL slike:"
       shield_title: tip for next commit
     edit:
       project_settings: "%{project} project settings"
@@ -128,13 +128,13 @@ hr:
   tips:
     index:
       tips: Tips
-      project_tips: '%{project} tips'
-      user_tips: "%{user} tips"
-      created_at: Created At
+      project_tips: '%{project} napojnice'
+      user_tips: "%{user} napojnice"
+      created_at: Stvoreno na
       commiter: Commiter
-      project: Project
+      project: Projekt
       commit: Commit
-      amount: Amount
+      amount: Kolicina
       refunded: Refunded to project's deposit
       undecided: The amount of the tip has not been decided yet
       no_bitcoin_address: User didn't specify withdrawal address
@@ -143,74 +143,74 @@ hr:
       error: (error sending transaction)
   deposits:
     index:
-      project_deposits: '%{project} deposits'
+      project_deposits: '%{project} uplate'
       deposits: Deposits
-      created_at: Created At
-      project: Project
-      amount: Amount
+      created_at: "Stvoreno na"
+      project: Projekt
+      amount: Kolicina
       transaction: Transaction
       confirmed: Confirmed
-      confirmed_yes: 'Yes'
-      confirmed_no: 'No'
+      confirmed_yes: 'Da'
+      confirmed_no: 'Ne'
   users:
     index:
       title: Top Contributors
-      name: Name
+      name: Ime
       commits_count: Commits tipped
       withdrawn: Withdrawn
     show:
-      balance: Balance
-      threshold: "You will get your money when your balance hits the threshold of %{threshold}"
-      see_all: see all
-      received: "%{time} received %{amount} for commit %{commit} in %{project}"
-      bitcoin_address_placeholder: Your bitcoin address
-      notify: Notify me about new tips (no more than one email per month)
-      submit_user: Update user info
-      change_password: Change your password
-      submit_password: Change my password
+      balance: Ravnoteza
+      threshold: "Dobiti ce te vase novce kada vasa ravnoteza prijede prag od %{threshold}"
+      see_all: vidjeti sve
+      received: "%{time} primljeno %{amount} za cin %{commit} u %{project}"
+      bitcoin_address_placeholder: Vasa bitcoin adresa
+      notify: Notificirati me o novim savjetima (ne vise od jednog emaila po mjesecu)
+      submit_user: Azurirati informaciju korisnika
+      change_password: Promijeniti vasu lozinku
+      submit_password: Promijeniti moju lozinku
   withdrawals:
     index:
-      title: Last Withdrawals
-      created_at: Created At
-      transaction: Transaction
-      result: Result
-      error: Error
-      success: Success
+      title: Zadnje povlacenje
+      created_at: Stvoreno
+      transaction: Transakcije
+      result: Rezultat
+      error: Greska
+      success: Uspjesno
   devise:
     sessions:
       new:
-        title: Sign in
-        remember_me: Remember me
-        submit: Sign in
+        title: Prijava
+        remember_me: Zapamti me
+        submit: Prijava
     registrations:
       new:
-        title: Sign up
-        submit: Sign up
+        title: Prijava
+        submit: Registracija
     passwords:
       new:
-        title: Forgot your password?
-        submit: Send me reset password instructions
+        title: Zaboravili ste vasu lozinku?
+        submit: Poslati mi uputstva za resetiranje lozinke
       edit:
-        title: Change your password
-        submit: Change my password
+        title: Promijenite vasu lozinku
+        submit: Promijeniti svoju lozinku
     confirmations:
       new:
-        title: Resend confirmation instructions
-        submit: Resend confirmation instructions
+        title: Ponovno poslati uputstva za potvrdivanje
+        submit: Ponovno poslati uputstva za potvrdivanje
     links:
-      sign_in: Sign in
-      sign_up: Sign up
-      recover: Forgot your password?
-      confirm: Didn't receive confirmation instructions?
-      sign_in_with: "Sign in with %{provider}"
+      sign_in: Prijava
+      sign_up: Registracija
+      recover: Zaboravili ste vasu lozinku?
+      confirm: Niste primili uputstva za potvrdivanje?
+      sign_in_with: "Prijavi se sa %{provider}"
     errors:
-      primary_email: your primary email address should be verified.
-      onmiauth_info: we were unable to fetch your information.
+      primary_email: vasa glavna email adresa bi trebala biti potvrdena.
+      onmiauth_info: Nismo bili u stanju dohvatiti vasu informaciju.
   activerecord:
     attributes:
       user:
         email: E-mail
-        bitcoin_address: Bitcoin address
-        password: Password
-        password_confirmation: Password confirmation
-        display_name: Display name
+        bitcoin_address: Bitcoin adresa
+        password: Lozinka
+        password_confirmation: Potvrda lozinke
+        display_name: Prikazno ime
