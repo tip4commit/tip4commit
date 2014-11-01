@@ -49,6 +49,7 @@
                 = link_to t('links.sign_in'), new_user_session_path
 
         %h3.text-muted.code-pro= t('tip4commit')
+
         = render 'common/menu'
 
       %br
@@ -58,6 +59,10 @@
       = yield
 
       .footer
+        .alert.alert-warning
+          We are not affiliated with most of the projects, their owners might not endorse use of tip4commit.
+
+      
         %p.pull-right
           - ::Rails.application.config.available_locales.each do |locale|
             = link_to image_tag("flags/#{locale}.png"), "?locale=#{locale}", data: {no_turbolink: true}
