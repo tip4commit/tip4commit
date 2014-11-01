@@ -12,6 +12,7 @@ ru:
     support_link: поддержать
     follow_link: Следите за @tip4commit
   links:
+    sign_up: Sign up
     sign_in: Войти
     sign_in_imp: войдите
     sign_out: Выйти
@@ -63,7 +64,7 @@ ru:
         title: Участвуйте
         text: Идите и почините что-нибудь! Если ваш коммит будет принят владельцами проекта, вам будут выплачены чаевые!
         sign_in_text: "Просто проверьте ваш email или %{sign_in_link}."
-        sign_up_text: "Если вы еще не получил приглашение, вы можете %{sign_up_link} с действительным адресом электронной почты или через GitHub."
+        sign_up_text: "Если вы еще не получил приглашение, вы можете %{sign_up_link} с действительным адресом электронной почты или через"
         button: Проекты
   projects:
     index:
@@ -214,3 +215,8 @@ ru:
         password: Пароль
         password_confirmation: Пароль еще раз
         display_name: Имя
+  omniauth_providers:
+    github: GitHub
+    bitbucket: BitBucket
+  general:
+    or: или
