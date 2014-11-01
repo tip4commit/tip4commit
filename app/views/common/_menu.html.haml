@@ -1,5 +1,0 @@
-%ul.nav.nav-justified
-  %li{class: controller_name == 'home' ? 'active' : ''}
-    %a{href: root_path}= t('menu.home')
-  %li{class: controller_name == 'projects' || @project ? 'active' : ''}
-    %a{href: projects_path}= t('menu.projects')

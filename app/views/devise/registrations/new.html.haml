@@ -1,9 +1,0 @@
-= twitter_bootstrap_form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { class: 'form-devise registration_form'}) do |f|
-  %h2= t('.title')
-  = devise_error_messages!
-  = f.email_field :email, :autofocus => true
-  = f.password_field :password, :autocomplete => "off"
-  = f.password_field :password_confirmation, :autocomplete => "off"
-  = f.submit t('.submit')
-  %p
-    = render "devise/shared/links"
