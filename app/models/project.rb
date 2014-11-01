@@ -203,13 +203,11 @@ class Project < ActiveRecord::Base
   end
 
   def self.find_or_create_by_url project_url
-
     project_name = project_url.
       gsub(/https?\:\/\/github.com\//, '').
       gsub(/\#.+$/, '').
       gsub(' ', '')
 
     Github.new.find_or_create_project project_name
-
   end
 end
