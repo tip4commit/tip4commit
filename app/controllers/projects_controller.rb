@@ -6,9 +6,6 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.order(projects_order).page(params[:page]).per(30)
-
-    # This will cause pages not to always include 30 results, but... oh well.
-    @projects = @projects.to_a.reject! {|p| BLACKLIST.include?(p.github_url) }
   end
 
   def search

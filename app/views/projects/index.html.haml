@@ -20,7 +20,7 @@
           %th= link_to_unless params[:order].blank? || params[:order] == 'balance', t('.balance'), params.merge(:order => 'balance')
           %th
       %tbody
-        - @projects.each do |project|
+        - @projects.to_a.reject{|p| BLACKLIST.include?(p.github_url) }.each do |project|
           %tr
             %td
               %strong= link_to project.full_name, pretty_project_path(project)
