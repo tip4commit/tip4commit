@@ -19,7 +19,7 @@ Feature: A project collaborator can change the tips of commits
     When the new commits are read
     Then there should be a tip of "5" for commit "BBB"
     And there should be a tip of "4.95" for commit "CCC"
-    And there should be 2 email sent
+    And there should be 0 email sent
 
   Scenario: A collaborator wants to alter the tips
     Given I'm logged in as "seldon"
@@ -45,7 +45,7 @@ Feature: A project collaborator can change the tips of commits
     And I click on "Send the selected tip amounts"
     Then there should be a tip of "0.5" for commit "BBB"
     And the tip amount for commit "CCC" should be undecided
-    And there should be 1 email sent
+    And there should be 0 email sent
 
     When the email counters are reset
     And I choose the amount "Free: 0%" on commit "CCC"
