@@ -40,8 +40,8 @@ class ProjectsController < ApplicationController
         @project.update_attribute :bitcoin_address, bitcoin_address
       end
     end
-    @project_tips = @project.tips
-    @recent_tips  = @project_tips.includes(:user).order(created_at: :desc).first(5)
+    @project_tips = @project.tips.with_address
+    @recent_tips  = @project_tips.with_address.order(created_at: :desc).first(5)
   end
 
   def edit
