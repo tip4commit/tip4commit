@@ -1,6 +1,8 @@
 Feature: A project collaborator can change the tips of commits
   Background:
     Given a project "a"
+    And a user "yugo" has opted-in
+    And a user "gaal" has opted-in
     And the project collaborators are:
       | seldon  |
       | daneel  |
