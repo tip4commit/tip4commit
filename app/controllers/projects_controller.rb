@@ -14,10 +14,14 @@ class ProjectsController < ApplicationController
         return render :blacklisted
       end
 
-      project = Project.find_or_create_by_url(params[:query])
-      redirect_to pretty_project_path(project)
+      if project = Project.find_or_create_by_url(params[:query])
+        redirect_to pretty_project_path(project)
+      else
+        @projects = Project.search(params[:query].to_s).order(projects_order).page(params[:page]).per(30)
+        render :index
+      end
     else
-      redirect_to :index
+      redirect_to projects_path
     end
   end
 
