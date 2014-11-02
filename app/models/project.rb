@@ -117,7 +117,9 @@ class Project < ActiveRecord::Base
   def tip_for commit
     if (next_tip_amount > 0) && !Tip.exists?(commit: commit.sha)
 
-      user = User.find_or_create_with_commit commit
+      user = User.find_by_commit(commit)
+      return unless user
+
       user.update(nickname: commit.author.login) if commit.author.try(:login)
 
       if hold_tips
