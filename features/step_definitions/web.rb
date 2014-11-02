@@ -29,21 +29,24 @@ def parse_path_from_page_string page_string
   path = nil
 
   # explicit cases
+  # e.g. "a-user/a-project github project edit"
+  # e.g. "a-user user edit"
   tokens         = page_string.split ' '
   name           = tokens[0]
   model          = tokens[1]
   action         = tokens[2] || ''
   is_user        = model.eql? 'user'
   is_project     = ['github-project' , 'bitbucket-project'].include? model
-  if is_project # e.g. "me/my-project github project edit"
+  if is_project
     projects_paths = ['' , 'edit' , 'decide_tip_amounts' , 'tips' , 'deposits'] # '' => 'show'
     is_valid_path  = projects_paths.include? action
     service        = model.split('-').first
     path           = "/#{service}/#{name}/#{action}" if is_valid_path
   elsif is_user
-    projects_paths = ['show' , 'edit']
-    is_valid_path  = projects_paths.include? action
-    path           = "/users/#{name}/#{action}" if is_valid_path
+    user_paths     = ['' , 'edit' , 'tips']
+    is_valid_path  = user_paths.include? action
+#   path           = "/users/#{name}/#{action}" if is_valid_path # TODO: nyi
+    path           = "/users/#{@users[name].id}/#{action}" if is_valid_path
 
   # implicit cases
   else case page_string

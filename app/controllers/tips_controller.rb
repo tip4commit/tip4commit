@@ -3,12 +3,17 @@ class TipsController < ApplicationController
   before_action :load_project
 
   def index
-    if params[:project_id]
-      @tips = @project.tips.includes(:user)
+    if @project
+      @tips = @project.tips.includes(:user).with_address
     elsif params[:user_id] && @user = User.find(params[:user_id])
+      if @user.nil? || @user.bitcoin_address.blank?
+        flash[:error] = I18n.t('errors.user_not_found')
+        redirect_to users_path and return
+      end
+
       @tips = @user.tips.includes(:project)
     else
-      @tips = Tip.includes(:user, :project)
+      @tips = Tip.with_address.includes(:project)
     end
     @tips = @tips.order(created_at: :desc).
                   page(params[:page]).
@@ -19,9 +24,15 @@ class TipsController < ApplicationController
     end
   end
 
+
   private
 
   def load_project
-    super(params[:project_id]) if params[:project_id].present?
+    if params[:project_id].present?
+      super params[:project_id]
+    elsif params[:service].present? && params[:repo].present?
+      super Project.where(host: params[:service]).
+                    where('lower(`full_name`) = ?' , params[:repo].downcase).first
+    end
   end
 end

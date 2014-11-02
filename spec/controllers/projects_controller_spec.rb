@@ -82,20 +82,6 @@ describe ProjectsController do
     end
   end
 
-  describe 'GET #tips' do
-    it 'returns 302 status code' do
-      get :tips , :service => 'github' , :repo => 'test/test'
-      response.should be_redirect
-    end
-  end
-
-  describe 'GET #deposits' do
-    it 'returns 302 status code' do
-      get :deposits , :service => 'github' , :repo => 'test/test'
-      response.should be_redirect
-    end
-  end
-
   describe "routing" do
     it "routes GET /projects to Project#index" do
       { :get => "/projects" }.should route_to(
@@ -188,16 +174,16 @@ describe ProjectsController do
 
     it "routes GET /:provider/:repo/tips to Project#tips" do
       { :get => "/github/test/test/tips" }.should route_to(
-        :controller => "projects" ,
-        :action     => "tips" ,
+        :controller => "tips" ,
+        :action     => "index" ,
         :service    => "github"   ,
         :repo       => "test/test")
     end
 
     it "routes GET /:provider/:repo/deposits to Project#deposits" do
       { :get => "/github/test/test/deposits" }.should route_to(
-        :controller => "projects" ,
-        :action     => "deposits" ,
+        :controller => "deposits" ,
+        :action     => "index" ,
         :service    => "github"   ,
         :repo       => "test/test")
     end
