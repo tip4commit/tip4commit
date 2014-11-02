@@ -125,6 +125,9 @@ en:
       message: Message
       tip: Tip (relative to the project balance)
       submit: Send the selected tip amounts
+    blacklisted:
+      title: Sorry, this project doesn't accept tips!
+      message: The author of this project has chosen to disallow tips for this project.
   tips:
     index:
       tips: Tips
