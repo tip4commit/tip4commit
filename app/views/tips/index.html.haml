@@ -37,8 +37,6 @@
                 = t('.refunded')
               - elsif tip.undecided?
                 = t('.undecided')
-              - elsif tip.user.bitcoin_address.blank?
-                = t('.no_bitcoin_address')
               - elsif tip.user.balance < CONFIG["min_payout"]
                 = t('.below_threshold')
               - else

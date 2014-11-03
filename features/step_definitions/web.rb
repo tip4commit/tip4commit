@@ -1,10 +1,12 @@
 Given(/^I'm logged in as "(.*?)"$/) do |arg1|
+  email = "#{arg1.parameterize}@example.com"
+
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:github] = {
     "info" => {
       "nickname" => arg1,
-      "primary_email" => "#{arg1.gsub(/\s+/,'')}@example.com",
-      "verified_emails" => [],
+      "primary_email" => email,
+      "verified_emails" => [email],
     },
   }.to_ostruct
   visit root_path
