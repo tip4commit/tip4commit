@@ -11,19 +11,27 @@ class ProjectsController < ApplicationController
   end
 
   def search
-    if params[:query].present? && project = Project.find_or_create_by_url(params[:query])
-      redirect_to pretty_project_path(project)
+    if params[:query].present?
+      if BLACKLIST.include?(params[:query])
+        return render :blacklisted
+      end
+
+      if project = Project.find_or_create_by_url(params[:query])
+        redirect_to pretty_project_path(project)
+      else
+        @projects = Project.search(params[:query].to_s).order(projects_order).page(params[:page]).per(30)
+        render :index
+      end
     else
-      @projects = Project.search(params[:query].to_s).order(projects_order).page(params[:page]).per(30)
-      render :index
+      redirect_to projects_path
     end
   end
 
   def show
     @project.update_bitcoin_address if @project.bitcoin_address.nil?
 
-    @project_tips = @project.tips
-    @recent_tips  = @project_tips.includes(:user).order(created_at: :desc).first(5)
+    @project_tips = @project.tips.with_address
+    @recent_tips  = @project_tips.with_address.order(created_at: :desc).first(5)
   end
 
   def edit
@@ -90,7 +98,7 @@ class ProjectsController < ApplicationController
       'description' => {description: :asc, available_amount_cache: :desc, watchers_count: :desc, full_name: :asc}
     }.[](params[:order] || 'balance')
   end
-  
+
   def redirect_to_pretty_url
     return unless request.get? && params[:id].present?
 
