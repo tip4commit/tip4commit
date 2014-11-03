@@ -4,11 +4,16 @@ class TipsController < ApplicationController
 
   def index
     if params[:project_id]
-      @tips = @project.tips.includes(:user)
+      @tips = @project.tips.includes(:user).with_address
     elsif params[:user_id] && @user = User.find(params[:user_id])
+      if @user.nil? || @user.bitcoin_address.blank?
+        flash[:error] = I18n.t('errors.user_not_found')
+        redirect_to users_path and return
+      end
+
       @tips = @user.tips.includes(:project)
     else
-      @tips = Tip.includes(:user, :project)
+      @tips = Tip.with_address.includes(:project)
     end
     @tips = @tips.order(created_at: :desc).
                   page(params[:page]).

@@ -9,11 +9,19 @@ class ProjectsController < ApplicationController
   end
 
   def search
-    if params[:query].present? && project = Project.find_or_create_by_url(params[:query])
-      redirect_to pretty_project_path(project)
+    if params[:query].present?
+      if BLACKLIST.include?(params[:query])
+        return render :blacklisted
+      end
+
+      if project = Project.find_or_create_by_url(params[:query])
+        redirect_to pretty_project_path(project)
+      else
+        @projects = Project.search(params[:query].to_s).order(projects_order).page(params[:page]).per(30)
+        render :index
+      end
     else
-      @projects = Project.search(params[:query].to_s).order(projects_order).page(params[:page]).per(30)
-      render :index
+      redirect_to projects_path
     end
   end
 
@@ -31,6 +39,10 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    if BLACKLIST.include?(@project.github_url)
+      return render :blacklisted
+    end
+
     if @project.bitcoin_address.nil?
       uri = URI("https://blockchain.info/merchant/#{CONFIG["blockchain_info"]["guid"]}/new_address")
       params = { password: CONFIG["blockchain_info"]["password"], label:"#{@project.full_name}@tip4commit" }
@@ -40,8 +52,8 @@ class ProjectsController < ApplicationController
         @project.update_attribute :bitcoin_address, bitcoin_address
       end
     end
-    @project_tips = @project.tips
-    @recent_tips  = @project_tips.includes(:user).order(created_at: :desc).first(5)
+    @project_tips = @project.tips.with_address
+    @recent_tips  = @project_tips.with_address.order(created_at: :desc).first(5)
   end
 
   def edit
