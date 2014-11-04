@@ -10,5 +10,5 @@
       - @sendmanies.each do |sendmany|
         %tr
           %td= l(sendmany.created_at, format: :short)
-          %td= link_to(sendmany.txid, "https://blockchain.info/tx/#{sendmany.txid}", target: '_blank')
+          %td= link_to sendmany.txid, "#{CONFIG["blockchain_info"]["transfer_url"]}/#{sendmany.txid}", target: '_blank'
           %td= sendmany.is_error ? t('.error') : t('.success')
