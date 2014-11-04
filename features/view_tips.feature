@@ -6,8 +6,8 @@ Feature: Visitors should be able to see claimed tips
     And   our fee is "0"
     And   a deposit of "500" is made
     And   the most recent commit is "AAA"
-    And   a new commit "BBB" with parent "AAA"
-    And   a new commit "CCC" with parent "BBB"
+    And   a new commit "BBB" with parent "AAA" is made
+    And   a new commit "CCC" with parent "BBB" is made
     And   the author of commit "BBB" is "yugo"
     And   the author of commit "CCC" is "gaal"
     When  the project syncs with the remote repo

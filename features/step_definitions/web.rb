@@ -1,21 +1,23 @@
-Given(/^I'm logged in as "(.*?)"$/) do |arg1|
-  email = "#{arg1.parameterize}@example.com"
+Given /^I'm signed in as "(.*?)"$/ do |nickname|
+  email = "#{nickname.parameterize}@example.com"
 
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:github] = {
     "info" => {
-      "nickname" => arg1,
-      "primary_email" => email,
-      "verified_emails" => [email],
+      "nickname"        => nickname ,
+      "primary_email"   => email    ,
+      "verified_emails" => [email]  ,
     },
   }.to_ostruct
   visit root_path
   first(:link, "Sign in").click
   click_on "Sign in with Github"
   page.should have_content("Successfully authenticated")
+
+  step "a user named \"#{nickname}\" exists without a bitcoin address"
 end
 
-Given(/^I log out$/) do
+Given /^I'm not signed in$/ do
   visit root_path
   if page.has_content?("Sign out")
     click_on "Sign out"
@@ -25,7 +27,9 @@ Given(/^I log out$/) do
   end
 end
 
-Given(/^I'm not logged in$/) { step "I log out" }
+Given (/^I sign in as "(.*?)"$/) { |nickname| step "I'm signed in as \"#{nickname}\"" }
+
+Given (/^I sign out$/) { step "I sign out" }
 
 def parse_path_from_page_string page_string
   path = nil

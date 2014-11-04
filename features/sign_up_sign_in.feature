@@ -23,7 +23,6 @@ Feature: Visitors should be able to sign_up and sign_in
       | "seldon/seldons-project github-project tips"               |
       | "seldon/seldons-project github-project deposits"           |
 
-
   Scenario: Visitors should see sign_up but not sign_in links on sign_in page
     Given I'm not logged in
     When  I visit the "sign_in" page

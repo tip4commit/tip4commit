@@ -9,8 +9,8 @@ Feature: A project collaborator can change the tips of commits
     And   our fee is "0"
     And   a deposit of "500" is made
     And   the most recent commit is "AAA"
-    And   a new commit "BBB" with parent "AAA"
-    And   a new commit "CCC" with parent "BBB"
+    And   a new commit "BBB" with parent "AAA" is made
+    And   a new commit "CCC" with parent "BBB" is made
     And   the author of commit "BBB" is "yugo"
     And   the author of commit "CCC" is "gaal"
 
@@ -32,13 +32,13 @@ Feature: A project collaborator can change the tips of commits
     Then  I should be on the "seldon/seldons-project github-project" page
     And   I should see "The project settings have been updated"
 
-    When  a new commit "DDD" with parent "CCC"
+    When  a new commit "DDD" with parent "CCC" is made
     And   the author of commit "DDD" is "yugo"
     And   the message of commit "DDD" is "yugo's trivial commit DDD"
-    And   a new commit "EEE" with parent "DDD"
+    And   a new commit "EEE" with parent "DDD" is made
     And   the author of commit "EEE" is "gaal"
     And   the message of commit "EEE" is "gaal's tiny commit EEE"
-    When  a new commit "FFF" with parent "EEE"
+    When  a new commit "FFF" with parent "EEE" is made
     And   the author of commit "FFF" is "newguy"
     And   the message of commit "FFF" is "newguy's unrewarded commit EEE"
     When  the project syncs with the remote repo

@@ -66,7 +66,7 @@ Given(/^a deposit of "(.*?)" is made$/) do |deposit|
   Deposit.create!(project: @current_project, amount: deposit.to_d * 1e8, confirmations: 2)
 end
 
-def add_new_commit commit_id , author , params = {}
+def add_new_commit commit_id , nickname , params = {}
   raise "duplicate commit_id" if (find_new_commit commit_id).present?
 
   defaults = {
@@ -74,7 +74,7 @@ def add_new_commit commit_id , author , params = {}
     commit: {
       message: "Some changes",
       author: {
-        email: "#{author}@example.com",
+        email: "#{nickname}@example.com",
       },
     },
   }
@@ -93,44 +93,49 @@ def find_new_commit commit_id
   nil
 end
 
-Given(/^a new commit "([^"]*?)" is made$/) do |arg1|
-  add_new_commit arg1 , "anonymous"
+Given(/^a new commit "([^"]*?)" is made by a user named "(.*?)"$/) do |commit_id , nickname|
+  add_new_commit commit_id , nickname
 end
 
-Given(/^(\d+) new commit.? (?:is|are) made by a user named "(.*?)"$/) do |n_commits , author|
+Given(/^(\d+) new commit.? (?:is|are) made by a user named "(.*?)"$/) do |n_commits , nickname|
   n_commits.to_i.times do
-    add_new_commit Digest::SHA1.hexdigest(SecureRandom.hex) , author
+    add_new_commit Digest::SHA1.hexdigest(SecureRandom.hex) , nickname
   end
 end
 
-Given(/^a new commit "(.*?)" with parent "([^"]*?)"$/) do |arg1, arg2|
-  add_new_commit arg1 , "anonymous" , parents: [{sha: arg2}]
+Given(/^a new commit "([^"]*?)" is made$/) do |commit_id|
+  add_new_commit commit_id , "unknown-user"
 end
 
-Given(/^a new commit "(.*?)" with parent "(.*?)" and "(.*?)"$/) do |arg1, arg2, arg3|
-  add_new_commit arg1 , "anonymous" , { parents: [{sha: arg2}, {sha: arg3}], commit: {message: "Merge #{arg2} and #{arg3}"} }
+Given(/^a new commit "(.*?)" is made with parent "([^"]*?)"$/) do |commit_id, parent_commit_id|
+  add_new_commit commit_id , "unknown-user" , parents: [{sha: parent_commit_id}]
 end
 
-Given(/^the author of commit "(.*?)" is "(.*?)"$/) do |arg1, arg2|
-  commit = find_new_commit(arg1)
+Given(/^a new commit "(.*?)" is made with parent "(.*?)" and "(.*?)"$/) do |commit_id, parentA_commit_id, parentB_commit_id|
+  params = { parents: [{sha: parentA_commit_id}, {sha: parentB_commit_id}], commit: {message: "Merge #{parentA_commit_id} and #{parentB_commit_id}"} }
+  add_new_commit commit_id , "unknown-user" , params
+end
+
+Given(/^the author of commit "(.*?)" is "(.*?)"$/) do |commit_id , nickname|
+  commit = find_new_commit commit_id
   raise "no such commit" if commit.nil?
 
-  commit.deep_merge!(author: {login: arg2}, commit: {author: {email: "#{arg2}@example.com"}})
+  commit.deep_merge!(author: {login: nickname}, commit: {author: {email: "#{nickname}@example.com"}})
 end
 
-Given(/^the message of commit "(.*?)" is "(.*?)"$/) do |arg1, arg2|
-  commit = find_new_commit(arg1)
+Given(/^the message of commit "(.*?)" is "(.*?)"$/) do |commit_id , commit_msg|
+  commit = find_new_commit commit_id
   raise "no such commit" if commit.nil?
 
-  commit.deep_merge!(commit: {message: arg2})
+  commit.deep_merge!(commit: {message: commit_msg})
 end
 
-Given(/^the most recent commit is "(.*?)"$/) do |commit|
-  @current_project.update!(last_commit: commit)
+Given(/^the most recent commit is "(.*?)"$/) do |commit_id|
+  @current_project.update! last_commit: commit_id
 end
 
-Then(/^the most recent commit should be "(.*?)"$/) do |arg1|
-  @current_project.reload.last_commit.should eq(arg1)
+Then(/^the most recent commit should be "(.*?)"$/) do |commit_id|
+  @current_project.reload.last_commit.should eq commit_id
 end
 
 When(/^the new commits are loaded$/) do

@@ -11,5 +11,5 @@ def create_user nickname , has_bitcoiin_address
 end
 
 Given /^a user named "(.*?)" exists (with|without?) a bitcoin address$/ do |nickname , with|
-  (@users ||= {})[nickname] = (create_user nickname , (with.eql? 'with'))
+  (@users ||= {})[nickname] ||= (create_user nickname , (with.eql? 'with'))
 end
