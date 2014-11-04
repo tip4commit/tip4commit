@@ -9,8 +9,8 @@ Feature: A project collaborator can change the tips of commits
     And   our fee is "0"
     And   a deposit of "500" is made
     And   the most recent commit is "AAA"
-    And   a new commit "BBB" with parent "AAA" is made
-    And   a new commit "CCC" with parent "BBB" is made
+    And   a new commit "BBB" is made with parent "AAA"
+    And   a new commit "CCC" is made with parent "BBB"
     And   the author of commit "BBB" is "yugo"
     And   the author of commit "CCC" is "gaal"
 
@@ -21,7 +21,7 @@ Feature: A project collaborator can change the tips of commits
     And  there should be 0 email sent
 
   Scenario: A collaborator wants to alter the tips
-    Given I'm logged in as "seldon"
+    Given I'm signed in as "seldon"
     When  the project syncs with the remote repo
     And   I visit the "seldon/seldons-project github-project" page
     Then  I should be on the "seldon/seldons-project github-project" page
@@ -32,13 +32,13 @@ Feature: A project collaborator can change the tips of commits
     Then  I should be on the "seldon/seldons-project github-project" page
     And   I should see "The project settings have been updated"
 
-    When  a new commit "DDD" with parent "CCC" is made
+    When  a new commit "DDD" is made with parent "CCC"
     And   the author of commit "DDD" is "yugo"
     And   the message of commit "DDD" is "yugo's trivial commit DDD"
-    And   a new commit "EEE" with parent "DDD" is made
+    And   a new commit "EEE" is made with parent "DDD"
     And   the author of commit "EEE" is "gaal"
     And   the message of commit "EEE" is "gaal's tiny commit EEE"
-    When  a new commit "FFF" with parent "EEE" is made
+    When  a new commit "FFF" is made with parent "EEE"
     And   the author of commit "FFF" is "newguy"
     And   the message of commit "FFF" is "newguy's unrewarded commit EEE"
     When  the project syncs with the remote repo
@@ -82,33 +82,33 @@ Feature: A project collaborator can change the tips of commits
     And   there should be 0 email sent
 
   Scenario: A non collaborator does not see the settings button
-    Given I'm logged in as "yugo"
+    Given I'm signed in as "yugo"
     And   I visit the "seldon/seldons-project github-project" page
     Then  I should be on the "seldon/seldons-project github-project" page
     And   I should not see "Change project settings"
 
   Scenario: A non collaborator does not see the decide tip amounts button
     Given the project has undedided tips
-    And   I'm logged in as "yugo"
+    And   I'm signed in as "yugo"
     And   I visit the "seldon/seldons-project github-project" page
     Then  I should be on the "seldon/seldons-project github-project" page
     And   I should not see "Decide tip amounts"
 
   Scenario: A non collaborator goes to the edit page of a project
-    Given I'm logged in as "yugo"
+    Given I'm signed in as "yugo"
     When  I visit the "seldon/seldons-project github-project edit" page
     Then  I should be on the "home" page
     And   I should see "You are not authorized to perform this action!"
 
   Scenario: A non collaborator sends a forged update on a project
-    Given I'm logged in as "yugo"
+    Given I'm signed in as "yugo"
     When  I send a forged request to enable tip holding on the project
     Then  I should be on the "home" page
     And   I should see "You are not authorized to perform this action!"
     And   the project should not hold tips
 
   Scenario: A collaborator sends a forged update on a project
-    Given I'm logged in as "daneel"
+    Given I'm signed in as "daneel"
     When  the project syncs with the remote repo
     When  I send a forged request to enable tip holding on the project
     Then  I should be on the "seldon/seldons-project github-project" page
@@ -117,7 +117,7 @@ Feature: A project collaborator can change the tips of commits
   Scenario Outline: A user sends a forged request to set a tip amount
     When  the project syncs with the remote repo
     Given the project has 1 undecided tip
-    When  I'm logged in as "<user>"
+    When  I'm signed in as "<user>"
     And   I visit the "seldon/seldons-project github-project" page
     Then  I should be on the "seldon/seldons-project github-project" page
     And   I send a forged request to set the amount of the first undecided tip of the project
@@ -133,7 +133,7 @@ Feature: A project collaborator can change the tips of commits
     And   a new commit "last" is made
     And   the project holds tips
     When  the project syncs with the remote repo
-    And   I'm logged in as "seldon"
+    And   I'm signed in as "seldon"
     And   I visit the "seldon/seldons-project github-project" page
     Then  I should be on the "seldon/seldons-project github-project" page
     And   I should see "Decide tip amounts"
@@ -155,7 +155,7 @@ Feature: A project collaborator can change the tips of commits
     And   a new commit "fake commit" is made
     And   the project holds tips
     When  the project syncs with the remote repo
-    And   I'm logged in as "<user>"
+    And   I'm signed in as "<user>"
     When  regarding the "github" project named "seldon/seldons-project"
     And   I send a forged request to change the percentage of commit "BBB" to "5"
     Then  <consequences>

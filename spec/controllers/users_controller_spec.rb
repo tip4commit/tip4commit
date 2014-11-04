@@ -98,14 +98,14 @@ describe UsersController do
         :action     => "index" )
     end
 
-    it "routes GET /users to User#show" do
+    it "routes GET /users/1 to User#show" do
       { :get => "/users/1" }.should route_to(
         :controller => "users" ,
         :action     => "show"  ,
         :id         => "1"     )
     end
 
-    it "routes GET /login to User#login" do
+    it "routes GET /users/login to User#login" do
       { :get => "/users/login" }.should route_to(
         :controller => "users" ,
         :action     => "login" )
@@ -119,8 +119,10 @@ describe UsersController do
     end
   end
 
-  describe "pretty user url routing" do
-    it "routes regex rejects reserved user paths" do
+  describe "pretty url routing" do
+    let(:user) { create(:user) }
+
+    it "regex rejects reserved user paths" do
       # accepted pertty url usernames
       should_accept = %w{logi ogin s4c2 42x}
       # reserved routes (rejected pertty url usernames)
@@ -129,6 +131,20 @@ describe UsersController do
       accepted = should_accept.select {|ea|  ea =~ RESERVED_USER_ROUTES_REGEX}
       rejected = should_reject.select {|ea| (ea =~ RESERVED_USER_ROUTES_REGEX).nil? }
       accepted.size.should eq should_accept.size and rejected.size.should eq should_reject.size
+    end
+
+    it "routes GET /users/friendly-name to User#show" do
+      { :get => "/users/#{user.nickname}" }.should route_to(
+        :controller => "users" ,
+        :action     => "show"  ,
+        :id         => "kd"    )
+    end
+
+    it "routes GET /users/friendly-name/tips to Tips#index" do
+      { :get => "/users/#{user.nickname}/tips" }.should route_to(
+        :controller => "tips"  ,
+        :action     => "index" ,
+        :user_id    => "kd"    )
     end
   end
 end

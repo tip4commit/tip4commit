@@ -1,6 +1,5 @@
 class TipsController < ApplicationController
-
-  before_action :load_project
+  before_filter { load_project params }
 
   def index
     if @project
@@ -22,18 +21,6 @@ class TipsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv  { render csv: @tips, except: [:updated_at, :commit, :commit_message, :refunded_at, :decided_at], add_methods: [:user_name, :project_name, :decided?, :claimed?, :paid?, :refunded?, :txid] }
-    end
-  end
-
-
-  private
-
-  def load_project
-    if params[:project_id].present?
-      super params[:project_id]
-    elsif params[:service].present? && params[:repo].present?
-      super Project.where(host: params[:service]).
-                    where('lower(`full_name`) = ?' , params[:repo].downcase).first
     end
   end
 end

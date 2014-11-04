@@ -5,7 +5,7 @@ Feature: Visitors should be able to sign_up and sign_in
       | seldon  |
 
   Scenario Outline: Visitors should see sign_up and sign_in links on all pages
-    Given I'm not logged in
+    Given I'm not signed in
     When  I visit the <page> page
     Then  I should be on the <page> page
     And   I should see "Sign up" in the header
@@ -24,7 +24,7 @@ Feature: Visitors should be able to sign_up and sign_in
       | "seldon/seldons-project github-project deposits"           |
 
   Scenario: Visitors should see sign_up but not sign_in links on sign_in page
-    Given I'm not logged in
+    Given I'm not signed in
     When  I visit the "sign_in" page
     Then  I should be on the "sign_in" page
     And   I should see "Sign up" in the header
@@ -32,7 +32,7 @@ Feature: Visitors should be able to sign_up and sign_in
     And   I should not see "Sign out" in the header
 
   Scenario: Visitors should see sign_in but not sign_up links on sign_up page
-    Given I'm not logged in
+    Given I'm not signed in
     When  I visit the "sign_up" page
     Then  I should be on the "sign_up" page
     And   I should not see "Sign up" in the header
@@ -40,7 +40,7 @@ Feature: Visitors should be able to sign_up and sign_in
     And   I should not see "Sign out" in the header
 
   Scenario Outline: Logged in users should see only sign_out link on every page
-    Given I'm logged in as "seldon"
+    Given I'm signed in as "seldon"
     When  I visit the <page> page
     Then  I should be on the <page> page
     And   I should not see "Sign up" in the header
