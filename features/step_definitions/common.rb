@@ -66,15 +66,15 @@ Given(/^a deposit of "(.*?)" is made$/) do |deposit|
   Deposit.create!(project: @current_project, amount: deposit.to_d * 1e8, confirmations: 2)
 end
 
-def add_new_commit commit_id , params = {}
-  raise "dplicate commit_id" if (find_new_commit commit_id).present?
+def add_new_commit commit_id , author , params = {}
+  raise "duplicate commit_id" if (find_new_commit commit_id).present?
 
   defaults = {
     sha: commit_id,
     commit: {
       message: "Some changes",
       author: {
-        email: "anonymous@example.com",
+        email: "#{author}@example.com",
       },
     },
   }
@@ -93,22 +93,29 @@ def find_new_commit commit_id
   nil
 end
 
-Given(/^a new commit "(.*?)" with parent "([^"]*?)"$/) do |arg1, arg2|
-  add_new_commit(arg1, parents: [{sha: arg2}])
+Given(/^a new commit "([^"]*?)" is made$/) do |arg1|
+  add_new_commit arg1 , "anonymous"
 end
 
-Given(/^a new commit "(.*?)" with parent "(.*?)" and "(.*?)"$/) do |arg1, arg2, arg3|
-  add_new_commit(arg1, parents: [{sha: arg2}, {sha: arg3}], commit: {message: "Merge #{arg2} and #{arg3}"})
-end
-
-Given(/^(\d+) new commit.? (?:is|are) made$/) do |arg1|
-  arg1.to_i.times do
-    add_new_commit(Digest::SHA1.hexdigest(SecureRandom.hex))
+Given(/^(\d+) new commit.? (?:is|are) made by a user named "(.*?)"$/) do |n_commits , author|
+  n_commits.to_i.times do
+    add_new_commit Digest::SHA1.hexdigest(SecureRandom.hex) , author
   end
 end
 
-Given(/^a new commit "([^"]*?)"$/) do |arg1|
-  add_new_commit(arg1)
+Given(/^a new commit "(.*?)" with parent "([^"]*?)"$/) do |arg1, arg2|
+  add_new_commit arg1 , "anonymous" , parents: [{sha: arg2}]
+end
+
+Given(/^a new commit "(.*?)" with parent "(.*?)" and "(.*?)"$/) do |arg1, arg2, arg3|
+  add_new_commit arg1 , "anonymous" , { parents: [{sha: arg2}, {sha: arg3}], commit: {message: "Merge #{arg2} and #{arg3}"} }
+end
+
+Given(/^the author of commit "(.*?)" is "(.*?)"$/) do |arg1, arg2|
+  commit = find_new_commit(arg1)
+  raise "no such commit" if commit.nil?
+
+  commit.deep_merge!(author: {login: arg2}, commit: {author: {email: "#{arg2}@example.com"}})
 end
 
 Given(/^the message of commit "(.*?)" is "(.*?)"$/) do |arg1, arg2|
@@ -170,13 +177,6 @@ Given(/^the project collaborators are loaded$/) do
   @collaborators.each do |name,|
     @current_project.collaborators.create!(login: name)
   end
-end
-
-Given(/^the author of commit "(.*?)" is "(.*?)"$/) do |arg1, arg2|
-  commit = find_new_commit(arg1)
-  raise "no such commit" if commit.nil?
-
-  commit.deep_merge!(author: {login: arg2}, commit: {author: {email: "#{arg2}@example.com"}})
 end
 
 Given(/^an illustration of the history is:$/) do |string|

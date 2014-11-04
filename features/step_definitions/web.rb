@@ -1,10 +1,12 @@
 Given(/^I'm logged in as "(.*?)"$/) do |arg1|
+  email = "#{arg1.parameterize}@example.com"
+
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:github] = {
     "info" => {
       "nickname" => arg1,
-      "primary_email" => "#{arg1.gsub(/\s+/,'')}@example.com",
-      "verified_emails" => [],
+      "primary_email" => email,
+      "verified_emails" => [email],
     },
   }.to_ostruct
   visit root_path
@@ -43,7 +45,7 @@ def parse_path_from_page_string page_string
     service        = model.split('-').first
     path           = "/#{service}/#{name}/#{action}" if is_valid_path
   elsif is_user
-    user_paths     = ['' , 'edit' , 'tips']
+    user_paths     = ['' , 'tips']
     is_valid_path  = user_paths.include? action
 #   path           = "/users/#{name}/#{action}" if is_valid_path # TODO: nyi
     path           = "/users/#{@users[name].id}/#{action}" if is_valid_path

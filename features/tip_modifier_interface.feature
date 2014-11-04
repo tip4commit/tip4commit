@@ -4,6 +4,8 @@ Feature: A project collaborator can change the tips of commits
     And   the project collaborators are:
       | seldon  |
       | daneel  |
+    And   a user named "yugo" exists with a bitcoin address
+    And   a user named "gaal" exists without a bitcoin address
     And   our fee is "0"
     And   a deposit of "500" is made
     And   the most recent commit is "AAA"
@@ -16,7 +18,7 @@ Feature: A project collaborator can change the tips of commits
     When the project syncs with the remote repo
     Then there should be a tip of "5" for commit "BBB"
     And  there should be a tip of "4.95" for commit "CCC"
-    And  there should be 2 email sent
+    And  there should be 0 email sent
 
   Scenario: A collaborator wants to alter the tips
     Given I'm logged in as "seldon"
@@ -31,15 +33,21 @@ Feature: A project collaborator can change the tips of commits
     And   I should see "The project settings have been updated"
 
     When  a new commit "DDD" with parent "CCC"
-    And   the author of commit "DDD" is "sumdood"
-    And   the message of commit "DDD" is "sumdood's tiny commit DDD"
+    And   the author of commit "DDD" is "yugo"
+    And   the message of commit "DDD" is "yugo's trivial commit DDD"
     And   a new commit "EEE" with parent "DDD"
-    And   the author of commit "EEE" is "sumotherdood"
+    And   the author of commit "EEE" is "gaal"
+    And   the message of commit "EEE" is "gaal's tiny commit EEE"
+    When  a new commit "FFF" with parent "EEE"
+    And   the author of commit "FFF" is "newguy"
+    And   the message of commit "FFF" is "newguy's unrewarded commit EEE"
     When  the project syncs with the remote repo
     Then  there should be a tip of "5" for commit "BBB"
     And   there should be a tip of "4.95" for commit "CCC"
     And   the tip amount for commit "DDD" should be undecided
-    And   there should be 2 email sent
+    And   the tip amount for commit "EEE" should be undecided
+    But   there should be no tip for commit "FFF"
+    And   there should be 0 email sent
 
     When  I visit the "seldon/seldons-project github-project" page
     Then  I should be on the "seldon/seldons-project github-project" page
@@ -49,23 +57,28 @@ Feature: A project collaborator can change the tips of commits
     And   I should not see "BBB"
     And   I should not see "CCC"
     But   I should see "DDD"
-    And   I should see "sumdood's tiny commit DDD"
+    And   I should see "yugo's trivial commit DDD"
     And   I should see "EEE"
-    And   the most recent commit should be "EEE"
+    And   I should see "gaal's tiny commit EEE"
+    But   I should not see "FFF"
+    And   I should not see "newguy's unrewarded commit FFF"
+    And   the most recent commit should be "FFF"
 
-    When  I choose the amount "Tiny: 0.1%" on commit "DDD"
+    When  I choose the amount "Free: 0%" on commit "DDD"
     And   I click on "Send the selected tip amounts"
     Then  I should be on the "seldon/seldons-project github-project decide_tip_amounts" page
-    And   there should be a tip of "0.49005" for commit "DDD"
+    And   there should be a tip of "0" for commit "DDD"
     And   the tip amount for commit "EEE" should be undecided
-    And   there should be 3 email sent
+    But   there should be no tip for commit "FFF"
+    And   there should be 0 email sent
 
     When  the email counters are reset
-    And   I choose the amount "Free: 0%" on commit "EEE"
+    And   I choose the amount "Tiny: 0.1%" on commit "EEE"
     And   I click on "Send the selected tip amounts"
     Then  I should be on the "seldon/seldons-project github-project decide_tip_amounts" page
-    And   there should be a tip of "0.49005" for commit "DDD"
-    And   there should be a tip of "0" for commit "EEE"
+    And   there should be a tip of "0" for commit "DDD"
+    And   there should be a tip of "0.49005" for commit "EEE"
+    But   there should be no tip for commit "FFF"
     And   there should be 0 email sent
 
   Scenario: A non collaborator does not see the settings button
@@ -116,8 +129,8 @@ Feature: A project collaborator can change the tips of commits
       | yugo   | 1                        |
 
   Scenario: A collaborator sends large amounts in tips
-    Given 20 new commits are made
-    And   a new commit "last"
+    Given 20 new commits are made by a user named "yugo"
+    And   a new commit "last" is made
     And   the project holds tips
     When  the project syncs with the remote repo
     And   I'm logged in as "seldon"
@@ -139,7 +152,7 @@ Feature: A project collaborator can change the tips of commits
     And   a "github" project named "fake/fake" exists
     And   the project collaborators are:
       | bad guy |
-    And   a new commit "fake commit"
+    And   a new commit "fake commit" is made
     And   the project holds tips
     When  the project syncs with the remote repo
     And   I'm logged in as "<user>"

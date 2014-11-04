@@ -7,6 +7,8 @@ describe ProjectsController do
       allow(Project).to receive(:order).with(available_amount_cache: :desc, watchers_count: :desc, full_name: :asc).and_return(Project)
       allow(Project).to receive(:page).with(nil).and_return(Project)
       allow(Project).to receive(:per).with(30).and_return(Project)
+      allow(Project).to receive(:to_a).and_return(Project)
+      allow(Project).to receive(:reject!).and_return(Project)
     end
 
     it 'renders index template' do
@@ -45,8 +47,8 @@ describe ProjectsController do
     end
   end
 
-=begin TODO: NFG
-  describe '#update' do
+=begin TODO: NFG - No route matches {:controller=>"projects", :action=>"update"}
+  describe 'PUT #update' do
     it 'returns 200 status code' do
       put :update
       response.should be_success
@@ -58,6 +60,25 @@ describe ProjectsController do
     it 'returns 302 status code' do
       get :show , :service => 'github' , :repo => 'test/test'
       response.should be_redirect
+    end
+
+    context 'with existing repo that has been blacklisted' do
+      let(:blacklisted_repo) { create(:project, host: "github", full_name: "mitsuhiko/flask") }
+      let(:subject) { get :show, service: "github", repo: blacklisted_repo.full_name }
+
+      it 'renders blacklisted template' do
+        expect(subject).to render_template :blacklisted
+      end
+    end
+  end
+
+  describe 'GET #search' do
+    context 'with existing repo that has been blacklisted' do
+      let(:subject) { get :search, query: "https://github.com/mitsuhiko/flask" }
+
+      it 'renders blacklisted template' do
+        expect(subject).to render_template :blacklisted
+      end
     end
   end
 

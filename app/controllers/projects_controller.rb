@@ -10,12 +10,16 @@ class ProjectsController < ApplicationController
   end
 
   def search
-    if params[:query].present? && project = Project.find_or_create_by_url(params[:query])
-      redirect_to pretty_project_path(project)
-    else
-      @projects = Project.search(params[:query].to_s).order(projects_order).page(params[:page]).per(30)
-      render :index
+    if params[:query].present?
+      if BLACKLIST.include?(params[:query])
+        render :blacklisted and return
+      elsif project = Project.find_or_create_by_url(params[:query])
+        redirect_to pretty_project_path(project) and return
+      end
     end
+
+    @projects = Project.search(params[:query].to_s).order(projects_order).page(params[:page]).per(30)
+    render :index
   end
 
   # Redirect to pretty url for html format
@@ -42,6 +46,10 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    if BLACKLIST.include?(@project.github_url)
+      return render :blacklisted
+    end
+
     if @project.bitcoin_address.nil?
       uri = URI("https://blockchain.info/merchant/#{CONFIG["blockchain_info"]["guid"]}/new_address")
       params = { password: CONFIG["blockchain_info"]["password"], label:"#{@project.full_name}@tip4commit" }

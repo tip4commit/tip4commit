@@ -34,9 +34,9 @@ Feature: Visitors should be able to see claimed tips
   Scenario: Visitors should see all claimed tips per user but not unclaimed tips
     When  I visit the "yugo user tips" page
     Then  I should be on the "yugo user tips" page
-    And   I should see "yugo"
+    And   I should see "BBB 5.00000000 Ƀ Waiting for withdrawal"
     When  I visit the "gaal user tips" page
     Then  I should be on the "users" page
-    And   I should see "yugo"
-    And   I should not see "gaal"
-    But   I should see "User not found"
+    And   I should see "User not found"
+    And   I should not see "BBB"
+    And   I should not see "CCC"

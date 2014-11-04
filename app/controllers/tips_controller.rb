@@ -5,13 +5,14 @@ class TipsController < ApplicationController
   def index
     if @project
       @tips = @project.tips.includes(:user).with_address
-    elsif params[:user_id] && @user = User.find(params[:user_id])
-      if @user.nil? || @user.bitcoin_address.blank?
+    elsif params[:user_id]
+      @user = User.find params[:user_id]
+      if @user.present? && @user.bitcoin_address.present?
+        @tips = @user.tips.includes(:project)
+      else
         flash[:error] = I18n.t('errors.user_not_found')
         redirect_to users_path and return
       end
-
-      @tips = @user.tips.includes(:project)
     else
       @tips = Tip.with_address.includes(:project)
     end

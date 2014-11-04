@@ -92,4 +92,6 @@ T4c::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  get '*path' => 'home#index'
 end
