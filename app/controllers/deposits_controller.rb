@@ -1,8 +1,8 @@
 class DepositsController < ApplicationController
-  before_action :load_project
+  before_action { load_project params }
 
   def index
-    if params[:project_id]
+    if @project
       @deposits = @project.deposits
     else
       @deposits = Deposit.includes(:project)
@@ -14,11 +14,5 @@ class DepositsController < ApplicationController
       format.html
       format.csv  { render csv: @deposits, except: [:updated_at, :confirmations, :fee_size], add_methods: [:project_name, :fee, :confirmed?] }
     end
-  end
-
-  private
-
-  def load_project
-    super(params[:project_id]) if params[:project_id].present?
   end
 end

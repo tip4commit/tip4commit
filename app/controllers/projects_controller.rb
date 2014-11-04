@@ -3,8 +3,9 @@ require 'net/http'
 class ProjectsController < ApplicationController
   include ProjectsHelper
 
-  before_filter :load_project,           only: [:show, :edit, :decide_tip_amounts, :update]
-  before_filter :redirect_to_pretty_url, only: [:show, :edit, :decide_tip_amounts]
+  before_filter :load_project, only: [:show, :edit, :update, :decide_tip_amounts]
+  before_filter :redirect_to_pretty_url, only: [:show, :edit, :decide_tip_amounts,
+                                                :tips, :deposits]
 
   def index
     @projects = Project.order(projects_order).page(params[:page]).per(30)
@@ -13,21 +14,19 @@ class ProjectsController < ApplicationController
   def search
     if params[:query].present?
       if BLACKLIST.include?(params[:query])
-        return render :blacklisted
+        render :blacklisted and return
+      elsif project = Project.find_or_create_by_url(params[:query])
+        redirect_to pretty_project_path(project) and return
       end
-
-      if project = Project.find_or_create_by_url(params[:query])
-        redirect_to pretty_project_path(project)
-      else
-        @projects = Project.search(params[:query].to_s).order(projects_order).page(params[:page]).per(30)
-        render :index
-      end
-    else
-      redirect_to projects_path
     end
+
+    @projects = Project.search(params[:query].to_s).order(projects_order).page(params[:page]).per(30)
+    render :index
   end
 
   def show
+    render :blacklisted and return if BLACKLIST.include? @project.github_url
+
     @project.update_bitcoin_address if @project.bitcoin_address.nil?
 
     @project_tips = @project.tips.with_address
@@ -73,18 +72,10 @@ class ProjectsController < ApplicationController
     end
   end
 
+
   private
 
-  def load_project
-    if params[:id].present?
-      super(params[:id])
-    elsif params[:service].present? && params[:repo].present?
-      super(
-        Project.where(host: params[:service]).
-          where('lower(`full_name`) = ?', params[:repo].downcase).first
-      )
-    end
-  end
+  def load_project ; super params ; end ;
 
   def project_params
     params.require(:project).permit(:branch, :disable_notifications, :hold_tips, tipping_policies_text_attributes: [:text])
@@ -106,11 +97,15 @@ class ProjectsController < ApplicationController
       respond_to do |format|
         case action_name
         when 'show'
-          path = pretty_project_path(@project)
+          path = pretty_project_path                    @project
         when 'edit'
-          path = pretty_project_edit_path(@project)
+          path = pretty_project_edit_path               @project
         when 'decide_tip_amounts'
-          path = pretty_project_decide_tip_amounts_path(@project)
+          path = pretty_project_decide_tip_amounts_path @project
+        when 'tips'
+          path = pretty_project_tips_path               @project
+        when 'deposits'
+          path = pretty_project_deposits_path           @project
         end
         format.html { redirect_to path }
       end

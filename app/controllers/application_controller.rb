@@ -22,13 +22,28 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def load_project(project)
-    if project.is_a? Project
-      @project = project
-    else
-      @project = Project.where(id: project).first
+  def load_project params
+    (is_project  = self.is_a? ProjectsController) ||
+    (is_tips     = self.is_a? TipsController    ) ||
+    (is_deposits = self.is_a? DepositsController)
+
+    if params[:project_id].present? || params[:id].present?
+      return unless project_id = (is_project               && params[:id])      ||
+                                 ((is_tips || is_deposits) && params[:project_id])
+
+      @project = Project.where(:id => project_id).first
+
+      if is_tips
+        redirect_to project_tips_pretty_path     @project.host , @project.full_name
+      elsif is_deposits
+        redirect_to project_deposits_pretty_path @project.host , @project.full_name
+      end
+    elsif params[:service].present? && params[:repo].present?
+      @project = Project.where(host: params[:service]).
+                         where('lower(`full_name`) = ?' , params[:repo].downcase).first
     end
-    unless @project
+
+    if @project.nil? && is_project
       flash[:error] = I18n.t('errors.project_not_found')
       redirect_to projects_path
     end

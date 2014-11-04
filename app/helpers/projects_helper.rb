@@ -30,6 +30,14 @@ module ProjectsHelper
     "#{pretty_project_path project}/decide_tip_amounts"
   end
 
+  def pretty_project_tips_path project
+    "#{pretty_project_path project}/tips"
+  end
+
+  def pretty_project_deposits_path project
+    "#{pretty_project_path project}/deposits"
+  end
+
   def pretty_project_url project
     root_url.gsub(/\/$/,'') + pretty_project_path(project)
   end

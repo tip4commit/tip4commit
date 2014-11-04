@@ -8,6 +8,7 @@ Bundler.require(:default, Rails.env)
 
 # load config.yaml preprocessed
 CONFIG ||= YAML::load(ERB.new(File.read("config/config.yml")).result)
+
 # define default blockchain urls
 merchant_url = "https://blockchain.info/merchant"
 transfer_url = "https://blockchain.info/tx"

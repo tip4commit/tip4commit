@@ -20,7 +20,7 @@ class Project < ActiveRecord::Base
   # before_save :check_tips_to_pay_against_avaiable_amount
 
   def update_bitcoin_address
-    blockchain_uri       = URI CONFIG["blockchain_info"]["new_url"]    
+    blockchain_uri       = URI CONFIG["blockchain_info"]["new_url"]
     blockchain_pass      = CONFIG["blockchain_info"]["password"]
     blockchain_label     = "#{self.full_name}@tip4commit"
     blockchain_params    = { password: blockchain_pass, label: blockchain_label }
@@ -129,9 +129,7 @@ class Project < ActiveRecord::Base
 
   def tip_for commit
     if (next_tip_amount > 0) && !Tip.exists?(commit: commit.sha)
-
-      user = User.find_by_commit(commit)
-      return unless user
+      return unless (user = User.find_by_commit commit)
 
       user.update(nickname: commit.author.login) if commit.author.try(:login)
 
