@@ -12,7 +12,7 @@ pl:
     support_link: wsparcie
     follow_link: Obserwuj @tip4commit
   links:
-    sign_up: Sign up
+    sign_up: Rejestracja
     sign_in: Zaloguj się
     sign_in_imp: zaloguj się
     sign_out: Wyloguj się
@@ -140,7 +140,7 @@ pl:
       undecided: Rozmiar napiwku nie został jeszcze określony
       no_bitcoin_address: Użytkownik nie sprecyzował adresu do wypłaty
       below_threshold: "Saldo użytkownika jest poniżej wymaganego do wypłaty"
-      waiting: Oczekiwanie na wypłate
+      waiting: Oczekiwanie na wypłatę
       error: (błąd w wysyłaniu transakcji)
   deposits:
     index:
@@ -156,7 +156,7 @@ pl:
   users:
     index:
       title: Najlepsi kontrybutorzy
-      name: Imie
+      name: Imię
       commits_count: Opłacone "commity"
       withdrawn: Wypłacone
     show:
@@ -165,7 +165,7 @@ pl:
       see_all: zobacz wszystko
       received: "%{time} otrzymano %{amount} za commit %{commit} w %{project}"
       bitcoin_address_placeholder: Twój adres bitcoin
-      notify: Notify me about new tips (no more than one email per month)
+      notify: Informuj mnie o nowych napiwkach (nie więcej niż jeden email na miesiąc)
       submit_user: Zaktualizuj dane użytkownika
       change_password: Zmień Twoje hasło
       submit_password: Zmień moje hasło
@@ -211,7 +211,7 @@ pl:
     attributes:
       user:
         email: E-mail
-        bitcoin_address: AAdres Bitcoin
+        bitcoin_address: Adres Bitcoin
         password: Hasło
         password_confirmation: Potwierdzenie hasła
         display_name: Wyświetlana nazwa
