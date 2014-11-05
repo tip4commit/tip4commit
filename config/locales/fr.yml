@@ -12,6 +12,7 @@ fr:
     support_link: subventionner
     follow_link: Suivez @tip4commit
   links:
+    sign_up: Sign up
     sign_in: Se connecter
     sign_in_imp: se connecter
     sign_out: Se déconnecter
@@ -63,7 +64,7 @@ fr:
         title: Contribuer
         text: Améliorez un projet ! Si votre contribution est acceptée par le mainteneur du projet, vous recevrez un pourboire !
         sign_in_text: "Vérifiez simplement vos emails ou %{sign_in_link}."
-        sign_up_text: "Si vous n'avez pas encore reçu une invitation, vous pouvez %{sign_up_link} avec une adresse de courriel valide ou via GitHub."
+        sign_up_text: "Si vous n'avez pas encore reçu une invitation, vous pouvez %{sign_up_link} avec une adresse de courriel valide ou via"
         button: Projets subventionnés
   projects:
     index:
@@ -214,3 +215,8 @@ fr:
         password: Mot de passe
         password_confirmation: Confirmation
         display_name: Nom affiché
+  omniauth_providers:
+    github: GitHub
+    bitbucket: BitBucket
+  general:
+    or: ou

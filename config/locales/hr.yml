@@ -12,13 +12,14 @@ hr:
     support_link: podrzi
     follow_link: Follow @tip4commit
   links:
+    sign_up: Sign up
     sign_in: Prijava
     sign_in_imp: prijava
     sign_out: Odjava
   errors:
     project_not_found: Projekt nije nadjen.
     access_denied: Pristup odbijen
-    can_assign_more_tips: "Ne mozete dodijeliti vise od 100% dostupnih sredstva." 
+    can_assign_more_tips: "Ne mozete dodijeliti vise od 100% dostupnih sredstva."
     wrong_bitcoin_address: Greska u updejtanju bitcoin adrese
     user_not_found: Korisnik nije naden
     access_denied: Niste ovlasteni da napravite ovu akciju!
@@ -63,7 +64,7 @@ hr:
         title: Doprinositi
         text: Idite i popravite nesto! Ako je vas cin odobren od odrzavatelja projekta, dobiti cete napojnicu!
         sign_in_text: "Samo provjerite vas email ili %{sign_in_link}."
-        sign_up_text: "Ako jos niste dobili pozivnicu, moze te se %{sign_up_link} sa valjanom email adresom ili GitHub-om."
+        sign_up_text: "Ako jos niste dobili pozivnicu, moze te se %{sign_up_link} sa valjanom email adresom ili"
         button: Podrzavani projekti
   projects:
     index:
@@ -214,3 +215,8 @@ hr:
         password: Lozinka
         password_confirmation: Potvrda lozinke
         display_name: Prikazno ime
+  omniauth_providers:
+    github: GitHub
+    bitbucket: BitBucket
+  general:
+    or: ili

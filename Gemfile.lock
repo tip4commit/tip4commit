@@ -8,6 +8,12 @@ GIT
       omniauth-oauth2 (~> 1.1)
 
 GIT
+  remote: git://github.com/bootstrap-ruby/rails-bootstrap-forms.git
+  revision: bb5e1ca8b8fdb6405feb162338e45468dac83c30
+  specs:
+    bootstrap_form (2.2.0)
+
+GIT
   remote: git://github.com/capistrano/rvm.git
   revision: 19e8d15ae3d705499c610370f159d523bbedbd94
   specs:
@@ -25,13 +31,6 @@ GIT
       execjs
       rails (>= 3.1)
       railties (>= 3.1)
-
-GIT
-  remote: git://github.com/sigmike/rails-bootstrap-forms.git
-  revision: a1c8420ab999df56b13d3de8a097528b77a02217
-  branch: removed_for_on_radio_label
-  specs:
-    bootstrap_form (2.0.1)
 
 GIT
   remote: git://github.com/stouset/twitter_bootstrap_form_for.git
