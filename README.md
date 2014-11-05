@@ -17,7 +17,7 @@ Donate bitcoins to open source projects or receive tips for code contributions.
 Developers
 ==========
 
-If you would like to contribute to the development of tip4commit, you can find the contribution guidelines and installation instructions on the [developer README](https://github.com/tip4commit/tip4commit/wiki/README---Developers)
+If you would like to contribute to the development of tip4commit, you can find the contribution guidelines and installation instructions on the [developer README](https://github.com/tip4commit/tip4commit/wiki/Developer-README)
 
 
 License

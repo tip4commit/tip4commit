@@ -1,0 +1,174 @@
+=begin
+  ** DO NOT COMMIT THIS FILE IN THE RAILS ROOT DIR **
+  bundle then then restore the original
+      (see: config/cross-fork-dev/cross-fork-dev-REAMDE.md)
+      cd RAILS_ROOT
+      mv Gemfile                           ./Gemfile.bak
+      cp config/cross-fork-dev/Gemfile.dev ./Gemfile
+      bundle install --without production mysql postgresql
+      mv Gemfile.bak                       ./Gemfile
+=end
+
+
+source 'https://rubygems.org'
+
+ruby '2.0.0'
+
+gem 'rails',           '4.0.2'
+gem 'mysql2',                      group: :production
+gem 'sass-rails',      '~> 4.0.0'
+gem 'haml-rails',      '~> 0.5.3'
+gem 'less-rails',      '~> 2.4.2'
+gem 'kaminari',        '~> 0.15.0'
+gem 'uglifier',        '>= 1.3.0'
+gem 'coffee-rails',    '~> 4.0.0'
+gem 'therubyracer',    '~> 0.12.0', platforms: :ruby
+gem 'jquery-rails',    '~> 3.0.4'
+gem 'turbolinks',      '~> 2.2.0'
+gem 'jquery-turbolinks'
+gem 'jbuilder',        '~> 1.5.3'
+gem 'airbrake',        '~> 3.1.15'
+gem 'devise',          '~> 3.2.2'
+gem 'omniauth',        '~> 1.1.4'
+gem 'omniauth-github', github: 'alexandrz/omniauth-github', branch: 'provide_emails'
+gem 'octokit',         '~> 2.7.0'
+gem 'sawyer',          '~> 0.5.2'
+gem 'twitter_bootstrap_form_for', github: 'stouset/twitter_bootstrap_form_for'
+gem 'twitter-bootstrap-rails',    github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
+# sigmike 'bootstrap_form' bugfix added in https://github.com/tip4commit/tip4commit/pull/74
+#   has been merged upstream https://github.com/bootstrap-ruby/rails-bootstrap-forms/pull/76
+#gem 'bootstrap_form', github: 'sigmike/rails-bootstrap-forms', branch: 'removed_for_on_radio_label'
+gem 'bootstrap_form', github: 'bootstrap-ruby/rails-bootstrap-forms'
+gem 'sdoc', group: :doc, require: false
+gem 'cancancan'
+gem 'dusen'
+gem 'render_csv'
+gem 'demoji'
+
+gem "http_accept_language"
+gem 'rails-i18n'
+gem "i18n-js"
+gem 'kaminari-i18n'
+gem 'devise-i18n'
+
+group :development do
+  gem 'capistrano',         '~> 3.0.1'
+  gem 'capistrano-rvm',     '~> 0.1.0', github: 'capistrano/rvm'
+  gem 'capistrano-bundler', '>= 1.1.0'
+  gem 'capistrano-rails',   '~> 1.1.0'
+  gem 'debugger',           '~> 1.6.5'
+end
+
+group :development, :test do
+  gem 'sqlite3',            '~> 1.3.8'
+  gem 'factory_girl_rails', '~> 4.3.0'
+  gem 'rspec-rails',        '~> 3.0.0.beta'
+end
+
+group :test do
+  gem 'simplecov'
+  gem 'shoulda-matchers',   '~> 2.5.0'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+end
+
+
+
+
+
+
+
+# peer4commit
+
+source 'https://rubygems.org'
+
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '4.0.2'
+
+# Databases
+gem 'sqlite3', '~> 1.3.8' , group: :development
+gem 'mysql2',               group: :mysql
+gem 'pg',                   group: :postgresql
+
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 4.0.0'
+gem 'haml-rails', '~> 0.5.3'
+gem "less-rails", '~> 2.4.2'
+
+gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
+
+gem 'kaminari', '~> 0.15.0'
+
+# Use Uglifier as compressor for JavaScript assets
+gem 'uglifier', '>= 1.3.0'
+
+# Use CoffeeScript for .js.coffee assets and views
+gem 'coffee-rails', '~> 4.0.0'
+
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+gem 'therubyracer', '~> 0.12.0', platforms: :ruby
+
+# Use jquery as the JavaScript library
+gem 'jquery-rails', '~> 3.0.4'
+
+# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+gem 'turbolinks', '~> 2.2.0'
+
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'jbuilder', '~> 1.5.3'
+
+group :doc do
+  # bundle exec rake doc:rails generates the API under doc/api.
+  gem 'sdoc', require: false
+end
+
+gem 'devise',   '~> 3.2.2'
+gem 'omniauth', '~> 1.1.4'
+gem 'omniauth-github', github: 'alexandrz/omniauth-github', branch: 'provide_emails'
+gem 'cancancan'
+gem 'twitter_bootstrap_form_for', github: 'stouset/twitter_bootstrap_form_for'
+
+gem 'octokit', '~> 2.7.0'
+
+# Use ActiveModel has_secure_password
+# gem 'bcrypt-ruby', '~> 3.0.0'
+
+# Use unicorn as the app server
+# gem 'unicorn'
+
+# Use debugger
+# gem 'debugger', group: [:development, :test]
+
+group :development do
+  gem 'capistrano',         '~> 3.0.1'
+  gem 'capistrano-rvm',     '~> 0.1.0', github: 'capistrano/rvm'
+  gem 'capistrano-bundler', '>= 1.1.0'
+  gem 'capistrano-rails',   '~> 1.1.0'
+  gem 'quiet_assets'
+end
+
+gem 'airbrake', '~> 3.1.15'
+gem 'httparty'
+gem 'whenever'
+gem 'rqrcode-rails3'
+gem 'exception_notification'
+gem 'rack-canonical-host'
+gem 'bootstrap_form', github: 'bootstrap-ruby/rails-bootstrap-forms'
+gem 'html_pipeline_rails'
+gem 'rails_autolink'
+gem 'redcarpet'
+gem 'sanitize'
+gem 'twitter-typeahead-rails'
+gem 'commontator', '~> 4.6.0'
+gem 'compass-rails'
+
+group :test do
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
+  gem 'rspec-rails',        '~> 3.0.0.beta'
+  gem 'factory_girl_rails', '~> 4.3.0'
+  gem 'poltergeist'
+  gem 'timecop'
+  gem 'capybara-screenshot'
+end

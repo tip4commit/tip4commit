@@ -8,7 +8,7 @@ PRIME4COMMIT_BRANCHES   = %w{prime4commit-master peer4commit-new-feature}
 BRANCHES_LISTS_FILENAME = 'config/config.yml' # DEBUG
 
 BRANCH_NAME          = `git rev-parse --abbrev-ref HEAD`.strip
-IS_MYFORK            = MY_BRANCHES.include?           BRANCH_NAME
+IS_MY_FORK           = MY_BRANCHES.include?           BRANCH_NAME
 IS_TIP4COMMIT_FORK   = TIP4COMMIT_BRANCHES.include?   BRANCH_NAME
 IS_PEER4COMMIT_FORK  = PEER4COMMIT_BRANCHES.include?  BRANCH_NAME
 IS_PRIME4COMMIT_FORK = PRIME4COMMIT_BRANCHES.include? BRANCH_NAME
