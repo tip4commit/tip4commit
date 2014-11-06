@@ -7,6 +7,7 @@ Feature: A project collaborator can change the tips of commits
       | seldon  |
       | daneel  |
     And our fee is "0"
+    And min tip amount is "0"
     And a deposit of "500"
     And the last known commit is "AAA"
     And a new commit "BBB" with parent "AAA"
