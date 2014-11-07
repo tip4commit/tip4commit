@@ -145,7 +145,7 @@ class Project < ActiveRecord::Base
                           commit: commit.sha,
                           commit_message: commit.commit.message })
 
-      tip.notify_user
+      # tip.notify_user
 
       Rails.logger.info "    Tip created #{tip.inspect}"
     end
@@ -172,7 +172,9 @@ class Project < ActiveRecord::Base
   end
 
   def next_tip_amount
-    (CONFIG["tip"]*available_amount).ceil
+    next_tip_amount = (CONFIG["tip"]*available_amount).ceil
+    next_tip_amount = [next_tip_amount, CONFIG["min_tip"]].max if CONFIG["min_tip"]
+    next_tip_amount = [next_tip_amount, available_amount].min
   end
 
   def update_cache

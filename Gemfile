@@ -23,7 +23,7 @@ gem 'octokit',         '~> 2.7.0'
 gem 'sawyer',          '~> 0.5.2'
 gem 'twitter_bootstrap_form_for', github: 'stouset/twitter_bootstrap_form_for'
 gem 'twitter-bootstrap-rails',    github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
-gem 'bootstrap_form', github: 'sigmike/rails-bootstrap-forms', branch: 'removed_for_on_radio_label'
+gem 'bootstrap_form', github: 'bootstrap-ruby/rails-bootstrap-forms'
 gem 'sdoc', group: :doc, require: false
 gem 'cancancan'
 gem 'dusen'

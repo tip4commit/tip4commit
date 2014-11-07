@@ -25,4 +25,14 @@ module ApplicationHelper
   def commit_tag(sha1)
     content_tag(:span, truncate(sha1, length: 10, omission: ""), class: "commit-sha")
   end
+
+  def list_friendly_text a_list , conjunction
+    # e.g. ['a']         => "a"
+    #      ['a','b']     => "a or b"
+    #      ['a','b','c'] => "a, b, or c"
+    list = a_list.map { |ea| ea.to_s } ; last = list.pop ;
+    (list.join ', ')                                    +
+    ((list.size < 2) ? "" : ",")                        +
+    ((list.empty?)   ? "" : " #{conjunction} ") + last
+  end
 end

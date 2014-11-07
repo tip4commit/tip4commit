@@ -35,6 +35,7 @@ smtp_settings:
 tip: 0.01
 min_payout: 100000
 our_fee: 0.05
+min_tip: 50000 # optional
 
 deposit_address: 1M4bS4gPyA6Kb8w7aXsgth9oUZWcRk73tQ
 

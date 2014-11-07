@@ -17,8 +17,8 @@ end
 
 Given(/^I'm not logged in$/) do
   visit root_path
-  if page.has_content?("Sign Out")
-    click_on "Sign Out"
+  if page.has_content?("Sign out")
+    click_on "Sign out"
     page.should have_content("Signed out successfully")
   else
     page.should have_content("Sign in")

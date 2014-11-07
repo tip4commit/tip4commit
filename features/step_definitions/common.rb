@@ -21,6 +21,10 @@ Given(/^our fee is "(.*?)"$/) do |arg1|
   CONFIG["our_fee"] = arg1.to_f
 end
 
+Given(/^min tip amount is "(.*?)"$/) do |arg1|
+  CONFIG["min_tip"] = arg1.to_f * 1e8
+end
+
 Given(/^a project$/) do
   @project = Project.create!(full_name: "example/test", github_id: 123, bitcoin_address: 'mq4NtnmQoQoPfNWEPbhSvxvncgtGo6L8WY')
 end

@@ -12,6 +12,7 @@ pl:
     support_link: wsparcie
     follow_link: Obserwuj @tip4commit
   links:
+    sign_up: Rejestracja
     sign_in: Zaloguj się
     sign_in_imp: zaloguj się
     sign_out: Wyloguj się
@@ -63,7 +64,7 @@ pl:
         title: 'Współpracuj'
         text: 'Idź i coś napraw! Jeśli twój commit zostanie zaakceptowany przez nadzorcę projektu, dostaniesz napiwek!'
         sign_in_text: "Wystarczy sprawdzić e-mail lub %{sign_in_link}."
-        sign_up_text: "Jeśli nadal nie otrzymałeś zaproszenia, możesz %{sign_up_link} za pomocą adresu e-mail lub przez GitHub."
+        sign_up_text: "Jeśli nadal nie otrzymałeś zaproszenia, możesz %{sign_up_link} za pomocą adresu e-mail lub przez"
         button: Wspierane projekty
   projects:
     index:
@@ -139,7 +140,7 @@ pl:
       undecided: Rozmiar napiwku nie został jeszcze określony
       no_bitcoin_address: Użytkownik nie sprecyzował adresu do wypłaty
       below_threshold: "Saldo użytkownika jest poniżej wymaganego do wypłaty"
-      waiting: Oczekiwanie na wypłate
+      waiting: Oczekiwanie na wypłatę
       error: (błąd w wysyłaniu transakcji)
   deposits:
     index:
@@ -155,7 +156,7 @@ pl:
   users:
     index:
       title: Najlepsi kontrybutorzy
-      name: Imie
+      name: Imię
       commits_count: Opłacone "commity"
       withdrawn: Wypłacone
     show:
@@ -164,7 +165,7 @@ pl:
       see_all: zobacz wszystko
       received: "%{time} otrzymano %{amount} za commit %{commit} w %{project}"
       bitcoin_address_placeholder: Twój adres bitcoin
-      notify: Notify me about new tips (no more than one email per month)
+      notify: Informuj mnie o nowych napiwkach (nie więcej niż jeden email na miesiąc)
       submit_user: Zaktualizuj dane użytkownika
       change_password: Zmień Twoje hasło
       submit_password: Zmień moje hasło
@@ -210,7 +211,12 @@ pl:
     attributes:
       user:
         email: E-mail
-        bitcoin_address: AAdres Bitcoin
+        bitcoin_address: Adres Bitcoin
         password: Hasło
         password_confirmation: Potwierdzenie hasła
         display_name: Wyświetlana nazwa
+  omniauth_providers:
+    github: GitHub
+    bitbucket: BitBucket
+  general:
+    or: czy
