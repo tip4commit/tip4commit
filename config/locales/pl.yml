@@ -79,6 +79,7 @@ pl:
       support: Pomoc
     show:
       title: "Współpracuj z %{project}"
+      fetch_pending: (Pending initial fetch)
       edit_project: Zmień ustawienia projektu
       decide_tip_amounts: Ustal rozmiary napiwków
       disabled_notifications: "Nadzorcy projektów zdecydowali nie powiadamiać nowych współpracowników o napiwkach i prawdopodobnie nie lubią tego typu finansowania."

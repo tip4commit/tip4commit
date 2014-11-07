@@ -1,12 +1,12 @@
 class TipsController < ApplicationController
   before_filter { load_project params }
+  before_filter { load_user    params }
 
   def index
-    if @project
+    if @project.present?
       @tips = @project.tips.includes(:user).with_address
-    elsif params[:user_id]
-      @user = User.find params[:user_id]
-      if @user.present? && @user.bitcoin_address.present?
+    elsif @user.present?
+      if @user.bitcoin_address.present?
         @tips = @user.tips.includes(:project)
       else
         flash[:error] = I18n.t('errors.user_not_found')

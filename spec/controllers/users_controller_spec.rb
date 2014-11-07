@@ -2,8 +2,10 @@ require 'spec_helper'
 
 describe UsersController do
   describe '#show' do
-    let(:user) { mock_model User, id: 100000000 }
-    let(:subject) { get :show, id: user.id }
+#     let(:user) { mock_model User, id: 100000000 }
+#     let(:subject) { get :show, id: user.id }
+    let(:user) { create(:user) }
+    let(:subject) { get :show , :nickname => user.nickname }
 
     context 'when logged in' do
       login_user
@@ -36,8 +38,10 @@ describe UsersController do
       end
 
       context 'when user not found' do
-        it 'redirect to root_path' do
-          expect(subject).to redirect_to root_path
+        let(:subject) { get :show , :nickname => 'unknown-user' }
+
+        it 'redirect to users_path' do
+          expect(subject).to redirect_to users_path
         end
 
         it 'sets flash error message' do

@@ -79,6 +79,7 @@ fr:
       support: Subventionner
     show:
       title: "Contribuer à %{project}"
+      fetch_pending: (Pending initial fetch)
       edit_project: Changer les paramètres du projet
       decide_tip_amounts: Choisir un montant de pourboire
       disabled_notifications: "Les responsables du projet ont décidé de ne pas prévenir les nouveaux contributeurs au sujet des pourboires, et n'apprécient probablement pas ce type de rémunération."
