@@ -1,7 +1,7 @@
 Feature: Developers may sign-up to receive tip offers
   Background:
     Given a "github" project named "seldon/seldons-project" exists
-    And   a user named "yugo" exists with a bitcoin address
+    And   a developer named "yugo" exists with a bitcoin address
     And   our fee is "0"
     And   a deposit of "500" is made
     And   the most recent commit is "AAA"
@@ -26,7 +26,7 @@ Feature: Developers may sign-up to receive tip offers
     And   there should be 0 email sent
 
     When  I sign in as "gaal"
-    And   a new commit "DDD" is made by a user named "gaal"
+    And   a new commit "DDD" is made by a developer named "gaal"
     When  the project syncs with the remote repo
     Then  there should be a tip of "4.95" for commit "CCC"
     Then  there should be a tip of "4.9005" for commit "DDD"

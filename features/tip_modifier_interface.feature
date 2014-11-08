@@ -4,8 +4,8 @@ Feature: A project collaborator can change the tips of commits
     And   the project collaborators are:
       | seldon  |
       | daneel  |
-    And   a user named "yugo" exists with a bitcoin address
-    And   a user named "gaal" exists without a bitcoin address
+    And   a developer named "yugo" exists with a bitcoin address
+    And   a developer named "gaal" exists without a bitcoin address
     And   our fee is "0"
     And   a deposit of "500" is made
     And   the most recent commit is "AAA"
@@ -131,7 +131,7 @@ Feature: A project collaborator can change the tips of commits
       | yugo   | 1                        |
 
   Scenario: A collaborator sends large amounts in tips
-    Given 20 new commits are made by a user named "yugo"
+    Given 20 new commits are made by a developer named "yugo"
     And   a new commit "last" is made
     And   the project holds tips
     When  the project syncs with the remote repo

@@ -9,7 +9,7 @@ Feature: Collaborators may manage project
     When  I visit the "seldon/seldons-project github-project" page
     Then  I should be on the "seldon/seldons-project github-project" page
     And   I should see "seldon/seldons-project"
-    And   I should see "Pending initial sync"
+    And   I should see "Pending initial fetch"
     But   I should not see "Change project settings"
     And   I should not see "Decide tips"
 
@@ -17,7 +17,7 @@ Feature: Collaborators may manage project
     And  I visit the "seldon/seldons-project github-project" page
     Then I should be on the "seldon/seldons-project github-project" page
     And  I should see "seldon/seldons-project"
-    But  I should not see "Pending initial sync"
+    But  I should not see "Pending initial fetch"
     And  I should not see "Change project settings"
     And  I should not see "Decide tips"
 
@@ -30,7 +30,7 @@ Feature: Collaborators may manage project
     When  I visit the "seldon/seldons-project github-project" page
     Then  I should be on the "seldon/seldons-project github-project" page
     And   I should see "seldon/seldons-project"
-    And   I should see "Pending initial sync"
+    And   I should see "Pending initial fetch"
     But   I should not see "Change project settings"
     And   I should not see "Decide tips"
 
@@ -38,7 +38,7 @@ Feature: Collaborators may manage project
     And  I visit the "seldon/seldons-project github-project" page
     Then I should be on the "seldon/seldons-project github-project" page
     And  I should see "seldon/seldons-project"
-    But  I should not see "Pending initial sync"
+    But  I should not see "Pending initial fetch"
     And  I should not see "Change project settings"
     And  I should not see "Decide tips"
 
@@ -46,12 +46,12 @@ Feature: Collaborators may manage project
     Then  I should be on the "home" page
     And   I should see "You are not authorized to perform this action"
 
-  Scenario: New projects should show "Pending initial sync"
+  Scenario: New projects should show "Pending initial fetch" in place of edit button
     Given I'm signed in as "seldon"
     When  I visit the "seldon/seldons-project github-project" page
     Then  I should be on the "seldon/seldons-project github-project" page
     And   I should see "seldon/seldons-project"
-    And   I should see "Pending initial sync"
+    And   I should see "Pending initial fetch"
     But   I should not see "Change project settings"
     And   I should not see "Decide tips"
 
@@ -59,7 +59,7 @@ Feature: Collaborators may manage project
     And  I visit the "seldon/seldons-project github-project" page
     Then I should be on the "seldon/seldons-project github-project" page
     And  I should see "seldon/seldons-project"
-    But  I should not see "Pending initial sync"
+    But  I should not see "Pending initial fetch"
     And  I should see "Change project settings"
     But  I should not see "Decide tips"
 
@@ -70,7 +70,7 @@ Feature: Collaborators may manage project
     Then  I should be on the "seldon/seldons-project github-project" page
     And   I should see "seldon/seldons-project"
     And   I should see "Change project settings"
-    But   I should not see "Pending initial sync"
+    But   I should not see "Pending initial fetch"
     And   I should not see "Decide tips"
 
     When I click "Change project settings"

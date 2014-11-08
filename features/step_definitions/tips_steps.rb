@@ -1,10 +1,14 @@
 
+Given(/^our fee is "(.*?)"$/) do |arg1|
+  CONFIG["our_fee"] = arg1.to_f
+end
+
 Given(/^the tip percentage per commit is "(.*?)"$/) do |arg1|
   CONFIG["tip"] = arg1.to_f
 end
 
-Given(/^our fee is "(.*?)"$/) do |arg1|
-  CONFIG["our_fee"] = arg1.to_f
+Given(/^the minimum tip amount is "(.*?)"$/) do |arg1|
+  CONFIG["min_tip"] = arg1.to_f * 1e8
 end
 
 Given(/^a deposit of "(.*?)" is made$/) do |deposit|
@@ -38,11 +42,11 @@ def find_new_commit commit_id
   nil
 end
 
-Given(/^a new commit "([^"]*?)" is made by a user named "(.*?)"$/) do |commit_id , nickname|
+Given(/^a new commit "([^"]*?)" is made by a developer named "(.*?)"$/) do |commit_id , nickname|
   add_new_commit commit_id , nickname
 end
 
-Given(/^(\d+) new commit.? (?:is|are) made by a user named "(.*?)"$/) do |n_commits , nickname|
+Given(/^(\d+) new commit.? (?:is|are) made by a developer named "(.*?)"$/) do |n_commits , nickname|
   n_commits.to_i.times do
     add_new_commit Digest::SHA1.hexdigest(SecureRandom.hex) , nickname
   end

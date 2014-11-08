@@ -1,7 +1,7 @@
 Feature: Visitors should be able to sign_up and sign_in
   Background:
     Given a "github" project named "seldon/seldons-project" exists
-    And   a user named "seldon" exists without a bitcoin address
+    And   a developer named "seldon" exists without a bitcoin address
 
 
   Scenario Outline: Visitors should see sign_up and sign_in links on all pages
@@ -158,7 +158,7 @@ Feature: Visitors should be able to sign_up and sign_in
      Then  I should be on the "/login/oauth/authorize" page
      Then  some magic stuff happens in the cloud
 
-     Given a GitHib user named "seldon" exists
+     Given a GitHub user named "seldon" exists
      When  I visit the "sign_in" page
      And   I click "Sign in with Github"
      Then  I should be on the "home" page

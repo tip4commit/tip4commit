@@ -10,7 +10,7 @@ hr:
     text: "Izvorni kod dostupan na %{github_link} i mozete takoder %{support_link} razvoj."
     github_link: GitHub
     support_link: podrzi
-    follow_link: Follow @tip4commit
+    follow_link: Prati @tip4commit
   links:
     sign_up: Sign up
     sign_in: Prijava
@@ -70,7 +70,7 @@ hr:
     index:
       find_project:
         placeholder: Upisite GitHub URL projekta kako biste dodati projekt ili bilo koju kljucnu rijec da biste je nasli...
-        button: Nadi ili dodaj projekt
+        button: Nadji ili dodaj projekt
       repository: Repozitorij
       description: Opis
       watchers: Gledatelji
@@ -102,12 +102,12 @@ hr:
       for_commit: za cin
       when_decided: kada je kolicina odlucena
       next_tip: Sljedeca napojnica
-      contribute_and_earn: Contribute and earn
+      contribute_and_earn: Doprinesi i zaradi
       contribute_and_earn_description: "Doniraj Bitcone u ovaj projekt ili %{make_commits_link} i dobij napojnicu. Ako je commit prihvacen %{branch} od strane voditelja projekta i ima Bitcoina na racunu, dobit ce te napojnicu."
       contribute_and_earn_branch: "u <strong>%{branch}</strong> branch"
       make_commits_link: make commits
       tell_us_bitcoin_address: "Samo %{tell_us_link} vasu bitcoin adresu."
-      tell_us_link: tell us
+      tell_us_link: recite nam
       sign_in: "Samo provjerite vas email ili %{sign_in_link}."
       promote_project: Promoviraj %{project}
       embedding: Embedding
@@ -123,13 +123,13 @@ hr:
       disable_notifications: Don't notify new contributors
     decide_tip_amounts:
       commit: Commit
-      author: Author
-      message: Message
-      tip: Tip (relative to the project balance)
-      submit: Send the selected tip amounts
+      author: Autor
+      message: Poruka
+      tip: Napojnica (relativna iznosu na racunu)
+      submit: Posaljite odabrane iznose napojnica
   tips:
     index:
-      tips: Tips
+      tips: Napojnice
       project_tips: '%{project} napojnice'
       user_tips: "%{user} napojnice"
       created_at: Stvoreno na
@@ -146,12 +146,12 @@ hr:
   deposits:
     index:
       project_deposits: '%{project} uplate'
-      deposits: Deposits
+      deposits: Uplate
       created_at: "Stvoreno na"
       project: Projekt
       amount: Kolicina
-      transaction: Transaction
-      confirmed: Confirmed
+      transaction: Transakcija
+      confirmed: Potvrdjeno
       confirmed_yes: 'Da'
       confirmed_no: 'Ne'
   users:
@@ -166,7 +166,7 @@ hr:
       see_all: vidjeti sve
       received: "%{time} primljeno %{amount} za cin %{commit} u %{project}"
       bitcoin_address_placeholder: Vasa bitcoin adresa
-      notify: Notificirati me o novim savjetima (ne vise od jednog emaila po mjesecu)
+      notify: Obavjesti me o novim savjetima (ne vise od jednog emaila po mjesecu)
       submit_user: Azurirati informaciju korisnika
       change_password: Promijeniti vasu lozinku
       submit_password: Promijeniti moju lozinku

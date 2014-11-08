@@ -3,11 +3,22 @@ Before do
 
   # mock branches method to prevent api call
   Project.any_instance.stub(:branches).and_return(%w(master))
+
+  @default_tip     = CONFIG["tip"]
+  @default_our_fee = CONFIG["our_fee"]
+  @default_min_tip = CONFIG["min_tip"]
 end
 
 After do |scenario|
-#   Cucumber.wants_to_quit = true if scenario.failed?
   OmniAuth.config.test_mode = false
+
+  CONFIG["tip"]     = @default_tip
+  CONFIG["our_fee"] = @default_our_fee
+  CONFIG["min_tip"] = @default_min_tip
+
+#   Cucumber.wants_to_quit = true if scenario.status.eql? :failed
+#   Cucumber.wants_to_quit = true if scenario.status.eql? :undefined
+#   Cucumber.wants_to_quit = true if scenario.status.eql? :pending
 end
 
 def mock_github_user nickname
@@ -22,10 +33,10 @@ def mock_github_user nickname
     },
   }.to_ostruct
 
-  step "a user named \"#{nickname}\" exists without a bitcoin address"
+  step "a developer named \"#{nickname}\" exists without a bitcoin address"
 end
 
-Given /^a GitHib user named "(.*?)" exists$/ do |nickname|
+Given /^a GitHub user named "(.*?)" exists$/ do |nickname|
   mock_github_user nickname
 end
 

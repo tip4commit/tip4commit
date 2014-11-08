@@ -1,8 +1,8 @@
 Feature: The site routes pretty paths uniformly
   Background:
     Given a "github" project named "seldon/seldons-project" exists
-    And   a user named "seldon" exists with a bitcoin address
-    And   a user named "yugo" exists without a bitcoin address
+    And   a developer named "seldon" exists with a bitcoin address
+    And   a developer named "yugo" exists without a bitcoin address
 
 
   ### Project routes ###

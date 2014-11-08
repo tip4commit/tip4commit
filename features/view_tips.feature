@@ -1,8 +1,8 @@
 Feature: Visitors should be able to see claimed tips
   Background:
     Given a "github" project named "seldon/seldons-project" exists
-    And   a user named "yugo" exists with a bitcoin address
-    And   a user named "gaal" exists without a bitcoin address
+    And   a developer named "yugo" exists with a bitcoin address
+    And   a developer named "gaal" exists without a bitcoin address
     And   our fee is "0"
     And   a deposit of "500" is made
     And   the most recent commit is "AAA"
