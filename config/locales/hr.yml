@@ -79,6 +79,7 @@ hr:
       support: Podrzavaj
     show:
       title: "Doprinosi %{project}"
+      fetch_pending: (Pending initial fetch)
       edit_project: Promijeni postavke projekta
       decide_tip_amounts: Odredi kolicinu napojnica
       disabled_notifications: "Odrzavatelji projekata su odlucili da nece obavjestiti nove doprinositelje o napojnicama i najvjerovatnije ne vole ovaj nacin isplate."

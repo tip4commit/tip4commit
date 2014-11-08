@@ -4,8 +4,7 @@ class ProjectsController < ApplicationController
   include ProjectsHelper
 
   before_filter :load_project, only: [:show, :edit, :update, :decide_tip_amounts]
-  before_filter :redirect_to_pretty_url, only: [:show, :edit, :decide_tip_amounts,
-                                                :tips, :deposits]
+  before_filter :redirect_to_pretty_url, only: [:show, :edit, :decide_tip_amounts]
 
   def index
     @projects = Project.order(projects_order).page(params[:page]).per(30)
@@ -102,10 +101,6 @@ class ProjectsController < ApplicationController
           path = pretty_project_edit_path               @project
         when 'decide_tip_amounts'
           path = pretty_project_decide_tip_amounts_path @project
-        when 'tips'
-          path = pretty_project_tips_path               @project
-        when 'deposits'
-          path = pretty_project_deposits_path           @project
         end
         format.html { redirect_to path }
       end

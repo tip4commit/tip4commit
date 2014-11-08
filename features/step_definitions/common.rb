@@ -5,7 +5,12 @@ Before do
   Project.any_instance.stub(:branches).and_return(%w(master))
 end
 
-Given /^I'm signed in as "(.*?)"$/ do |nickname|
+After do |scenario|
+#   Cucumber.wants_to_quit = true if scenario.failed?
+  OmniAuth.config.test_mode = false
+end
+
+def mock_github_user nickname
   email = "#{nickname.parameterize}@example.com"
 
   OmniAuth.config.test_mode = true
@@ -16,12 +21,20 @@ Given /^I'm signed in as "(.*?)"$/ do |nickname|
       "verified_emails" => [email]  ,
     },
   }.to_ostruct
+
+  step "a user named \"#{nickname}\" exists without a bitcoin address"
+end
+
+Given /^a GitHib user named "(.*?)" exists$/ do |nickname|
+  mock_github_user nickname
+end
+
+Given /^I'm signed in as "(.*?)"$/ do |nickname|
+  mock_github_user nickname
   visit root_path
   first(:link, "Sign in").click
   click_on "Sign in with Github"
   page.should have_content("Successfully authenticated")
-
-  step "a user named \"#{nickname}\" exists without a bitcoin address"
 end
 
 Given /^I'm not signed in$/ do
@@ -32,6 +45,8 @@ Given /^I'm not signed in$/ do
   else
     page.should have_content("Sign in")
   end
+
+  OmniAuth.config.test_mode = false
 end
 
 Given (/^I sign in as "(.*?)"$/) { |nickname| step "I'm signed in as \"#{nickname}\"" }
@@ -42,14 +57,14 @@ def parse_path_from_page_string page_string
   path = nil
 
   # explicit cases
-  # e.g. "a-user/a-project github project edit"
+  # e.g. "a-user/a-project github-project edit"
   # e.g. "a-user user edit"
-  tokens         = page_string.split ' '
-  name           = tokens[0]
-  model          = tokens[1]
-  action         = tokens[2] || '' # '' => 'show'
-  is_user        = model.eql? 'user'
-  is_project     = ['github-project' , 'bitbucket-project'].include? model
+  tokens     = page_string.split ' '
+  name       = tokens[0]
+  model      = tokens[1]
+  action     = tokens[2] || '' # '' => 'show'
+  is_user    = model.eql? 'user'
+  is_project = ['github-project' , 'bitbucket-project'].include? model
   if is_project
     projects_paths = ['' , 'edit' , 'decide_tip_amounts' , 'tips' , 'deposits']
     is_valid_path  = projects_paths.include? action
@@ -58,8 +73,7 @@ def parse_path_from_page_string page_string
   elsif is_user
     user_paths     = ['' , 'tips']
     is_valid_path  = user_paths.include? action
-#   path           = "/users/#{name}/#{action}" if is_valid_path # TODO: nyi
-    path           = "/users/#{@users[name].id}/#{action}" if is_valid_path
+    path           = "/users/#{name}/#{action}" if is_valid_path # TODO: nyi
 
   # implicit cases
   else case page_string
@@ -87,14 +101,27 @@ Given(/^I browse to the explicit path "(.*?)"$/) do |url|
 end
 
 Then(/^I should be on the "(.*?)" page$/) do |page_string|
-  expected = parse_path_from_page_string page_string
+  expected = parse_path_from_page_string page_string rescue expected = page_string
   actual   = page.current_path
 
-  (expected.index actual).should eq 0 # ignore trailing '/'
+  expected.chop! if (expected.end_with? '/') && (expected.size > 1)
+  actual  .chop! if (actual  .end_with? '/') && (actual  .size > 1)
+
+  actual.should eq expected
 end
 
-Given(/^I click on "(.*?)"$/) do |arg1|
+def find_element node_name
+  case node_name
+  when "header" ; page.find '.masthead'
+  end
+end
+
+Given(/^I click "(.*?)"$/) do |arg1|
   click_on(arg1)
+end
+
+Given(/^I click "(.*?)" within the "(.*?)" area$/) do |link_text , node_name|
+  within (find_element node_name) { click_on link_text }
 end
 
 Given(/^I check "(.*?)"$/) do |arg1|
@@ -124,3 +151,12 @@ end
 When(/^the email counters are reset$/) do
   ActionMailer::Base.deliveries.clear
 end
+
+When(/^I confirm the email address: "(.*?)"$/) do |email|
+  mail      = ActionMailer::Base.deliveries.select {|ea| ea.to.first.eql? email}.first
+  mail_body = mail.body.raw_source
+  token     = mail_body.split('?confirmation_token=')[1].split('">Confirm my account').first
+  visit "/users/confirmation?confirmation_token=#{token}"
+end
+
+Then  /^some magic stuff happens in the cloud$/ do ; true ; end ;

@@ -2,7 +2,7 @@ class DepositsController < ApplicationController
   before_action { load_project params }
 
   def index
-    if @project
+    if @project.present?
       @deposits = @project.deposits
     else
       @deposits = Deposit.includes(:project)

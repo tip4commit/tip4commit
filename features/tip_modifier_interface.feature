@@ -25,10 +25,10 @@ Feature: A project collaborator can change the tips of commits
     When  the project syncs with the remote repo
     And   I visit the "seldon/seldons-project github-project" page
     Then  I should be on the "seldon/seldons-project github-project" page
-    When  I click on "Change project settings"
+    When  I click "Change project settings"
     Then  I should be on the "seldon/seldons-project github-project edit" page
     When  I check "Do not send the tips immediately. Give collaborators the ability to modify the tips before they're sent"
-    And   I click on "Save the project settings"
+    And   I click "Save the project settings"
     Then  I should be on the "seldon/seldons-project github-project" page
     And   I should see "The project settings have been updated"
 
@@ -51,7 +51,7 @@ Feature: A project collaborator can change the tips of commits
 
     When  I visit the "seldon/seldons-project github-project" page
     Then  I should be on the "seldon/seldons-project github-project" page
-    When  I click on "Decide tip amounts"
+    When  I click "Decide tip amounts"
     Then  I should be on the "seldon/seldons-project github-project decide_tip_amounts" page
     And   I should not see "AAA"
     And   I should not see "BBB"
@@ -65,8 +65,9 @@ Feature: A project collaborator can change the tips of commits
     And   the most recent commit should be "FFF"
 
     When  I choose the amount "Free: 0%" on commit "DDD"
-    And   I click on "Send the selected tip amounts"
+    And   I click "Send the selected tip amounts"
     Then  I should be on the "seldon/seldons-project github-project decide_tip_amounts" page
+    And   I should see "The tip amounts have been defined"
     And   there should be a tip of "0" for commit "DDD"
     And   the tip amount for commit "EEE" should be undecided
     But   there should be no tip for commit "FFF"
@@ -74,8 +75,9 @@ Feature: A project collaborator can change the tips of commits
 
     When  the email counters are reset
     And   I choose the amount "Tiny: 0.1%" on commit "EEE"
-    And   I click on "Send the selected tip amounts"
-    Then  I should be on the "seldon/seldons-project github-project decide_tip_amounts" page
+    And   I click "Send the selected tip amounts"
+    Then  I should be on the "seldon/seldons-project github-project" page
+    And   I should see "The tip amounts have been defined"
     And   there should be a tip of "0" for commit "DDD"
     And   there should be a tip of "0.49005" for commit "EEE"
     But   there should be no tip for commit "FFF"
@@ -137,10 +139,10 @@ Feature: A project collaborator can change the tips of commits
     And   I visit the "seldon/seldons-project github-project" page
     Then  I should be on the "seldon/seldons-project github-project" page
     And   I should see "Decide tip amounts"
-    When  I click on "Decide tip amounts"
+    When  I click "Decide tip amounts"
     Then  I should be on the "seldon/seldons-project github-project decide_tip_amounts" page
     When  I choose the amount "Huge: 5%" on all commits
-    And   I click on "Send the selected tip amounts"
+    And   I click "Send the selected tip amounts"
     Then  I should be on the "seldon/seldons-project github-project decide_tip_amounts" page
     And   I should see "You can't assign more than 100% of available funds."
     And   the tip amount for commit "BBB" should be undecided

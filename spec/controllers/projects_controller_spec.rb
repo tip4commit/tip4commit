@@ -40,6 +40,16 @@ describe ProjectsController do
     end
   end
 
+  describe 'GET #search' do
+    context 'with existing repo that has been blacklisted' do
+      let(:subject) { get :search, query: "https://github.com/mitsuhiko/flask" }
+
+      it 'renders blacklisted template' do
+        expect(subject).to render_template :blacklisted
+      end
+    end
+  end
+
   describe 'POST #search' do
     it 'returns 200 status code' do
       post :search
@@ -56,11 +66,48 @@ describe ProjectsController do
   end
 =end
 
-  describe 'GET #show' do
-    it 'returns 302 status code' do
-      get :show , :service => 'github' , :repo => 'test/test'
-      response.should be_redirect
+  shared_context 'accessing_project' do |verb , action|
+    let(:a_project) { create :project , :host => 'github' , :full_name => "test/test" }
+
+    context 'existing_project' do
+      it 'via project id returns 302 status code' do
+        case verb
+        when :get ;   get   action , :id => a_project.id
+        when :patch ; patch action , :id => a_project.id
+        end
+        response.should be_redirect
+      end
+
+      it 'via project name returns 200 status code' do
+        case verb
+        when :get ;   get   action , :service => 'github' , :repo => a_project.full_name
+        when :patch ; patch action , :service => 'github' , :repo => a_project.full_name
+        end
+        response.should be_success
+      end
     end
+
+    context 'nonexisting_project' do
+      it 'via project id returns 302 status code' do
+        case verb
+        when :get ;   get   action , :id => 999999
+        when :patch ; patch action , :id => 999999
+        end
+        response.should be_redirect
+      end
+
+      it 'via project name returns 200 status code' do
+        case verb
+        when :get ;   get   action , :service => 'github' , :repo => 'no-such/project' ;
+        when :patch ; patch action , :service => 'github' , :repo => 'no-such/project' ;
+        end
+        response.should be_redirect
+      end
+    end
+  end
+
+  describe 'GET #show' do
+    include_context 'accessing_project' , :get , :show
 
     context 'with existing repo that has been blacklisted' do
       let(:blacklisted_repo) { create(:project, host: "github", full_name: "mitsuhiko/flask") }
@@ -72,24 +119,20 @@ describe ProjectsController do
     end
   end
 
-  describe 'GET #search' do
-    context 'with existing repo that has been blacklisted' do
-      let(:subject) { get :search, query: "https://github.com/mitsuhiko/flask" }
-
-      it 'renders blacklisted template' do
-        expect(subject).to render_template :blacklisted
-      end
-    end
-  end
-
   describe 'GET #edit' do
     it 'returns 302 status code' do
+# TODO: requires logged in user who is project collaborator
+#     include_context 'accessing_project' , :get , :edit
+
       get :edit , :service => 'github' , :repo => 'test/test'
       response.should be_redirect
     end
   end
 
   describe 'GET #decide_tip_amounts' do
+# TODO: requires logged in user who is project collaborator and some tips
+#     include_context 'accessing_project' , :get , :decide_tip_amounts
+
     it 'returns 302 status code' do
       get :decide_tip_amounts , :service => 'github' , :repo => 'test/test'
       response.should be_redirect
@@ -97,6 +140,9 @@ describe ProjectsController do
   end
 
   describe 'PATCH #decide_tip_amounts' do
+# TODO: requires logged in user who is project collaborator and some tips
+#     include_context 'accessing_project' , :patch , :decide_tip_amounts
+
     it 'returns 302 status code' do
       patch :decide_tip_amounts , :service => 'github' , :repo => 'test/test'
       response.should be_redirect

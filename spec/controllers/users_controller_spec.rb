@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe UsersController do
-  describe '#index' do
+  describe 'GET #index' do
     let(:subject) { get :index }
 
     it 'renders index template' do
@@ -19,8 +19,8 @@ describe UsersController do
   end
 
   describe '#show' do
-    let(:user) { mock_model User, id: 100000000 }
-    let(:subject) { get :show, id: user.id }
+    let(:user) { create(:user) }
+    let(:subject) { get :show , :nickname => user.nickname }
 
     context 'when logged in' do
       login_user
@@ -68,8 +68,10 @@ describe UsersController do
       end
 
       context 'when user not found' do
-        it 'redirect to root_path' do
-          expect(subject).to redirect_to root_path
+        let(:subject) { get :show , :nickname => 'unknown-user' }
+
+        it 'redirect to users_path' do
+          expect(subject).to redirect_to users_path
         end
 
         it 'sets flash error message' do
@@ -124,27 +126,28 @@ describe UsersController do
 
     it "regex rejects reserved user paths" do
       # accepted pertty url usernames
-      should_accept = %w{logi ogin s4c2 42x}
+      should_accept = [' ' , 'logi' , 'ogin' , 's4c2' , '42x' , 'nick name' , 'kd']
       # reserved routes (rejected pertty url usernames)
-      should_reject = %w{sign_in cancel sign_up edit confirmation login}
+      should_reject = ['' , '1' , '42']
 
-      accepted = should_accept.select {|ea|  ea =~ RESERVED_USER_ROUTES_REGEX}
-      rejected = should_reject.select {|ea| (ea =~ RESERVED_USER_ROUTES_REGEX).nil? }
-      accepted.size.should eq should_accept.size and rejected.size.should eq should_reject.size
+      accepted = should_accept.select {|ea|  ea =~ /\D+/}
+      rejected = should_reject.select {|ea| (ea =~ /\D+/).nil? }
+      (accepted.size.should eq should_accept.size) &&
+      (rejected.size.should eq should_reject.size)
     end
 
-    it "routes GET /users/friendly-name to User#show" do
+    it "routes GET /users/:nickname to User#show" do
       { :get => "/users/#{user.nickname}" }.should route_to(
         :controller => "users" ,
         :action     => "show"  ,
-        :id         => "kd"    )
+        :nickname   => "kd"    )
     end
 
-    it "routes GET /users/friendly-name/tips to Tips#index" do
+    it "routes GET /users/:nickname/tips to Tips#index" do
       { :get => "/users/#{user.nickname}/tips" }.should route_to(
         :controller => "tips"  ,
         :action     => "index" ,
-        :user_id    => "kd"    )
+        :nickname   => "kd"    )
     end
   end
 end
