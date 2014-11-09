@@ -126,6 +126,9 @@ pl:
       message: Wiadomość
       tip: Napiwek (zależy od salda projektu)
       submit: Wyślij wybrane ilości napiwków
+    blacklisted:
+      title: Wybacz, ten projekt nie akceptuje napiwków!
+      message: Autor tego projektu zdecydował o wyłączeniu napiwków dla tego projektu.
   tips:
     index:
       tips: Napiwki
