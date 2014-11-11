@@ -16,3 +16,6 @@ $(document).on "ready page:change", ->
 
   # Finally, load addthis
   $.getScript "//s7.addthis.com/js/250/addthis_widget.js#pubid=ra-526425ac0ea0780b"
+
+  $('.noclick').click () ->
+    return false

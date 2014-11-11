@@ -26,7 +26,9 @@
           %span(data-coingiving="title")= "[tip4commit] " + @project.full_name
           %span(data-coingiving="description")= @project.description
           %span(data-coingiving="bitcoin-address")= @project.bitcoin_address
-        %p= t('.fee', percentage: number_to_percentage(100-CONFIG["our_fee"]*100, precision: 0))
+        %p
+          = t('.fee', percentage: number_to_percentage(100-CONFIG["our_fee"]*100, precision: 0))
+
   .col-md-8
     - unless @project.description.blank?
       .well.well-sm= @project.description
@@ -39,6 +41,10 @@
       = t('.custom_tip_size')
     - else
       = t('.default_tip_size', percentage: number_to_percentage(CONFIG["tip"]*100, precision: 0))
+      - if CONFIG["min_tip"].present?
+        %a.noclick{href:'#', data: {toggle: 'tooltip'}, title: t('.min_tip_size', min_tip: btc_human(CONFIG["min_tip"], {nobr: false})), rel: 'tooltip'}
+          *
+
     - if @project.unconfirmed_amount > 0
       = raw t('.unconfirmed_amount', amount: btc_human(@project.unconfirmed_amount))
 
