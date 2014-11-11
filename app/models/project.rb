@@ -20,13 +20,15 @@ class Project < ActiveRecord::Base
   # before_save :check_tips_to_pay_against_avaiable_amount
 
   def update_repository_info repo
-    self.github_id = repo.id
-    self.name = repo.name
-    self.full_name = repo.full_name
+    self.github_id        = repo.id
+    self.name             = repo.name
+    self.full_name        = repo.full_name
     self.source_full_name = repo.source.full_name rescue ''
-    self.description = repo.description
-    self.watchers_count = repo.watchers_count
-    self.language = repo.language
+    self.description      = repo.description
+    self.watchers_count   = repo.watchers_count
+    self.language         = repo.language
+    self.avatar_url       = repo.organization.rels[:avatar].href if repo.organization.present?
+
     self.save!
   end
 

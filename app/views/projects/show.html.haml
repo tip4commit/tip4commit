@@ -6,9 +6,9 @@
 - if @project.disable_notifications
   .alert.alert-danger= t('.disabled_notifications')
 
-%h1
-  = @project.full_name
-  %small= link_to glyph(:github), @project.github_url, target: '_blank'
+%h1#project_header
+  = (@project.avatar_url.nil?)? (glyph :github) : (image_tag @project.avatar_url , class: 'project_avatar_img')
+  = link_to @project.full_name , @project.github_url, target: '_blank'
   .pull-right
     - if can? :update, @project
       = link_to t('.edit_project'), edit_project_path(@project), class: "btn btn-primary"
