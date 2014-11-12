@@ -70,8 +70,6 @@ When /^the project syncs with the remote repo$/ do
 end
 
 Then /^there should (.*)\s*be a project avatar image visible$/ do |should|
-  pending "this feature is implemented in PR #140 (not yet merged)"
-
   avatar_xpath = "//img[contains(@src, \"githubusercontent\")]"
   if should.eql? 'not '
     page.should_not have_xpath avatar_xpath

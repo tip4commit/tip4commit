@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140918051752) do
+ActiveRecord::Schema.define(version: 20141029083726) do
 
   create_table "collaborators", force: true do |t|
     t.integer  "project_id"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20140918051752) do
     t.datetime "info_updated_at"
     t.string   "branch"
     t.boolean  "disable_notifications"
+    t.string   "avatar_url"
   end
 
   add_index "projects", ["full_name"], name: "index_projects_on_full_name", unique: true

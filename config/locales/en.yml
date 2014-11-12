@@ -89,6 +89,7 @@ en:
       deposits: deposits
       custom_tip_size: (each new commit receives a percentage of available balance)
       default_tip_size: "(each new commit receives %{percentage} of available balance)"
+      min_tip_size: "Minimum tip size is set to %{min_tip}, but if available balance is less than that then it will be sent as a smaller tip"
       unconfirmed_amount: "(%{amount} unconfirmed)"
       tipping_policies: Tipping policies
       updated_by_user: "(Last updated by %{name} on %{date})"

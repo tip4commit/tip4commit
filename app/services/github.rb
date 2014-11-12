@@ -62,7 +62,7 @@ class Github
   end
 
   def collaborators_info project
-    client.get("/repos/#{project.full_name}/collaborators") +
+    (client.get("/repos/#{project.full_name}/collaborators") rescue []) +
     (client.get("/orgs/#{project.full_name.split('/').first}/members") rescue [])
   end
 
