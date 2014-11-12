@@ -221,6 +221,24 @@ class Project < ActiveRecord::Base
   # Description: https://blockchain.info/api/blockchain_wallet_api
   def self.consolidate_addresses
     uri = URI("https://blockchain.info/merchant/#{CONFIG["blockchain_info"]["guid"]}/auto_consolidate?password=#{CONFIG["blockchain_info"]["password"]}&days=60")
-    res = Net::HTTP.get_response(uri)
+    return Net::HTTP.get_response(uri)
+  end
+
+  def archive_address!
+    if self.bitcoin_address.present?
+      uri = URI("https://blockchain.info/merchant/#{CONFIG["blockchain_info"]["guid"]}/archive_address?password=#{CONFIG["blockchain_info"]["password"]}&address=#{self.bitcoin_address}")
+      return Net::HTTP.get_response(uri)
+    else
+      return nil
+    end
+  end
+
+  def unarchive_address!
+    if self.bitcoin_address.present?
+      uri = URI("https://blockchain.info/merchant/#{CONFIG["blockchain_info"]["guid"]}/unarchive_address?password=#{CONFIG["blockchain_info"]["password"]}&address=#{self.bitcoin_address}")
+      return Net::HTTP.get_response(uri)
+    else
+      return nil
+    end
   end
 end
