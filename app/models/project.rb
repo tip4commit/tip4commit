@@ -216,4 +216,11 @@ class Project < ActiveRecord::Base
 
     Github.new.find_or_create_project project_name
   end
+
+  # Removes inactive addresses from the wallet
+  # Description: https://blockchain.info/api/blockchain_wallet_api
+  def self.consolidate_addresses
+    uri = URI("https://blockchain.info/merchant/#{CONFIG["blockchain_info"]["guid"]}/auto_consolidate?password=#{CONFIG["blockchain_info"]["password"]}&days=60")
+    res = Net::HTTP.get_response(uri)
+  end
 end
