@@ -45,7 +45,7 @@ class Github
   end
 
   def find_or_create_project project_name
-    if project = Project.find_by(host: "github", full_name: project_name)
+    if project = find_project(project_name)
       project
     elsif project_name =~ /\w+\/\w+/
       begin
@@ -59,6 +59,10 @@ class Github
     else
       nil
     end
+  end
+
+  def find_project project_name
+    return Project.find_by(host: "github", full_name: project_name)
   end
 
   def collaborators_info project

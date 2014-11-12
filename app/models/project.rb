@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+  acts_as_paranoid
+  
   has_many :deposits # todo: only confirmed deposits
   has_many :tips, inverse_of: :project
   accepts_nested_attributes_for :tips
@@ -215,6 +217,15 @@ class Project < ActiveRecord::Base
       gsub(' ', '')
 
     Github.new.find_or_create_project project_name
+  end
+
+  def self.find_by_url project_url
+    project_name = project_url.
+      gsub(/https?\:\/\/github.com\//, '').
+      gsub(/\#.+$/, '').
+      gsub(' ', '')
+
+    Github.new.find_project project_name
   end
 
   # Removes inactive addresses from the wallet

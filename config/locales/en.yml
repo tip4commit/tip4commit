@@ -18,6 +18,7 @@ en:
     sign_out: Sign out
   errors:
     project_not_found: Project not found.
+    opt_in_notice: Because of multiple complains to GitHub we had to make Tip4Commit opt-in for project maintainers and removed all projects that don't have deposits. If you want to add your project please create an issue at GitHub.
     access_denied: Access denied
     can_assign_more_tips: "You can't assign more than 100% of available funds."
     wrong_bitcoin_address: Error updating bitcoin address
@@ -69,8 +70,8 @@ en:
   projects:
     index:
       find_project:
-        placeholder: Enter GitHub project URL to add a project or any keyword to find it...
-        button: Find or add project
+        placeholder: Enter GitHub project URL or any keyword to find it...
+        button: Find project
       repository: Repository
       description: Description
       watchers: Watchers
