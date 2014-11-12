@@ -41,4 +41,4 @@
   - else
     .alert.alert-warning{role: 'alert'}
       = I18n.t('errors.project_not_found')
-      = I18n.t('errors.opt_in_notice')
+      = I18n.t('errors.opt_in_notice', create_issue_link: link_to(t('links.create_issue'), 'https://github.com/tip4commit/tip4commit/issues/new', target: '_blank')).html_safe
