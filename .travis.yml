@@ -3,7 +3,7 @@ language: ruby
 rvm:
   - 2.0.0
 
-bundler_args: --without development
+bundler_args: --without development --jobs=9 --retry=2 --quiet
 
 before_script:
   - cp config/config.yml.sample config/config.yml
