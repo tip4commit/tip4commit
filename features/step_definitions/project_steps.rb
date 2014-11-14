@@ -1,5 +1,21 @@
 
-def create_github_project project_name
+def github_projects
+  [@github_project_1 , @github_project_2 , @github_project_3].compact
+end
+
+def bitbucket_projects
+  [@bitbucket_project_1 , @bitbucket_project_2 , @bitbucket_project_3].compact
+end
+
+def create_github_project project_name , is_mock_project = true
+  # NOTE: when is_mock_project is false the app will actually fetch via network
+  #       this is the old "find or create" GUI functionality
+  #           so obviously the actual repo must exist
+  #       projects created in this way will not have a bitcoin_address
+  #           but will have valid data such as: github_id , avatar_url ,
+  #           source_full_name , description , watchers_count , language
+  #       up to three of each host are cached with a reference to the most recent
+
   if (@github_project_1.present? && (project_name.eql? @github_project_1.full_name)) ||
      (@github_project_2.present? && (project_name.eql? @github_project_2.full_name))
     raise "duplicate project_name '#{project_name}'"
@@ -7,37 +23,53 @@ def create_github_project project_name
     raise "the maximum of three test projects already exist"
   end
 
-# @current_project is also assigned in the "regarding the .. project named ..." step
-  @current_project = Project.create! :full_name       => project_name , # e.g. "me/my-project"
-                                     :github_id       => Digest::SHA1.hexdigest(project_name) ,
-                                     :bitcoin_address => 'mq4NtnmQoQoPfNWEPbhSvxvncgtGo6L8WY'
-  if    @github_project_2.present? ; @github_project_3 = @current_project ;
-  elsif @github_project_1.present? ; @github_project_2 = @current_project ;
-  else                               @github_project_1 = @current_project ;
+  if is_mock_project
+    new_project = Project.create! :full_name       => project_name , # e.g. "me/my-project"
+                                  :github_id       => Digest::SHA1.hexdigest(project_name) ,
+                                  :bitcoin_address => 'mq4NtnmQoQoPfNWEPbhSvxvncgtGo6L8WY'
+  else
+    new_project = Project.find_or_create_by_url project_name # e.g. "me/my-project"
   end
+
+  unless github_projects.include? new_project
+    if    @github_project_2.present? ; @github_project_3 = new_project ;
+    elsif @github_project_1.present? ; @github_project_2 = new_project ;
+    else                               @github_project_1 = new_project ;
+    end
+  end
+
+  new_project
 end
 
 def create_bitbicket_project project_name
-  raise "unknown service" # nyi
+  raise "unknown provider" # nyi
 end
 
-When /^regarding the "(.*?)" project named "(.*?)"$/ do |service , project_name|
-# @current_project is also assigned in create_github_project and create_bitbucket_project
-
-  @current_project = find_project service , project_name
+def find_project service , project_name
+  project = Project.where(:host => service , :full_name => project_name).first
+  project || (raise "Project '#{project_name.inspect}' not found")
 end
 
-def service_do service , method_dict
-=begin e.g.
-  service_do 'github' , {'github'    => lambda {create_github_project    project_name} ,
-                         'bitbucket' => lambda {create_bitbicket_project project_name} }
-=end
-  (method_dict.has_key? service)? method_dict[service].call : (raise "unknown service")
+Given(/^a "(.*?)" project named "(.*?)" exists$/) do |provider , project_name|
+  # NOTE: project owner will be automatically added as a collaborator
+  #           e.g. "seldon" if project_name == "seldon/a-project"
+  #       @current_project is also assigned in step 'regarding the "..." project named "..."'
+  case provider.downcase
+  when 'github'
+    @current_project = create_github_project    project_name
+  when 'bitbucket'
+    @current_project = create_bitbicket_project project_name
+  when 'real-github'
+    @current_project = create_github_project    project_name , false
+  else raise "unknown provider \"#{provider}\""
+  end
+
+  step "the project collaborators are:" , (Cucumber::Ast::Table.new [])
 end
 
-Given(/^a "(.*?)" project named "(.*?)" exists$/) do |service , project_name|
-  service_do service , {'github'    => lambda {create_github_project    project_name} ,
-                        'bitbucket' => lambda {create_bitbicket_project project_name} }
+When /^regarding the "(.*?)" project named "(.*?)"$/ do |provider , project_name|
+  # NOTE: @current_project is also assigned in step 'a "..." project named "..." exists'
+  @current_project = find_project provider , project_name
 end
 
 Given(/^the project collaborators are:$/) do |table|

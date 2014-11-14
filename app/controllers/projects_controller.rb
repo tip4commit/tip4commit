@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
     if params[:query].present?
       if BLACKLIST.include?(params[:query])
         render :blacklisted and return
-      elsif project = Project.find_or_create_by_url(params[:query])
+      elsif project = Project.find_by_url(params[:query])
         redirect_to pretty_project_path(project) and return
       end
     end

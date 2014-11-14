@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/ActsAsParanoid/acts_as_paranoid.git
+  revision: ddcd1915179c73f74985af6bc8935321ca2fe08d
+  specs:
+    acts_as_paranoid (0.5.0.beta1)
+      activerecord (~> 4.0)
+      activesupport (~> 4.0)
+
+GIT
   remote: git://github.com/alexandrz/omniauth-github.git
   revision: 37a030aa37659831ef80af21b5c7270fe1384b3c
   branch: provide_emails
@@ -316,6 +324,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_paranoid!
   airbrake (~> 3.1.15)
   bootstrap_form!
   cancancan

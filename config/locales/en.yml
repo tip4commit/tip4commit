@@ -16,8 +16,10 @@ en:
     sign_in: Sign in
     sign_in_imp: sign in
     sign_out: Sign out
+    create_issue: create an issue
   errors:
     project_not_found: Project not found.
+    opt_in_notice: "Due to complaints from project maintainers we don't add projects automatically anymore. Existing projects without deposits have been removed.  If you want to add your project, please %{create_issue_link}."
     access_denied: Access denied
     can_assign_more_tips: "You can't assign more than 100% of available funds."
     wrong_bitcoin_address: Error updating bitcoin address
@@ -69,8 +71,8 @@ en:
   projects:
     index:
       find_project:
-        placeholder: Enter GitHub project URL to add a project or any keyword to find it...
-        button: Find or add project
+        placeholder: Enter GitHub project URL or any keyword to find it...
+        button: Find project
       repository: Repository
       description: Description
       watchers: Watchers

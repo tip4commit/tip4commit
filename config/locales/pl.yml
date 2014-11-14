@@ -7,7 +7,7 @@ pl:
     home: Strona Główna
     projects: Wspierane Projekty
   footer:
-    text: "Kod żródłowy dostępny jest na %{github_link} możesz także %{support_link} jego rozwój."
+    text: "Kod źródłowy dostępny jest na %{github_link} możesz także %{support_link} jego rozwój."
     github_link: GitHub
     support_link: wesprzeć
     follow_link: Obserwuj @tip4commit
@@ -24,7 +24,7 @@ pl:
     user_not_found: Nie znaleziono użytkownika
     access_denied: Nie masz uprawnień do wykonania tej czynności!
   notices:
-    project_updated: Ustawienia prjektu zostały zaktualizowane
+    project_updated: Ustawienia projektu zostały zaktualizowane
     tips_decided: Rozmiary napiwków zostały zdefiniowane
     user_updated: Informacje zostały zapisane!
     user_unsubscribed: "Zrezygnowałeś z subskrypcji! Przepraszamy za wszelkie niedogodności. Nadal możesz zostawić swój adres bitcoin i otrzymywać napiwki."
@@ -59,7 +59,7 @@ pl:
       donate:
         title: Podaruj
         text: 'Znajdź projekt, który ci się podoba i prześlij na niego bitcoiny. Twoje bitcoiny zostaną zsumowane z innymi aby dać napiwki za nowe commity.'
-        button: 'Znajdż lub dodaj projekt'
+        button: 'Znajdź lub dodaj projekt'
       contribute:
         title: 'Współpracuj'
         text: 'Idź i coś napraw! Jeśli twój commit zostanie zaakceptowany przez nadzorcę projektu, dostaniesz napiwek!'
@@ -108,7 +108,7 @@ pl:
       make_commits_link: twórz "commity"
       tell_us_bitcoin_address: "Tylko %{tell_us_link} twój adres bitcoin."
       tell_us_link: powiedz nam
-      sign_in: "Sprawdż e-mail lub %{sign_in_link}."
+      sign_in: "Sprawdź e-mail lub %{sign_in_link}."
       promote_project: Promuj %{project}
       embedding: Umieść
       image_url: "URL obrazka:"

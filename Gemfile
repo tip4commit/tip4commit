@@ -29,6 +29,7 @@ gem 'cancancan'
 gem 'dusen'
 gem 'render_csv'
 gem 'demoji'
+gem 'acts_as_paranoid', github: 'ActsAsParanoid/acts_as_paranoid'
 
 gem "http_accept_language"
 gem 'rails-i18n'
