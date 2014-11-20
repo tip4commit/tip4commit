@@ -22,6 +22,14 @@ module ProjectsHelper
     "/#{project.host}/#{project.full_name}"
   end
 
+  def pretty_project_edit_path project
+    "#{pretty_project_path project}/edit"
+  end
+
+  def pretty_project_decide_tip_amounts_path project
+    "#{pretty_project_path project}/decide_tip_amounts"
+  end
+
   def pretty_project_url project
     root_url.gsub(/\/$/,'') + pretty_project_path(project)
   end

@@ -1,9 +1,26 @@
 require 'spec_helper'
 
 describe UsersController do
+  describe 'GET #index' do
+    let(:subject) { get :index }
+
+    it 'renders index template' do
+      expect(subject).to render_template :index
+    end
+
+    it 'returns 200 status code' do
+      expect(subject.status).to eq 200
+    end
+
+    it 'assigns @users' do
+      subject
+      expect(assigns[:users].name).to eq 'User'
+    end
+  end
+
   describe '#show' do
-    let(:user) { mock_model User, id: 100000000 }
-    let(:subject) { get :show, id: user.id }
+    let(:user) { create(:user) }
+    let(:subject) { get :show , :nickname => user.nickname }
 
     context 'when logged in' do
       login_user
@@ -17,6 +34,21 @@ describe UsersController do
 
           it 'returns 200 status code' do
             expect(subject.status).to eq 200
+          end
+
+          it 'assigns @user' do
+            subject
+            expect(assigns[:user].name).to eq 'kd'
+          end
+
+          it 'assigns @user_tips' do
+            subject
+            expect(assigns[:user_tips].name).to eq 'Tip'
+          end
+
+          it 'assigns @recent_tips' do
+            subject
+            expect(assigns[:recent_tips].class).to eq Array
           end
         end
 
@@ -36,8 +68,10 @@ describe UsersController do
       end
 
       context 'when user not found' do
-        it 'redirect to root_path' do
-          expect(subject).to redirect_to root_path
+        let(:subject) { get :show , :nickname => 'unknown-user' }
+
+        it 'redirect to users_path' do
+          expect(subject).to redirect_to users_path
         end
 
         it 'sets flash error message' do
@@ -56,6 +90,64 @@ describe UsersController do
         subject
         expect(flash[:alert]).to eq('You need to sign in or sign up before continuing.')
       end
+    end
+  end
+
+  describe "routing" do
+    it "routes GET /users to User#index" do
+      { :get => "/users" }.should route_to(
+        :controller => "users" ,
+        :action     => "index" )
+    end
+
+    it "routes GET /users/1 to User#show" do
+      { :get => "/users/1" }.should route_to(
+        :controller => "users" ,
+        :action     => "show"  ,
+        :id         => "1"     )
+    end
+
+    it "routes GET /users/login to User#login" do
+      { :get => "/users/login" }.should route_to(
+        :controller => "users" ,
+        :action     => "login" )
+    end
+
+    it "routes GET /users/1/tips to Tips#index" do
+      { :get => "/users/1/tips" }.should route_to(
+        :controller => "tips"  ,
+        :action     => "index" ,
+        :user_id    => "1"     )
+    end
+  end
+
+  describe "pretty url routing" do
+    let(:user) { create(:user) }
+
+    it "regex rejects reserved user paths" do
+      # accepted pertty url usernames
+      should_accept = [' ' , 'logi' , 'ogin' , 's4c2' , '42x' , 'nick name' , 'kd']
+      # reserved routes (rejected pertty url usernames)
+      should_reject = ['' , '1' , '42']
+
+      accepted = should_accept.select {|ea|  ea =~ /\D+/}
+      rejected = should_reject.select {|ea| (ea =~ /\D+/).nil? }
+      (accepted.size.should eq should_accept.size) &&
+      (rejected.size.should eq should_reject.size)
+    end
+
+    it "routes GET /users/:nickname to User#show" do
+      { :get => "/users/#{user.nickname}" }.should route_to(
+        :controller => "users" ,
+        :action     => "show"  ,
+        :nickname   => "kd"    )
+    end
+
+    it "routes GET /users/:nickname/tips to Tips#index" do
+      { :get => "/users/#{user.nickname}/tips" }.should route_to(
+        :controller => "tips"  ,
+        :action     => "index" ,
+        :nickname   => "kd"    )
     end
   end
 end

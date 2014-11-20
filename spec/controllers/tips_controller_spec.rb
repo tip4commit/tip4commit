@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe DepositsController do
+describe TipsController do
   describe "GET 'index'" do
     it "returns http success" do
       get 'index'
@@ -9,10 +9,10 @@ describe DepositsController do
   end
 
   describe "routing" do
-    it "routes GET / to Deposits#index" do
-      { :get => "/deposits" }.should route_to(
-        :controller => "deposits" ,
-        :action     => "index"    )
+    it "routes GET / to Tips#index" do
+      { :get => "/tips" }.should route_to(
+        :controller => "tips"  ,
+        :action     => "index" )
     end
   end
 end

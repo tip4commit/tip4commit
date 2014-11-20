@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-
   before_action :authenticate_user!, :load_user, :valid_user!, except: [:login, :index]
+  before_filter :redirect_to_pretty_url,                       only:   [:show]
 
   def show
     @user_tips   = @user.tips
@@ -34,23 +34,34 @@ class UsersController < ApplicationController
     end
   end
 
+
   private
-    def users_params
-      params.require(:user).permit(:bitcoin_address, :password, :password_confirmation, :unsubscribed, :display_name)
-    end
 
-    def load_user
-      @user = User.where(id: params[:id]).first
-      unless @user
-        flash[:error] = I18n.t('errors.user_not_found')
-        redirect_to root_path and return
-      end
-    end
+  def users_params
+    params.require(:user).permit(:bitcoin_address, :password, :password_confirmation, :unsubscribed, :display_name)
+  end
 
-    def valid_user!
-      if current_user != @user
-        flash[:error] = I18n.t('errors.access_denied')
-        redirect_to root_path and return
-      end
+  def load_user ; super params ; end ;
+
+  def valid_user!
+    if current_user != @user
+      flash[:error] = I18n.t('errors.access_denied')
+      redirect_to root_path and return
     end
+  end
+
+  def redirect_to_pretty_url
+    return unless request.get? && params[:id].present? && @user.nickname.present?
+
+    begin
+      respond_to do |format|
+        case action_name
+        when 'show'
+          path = user_pretty_path @user.nickname
+        end
+        format.html { redirect_to path }
+      end
+    rescue ActionController::UnknownFormat
+    end
+  end
 end

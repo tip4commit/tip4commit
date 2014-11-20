@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
   acts_as_paranoid
-  
+
   has_many :deposits # todo: only confirmed deposits
   has_many :tips, inverse_of: :project
   accepts_nested_attributes_for :tips
@@ -20,6 +20,19 @@ class Project < ActiveRecord::Base
   end
 
   # before_save :check_tips_to_pay_against_avaiable_amount
+
+  def update_bitcoin_address
+    blockchain_uri       = URI CONFIG["blockchain_info"]["new_url"]
+    blockchain_pass      = CONFIG["blockchain_info"]["password"]
+    blockchain_label     = "#{self.full_name}@tip4commit"
+    blockchain_params    = { password: blockchain_pass, label: blockchain_label }
+    blockchain_uri.query = URI.encode_www_form blockchain_params
+    blockchain_resp      = Net::HTTP.get_response blockchain_uri
+    if blockchain_resp.is_a? Net::HTTPSuccess
+      self.bitcoin_address = (JSON.parse blockchain_resp.body)["address"]
+      self.save! unless self.bitcoin_address.nil?
+    end
+  end
 
   def update_repository_info repo
     self.github_id        = repo.id
@@ -120,9 +133,7 @@ class Project < ActiveRecord::Base
 
   def tip_for commit
     if (next_tip_amount > 0) && !Tip.exists?(commit: commit.sha)
-
-      user = User.find_by_commit(commit)
-      return unless user
+      return unless (user = User.find_by_commit commit)
 
       user.update(nickname: commit.author.login) if commit.author.try(:login)
 

@@ -3,6 +3,156 @@ Before do
 
   # mock branches method to prevent api call
   Project.any_instance.stub(:branches).and_return(%w(master))
+
+  @default_tip     = CONFIG["tip"]
+  @default_our_fee = CONFIG["our_fee"]
+  @default_min_tip = CONFIG["min_tip"]
+end
+
+After do |scenario|
+  OmniAuth.config.test_mode = false
+
+  CONFIG["tip"]     = @default_tip
+  CONFIG["our_fee"] = @default_our_fee
+  CONFIG["min_tip"] = @default_min_tip
+
+#   Cucumber.wants_to_quit = true if scenario.status.eql? :failed
+#   Cucumber.wants_to_quit = true if scenario.status.eql? :undefined
+#   Cucumber.wants_to_quit = true if scenario.status.eql? :pending
+end
+
+def mock_github_user nickname
+  email = "#{nickname.parameterize}@example.com"
+
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:github] = {
+    "info" => {
+      "nickname"        => nickname ,
+      "primary_email"   => email    ,
+      "verified_emails" => [email]  ,
+    },
+  }.to_ostruct
+
+  step "a developer named \"#{nickname}\" exists without a bitcoin address"
+end
+
+Given /^a GitHub user named "(.*?)" exists$/ do |nickname|
+  mock_github_user nickname
+end
+
+Given /^I'm signed in as "(.*?)"$/ do |nickname|
+  mock_github_user nickname
+  visit root_path
+  first(:link, "Sign in").click
+  click_on "Sign in with Github"
+  page.should have_content("Successfully authenticated")
+end
+
+Given /^I'm not signed in$/ do
+  visit root_path
+  if page.has_content?("Sign out")
+    click_on "Sign out"
+    page.should have_content("Signed out successfully")
+  else
+    page.should have_content("Sign in")
+  end
+
+  OmniAuth.config.test_mode = false
+end
+
+Given (/^I sign in as "(.*?)"$/) { |nickname| step "I'm signed in as \"#{nickname}\"" }
+
+Given (/^I sign out$/) { step "I'm not signed in" }
+
+def parse_path_from_page_string page_string
+  path = nil
+
+  # explicit cases
+  # e.g. "a-user/a-project github-project edit"
+  # e.g. "a-user user edit"
+  tokens     = page_string.split ' '
+  name       = tokens[0]
+  model      = tokens[1]
+  action     = tokens[2] || '' # '' => 'show'
+  is_user    = model.eql? 'user'
+  is_project = ['github-project' , 'bitbucket-project'].include? model
+  if is_project
+    projects_paths = ['' , 'edit' , 'decide_tip_amounts' , 'tips' , 'deposits']
+    is_valid_path  = projects_paths.include? action
+    service        = model.split('-').first
+    path           = "/#{service}/#{name}/#{action}" if is_valid_path
+  elsif is_user
+    user_paths     = ['' , 'tips']
+    is_valid_path  = user_paths.include? action
+    path           = "/users/#{name}/#{action}" if is_valid_path # TODO: nyi
+
+  # implicit cases
+  else case page_string
+    when 'home' ;            path = root_path ;
+    when 'sign_up' ;         path = new_user_registration_path ;
+    when 'sign_in' ;         path = new_user_session_path ;
+    when 'users' ;           path = users_path ;
+    when 'projects' ;        path = projects_path ;
+    when 'search' ;          path = search_projects_path ;
+    when 'tips' ;            path = tips_path ;
+    when 'deposits' ;        path = deposits_path ;
+    when 'withdrawals' ;     path = withdrawals_path ;
+    end
+  end
+
+  path || (raise "unknown page")
+end
+
+Given(/^I visit the "(.*?)" page$/) do |page_string|
+  visit parse_path_from_page_string page_string
+end
+
+Given(/^I browse to the explicit path "(.*?)"$/) do |url|
+  visit url
+end
+
+Then(/^I should be on the "(.*?)" page$/) do |page_string|
+  expected = parse_path_from_page_string page_string rescue expected = page_string
+  actual   = page.current_path
+
+  expected.chop! if (expected.end_with? '/') && (expected.size > 1)
+  actual  .chop! if (actual  .end_with? '/') && (actual  .size > 1)
+
+  actual.should eq expected
+end
+
+def find_element node_name
+  case node_name
+  when "header" ; page.find '.masthead'
+  end
+end
+
+Given(/^I click "(.*?)"$/) do |arg1|
+  click_on(arg1)
+end
+
+Given(/^I click "(.*?)" within the "(.*?)" area$/) do |link_text , node_name|
+  within (find_element node_name) { click_on link_text }
+end
+
+Given(/^I check "(.*?)"$/) do |arg1|
+  check(arg1)
+end
+
+Then(/^I should see "(.*?)"$/) do |arg1|
+  page.should have_content(arg1)
+end
+
+Then(/^I should not see "(.*?)"$/) do |arg1|
+  page.should have_no_content(arg1)
+end
+
+Given(/^I fill "(.*?)" with:$/) do |arg1, string|
+  fill_in arg1, with: string
+end
+
+Given(/^I fill "(.*?)" with: "(.*?)"$/) do |text_field, string|
+  fill_in text_field, with: string
 end
 
 Then(/^there should be (\d+) email sent$/) do |arg1|
@@ -13,131 +163,11 @@ When(/^the email counters are reset$/) do
   ActionMailer::Base.deliveries.clear
 end
 
-Given(/^the tip for commit is "(.*?)"$/) do |arg1|
-  CONFIG["tip"] = arg1.to_f
+When(/^I confirm the email address: "(.*?)"$/) do |email|
+  mail      = ActionMailer::Base.deliveries.select {|ea| ea.to.first.eql? email}.first
+  mail_body = mail.body.raw_source
+  token     = mail_body.split('?confirmation_token=')[1].split('">Confirm my account').first
+  visit "/users/confirmation?confirmation_token=#{token}"
 end
 
-Given(/^our fee is "(.*?)"$/) do |arg1|
-  CONFIG["our_fee"] = arg1.to_f
-end
-
-Given(/^min tip amount is "(.*?)"$/) do |arg1|
-  CONFIG["min_tip"] = arg1.to_f * 1e8
-end
-
-Given(/^a project$/) do
-  @project = Project.create!(full_name: "example/test", github_id: 123, bitcoin_address: 'mq4NtnmQoQoPfNWEPbhSvxvncgtGo6L8WY')
-end
-
-Given(/^a project "(.*?)"$/) do |arg1|
-  @project = Project.create!(full_name: "example/#{arg1}", github_id: Digest::SHA1.hexdigest(arg1), bitcoin_address: 'mq4NtnmQoQoPfNWEPbhSvxvncgtGo6L8WY')
-end
-
-Given(/^a user "(.*?)" has opted\-in$/) do |arg1|
-  User.find_or_create_by!(nickname: arg1) do |user|
-    user.nickname = arg1
-    user.password = "password"
-    user.email = "#{arg1.parameterize}@example.com"
-    user.skip_confirmation!
-  end
-end
-
-Given(/^a deposit of "(.*?)"$/) do |arg1|
-  Deposit.create!(project: @project, amount: arg1.to_d * 1e8, confirmations: 2)
-end
-
-Given(/^the last known commit is "(.*?)"$/) do |arg1|
-  @project.update!(last_commit: arg1)
-end
-
-def add_new_commit(id, params = {})
-  @new_commits ||= {}
-  defaults = {
-    sha: id,
-    commit: {
-      message: "Some changes",
-      author: {
-        email: "anonymous@example.com",
-      },
-    },
-  }
-
-  User.find_or_create_by(email: "anonymous@example.com") do |user|
-    user.nickname = "anonymous"
-    user.email = "anonymous@example.com"
-    user.password = "password"
-    user.skip_confirmation!
-  end
-
-  @new_commits[id] = defaults.deep_merge(params)
-end
-
-def find_new_commit(id)
-  @new_commits[id]
-end
-
-Given(/^a new commit "(.*?)" with parent "([^"]*?)"$/) do |arg1, arg2|
-  add_new_commit(arg1, parents: [{sha: arg2}])
-end
-
-Given(/^a new commit "(.*?)" with parent "(.*?)" and "(.*?)"$/) do |arg1, arg2, arg3|
-  add_new_commit(arg1, parents: [{sha: arg2}, {sha: arg3}], commit: {message: "Merge #{arg2} and #{arg3}"})
-end
-
-Given(/^(\d+) new commits$/) do |arg1|
-  arg1.to_i.times do
-    add_new_commit(Digest::SHA1.hexdigest(SecureRandom.hex))
-  end
-end
-
-Given(/^a new commit "([^"]*?)"$/) do |arg1|
-  add_new_commit(arg1)
-end
-
-Given(/^the project holds tips$/) do
-  @project.update(hold_tips: true)
-end
-
-Given(/^the message of commit "(.*?)" is "(.*?)"$/) do |arg1, arg2|
-  find_new_commit(arg1).deep_merge!(commit: {message: arg2})
-end
-
-When(/^the new commits are read$/) do
-  @project.reload
-  @project.should_receive(:new_commits).and_return(@new_commits.values.map(&:to_ostruct))
-  @project.tip_commits
-end
-
-Then(/^there should be no tip for commit "(.*?)"$/) do |arg1|
-  Tip.where(commit: arg1).to_a.should eq([])
-end
-
-Then(/^there should be a tip of "(.*?)" for commit "(.*?)"$/) do |arg1, arg2|
-  amount = Tip.find_by(commit: arg2).amount
-  amount.should_not be_nil
-  (amount.to_d / 1e8).should eq(arg1.to_d)
-end
-
-Then(/^the tip amount for commit "(.*?)" should be undecided$/) do |arg1|
-  Tip.find_by(commit: arg1).undecided?.should eq(true)
-end
-
-Then(/^the new last known commit should be "(.*?)"$/) do |arg1|
-  @project.reload.last_commit.should eq(arg1)
-end
-
-Given(/^the project collaborators are:$/) do |table|
-  @project.reload
-  @project.collaborators.each(&:destroy)
-  table.raw.each do |name,|
-    @project.collaborators.create!(login: name)
-  end
-end
-
-Given(/^the author of commit "(.*?)" is "(.*?)"$/) do |arg1, arg2|
-  find_new_commit(arg1).deep_merge!(author: {login: arg2}, commit: {author: {email: "#{arg2}@example.com"}})
-end
-
-Given(/^an illustration of the history is:$/) do |string|
-  # not checked
-end
+Then  /^some magic stuff happens in the cloud$/ do ; true ; end ;

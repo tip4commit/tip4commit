@@ -83,6 +83,7 @@ ru:
       support: "Поддержать проект"
     show:
       title: "Помогайте %{project}"
+      fetch_pending: (Pending initial fetch)
       edit_project: Изменить настройки проекта
       decide_tip_amounts: Установить сумму чаевых
       disabled_notifications: "Контрибьюторы проекта решили не уведомлять новых участников о чаевых и, вероятно, им не нравится такой способ финансирования."
