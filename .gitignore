@@ -25,5 +25,3 @@
 coverage
 
 /db/seeds.rb
-
-/app/assets/javascripts/i18n/translations.js
