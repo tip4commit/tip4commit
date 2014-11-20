@@ -19,6 +19,8 @@ describe UsersController do
   end
 
   describe '#show' do
+#     let(:user) { mock_model User, id: 100000000 }
+#     let(:subject) { get :show, id: user.id }
     let(:user) { create(:user) }
     let(:subject) { get :show , :nickname => user.nickname }
 
