@@ -5,7 +5,7 @@
   = btc_human @user.balance
 %p
   %small= raw t('.threshold', threshold: btc_human(CONFIG["min_payout"]))
-
+    
 - if @user_tips.count > 0
   %p
     %strong Last Tips
@@ -14,7 +14,7 @@
   %ul
     - @recent_tips.each do |tip|
       %li
-        = raw t('.received', time: l(tip.created_at, format: :short), amount: btc_human(tip.amount), commit: link_to(tip.commit[0..6], "https://github.com/#{tip.project.full_name}/commit/#{tip.commit}", target: :blank), project: link_to(tip.project.full_name, tip.project))
+        = raw t('.received', time: l(tip.created_at, format: :short), amount: btc_human(tip.amount), commit: link_to(tip.commit[0..6], "https://github.com/#{tip.project.full_name}/commit/#{tip.commit}", target: :blank), project: link_to(tip.project.full_name, pretty_project_path(tip.project)))
 
 %p
   %strong= User.human_attribute_name(:email)

@@ -13,9 +13,9 @@
     - if @project.collaborators.empty?
       = t('.fetch_pending')
     - if can? :update, @project
-      = link_to t('.edit_project'), edit_project_path(@project), class: "btn btn-primary"
+      = link_to t('.edit_project'), pretty_project_edit_path(@project), class: "btn btn-primary"
     - if can? :decide_tip_amounts, @project and @project.has_undecided_tips?
-      = link_to t('.decide_tip_amounts'), decide_tip_amounts_project_path(@project), class: "btn btn-warning"
+      = link_to t('.decide_tip_amounts'), pretty_project_decide_tip_amounts_path(@project), class: "btn btn-warning"
 
 .row
   .col-md-4
@@ -37,7 +37,7 @@
     %h4
       = t('.balance')
       - if @project.deposits.count > 0
-        %small= link_to t('.deposits'), project_deposits_path(@project)
+        %small= link_to t('.deposits'), project_deposits_pretty_path(@project.host, @project.full_name)
     = btc_human @project.available_amount
     - if @project.hold_tips?
       = t('.custom_tip_size')
