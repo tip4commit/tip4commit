@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
     email = commit.commit.author.email
     nickname = commit.author.try(:login)
 
-    find_by(email: email) || find_by(nickname: nickname)
+    find_by(email: email) || (nickname.blank? ? nil : find_by(nickname: nickname))
   end
 
   private
