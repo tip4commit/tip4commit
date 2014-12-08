@@ -9,8 +9,8 @@ T4c::Application.routes.draw do
 
   get '/users/login'                       => 'users#login' ,                                                                               :as => 'login_users'
   get '/users/:user_id/tips'               => 'tips#index' ,                    :constraints => {:user_id    => /\d+/}                    , :as => 'user_tips'
-  get '/users/:nickname/tips'              => 'tips#index' ,                    :constraints => {:nickname   => /\D\w*/}                  , :as => 'user_tips_pretty'
-  get '/users/:nickname'                   => 'users#show' ,                    :constraints => {:nickname   => /\D\w*/}                  , :as => 'user_pretty'
+  get '/users/:nickname/tips'              => 'tips#index' ,                    :constraints => {:nickname   => /\S+/}                  , :as => 'user_tips_pretty'
+  get '/users/:nickname'                   => 'users#show' ,                    :constraints => {:nickname   => /\S+/}                  , :as => 'user_pretty'
 
   get '/projects/:project_id/tips'         => 'tips#index' ,                    :constraints => {:project_id => /\d+/}                    , :as => 'project_tips'
   get '/projects/:project_id/deposits'     => 'deposits#index' ,                :constraints => {:project_id => /\d+/}                    , :as => 'project_deposits'
