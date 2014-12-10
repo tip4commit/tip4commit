@@ -6,5 +6,6 @@ if CONFIG['airbrake']
     config.secure  = config.port == 443
 
     config.ignore << "ArgumentError"
+    config.ignore << "ActionController::UnknownFormat"
   end
 end
