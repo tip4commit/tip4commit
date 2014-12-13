@@ -102,11 +102,11 @@ describe UsersController do
         :action     => "index" )
     end
 
-    it "routes GET /users/1 to User#show" do
-      { :get => "/users/1" }.should route_to(
+    it "routes GET /users/nick-name321 to User#show" do
+      { :get => "/users/nick-name321" }.should route_to(
         :controller => "users" ,
         :action     => "show"  ,
-        :id         => "1"     )
+        :nickname   => "nick-name321"     )
     end
 
     it "routes GET /users/login to User#login" do
