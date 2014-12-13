@@ -72,7 +72,7 @@
       %h4
         =t('.last_tips')
         - if @project_tips.count > 5
-          %small= link_to t('.see_all'), project_tips_path(@project)
+          %small= link_to t('.see_all'), project_tips_pretty_path(@project.host, @project.full_name)
       %ul
         - @recent_tips.each do |tip|
           %li
