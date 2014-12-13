@@ -50,7 +50,7 @@ class Project < ActiveRecord::Base
   def update_collaborators(repo_collaborators)
     existing_collaborators = collaborators
 
-    repo_logins = repo_collaborators.map(&:login)
+    repo_logins = repo_collaborators
     existing_logins = existing_collaborators.map(&:login)
 
     existing_collaborators.each do |existing_collaborator|
