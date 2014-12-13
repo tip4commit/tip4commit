@@ -111,8 +111,8 @@ Feature: The site routes pretty paths uniformly
     Then  I should be on the "sign_in" page
     And   I should see "You need to sign in or sign up before continuing"
 
-  Scenario: User show page is inaccessible via user id when not signed in
-    When  I browse to the explicit path "users/1"
+  Scenario: User show page is inaccessible via user nickname when not signed in
+    When  I browse to the explicit path "users/seldon"
     Then  I should be on the "sign_in" page
     And   I should see "You need to sign in or sign up before continuing"
 
@@ -122,9 +122,9 @@ Feature: The site routes pretty paths uniformly
     Then  I should be on the "home" page
     And   I should see "You are not authorized to perform this action"
 
-  Scenario: User show page is inaccessible via user id to other users
+  Scenario: User show page is inaccessible via nickname to other users
     Given I'm signed in as "yugo"
-    When  I browse to the explicit path "users/1"
+    When  I browse to the explicit path "users/seldon"
     Then  I should be on the "home" page
     And   I should see "You are not authorized to perform this action"
 
@@ -136,9 +136,9 @@ Feature: The site routes pretty paths uniformly
     And   I should see "E-mail seldon@example.com"
     And   I should see "Bitcoin address"
 
-  Scenario: User show page is accessible via user id to that user
+  Scenario: User show page is accessible via nickname to that user
     Given I'm signed in as "seldon"
-    When  I browse to the explicit path "users/1"
+    When  I browse to the explicit path "users/seldon"
     Then  I should be on the "seldon user" page
     And   I should see "seldon Balance 0.00000000 Ƀ"
     And   I should see "E-mail seldon@example.com"

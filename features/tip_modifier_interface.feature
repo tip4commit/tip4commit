@@ -153,7 +153,7 @@ Feature: A project collaborator can change the tips of commits
     And   the project syncs with the remote repo
     And   a "github" project named "fake/fake" exists
     And   the project collaborators are:
-      | bad guy |
+      | bad-guy |
     And   a new commit "fake commit" is made
     And   the project holds tips
     When  the project syncs with the remote repo
@@ -165,4 +165,4 @@ Feature: A project collaborator can change the tips of commits
     Examples:
       | user    | consequences                                        |
       | seldon  | there should be a tip of "25" for commit "BBB"      |
-      | bad guy | the tip amount for commit "BBB" should be undecided |
+      | bad-guy | the tip amount for commit "BBB" should be undecided |
