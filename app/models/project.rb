@@ -54,14 +54,14 @@ class Project < ActiveRecord::Base
     existing_logins = existing_collaborators.map(&:login)
 
     existing_collaborators.each do |existing_collaborator|
-      unless repo_logins.include?(existing_collaborator.login)
+      unless repo_logins.include?(existing_collaborator)
         existing_collaborator.mark_for_destruction
       end
     end
 
     repo_collaborators.each do |repo_collaborator|
-      unless existing_logins.include?(repo_collaborator.login)
-        collaborators.build(login: repo_collaborator.login)
+      unless existing_logins.include?(repo_collaborator)
+        collaborators.build(login: repo_collaborator)
       end
     end
 
