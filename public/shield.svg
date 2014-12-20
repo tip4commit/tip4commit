@@ -57,6 +57,16 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+    <style type="text/css">
+      <![CDATA[
+        @font-face {
+          font-family: 'Open Sans';
+          font-style: normal;
+          font-weight: 400;
+          src: local('Open Sans'), local('OpenSans'), url(https://themes.googleusercontent.com/static/fonts/opensans/v6/cJZKeOuBrn4kERxqtaUH3bO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+        }
+      ]]>
+    </style>
   </defs>
   
   <g id="vendor">
