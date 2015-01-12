@@ -8,21 +8,21 @@ load_bootstrap_validator = ->
             message: I18n.t('js.errors.email.invalid')
           notEmpty:
             message: I18n.t('js.errors.email.blank')
-
+          
       "user[password]":
         validators:
           notEmpty:
             message: I18n.t('js.errors.password.blank')
           identical:
-            field: 'user[password_confirmation]'
+            field: 'user[password_confirmation]' 
             message: I18n.t('js.errors.password.invalid')
-
+      
       "user[password_confirmation]":
         validators:
           notEmpty:
             message: I18n.t('js.errors.password_confirmation.blank')
           identical:
-            field: 'user[password]'
+            field: 'user[password]' 
             message: I18n.t('js.errors.password_confirmation.invalid')
   $('.session_form').bootstrapValidator
     message: I18n.t('js.errors.value.invalid')
@@ -33,7 +33,7 @@ load_bootstrap_validator = ->
             message: I18n.t('js.errors.email.invalid')
           notEmpty:
             message: I18n.t('js.errors.email.blank')
-
+          
       "user[password]":
         validators:
           notEmpty:

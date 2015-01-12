@@ -6,9 +6,9 @@
   %strong= @user.bitcoin_address
 
 %p
-  If this address is not yours, please
+  If this address is not yours, please 
   = link_to 'update it', login_users_url(token: @user.login_token)
-
+  
 %p Thank you for contributing to Open Source and sorry for troubles!
 
 %p= link_to "tip4commit.com", "http://tip4commit.com/"

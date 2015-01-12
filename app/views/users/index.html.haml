@@ -9,7 +9,7 @@
     %tbody
       - @users.each do |user|
         %tr
-          %td
+          %td 
             - if user.nickname.blank?
               = user.display_name
             - else
