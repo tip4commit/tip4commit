@@ -25,7 +25,7 @@ class BitcoinTipper
       Rails.logger.info "Traversing users..."
       users_waiting_for_withdrawal = 0
       User.find_each do |user|
-        if user.bitcoin_address.present? && user.balance > CONFIG["min_payout"]
+        if user.ready_for_withdrawal?
           users_waiting_for_withdrawal += 1
           Rails.logger.info "User ##{user.id} is waiting for withdrawal"
         end
@@ -60,7 +60,7 @@ class BitcoinTipper
       sendmany = Sendmany.create
       outs = {}
       User.find_each do |user|
-        if user.bitcoin_address.present? && user.balance > CONFIG["min_payout"]
+        if user.ready_for_withdrawal?
           user.tips.decided.unpaid.each do |tip|
             tip.update_attribute :sendmany_id, sendmany.id
             outs[user.bitcoin_address] = outs[user.bitcoin_address].to_i + tip.amount

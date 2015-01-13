@@ -57,6 +57,10 @@ class User < ActiveRecord::Base
     find_by(email: email) || (nickname.blank? ? nil : find_by(nickname: nickname))
   end
 
+  def ready_for_withdrawal?
+    self.bitcoin_address.present? && self.balance >= CONFIG["min_payout"]
+  end
+
   private
 
   def set_login_token!
