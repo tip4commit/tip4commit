@@ -42,7 +42,7 @@ group :development do
   gem 'capistrano-rvm',     '~> 0.1.0', github: 'capistrano/rvm'
   gem 'capistrano-bundler', '>= 1.1.0'
   gem 'capistrano-rails',   '~> 1.1.0'
-  gem 'debugger',           '~> 1.6.5'
+  gem 'byebug', '~> 3.5.1'
 end
 
 group :development, :test do
