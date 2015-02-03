@@ -227,3 +227,7 @@ en:
     bitbucket: BitBucket
   general:
     or: or
+    disclaimer:
+      line1: "We are not affiliated with most of the projects, their owners may be unaware of or actively against using tip4commit. Due to potential ethical and legal issues we may remove any project from the list by request of project maintainers."
+      line2: "Also we are not notifying developers about their tips anymore. Thus we can't guarantee that donated funds will really reach them."
+      line3: "By donating funds you agree that they can be sent to Free Software Foundation or elsewhere at Tip4Commit's discretion."

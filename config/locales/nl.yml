@@ -1,0 +1,233 @@
+nl:
+  tip4commit: Tip4Commit
+  meta:
+    title: Bijdragen aan Open Source
+    description: Doneer bitcoins aan open source projecten of commit en krijg er een beloning voor.
+  menu:
+    home: Home
+    projects: Ondersteunde projecten
+  footer:
+    text: "Broncode is beschikbaar op %{github_link} en ook jij kunt %{support_link} aan de ontwikkeling."
+    github_link: GitHub
+    support_link: bijdragen
+    follow_link: Follow @tip4commit
+  links:
+    sign_up: Registreren
+    sign_in: Inloggen
+    sign_in_imp: Inloggen
+    sign_out: Uitloggen
+    create_issue: fout melden
+  errors:
+    project_not_found: Project niet gevonden.
+    opt_in_notice: "Door klachten van project eigenaren is het niet meer mogenlijk om automatisch projecten toe te voegen. Bestaande projecten zonder stortingen zijn verwijderd. Als je jouw project(en) wildt aanmelden dan gebruik de %{create_issue_link} optie van github."
+    access_denied: Geen toegang
+    can_assign_more_tips: "Het is niet mogelijk om meer als 100% van het beschickbaar saldo over te maken."
+    wrong_bitcoin_address: Er is een fout opgetreden tijdens het bijwerken van het bitcoin adres
+    user_not_found: Gebruiker niet gevonden
+    access_denied: Je bezit niet over de rechten deze actie uit te voeren!
+  notices:
+    project_updated: De instellingen van het project zijn bijgewerkt
+    tips_decided: De beloningen zijn ingesteld
+    user_updated: Je gegens zijn opgeslagen!
+    user_unsubscribed: "Je bent afgemeld! Sorry voor het lastig vallen. Je kunt nog steeds je bitcoins adres bij ons opslaan om automatisch de beloningen te ontvangen"
+  tip_amounts:
+    undecided: "Onbeslist"
+    free: "Gratis: 0%"
+    tiny: "Mini: 0.1%"
+    small: "Klein: 0.5%"
+    normal: "Normaal: 1%"
+    big: "Groot: 2%"
+    huge: "Enorm: 5%"
+  js:
+    errors:
+      value:
+        invalid: De waarde is ongeldig
+      email:
+        invalid: Ongeldig e-mail adres
+        blank: E-mail is verplicht en kan niet leeg blijven
+      password:
+        blank: Wachtwoord is verplicht en kan niet leeg blijven
+        invalid: De wachtwoorden komen niet overeen
+      password_confirmation:
+        blank: Wachtwoord is verplicht en kan niet leeg blijven
+        invalid: De wachtwoorden komen niet overeen
+  home:
+    index:
+      see_projects: Bekijk projecten
+      how_does_it_work:
+        title: Hoe werkt het?
+        text: Mensen sponsoren bitcoins aan projecten. Als een commit van een persoon is geaccepteerd (merge in repository), maken we automaitsch een belong over aan deze persoon.
+        button: Wat zijn Bitcoins
+      donate:
+        title: Doneren
+        text: Zoek een project dat je wilt spponsoren en maak bitcoins over. Je donatie wordt toegevoegd aan het saldo van het project en wordt als beloning voor nieuwe commits uitbetaald.
+        button: Zoek een project
+      contribute:
+        title: Bijdragen
+        text: Ga en repareer iets! Als je commit wordt egaccepteerd door de eigenaar van het project (merg in master), krijg je een beloning!
+        sign_in_text: "Conroleer je e-mail voor een e-mail met %{sign_in_link}."
+        sign_up_text: "Als je nog niet bent geregistreedt kun je je %{sign_up_link} met een geldig e-mail adres of via"
+        button: Gesteunde projecten
+  projects:
+    index:
+      find_project:
+        placeholder: Vul een GitHub project URLof een zoekwoord in om hem te vinden...
+        button: Vind project
+      repository: Repository
+      description: Omschrijving
+      watchers: Watchers
+      balance: Saldo
+      forked_from: forked van
+      support: Steun project
+    show:
+      title: "Bijdrage aan %{project}"
+      fetch_pending: (Wachten initial fetch)
+      edit_project: project instellingen aanpassen
+      decide_tip_amounts: Beloningen instellen
+      disabled_notifications: "Project eigenaren hebben besloten om nieuwe ondersteuners niet in te lichten over beloningen. Ze vinden deze manier van beloningen waarschijnlijk niet goed."
+      project_sponsors: Project sponsoren
+      fee: "%{percentage} van gesponsordt geld wordt gebruikt voor de ondersteuning van nieuwe commits."
+      balance: Saldo
+      deposits: stortingen
+      custom_tip_size: (elke nieuwe commit ontvangt een percentage van het beschickbare saldo)
+      default_tip_size: "(elke nieuwe commit ontvangt %{percentage} van het beschickbare saldo)"
+      min_tip_size: "De mininmum grote van een beloning is %{min_tip}, echte kan deze kleiner zijn als het saldo van het project daar onder licht."
+      unconfirmed_amount: "(%{amount} onbevesticht)"
+      tipping_policies: Beloningspolicy
+      updated_by_user: "(Laatste update door %{name} op %{date})"
+      updated_by_unknown: "(Laatste update op %{date})"
+      tips_paid: Beloningen betaald
+      unclaimed_amount: "(%{amount} is nog niet geclaimed, en wordt terug gestord naar het project als deze na 1 maand nogaltijd niet geclaimed is.)"
+      last_tips: Laatste beloningen
+      see_all: Alles zien
+      received: "ontvangen %{amount}"
+      will_receive: Gaan een beloning ontvangen
+      for_commit: voor commit
+      when_decided: als de hoogte is vastgesteld
+      next_tip: Volgende beloning
+      contribute_and_earn: Bijdragen en beloond worden
+      contribute_and_earn_description: "Doneer bitcoins aan dit project of %{make_commits_link} en krijg beloningen. Als je commit wordt geaccepteerd %{branch} door een projecteigenaar en er is een positief saldo van bitcoins, krijg je een beloning!"
+      contribute_and_earn_branch: "in de branch <strong>%{branch}</strong>"
+      make_commits_link: maak commits
+      tell_us_bitcoin_address: "Gewoon je bitcoin adres %{tell_us_link}."
+      tell_us_link: aan ons vertellen
+      sign_in: "Gewoon je e-maol controleren of %{sign_in_link}."
+      promote_project: Promote %{project}
+      embedding: Laden
+      image_url: "URL van afbeelding:"
+      shield_title: beloning voor de volgende commit
+    edit:
+      project_settings: "%{project} project instellingen"
+      branch: Branch
+      default_branch: Standaard branch
+      tipping_policies: Beloningspolicies
+      hold_tips: "Stuur de beloningen niet direct. Geef eigenaren de mogenlijkheid om de hoogte in te stellen voor ze worden verstuurd."
+      save: Project instellingen opslaan
+      disable_notifications: Niets melden aan nieuwe bijdragers
+    decide_tip_amounts:
+      commit: Commit
+      author: Auteur
+      message: Bericht
+      tip: Beloning (afhangkelijk van het project saldo)
+      submit: Stuur de geselecteerde hoeveelheid beloningen
+    blacklisted:
+      title: Sorry, dit project ondersteund geen beloningen!
+      message: De auteur van het project heeft ervoor gekozen om geen beloningen toe te staan.
+  tips:
+    index:
+      tips: Beloningen
+      project_tips: '%{project} beloningen'
+      user_tips: "%{user} beloningen"
+      created_at: Aangemaakt op
+      commiter: Commiter
+      project: Project
+      commit: Commit
+      amount: Bedrag
+      refunded: Teruggestord aan project saldo
+      undecided: De hoogte van de beloning is nog niet vastgesteld
+      no_bitcoin_address: Gebruiker heeft geen bitcoin adres opgegeven
+      below_threshold: "Gebruikers saldo is onder de terugstorddrempel"
+      waiting: Wachten om terug gestord te worden
+      error: (er is een fout opgetreden bij het overmaken)
+  deposits:
+    index:
+      project_deposits: '%{project} stortingen'
+      deposits: Stortingen
+      created_at: Toegevoegd op
+      project: Project
+      amount: Bedrag
+      transaction: Transactie
+      confirmed: Bevestigd
+      confirmed_yes: 'Ja'
+      confirmed_no: 'Nee'
+  users:
+    index:
+      title: Top bijdagers
+      name: Naam
+      commits_count: Commits beloond
+      withdrawn: Teruggetrokken
+    show:
+      balance: Saldo
+      threshold: "Je ontvangt he geld zodra je zaldo over het minimum is van: %{threshold}"
+      see_all: bekijk alles
+      received: "%{time} ontvangen %{amount} voor commit %{commit} in %{project}"
+      bitcoin_address_placeholder: Jouw bitcoin adres
+      notify: Stuur me een bericht over nieuwe beloningen (niet meer als 1 keer per maand)
+      submit_user: Gegevens opslaan
+      change_password: Wijzig wachtwoord
+      submit_password: Wijzig mijn wachtwoord
+  withdrawals:
+    index:
+      title: Laatste terugroepingen
+      created_at: Aangemaakt op
+      transaction: Transactiie
+      result: Resultaat
+      error: Foutief
+      success: Success
+  devise:
+    sessions:
+      new:
+        title: Registreren
+        remember_me: Mij onthouden
+        submit: Inloggen
+    registrations:
+      new:
+        title: Registreren
+        submit: Registreren
+    passwords:
+      new:
+        title: Wachtwoord vergeten?
+        submit: Stuur me de instructies om mijn wachtwoord te resetten
+      edit:
+        title: Wachtwoord aanpassen
+        submit: Mijn wachtwoord aanpassen
+    confirmations:
+      new:
+        title: Stuur bevestigingsinstructies opnieuw
+        submit: Stuur bevestigingsinstructies opnieuw
+    links:
+      sign_in: Inloggen
+      sign_up: Registreren
+      recover: Wachtwoord vergeten?
+      confirm: Geen bevestigingsintructies ontvangen?
+      sign_in_with: "Inloggen met %{provider}"
+    errors:
+      primary_email: Je e-mail adres moet gevalideerd worden.
+      onmiauth_info: We kunnen je gegevens niet ophalen.
+  activerecord:
+    attributes:
+      user:
+        email: E-mail
+        bitcoin_address: Bitcoin adres
+        password: Wachtwoord
+        password_confirmation: Wachtwoord bevestigen
+        display_name: Weergavenaam
+  omniauth_providers:
+    github: GitHub
+    bitbucket: BitBucket
+  general:
+    or: of
+    disclaimer:
+      line1: "We zijn niet gerelateerd aan de meeste van de projecten, haar eigenaren zijn zich misschien niet bewust van of actief tegen het gebruik van tip4commit. Door moegenlijke etische en wettelijke problemen moeten we misschien enkele van de projecten uit de lijst wissen (op wens van de prohect eigenaar)."
+      line2: "Ook sturen we geen melding meer aan de ontwikkelaars. Dus we kunnen niet garanteren dat de donaties ze bereiken."
+      line3: "Door het doneren van geld gaat u ermee akkoord dat ze naar Free Software Foundation of elders naar Tip4Commit's keuze."
