@@ -1,3 +1,13 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.from-gravatar{
+  display: block;
+  margin-bottom: 15px;
+  cursor: pointer;
+  font-style: italic;
+  margin-top: -12px;
+  padding-left: 14px;
+}
