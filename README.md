@@ -6,18 +6,17 @@ Tip4commit
 
 Donate bitcoins to open source projects or receive tips for code contributions.
 
-|                |                                                   |
-| -------------- | ------------------------------------------------- |
-| Official site: | https://tip4commit.com/                           |
-| Discussions:   | https://bitcointalk.org/index.php?topic=315802    |
-| FAQs:          | https://github.com/tip4commit/tip4commit/wiki/FAQ |
-| Issues:        | https://github.com/tip4commit/tip4commit/issues   |
-
+Name | Link
+----|----|
+Official site | https://tip4commit.com/
+Discussions | https://bitcointalk.org/index.php?topic=31580
+FAQs | https://github.com/tip4commit/tip4commit/wiki/FAQ
+Issues | https://github.com/tip4commit/tip4commit/issues
 
 Developers
 ==========
 
-If you would like to contribute to the development of tip4commit, you can find the contribution guidelines and installation instructions on the [developer README](https://github.com/tip4commit/tip4commit/wiki/Developer-README)
+If you would like to contribute to the development of tip4commit, you can find the contribution guidelines and installation instructions in the [developer README](https://github.com/tip4commit/tip4commit/wiki/Developer-README)
 
 
 License
