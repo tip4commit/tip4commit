@@ -138,7 +138,7 @@ GEM
     dusen (0.4.10)
       activerecord
       edge_rider (>= 0.2.5)
-    easy_gravatar (1.0.0)
+    easy_gravatar (1.0.1)
     edge_rider (0.3.0)
       activerecord
     erubis (2.7.0)

@@ -25,10 +25,12 @@ class User < ActiveRecord::Base
   end
 
   def gravatar_bitcoin
+    return '' unless gravatar
     gravatar.get_value :currency, :bitcoin
   end
 
   def gravatar_display_name
+    return '' unless gravatar
     gravatar.get_value :displayName
   end
 
@@ -72,7 +74,7 @@ class User < ActiveRecord::Base
   private
 
   def gravatar
-    @gravatar ||= Gravatar::new(email)
+    @gravatar ||= Gravatar::new(nil)
   end
 
   def set_login_token!
