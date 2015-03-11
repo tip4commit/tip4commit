@@ -5,7 +5,7 @@
   = btc_human @user.balance
 %p
   %small= raw t('.threshold', threshold: btc_human(CONFIG["min_payout"]))
-    
+
 - if @user_tips.count > 0
   %p
     %strong Last Tips
@@ -21,7 +21,13 @@
 %p= @user.email
 = twitter_bootstrap_form_for @user do |f|
   = f.text_field :bitcoin_address, placeholder: t('.bitcoin_address_placeholder')
+  - if @user.gravatar_bitcoin.present?
+    %span.from-gravatar{data:{for: 'user[bitcoin_address]', value: @user.gravatar_bitcoin }}
+      = "#{t('.use_from_gravatar')}: #{@user.gravatar_bitcoin}"
   = f.text_field :display_name
+  - if @user.gravatar_display_name.present?
+    %span.from-gravatar{data:{for: 'user[display_name]', value: @user.gravatar_display_name }}
+      = "#{t('.use_from_gravatar')}: #{@user.gravatar_display_name}"
   - if f.object.bitcoin_address.blank?
     = f.check_box :unsubscribed, t('.notify'), { checked: !f.object.unsubscribed? }, '0', '1'
   %br

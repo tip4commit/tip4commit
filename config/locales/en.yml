@@ -176,6 +176,7 @@ en:
       submit_user: Update user info
       change_password: Change your password
       submit_password: Change my password
+      use_from_gravatar: Use from your gravatar profile
   withdrawals:
     index:
       title: Last Withdrawals

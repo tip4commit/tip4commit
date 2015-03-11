@@ -176,6 +176,7 @@ nl:
       submit_user: Gegevens opslaan
       change_password: Wijzig wachtwoord
       submit_password: Wijzig mijn wachtwoord
+      use_from_gravatar: Gebruik van je gravatar profiel
   withdrawals:
     index:
       title: Laatste terugroepingen

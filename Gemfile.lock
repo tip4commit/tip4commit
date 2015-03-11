@@ -138,6 +138,7 @@ GEM
     dusen (0.4.10)
       activerecord
       edge_rider (>= 0.2.5)
+    easy_gravatar (1.0.1)
     edge_rider (0.3.0)
       activerecord
     erubis (2.7.0)
@@ -340,6 +341,7 @@ DEPENDENCIES
   devise (~> 3.2.2)
   devise-i18n
   dusen
+  easy_gravatar
   factory_girl_rails (~> 4.3.0)
   haml-rails (~> 0.5.3)
   http_accept_language
