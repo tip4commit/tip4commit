@@ -25,13 +25,19 @@ class User < ActiveRecord::Base
   end
 
   def gravatar_bitcoin
-    return '' unless gravatar
-    gravatar.get_value :currency, :bitcoin
+    begin
+      gravatar.get_value :currency, :bitcoin
+    rescue URI::InvalidURIError => e
+      nil
+    end
   end
 
   def gravatar_display_name
-    return '' unless gravatar
-    gravatar.get_value :displayName
+    begin
+      gravatar.get_value :displayName
+    rescue URI::InvalidURIError => e
+      nil
+    end
   end
 
   def display_name
@@ -74,7 +80,7 @@ class User < ActiveRecord::Base
   private
 
   def gravatar
-    @gravatar ||= Gravatar::new(nil)
+    @gravatar ||= Gravatar::new(email)
   end
 
   def set_login_token!
