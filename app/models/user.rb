@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   def gravatar_bitcoin
     begin
       gravatar.get_value :currency, :bitcoin
-    rescue URI::InvalidURIError => e
+    rescue URI::InvalidURIError, NoMethodError => e
       nil
     end
   end
@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   def gravatar_display_name
     begin
       gravatar.get_value :displayName
-    rescue URI::InvalidURIError => e
+    rescue URI::InvalidURIError, NoMethodError => e
       nil
     end
   end
