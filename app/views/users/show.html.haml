@@ -2,9 +2,13 @@
 %p
   %strong= t('.balance')
 %p
-  = btc_human @user.balance
+  = btc_human @user.balance, @user.denom
+  = form_for(@user) do |f|
+    = f.select :denom,
+        options_for_select([["BTC", "0"], ["mBTC", "1"], ["μBTC", "2"], ["Satoshi", "3"]], selected: @user.denom)
+    = f.submit "save"
 %p
-  %small= raw t('.threshold', threshold: btc_human(CONFIG["min_payout"]))
+  %small= raw t('.threshold', threshold: btc_human(CONFIG["min_payout"], @user.denom))
 
 - if @user_tips.count > 0
   %p
@@ -14,7 +18,7 @@
   %ul
     - @recent_tips.each do |tip|
       %li
-        = raw t('.received', time: l(tip.created_at, format: :short), amount: btc_human(tip.amount), commit: link_to(tip.commit[0..6], "https://github.com/#{tip.project.full_name}/commit/#{tip.commit}", target: :blank), project: link_to(tip.project.full_name, pretty_project_path(tip.project)))
+        = raw t('.received', time: l(tip.created_at, format: :short), amount: btc_human(tip.amount, @user.denom), commit: link_to(tip.commit[0..6], "https://github.com/#{tip.project.full_name}/commit/#{tip.commit}", target: :blank), project: link_to(tip.project.full_name, pretty_project_path(tip.project)))
 
 %p
   %strong= User.human_attribute_name(:email)
