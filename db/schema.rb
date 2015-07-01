@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112064004) do
+ActiveRecord::Schema.define(version: 20150620054216) do
 
   create_table "collaborators", force: true do |t|
     t.integer  "project_id"
@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(version: 20141112064004) do
     t.string   "confirmation_token"
     t.string   "unconfirmed_email"
     t.string   "display_name"
+    t.integer  "denom",                            default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

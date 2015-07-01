@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def btc_human amount, denom, options = {}
+  def btc_human amount, denom = 0, options = {}
     nobr = options.has_key?(:nobr) ? options[:nobr] : true
     if denom === 0
       btc = to_btc(amount)
