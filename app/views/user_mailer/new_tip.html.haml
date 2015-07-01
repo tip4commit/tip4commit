@@ -4,7 +4,7 @@
 
 %p Your current balance is #{btc_human @user.balance}. If you don't enter a bitcoin address your tips will be returned to the project in 30 days.
 
-%p If you don't need bitcoins you can redirect your funds to any charity by using its address which you can find at #{link_to 'coingiving.com', 'https://coingiving.com/'}.
+%p If you don't need bitcoins you can redirect your funds to #{link_to 'Free Software Foundation', 'https://www.fsf.org/about/ways-to-donate'}.
 
 %p= link_to 'Sign In', login_users_url(token: @user.login_token)
 

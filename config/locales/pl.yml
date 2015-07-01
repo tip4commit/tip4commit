@@ -83,7 +83,6 @@ pl:
       edit_project: Zmień ustawienia projektu
       decide_tip_amounts: Ustal rozmiary napiwków
       disabled_notifications: "Nadzorcy projektów zdecydowali nie powiadamiać nowych współpracowników o napiwkach i prawdopodobnie nie lubią tego typu finansowania."
-      project_sponsors: Sponsorzy projektu
       fee: "%{percentage} z salda zostanie użyte jako następny napiwek."
       balance: saldo
       deposits: wpłaty

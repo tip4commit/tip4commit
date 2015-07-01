@@ -21,13 +21,11 @@
   .col-md-4
     .panel.panel-default
       .panel-heading
-        %h4.panel-title= t('.project_sponsors')
+        %h4.panel-title= t('projects.index.support')
       .panel-body
-        %iframe{ src: "//coingiving.com/project_sponsors?locale=#{I18n.locale}&url=#{project_url(@project, :protocol => 'https')}", scrolling: "no", style: 'width:100%; height:500px; border:0px; padding:0;overflow:hidden'}
-        .hidden
-          %span(data-coingiving="title")= "[tip4commit] " + @project.full_name
-          %span(data-coingiving="description")= @project.description
-          %span(data-coingiving="bitcoin-address")= @project.bitcoin_address
+        %p
+          %pre= @project.bitcoin_address
+          .qrcode.centered{data: {qrcode: "bitcoin:#{@project.bitcoin_address}"}}
         %p
           = t('.fee', percentage: number_to_percentage(100-CONFIG["our_fee"]*100, precision: 0))
 

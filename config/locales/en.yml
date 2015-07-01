@@ -85,7 +85,6 @@ en:
       edit_project: Change project settings
       decide_tip_amounts: Decide tip amounts
       disabled_notifications: "Project maintainers have decided not to notify new contributors about tips and they probably don't like this way of funding."
-      project_sponsors: Project sponsors
       fee: "%{percentage} of deposited funds will be used to tip for new commits."
       balance: Balance
       deposits: deposits

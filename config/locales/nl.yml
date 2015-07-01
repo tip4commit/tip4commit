@@ -85,7 +85,6 @@ nl:
       edit_project: project instellingen aanpassen
       decide_tip_amounts: Beloningen instellen
       disabled_notifications: "Project eigenaren hebben besloten om nieuwe ondersteuners niet in te lichten over beloningen. Ze vinden deze manier van beloningen waarschijnlijk niet goed."
-      project_sponsors: Project sponsoren
       fee: "%{percentage} van gesponsordt geld wordt gebruikt voor de ondersteuning van nieuwe commits."
       balance: Saldo
       deposits: stortingen
