@@ -38,9 +38,9 @@
               = current_user.display_name
               \/
               - if current_user.nickname.present?
-                = link_to btc_human(current_user.balance), user_pretty_path(current_user.nickname)
+                = link_to btc_human(current_user.balance, current_user.denom), user_pretty_path(current_user.nickname)
               - else
-                = link_to btc_human(current_user.balance), current_user
+                = link_to btc_human(current_user.balance, current_user.denom), current_user
               \/
               = link_to t('links.sign_out'), destroy_user_session_path, method: :delete
             - else

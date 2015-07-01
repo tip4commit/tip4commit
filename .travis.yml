@@ -10,5 +10,6 @@ before_script:
   - cp config/database.yml.sample config/database.yml
 
 script:
+  - bundle exec rake db:migrate
   - bundle exec rake spec
   - bundle exec rake cucumber

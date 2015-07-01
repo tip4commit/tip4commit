@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
     tips.decided.unpaid.sum(:amount)
   end
 
+  def denom
+    attributes['denom'].presence || denom.presence
+  end
+
   def gravatar_bitcoin
     begin
       gravatar.get_value :currency, :bitcoin
