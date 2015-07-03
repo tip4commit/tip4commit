@@ -1,7 +1,7 @@
 module ProjectsHelper
 
   def shield_btc_amount amount
-    btc_amount = to_btc amount
+    btc_amount = amount / 1e8
     "%.#{9 - btc_amount.to_i.to_s.length}f Ƀ" % btc_amount
   end
 
