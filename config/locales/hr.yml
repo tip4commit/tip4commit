@@ -1,13 +1,13 @@
 hr:
   tip4commit: Tip4Commit
   meta:
-    title: Doprinosite otvorenom izvoru
-    description: Donirajte bitcoine u otvoreni izvor projekata ili napravite cinove i dobite napojnice.
+    title: Doprinesite open source-u
+    description: Donirajte bitcoine open source projektima ili napravite promjene i zaradite napojnice.
   menu:
     home: Početna stranica
-    projects: Podrzavani Projekti
+    projects: Podržavani projekti
   footer:
-    text: "Izvorni kod je dostupan na %{github_link} a možete i %{support_link} razvoj."
+    text: "Izvorni kod je dostupan na %{github_link}u a možete i %{support_link} razvoj."
     github_link: GitHub
     support_link: podržati
     follow_link: Prati @tip4commit
@@ -39,72 +39,72 @@ hr:
   js:
     errors:
       value:
-        invalid: Vrijednost nevazeca
+        invalid: Neispravna vrijednost
       email:
-        invalid: Nezaveca email adresa
-        blank: Email je potreban i ne moze biti prazno
+        invalid: Neispravna email adresa
+        blank: Email je obavezan
       password:
-        blank: Lozinka je potrebna i ne moze biti prazno
-        invalid: Lozinka i njezina potvrda nisu isti
+        blank: Lozinka je obavezma
+        invalid: Lozinka i potvrda nisu isti
       password_confirmation:
-        blank: Potvrda lozinke je potrebna i ne moze biti prazno
-        invalid: Lozinka i potvrda lozinke nisu isti
+        blank: Potvrda lozinke je obavezna
+        invalid: Lozinka i potvrda nisu isti
   home:
     index:
-      see_projects: Vidjeti projekte
+      see_projects: Vidi projekte
       how_does_it_work:
         title: Kako ovo radi?
-        text: Ljudi doniraju bitcoine projektima. Kada se nečiji commit potvrdi u repozitoriju projekta, mi automatski pošaljemo napojnicu autoru.
+        text: Ljudi doniraju bitcoine projektima. Kada je nečija promjena potvrđena, mi automatski pošaljemo napojnicu autoru promjene.
         button: Nauči više o Bitcoinu
       donate:
         title: Donirajte
-        text: Pronađite projekt u koji želite uložiti vaše Bitcoine. Vaše donacije ce biti akumulirane sa donacijama ostalih donatora kao napojnice za nove commitove.
+        text: Pronađite projekt u koji želite uložiti vaše Bitcoine. Vaše donacije će biti akumulirane sa donacijama ostalih donatora kao napojnice za nove commitove.
         button: Pronađi ili dodaj projekt
       contribute:
         title: Doprinesi
-        text: Idite i popravite nešto! Ako održavatelj projekta odobri vaš commit, dobiti ćete napojnicu!
+        text: Idite i popravite nešto! Ako održavatelj projekta odobri vašu promjenu, dobiti ćete napojnicu!
         sign_in_text: "Samo provjerite vaš email ili %{sign_in_link}."
         sign_up_text: "Ako još niste dobili pozivnicu, moze te se %{sign_up_link} sa valjanom email adresom ili"
         button: Projekti koje podržavamo
   projects:
     index:
       find_project:
-        placeholder: Upisite GitHub URL projekta kako biste dodati projekt ili bilo koju kljucnu rijec da biste je nasli...
-        button: Nadji ili dodaj projekt
+        placeholder: Upišite GitHub URL projekta kako biste dodati projekt ili bilo koju ključnu rijeć da biste je našli...
+        button: Nađi ili dodaj projekt
       repository: Repozitorij
       description: Opis
       watchers: Gledatelji
       balance: Ravnoteza
       forked_from: Odvojeno od
-      support: Podrzavaj
+      support: Podrži
     show:
-      title: "Doprinosi %{project}"
+      title: "Doprinesi %{project}"
       fetch_pending: (Pending initial fetch)
       edit_project: Promijeni postavke projekta
-      decide_tip_amounts: Odredi kolicinu napojnica
+      decide_tip_amounts: Odredi količinu napojnica
       disabled_notifications: "Odrzavatelji projekata su odlucili da nece obavjestiti nove doprinositelje o napojnicama i najvjerovatnije ne vole ovaj nacin isplate."
       fee: "%{percentage} od polozenih isplata ce se koristiti kao napojnice za nove cinove."
       balance: Ravnoteza
-      deposits: polozenja
-      custom_tip_size: (Svaki novi cin dobiva postotak dostune ravnoteze)
-      default_tip_size: "(Svaki novi cin dobiva %{percentage} dostupne ravnoteze)"
+      deposits: depoziti
+      custom_tip_size: (svaka nova promjena dobiva određen postotak dostupnih bitcoina)
+      default_tip_size: "(svaka nova promjena će dobiti %{percentage} dostupnih bitcoina)"
       unconfirmed_amount: "(%{amount} nepotvrdeno)"
       tipping_policies: Pravila o napojnicama
-      updated_by_user: "(Zadnje updejtao %{name} na %{date})"
-      updated_by_unknown: "(Zadnje updejtano  %{date})"
-      tips_paid: Napojnice placene
+      updated_by_user: "(Zadnje promjenio %{name} %{date})"
+      updated_by_unknown: "(Zadnje promjenjeno  %{date})"
+      tips_paid: Ukupno količina isplaćenih napojnica
       unclaimed_amount: "(%{amount} od ovog neostvarenog, i biti ce natrag isplaceno u projekt nakon jednog mjeseca.)"
       last_tips: Zadnje napojnice
       see_all: Vidjeti sve
-      received: "dobiveno %{amount}"
-      will_receive: ce dobiti napojnicu
-      for_commit: za cin
-      when_decided: kada je kolicina odlucena
-      next_tip: Sljedeca napojnica
+      received: "je dobio %{amount}"
+      will_receive: će dobiti napojnicu
+      for_commit: za commit
+      when_decided: kada je kolicina odlučena
+      next_tip: Sljedeća napojnica
       contribute_and_earn: Doprinesi i zaradi
-      contribute_and_earn_description: "Doniraj Bitcone u ovaj projekt ili %{make_commits_link} i dobij napojnicu. Ako je commit prihvacen %{branch} od strane voditelja projekta i ima Bitcoina na racunu, dobit ce te napojnicu."
+      contribute_and_earn_description: "Doniraj Bitcone ovom projektu ili %{make_commits_link} i dobij napojnicu. Ako je voditelj projekta prihvatio promjenu u %{branch} i Bitcoini su dostpuni, dobiti će te napojnicu."
       contribute_and_earn_branch: "u <strong>%{branch}</strong> branch"
-      make_commits_link: make commits
+      make_commits_link: napravi commit
       tell_us_bitcoin_address: "Samo %{tell_us_link} vasu bitcoin adresu."
       tell_us_link: recite nam
       sign_in: "Samo provjerite vas email ili %{sign_in_link}."
