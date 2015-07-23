@@ -28,6 +28,9 @@
           .qrcode.centered{data: {qrcode: "bitcoin:#{@project.bitcoin_address}"}}
         %p
           = t('.fee', percentage: number_to_percentage(100-CONFIG["our_fee"]*100, precision: 0))
+    .alert.alert-warning
+      %p= t('general.disclaimer.line2')
+      %p= t('general.disclaimer.line3')
 
   .col-md-8
     - unless @project.description.blank?
