@@ -12,7 +12,7 @@ ru:
     support_link: поддержать
     follow_link: Следите за @tip4commit
   links:
-    sign_up: Sign up
+    sign_up: Регистрация
     sign_in: Войти
     sign_in_imp: войдите
     sign_out: Выйти
@@ -22,7 +22,7 @@ ru:
     project_not_found: Проект не найден.
     access_denied: Доступ запрещен
     can_assign_more_tips: "Нельзя использовать более чем 100% свободных средств."
-    wrong_bitcoin_address: Ошибка обновления биткойн адреса
+    wrong_bitcoin_address: Ошибка обновления биткоин-адреса
     user_not_found: Пользователь не найден
     access_denied: Вы не авторизованы для выполнения данного действия!
     opt_in_notice: "В связи с многочисленными жалобами мы более не добавляем проекты автоматически. Существующие проекты, не получившие пожертвований, были удалены.  Если Вы хотите добавить свой проект, пожалуйста, %{create_issue_link}."
@@ -45,8 +45,8 @@ ru:
       value:
         invalid: Неверное значение
       email:
-        invalid: Ошибка в Email адресе
-        blank: Email не может быть пустым
+        invalid: Ошибка в адресе электронной почты
+        blank: Адрес электронной почты не может быть пустым
       password:
         blank: Пароль не может быть пустым
         invalid: Пароль и его подтверждение не совпадают
@@ -73,7 +73,7 @@ ru:
   projects:
     index:
       find_project:
-        placeholder: Введите GitHub адрес проекта или ключевое слово для поиска...
+        placeholder: Введите адрес GitHub-проекта или ключевое слово для поиска...
         button: Найти проект
       repository: Репозиторий
       description: Описание
@@ -83,7 +83,7 @@ ru:
       support: "Поддержать проект"
     show:
       title: "Помогайте %{project}"
-      fetch_pending: (Pending initial fetch)
+      fetch_pending: (Ожидание получения)
       edit_project: Изменить настройки проекта
       decide_tip_amounts: Установить сумму чаевых
       disabled_notifications: "Контрибьюторы проекта решили не уведомлять новых участников о чаевых и, вероятно, им не нравится такой способ финансирования."
