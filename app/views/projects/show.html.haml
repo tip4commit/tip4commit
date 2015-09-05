@@ -86,8 +86,11 @@
               = raw t('.received', amount: btc_human(tip.amount))
             - else
               = t('.will_receive')
-            = t('.for_commit')
-            = link_to tip.commit[0..6], "https://github.com/#{@project.full_name}/commit/#{tip.commit}", target: :blank
+            - if tip.commit.start_with? 'http'
+              = link_to 'details', tip.commit, target: :blank
+            - else
+              = t('.for_commit')
+              = link_to tip.commit[0..6], "https://github.com/#{@project.full_name}/commit/#{tip.commit}", target: :blank
             - if tip.undecided?
               = t('.when_decided')
 
