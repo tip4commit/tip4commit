@@ -11,25 +11,42 @@ module ApplicationHelper
       btc = to_ubtc(amount)
     elsif denom === 3
       btc = to_satoshi(amount)
+    elsif denom === 4
+      btc = to_usd(amount)
     end
     btc = "<nobr>#{btc}</nobr>" if nobr
     btc.html_safe
   end
 
-  def to_btc satoshies    
+  def to_btc satoshies
     "%.8f Ƀ" % (1.0*satoshies.to_i/1e8)
   end
 
-  def to_mbtc satoshies    
+  def to_mbtc satoshies
     "%.5f mɃ" % (1.0*satoshies.to_i/1e5)
   end
 
-  def to_ubtc satoshies    
+  def to_ubtc satoshies
     "%.2f μɃ" % (1.0*satoshies.to_i/1e2)
   end
 
-  def to_satoshi satoshies    
+  def to_satoshi satoshies
     "%.0f Satoshi" % satoshies
+  end
+
+  def to_usd satoshies
+    "%.2f $" % usd(satoshies)
+  end
+
+  def usd satoshies
+    satoshies*0.00000001*usd_cource
+  end
+
+  def usd_cource
+    uri = URI('https://api.bitcoinaverage.com/ticker/USD/')
+    response = Net::HTTP.get_response(uri)
+    hash = JSON.parse(response.body)
+    hash["24h_avg"]
   end
 
   def render_flash_messages
