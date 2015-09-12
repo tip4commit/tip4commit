@@ -12,7 +12,9 @@ module ApplicationHelper
     elsif denom === 3
       btc = to_satoshi(amount)
     elsif denom === 4
-      btc = to_usd(amount)
+      btc = cource("USD", amount)
+    elsif denom === 5
+      btc = cource("EUR", amount)
     end
     btc = "<nobr>#{btc}</nobr>" if nobr
     btc.html_safe
@@ -38,15 +40,13 @@ module ApplicationHelper
     "%.2f $" % usd(satoshies)
   end
 
-  def usd satoshies
-    satoshies*0.00000001*usd_cource
-  end
-
-  def usd_cource
-    uri = URI('https://api.bitcoinaverage.com/ticker/USD/')
-    response = Net::HTTP.get_response(uri)
-    hash = JSON.parse(response.body)
-    hash["24h_avg"]
+  def cource(currency, satoshies)
+    Rails.cache.fetch("#" + currency, :expires_in => 24.hours) do
+      uri = URI('https://api.bitcoinaverage.com/ticker/' + currency + '/')
+      response = Net::HTTP.get_response(uri)
+      hash = JSON.parse(response.body)
+      satoshies*0.00000001*hash["24h_avg"]
+    end
   end
 
   def render_flash_messages
