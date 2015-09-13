@@ -37,7 +37,7 @@ module ApplicationHelper
   end
 
   def to_usd satoshies
-    "%.2f $" % cource("USD", satoshies)
+    "$%.2f" % cource("USD", satoshies)
   end
 
   def to_eur satoshies
