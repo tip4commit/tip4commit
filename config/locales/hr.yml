@@ -1,8 +1,8 @@
 hr:
   tip4commit: Tip4Commit
   meta:
-    title: Doprinesite open source-u
-    description: Donirajte bitcoine open source projektima ili napravite promjene i zaradite napojnice.
+    title: Doprinesite otvorenom kodu
+    description: Donirajte bitcoine projektima otvorenog koda ili napravite promjene i zaradite napojnice.
   menu:
     home: Početna stranica
     projects: Podržavani projekti
@@ -69,12 +69,12 @@ hr:
   projects:
     index:
       find_project:
-        placeholder: Upišite GitHub URL projekta kako biste dodati projekt ili bilo koju ključnu rijeć da biste je našli...
+        placeholder: Upišite GitHub URL projekta kako biste dodali projekt ili bilo koju ključnu rijeć da biste ga našli...
         button: Nađi ili dodaj projekt
       repository: Repozitorij
       description: Opis
       watchers: Gledatelji
-      balance: Ravnoteza
+      balance: Ravnoteža
       forked_from: Odvojeno od
       support: Podrži
     show:
@@ -82,9 +82,9 @@ hr:
       fetch_pending: (Pending initial fetch)
       edit_project: Promijeni postavke projekta
       decide_tip_amounts: Odredi količinu napojnica
-      disabled_notifications: "Odrzavatelji projekata su odlucili da nece obavjestiti nove doprinositelje o napojnicama i najvjerovatnije ne vole ovaj nacin isplate."
-      fee: "%{percentage} od polozenih isplata ce se koristiti kao napojnice za nove cinove."
-      balance: Ravnoteza
+      disabled_notifications: "Održavatelji projekata su odlučili da neće obavjestiti nove doprinositelje o napojnicama i najvjerojatnije ne vole ovaj način isplate."
+      fee: "%{percentage} od položenih isplata će se koristiti kao napojnice za nove promjene."
+      balance: Ravnoteža
       deposits: depoziti
       custom_tip_size: (svaka nova promjena dobiva određen postotak dostupnih bitcoina)
       default_tip_size: "(svaka nova promjena će dobiti %{percentage} dostupnih bitcoina)"
@@ -98,34 +98,34 @@ hr:
       see_all: Vidjeti sve
       received: "je dobio %{amount}"
       will_receive: će dobiti napojnicu
-      for_commit: za commit
-      when_decided: kada je kolicina odlučena
+      for_commit: za promjenu
+      when_decided: kada je količina odlučena
       next_tip: Sljedeća napojnica
       contribute_and_earn: Doprinesi i zaradi
       contribute_and_earn_description: "Doniraj Bitcone ovom projektu ili %{make_commits_link} i dobij napojnicu. Ako je voditelj projekta prihvatio promjenu u %{branch} i Bitcoini su dostpuni, dobiti će te napojnicu."
       contribute_and_earn_branch: "u <strong>%{branch}</strong> branch"
-      make_commits_link: napravi commit
-      tell_us_bitcoin_address: "Samo %{tell_us_link} vasu bitcoin adresu."
-      tell_us_link: recite nam
-      sign_in: "Samo provjerite vas email ili %{sign_in_link}."
+      make_commits_link: napravi promjenu
+      tell_us_bitcoin_address: "Samo %{tell_us_link} Vašu Bitcoin adresu."
+      tell_us_link: nam recite
+      sign_in: "Samo provjerite Vaš email ili %{sign_in_link}."
       promote_project: Promoviraj %{project}
       embedding: Embedding
       image_url: "URL slike:"
-      shield_title: tip for next commit
+      shield_title: napojnica za sljedeću promjenu
     edit:
       project_settings: "%{project} project settings"
       branch: Branch
       default_branch: Default branch
       tipping_policies: Tipping policies
       hold_tips: "Do not send the tips immediatly. Give collaborators the ability to modify the tips before they're sent"
-      save: Save the project settings
+      save: Spremi postavke projekta
       disable_notifications: Don't notify new contributors
     decide_tip_amounts:
-      commit: Commit
+      commit: Promjena
       author: Autor
       message: Poruka
       tip: Napojnica (relativna iznosu na racunu)
-      submit: Posaljite odabrane iznose napojnica
+      submit: Pošaljite odabrane iznose napojnica
   tips:
     index:
       tips: Napojnice
@@ -148,9 +148,9 @@ hr:
       deposits: Uplate
       created_at: "Stvoreno na"
       project: Projekt
-      amount: Kolicina
+      amount: Količina
       transaction: Transakcija
-      confirmed: Potvrdjeno
+      confirmed: Potvrđeno
       confirmed_yes: 'Da'
       confirmed_no: 'Ne'
   users:
@@ -160,23 +160,23 @@ hr:
       commits_count: Commits tipped
       withdrawn: Withdrawn
     show:
-      balance: Ravnoteza
-      threshold: "Dobiti ce te vase novce kada vasa ravnoteza prijede prag od %{threshold}"
+      balance: Ravnoteža
+      threshold: "Dobiti ćete Vaše novce kada Vaša ravnoteža prijeđe prag od %{threshold}"
       see_all: vidjeti sve
       received: "%{time} primljeno %{amount} za cin %{commit} u %{project}"
       bitcoin_address_placeholder: Vasa bitcoin adresa
       notify: Obavjesti me o novim savjetima (ne vise od jednog emaila po mjesecu)
-      submit_user: Azurirati informaciju korisnika
-      change_password: Promijeniti vasu lozinku
-      submit_password: Promijeniti moju lozinku
+      submit_user: Ažuriraj
+      change_password: Promijeni lozinku
+      submit_password: Promijeni lozinku
   withdrawals:
     index:
-      title: Zadnje povlacenje
+      title: Zadnje povlačenje
       created_at: Stvoreno
       transaction: Transakcije
       result: Rezultat
-      error: Greska
-      success: Uspjesno
+      error: Greška
+      success: Uspješno
   devise:
     sessions:
       new:
@@ -189,7 +189,7 @@ hr:
         submit: Registracija
     passwords:
       new:
-        title: Zaboravili ste vasu lozinku?
+        title: Zaboravili ste vašu lozinku?
         submit: Poslati mi uputstva za resetiranje lozinke
       edit:
         title: Promijenite vasu lozinku
