@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ProjectsController do
+describe ProjectsController, type: :controller do
   describe 'GET #index' do
     let(:subject) { get :index }
     before do
