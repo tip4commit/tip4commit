@@ -97,26 +97,26 @@ describe UsersController, type: :controller do
 
   describe "routing" do
     it "routes GET /users to User#index" do
-      { :get => "/users" }.should route_to(
+      expect({ :get => "/users" }).to route_to(
         :controller => "users" ,
         :action     => "index" )
     end
 
     it "routes GET /users/nick-name321 to User#show" do
-      { :get => "/users/nick-name321" }.should route_to(
+      expect({ :get => "/users/nick-name321" }).to route_to(
         :controller => "users" ,
         :action     => "show"  ,
         :nickname   => "nick-name321"     )
     end
 
     it "routes GET /users/login to User#login" do
-      { :get => "/users/login" }.should route_to(
+      expect({ :get => "/users/login" }).to route_to(
         :controller => "users" ,
         :action     => "login" )
     end
 
     it "routes GET /users/1/tips to Tips#index" do
-      { :get => "/users/1/tips" }.should route_to(
+      expect({ :get => "/users/1/tips" }).to route_to(
         :controller => "tips"  ,
         :action     => "index" ,
         :user_id    => "1"     )
@@ -134,19 +134,19 @@ describe UsersController, type: :controller do
 
       accepted = should_accept.select {|ea|  ea =~ /\D+/}
       rejected = should_reject.select {|ea| (ea =~ /\D+/).nil? }
-      (accepted.size.should eq should_accept.size) &&
-      (rejected.size.should eq should_reject.size)
+      (expect(accepted.size).to eq(should_accept.size)) &&
+      (expect(rejected.size).to eq(should_reject.size))
     end
 
     it "routes GET /users/:nickname to User#show" do
-      { :get => "/users/#{user.nickname}" }.should route_to(
+      expect({ :get => "/users/#{user.nickname}" }).to route_to(
         :controller => "users" ,
         :action     => "show"  ,
         :nickname   => "kd"    )
     end
 
     it "routes GET /users/:nickname/tips to Tips#index" do
-      { :get => "/users/#{user.nickname}/tips" }.should route_to(
+      expect({ :get => "/users/#{user.nickname}/tips" }).to route_to(
         :controller => "tips"  ,
         :action     => "index" ,
         :nickname   => "kd"    )
