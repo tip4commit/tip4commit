@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe DepositsController do
+describe DepositsController, type: :controller do
   describe "GET 'index'" do
     it "returns http success" do
       get 'index'

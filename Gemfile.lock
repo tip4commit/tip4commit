@@ -117,10 +117,10 @@ GEM
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
-    coffee-script (2.2.0)
+    coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.6.3)
+    coffee-script-source (1.9.1.1)
     columnize (0.9.0)
     commonjs (0.2.7)
     cucumber (1.3.14)
@@ -153,7 +153,7 @@ GEM
     edge_rider (0.3.0)
       activerecord
     erubis (2.7.0)
-    execjs (2.0.2)
+    execjs (2.6.0)
     factory_girl (4.3.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.3.0)
@@ -272,6 +272,10 @@ GEM
       rails (>= 3.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    rspec-activemodel-mocks (1.0.2)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      rspec-mocks (>= 2.99, < 4.0)
     rspec-core (3.3.2)
       rspec-support (~> 3.3.0)
     rspec-expectations (3.3.1)
@@ -330,7 +334,7 @@ GEM
     thread_safe (0.3.5)
     tilt (1.4.1)
     tins (0.13.1)
-    turbolinks (2.2.0)
+    turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
@@ -381,6 +385,7 @@ DEPENDENCIES
   rails (= 4.2.4)
   rails-i18n
   render_csv
+  rspec-activemodel-mocks
   rspec-rails (~> 3.3.0)
   sass-rails (~> 4.0.0)
   sawyer (~> 0.5.2)
@@ -389,7 +394,7 @@ DEPENDENCIES
   simplecov
   sqlite3 (~> 1.3.8)
   therubyracer (~> 0.12.0)
-  turbolinks (~> 2.2.0)
+  turbolinks (~> 2.5.0)
   twitter-bootstrap-rails!
   twitter_bootstrap_form_for!
   uglifier (>= 1.3.0)

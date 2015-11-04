@@ -12,7 +12,7 @@ gem 'uglifier',        '>= 1.3.0'
 gem 'coffee-rails',    '~> 4.0.0'
 gem 'therubyracer',    '~> 0.12.0', platforms: :ruby
 gem 'jquery-rails',    '~> 3.0.4'
-gem 'turbolinks',      '~> 2.2.0'
+gem 'turbolinks',      '~> 2.5.0'
 gem 'jquery-turbolinks'
 gem 'jbuilder',        '~> 1.5.3'
 gem 'airbrake',        '~> 3.1.15'
@@ -59,5 +59,6 @@ group :test do
   gem 'shoulda-matchers',   '~> 2.5.0'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+  gem 'rspec-activemodel-mocks'
   gem 'minitest'
 end

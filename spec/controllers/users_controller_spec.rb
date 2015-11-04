@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe UsersController do
+describe UsersController, type: :controller do
   describe 'GET #index' do
     let(:subject) { get :index }
 
