@@ -10,7 +10,7 @@ describe WithdrawalsController, type: :controller do
 
   describe "routing" do
     it "routes GET / to Withdrawals#index" do
-      { :get => "/withdrawals" }.should route_to(
+      expect({ :get => "/withdrawals" }).to route_to(
         :controller => "withdrawals" ,
         :action     => "index"       )
     end
