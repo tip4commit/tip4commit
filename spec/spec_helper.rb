@@ -1,4 +1,3 @@
-
 require "minitest/autorun"
 require 'simplecov'
 
