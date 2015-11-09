@@ -15,6 +15,40 @@ module ApplicationHelper
       btc = to_usd(amount)
     elsif denom === 5
       btc = to_eur(amount)
+    elsif denom === 6
+      btc = to_aud(amount)
+    elsif denom === 7
+      btc = to_brl(amount)
+    elsif denom === 8
+      btc = to_cad(amount)
+    elsif denom === 9
+      btc = to_cny(amount)
+    elsif denom === 10
+      btc = to_gbp(amount)
+    elsif denom === 11
+      btc = to_idr(amount)
+    elsif denom === 12
+      btc = to_ils(amount)
+    elsif denom === 13
+      btc = to_jpy(amount)
+    elsif denom === 14
+      btc = to_mxn(amount)
+    elsif denom === 15
+      btc = to_nok(amount)
+    elsif denom === 16
+      btc = to_nzd(amount)
+    elsif denom === 17
+      btc = to_pln(amount)
+    elsif denom === 18
+      btc = to_ron(amount)
+    elsif denom === 19
+      btc = to_rub(amount)
+    elsif denom === 20
+      btc = to_sek(amount)
+    elsif denom === 21
+      btc = to_sgd(amount)
+    elsif denom === 22
+      btc = to_zar(amount)
     end
     btc = "<nobr>#{btc}</nobr>" if nobr
     btc.html_safe
@@ -40,8 +74,76 @@ module ApplicationHelper
     "$%.2f" % cource("USD", satoshies)
   end
 
+  def to_aud satoshies
+    "$%.2f" % cource("AUD", satoshies)
+  end
+
   def to_eur satoshies
-    "%.2f €" % cource("EUR", satoshies)
+    "€%.2f" % cource("EUR", satoshies)
+  end
+
+  def to_brl satoshies
+    "R$%.2f" % cource("BRL", satoshies)
+  end
+
+  def to_cad satoshies
+    "$%.2f" % cource("CAD", satoshies)
+  end
+
+  def to_cny satoshies
+    "¥%.2f" % cource("CNY", satoshies)
+  end
+
+  def to_gbp satoshies
+    "£%.2f" % cource("GBP", satoshies)
+  end
+
+  def to_idr satoshies
+    "Rp%.2f" % cource("IDR", satoshies)
+  end
+
+  def to_ils satoshies
+    "₪%.2f" % cource("ILS", satoshies)
+  end
+
+  def to_jpy satoshies
+    "¥%.2f" % cource("JPY", satoshies)
+  end
+
+  def to_mxn satoshies
+    "$%.2f" % cource("MXN", satoshies)
+  end
+
+  def to_nok satoshies
+    "kr%.2f" % cource("NOK", satoshies)
+  end
+
+  def to_nzd satoshies
+    "$%.2f" % cource("NZD", satoshies)
+  end
+
+  def to_pln satoshies
+    "zł%.2f" % cource("PLN", satoshies)
+  end
+
+  def to_ron satoshies
+    "lei%.2f" % cource("RON", satoshies)
+  end
+
+  def to_rub satoshies
+    "₽%.2f" % cource("RUB", satoshies)
+  end
+
+  def to_sek satoshies
+    "kr%.2f" % cource("SEK", satoshies)
+  end
+
+  def to_sgd satoshies
+    "$%.2f" % cource("SGD", satoshies)
+  end
+
+  def to_zar satoshies
+    "R%.2f" % cource("ZAR", satoshies)
   end
 
   def cource(currency, satoshies)

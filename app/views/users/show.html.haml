@@ -5,7 +5,7 @@
   = btc_human @user.balance
   = form_for(@user) do |f|
     = f.select :denom,
-        options_for_select([["BTC", "0"], ["mBTC", "1"], ["μBTC", "2"], ["Satoshi", "3"], ["USD", "4"], ["EUR", "5"]], selected: @user.denom)
+        options_for_select([["BTC", "0"], ["mBTC", "1"], ["μBTC", "2"], ["Satoshi", "3"], ["USD", "4"], ["EUR", "5"], ["AUD", "6"], ["BRL", "7"], ["CAD", "8"], ["CNY", "9"], ["GBP", "10"], ["IDR", "11"], ["ILS", "12"], ["JPY", "13"], ["MXN", "14"], ["NOK", "15"], ["NZD", "16"], ["PLN", "17"], ["RON", "18"], ["RUB", "19"], ["SEK", "20"], ["SGD", "21"], ["ZAR", "22"]], selected: @user.denom)
     = f.submit "save"
 %p
   %small= raw t('.threshold', threshold: btc_human(CONFIG["min_payout"]))
