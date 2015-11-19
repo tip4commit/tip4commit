@@ -139,11 +139,11 @@ Feature: Visitors should be able to sign_up and sign_in
     And   I fill "Password" with: "new-guys-password"
     And   I click "Sign in"
     Then  I should be on the "sign_in" page
-    And   I should see "You have to confirm your account before continuing"
+    And   I should see "You have to confirm your email address before continuing"
 
     When  I confirm the email address: "new-guy@example.com"
     Then  I should be on the "sign_in" page
-    And   I should see "Your account was successfully confirmed"
+    And   I should see "Your email address has been successfully confirmed"
     When  I fill "E-mail" with: "new-guy@example.com"
     And   I fill "Password" with: "new-guys-password"
     And   I click "Sign in"
