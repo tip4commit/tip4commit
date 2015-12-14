@@ -1,4 +1,4 @@
-require "minitest/autorun"
+require "minitest/spec"
 require 'simplecov'
 
 SimpleCov.start 'rails'
