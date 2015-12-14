@@ -29,21 +29,21 @@ describe User do
     context 'when address is blank' do
       it 'should be valid' do
         user.bitcoin_address = ''
-        user.should be_valid
+        expect(user).to be_valid
       end
     end
 
     context 'when address is valid' do
       it 'should be valid' do
         user.bitcoin_address = '1M4bS4gPyA6Kb8w7aXsgth9oUZWcRk73tQ'
-        user.should be_valid
+        expect(user).to be_valid
       end
     end
 
     context 'when address is not valid' do
       it 'should not be valid' do
         user.bitcoin_address = '1M4bS4gPyA6Kb8w7aXsgth9oUZXXXXXXXX'
-        user.should_not be_valid
+        expect(user).not_to be_valid
       end
     end
 
