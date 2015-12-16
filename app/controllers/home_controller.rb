@@ -55,4 +55,12 @@ class HomeController < ApplicationController
     end
   end
 
+  def blockchain_info_callback_v2
+    if params[:confirmations].to_i < 30
+      render json: params
+    else
+      render :text => "*ok*"
+    end
+  end
+
 end

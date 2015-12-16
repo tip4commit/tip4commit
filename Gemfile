@@ -37,6 +37,9 @@ gem "i18n-js"
 gem 'kaminari-i18n'
 gem 'devise-i18n'
 
+gem 'money-tree'
+gem 'rest-client'
+
 gem 'easy_gravatar'
 
 group :development do
