@@ -203,7 +203,7 @@ GEM
     less-rails (2.4.2)
       actionpack (>= 3.1)
       less (~> 2.4.0)
-    libv8 (3.16.14.3)
+    libv8 (3.16.14.13)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -268,7 +268,7 @@ GEM
     rake (10.4.2)
     rdoc (4.1.1)
       json (~> 1.4)
-    ref (1.0.5)
+    ref (2.0.0)
     render_csv (2.0.0)
       rails (>= 3.0)
     responders (2.1.0)
@@ -321,14 +321,14 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    sqlite3 (1.3.8)
+    sqlite3 (1.3.11)
     sshkit (1.3.0)
       net-scp (>= 1.1.2)
       net-ssh
       term-ansicolor
     term-ansicolor (1.2.2)
       tins (~> 0.8)
-    therubyracer (0.12.0)
+    therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
     thor (0.19.1)
@@ -392,12 +392,12 @@ DEPENDENCIES
   sdoc
   shoulda-matchers (~> 2.5.0)
   simplecov
-  sqlite3 (~> 1.3.8)
-  therubyracer (~> 0.12.0)
+  sqlite3 (~> 1.3.11)
+  therubyracer (~> 0.12.2)
   turbolinks (~> 2.5.0)
   twitter-bootstrap-rails!
   twitter_bootstrap_form_for!
   uglifier (>= 1.3.0)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

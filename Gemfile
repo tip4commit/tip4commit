@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.2.4'
 
 gem 'rails',           '4.2.4'
 gem 'mysql2',                      group: :production
@@ -10,7 +10,7 @@ gem 'less-rails',      '~> 2.4.2'
 gem 'kaminari',        '~> 0.15.0'
 gem 'uglifier',        '>= 1.3.0'
 gem 'coffee-rails',    '~> 4.0.0'
-gem 'therubyracer',    '~> 0.12.0', platforms: :ruby
+gem 'therubyracer',    '~> 0.12.2', platforms: :ruby
 gem 'jquery-rails',    '~> 3.0.4'
 gem 'turbolinks',      '~> 2.5.0'
 gem 'jquery-turbolinks'
@@ -49,7 +49,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'sqlite3',            '~> 1.3.8'
+  gem 'sqlite3',            '~> 1.3.11'
   gem 'factory_girl_rails', '~> 4.3.0'
   gem 'rspec-rails',        '~> 3.3.0'
 end
