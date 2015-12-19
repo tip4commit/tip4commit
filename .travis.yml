@@ -1,7 +1,7 @@
 language: ruby
 
 rvm:
-  - 2.0.0
+  - 2.2.4
 
 bundler_args: --without development --jobs=9 --retry=2 --quiet
 

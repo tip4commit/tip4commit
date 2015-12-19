@@ -34,7 +34,8 @@
 
   .col-md-8
     - unless @project.description.blank?
-      .well.well-sm= @project.description
+      .panel.panel-default
+        .panel-body= @project.description
     %h4
       = t('.balance')
       - if @project.deposits.count > 0

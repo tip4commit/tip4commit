@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe DepositsController do
+describe DepositsController, type: :controller do
   describe "GET 'index'" do
     it "returns http success" do
       get 'index'
@@ -10,7 +10,7 @@ describe DepositsController do
 
   describe "routing" do
     it "routes GET / to Deposits#index" do
-      { :get => "/deposits" }.should route_to(
+      expect({ :get => "/deposits" }).to route_to(
         :controller => "deposits" ,
         :action     => "index"    )
     end

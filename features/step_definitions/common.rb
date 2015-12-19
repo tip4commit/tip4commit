@@ -113,7 +113,7 @@ end
 
 Then(/^I should be on the "(.*?)" page$/) do |page_string|
   expected = parse_path_from_page_string page_string rescue expected = page_string
-  actual   = page.current_path
+  actual   =  URI.decode(page.current_path)
 
   expected.chop! if (expected.end_with? '/') && (expected.size > 1)
   actual  .chop! if (actual  .end_with? '/') && (actual  .size > 1)
