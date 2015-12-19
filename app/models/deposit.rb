@@ -1,7 +1,7 @@
 class Deposit < ActiveRecord::Base
   belongs_to :project
 
-  CONFIRMATIONS_NEEDED = 2
+  CONFIRMATIONS_NEEDED = 3
 
   scope :confirmed, -> { where("confirmations >= #{CONFIRMATIONS_NEEDED}") }
   scope :unconfirmed, -> { where("confirmations < #{CONFIRMATIONS_NEEDED}") }
