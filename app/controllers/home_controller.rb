@@ -16,7 +16,7 @@ class HomeController < ApplicationController
     test = params[:test]
 
     if (params[:value].to_i < 0) || Sendmany.find_by(txid: params[:transaction_hash])
-      render :text => "*ok*";
+      render :text => "*ok*"
       return
     end
 
@@ -56,11 +56,46 @@ class HomeController < ApplicationController
   end
 
   def blockchain_info_callback_v2
-    if params[:confirmations].to_i < 30
-      render json: params
-    else
-      render :text => "*ok*"
+    if (params[:secret]!=CONFIG["blockchain_info"]["callback_secret2"])
+      render json: {error: 'Forbidden'}, status: 403
+      return
     end
+
+    if params[:value].to_i < 0
+      render :text => "*ok*"
+      return
+    end
+
+    if project = Project.find_by(bitcoin_address2: params[:address])
+      deposit = project.deposits.find_by(txid: params[:transaction_hash])
+    else
+      deposit = nil
+    end
+
+    if deposit
+      deposit.update_attribute(:confirmations, confirmations = params[:confirmations])
+      project.update_cache
+      if confirmations.to_i > 10
+        render :text => "*ok*"
+      else
+        render :text => "Deposit #{deposit.id} updated!"
+      end
+      return
+    end
+
+    if project
+      deposit = Deposit.create({
+        project_id: project.id,
+        txid: params[:transaction_hash],
+        confirmations: params[:confirmations],
+        amount: params[:value].to_i
+      })
+      project.update_cache
+      render :text => "Deposit #{deposit[:txid]} has been created!"
+    else
+      render :text => "Project with deposit address #{params[:address]} is not found!"
+    end
+
   end
 
 end

@@ -6,7 +6,7 @@ T4c::Application.routes.draw do
     :controllers => { :omniauth_callbacks => 'users/omniauth_callbacks' }
 
   get '/blockchain_info_callback'          => 'home#blockchain_info_callback' ,                                                             :as => 'blockchain_info_callback'
-  get '/blockchain_info_callback_v2'       => 'home#blockchain_info_callback_v2' ,                                                          :as => 'blockchain_info_callback_v2'
+  get '/blockchain_info_callback_v2/:secret' => 'home#blockchain_info_callback_v2',                                                         :as => 'blockchain_info_callback_v2'
 
   get '/users/login'                       => 'users#login' ,                                                                               :as => 'login_users'
   get '/users/:user_id/tips'               => 'tips#index' ,                    :constraints => {:user_id    => /\d+/}                    , :as => 'user_tips'

@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150620054216) do
+ActiveRecord::Schema.define(version: 20151219081507) do
 
   create_table "collaborators", force: :cascade do |t|
     t.integer  "project_id"
-    t.string   "login"
+    t.string   "login",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -48,13 +48,14 @@ ActiveRecord::Schema.define(version: 20150620054216) do
     t.string   "last_commit",            limit: 255
     t.integer  "available_amount_cache"
     t.string   "github_id",              limit: 255
-    t.string   "host",                               default: "github"
+    t.string   "host",                   limit: 255, default: "github"
     t.boolean  "hold_tips",                          default: false
     t.datetime "info_updated_at"
-    t.string   "branch"
+    t.string   "branch",                 limit: 255
     t.boolean  "disable_notifications"
-    t.string   "avatar_url"
+    t.string   "avatar_url",             limit: 255
     t.datetime "deleted_at"
+    t.string   "bitcoin_address2"
   end
 
   add_index "projects", ["full_name"], name: "index_projects_on_full_name", unique: true
@@ -121,9 +122,9 @@ ActiveRecord::Schema.define(version: 20150620054216) do
     t.integer  "withdrawn_amount",       limit: 8,   default: 0
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "confirmation_token"
-    t.string   "unconfirmed_email"
-    t.string   "display_name"
+    t.string   "confirmation_token",     limit: 255
+    t.string   "unconfirmed_email",      limit: 255
+    t.string   "display_name",           limit: 255
     t.integer  "denom",                              default: 0
   end
 

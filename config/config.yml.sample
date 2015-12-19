@@ -1,3 +1,5 @@
+app_host: 'tip4commit.com'
+
 github:
   key: "111111111111"
   secret: "111111111111"
@@ -12,6 +14,7 @@ blockchain_info:
   callback_secret: "111111111111"
   # api_key for https://alpha.blockchain.info/
   api_key: "111111111111"
+  callback_secret2: "111111111111"
 
 wallet:
   xpub: xpub11111111111111
