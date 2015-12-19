@@ -71,86 +71,86 @@ module ApplicationHelper
   end
 
   def to_usd satoshies
-    "$%.2f" % cource("USD", satoshies)
+    "$%.2f" % rate("USD", satoshies)
   end
 
   def to_aud satoshies
-    "$%.2f" % cource("AUD", satoshies)
+    "$%.2f" % rate("AUD", satoshies)
   end
 
   def to_eur satoshies
-    "€%.2f" % cource("EUR", satoshies)
+    "%.2f€" % rate("EUR", satoshies)
   end
 
   def to_brl satoshies
-    "R$%.2f" % cource("BRL", satoshies)
+    "R$%.2f" % rate("BRL", satoshies)
   end
 
   def to_cad satoshies
-    "$%.2f" % cource("CAD", satoshies)
+    "$%.2f" % rate("CAD", satoshies)
   end
 
   def to_cny satoshies
-    "¥%.2f" % cource("CNY", satoshies)
+    "%.2f¥" % rate("CNY", satoshies)
   end
 
   def to_gbp satoshies
-    "£%.2f" % cource("GBP", satoshies)
+    "%.2f£" % rate("GBP", satoshies)
   end
 
   def to_idr satoshies
-    "Rp%.2f" % cource("IDR", satoshies)
+    "%.2f Rp" % rate("IDR", satoshies)
   end
 
   def to_ils satoshies
-    "₪%.2f" % cource("ILS", satoshies)
+    "%.2f₪" % rate("ILS", satoshies)
   end
 
   def to_jpy satoshies
-    "¥%.2f" % cource("JPY", satoshies)
+    "%.2f¥" % rate("JPY", satoshies)
   end
 
   def to_mxn satoshies
-    "$%.2f" % cource("MXN", satoshies)
+    "%.2f MXN" % rate("MXN", satoshies)
   end
 
   def to_nok satoshies
-    "kr%.2f" % cource("NOK", satoshies)
+    "%.2f kr" % rate("NOK", satoshies)
   end
 
   def to_nzd satoshies
-    "$%.2f" % cource("NZD", satoshies)
+    "$%.2f" % rate("NZD", satoshies)
   end
 
   def to_pln satoshies
-    "zł%.2f" % cource("PLN", satoshies)
+    "%.2f zł" % rate("PLN", satoshies)
   end
 
   def to_ron satoshies
-    "lei%.2f" % cource("RON", satoshies)
+    "%.2f lei" % rate("RON", satoshies)
   end
 
   def to_rub satoshies
-    "₽%.2f" % cource("RUB", satoshies)
+    "%.2f₽" % rate("RUB", satoshies)
   end
 
   def to_sek satoshies
-    "kr%.2f" % cource("SEK", satoshies)
+    "%.2f kr" % rate("SEK", satoshies)
   end
 
   def to_sgd satoshies
-    "$%.2f" % cource("SGD", satoshies)
+    "%.2f S$" % rate("SGD", satoshies)
   end
 
   def to_zar satoshies
-    "R%.2f" % cource("ZAR", satoshies)
+    "%.2f R" % rate("ZAR", satoshies)
   end
 
-  def cource(currency, satoshies)
-    satoshies*0.00000001*get_cource(currency)
+  def rate(currency, satoshies)
+    satoshies*0.00000001*get_rate(currency)
   end
 
-  def get_cource(currency)
+  def get_rate(currency)
     Rails.cache.fetch("###" + currency, :expires_in => 24.hours) do
       uri = URI('https://api.bitcoinaverage.com/ticker/' + currency + '/')
       response = Net::HTTP.get_response(uri)
