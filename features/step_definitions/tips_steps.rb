@@ -12,7 +12,7 @@ Given(/^the minimum tip amount is "(.*?)"$/) do |arg1|
 end
 
 Given(/^a deposit of "(.*?)" is made$/) do |deposit|
-  Deposit.create!(project: @current_project, amount: deposit.to_d * 1e8, confirmations: 2)
+  Deposit.create!(project: @current_project, amount: deposit.to_d * 1e8, confirmations: 10)
 end
 
 def add_new_commit commit_id , nickname , params = {}
