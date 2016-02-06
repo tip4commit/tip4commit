@@ -16,9 +16,12 @@ blockchain_info:
   api_key: "111111111111"
   callback_secret2: "111111111111"
 
+bitcoind:
+  rpc_connection_string: https://user:password@rpc.blockchain.info:443
+  account: 1M4bS4gPyA6Kb8w7aXsgth9oUZWcRk73tQ
+
 wallet:
   xpub: xpub11111111111111
-
 
 devise:
   secret: "111111111111"

@@ -10,19 +10,21 @@ class Sendmany < ActiveRecord::Base
 
     update_attribute :is_error, true # it's a lock to prevent duplicates
 
-    uri       = URI CONFIG["blockchain_info"]["sendmany_url"]
-    params    = { password: CONFIG["blockchain_info"]["password"], recipients: data }
-    uri.query = URI.encode_www_form(params)
-    res       = Net::HTTP.get_response(uri)
-    if res.is_a?(Net::HTTPSuccess) && (json = JSON.parse(res.body))
-      Rails.logger.info res.body
-      update_attribute :result, json
-      if !(txid = json["tx_hash"]).blank?
+
+    bitcoind = BitcoinRPC.new(CONFIG["bitcoind"]["rpc_connection_string"],false)
+
+    begin
+      txid = bitcoind.sendmany(
+        CONFIG["bitcoind"]["account"],
+        JSON.parse(data).map { |address, amount| {address => amount/1e8} }.inject(&:merge)
+      )
+      if txid.present?
         update_attribute :is_error, false
-        update_attribute :txid, json["tx_hash"]
+        update_attribute :txid, txid
       end
-    else
-      Rails.logger.error "Failed to get correct response from blockchain.info"
+    rescue StandardError => e
+      update_attribute :result, e.inspect
     end
+
   end
 end
