@@ -1,5 +1,6 @@
 Tip4commit
 ==========
+[README Po Polsku](README_PL.md)
 
 [![tip for next commit](https://tip4commit.com/projects/307.svg)](https://tip4commit.com/projects/307)
 [![Build Status](https://travis-ci.org/tip4commit/tip4commit.svg?branch=master)](https://travis-ci.org/tip4commit/tip4commit)
