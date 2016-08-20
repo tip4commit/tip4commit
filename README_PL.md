@@ -17,7 +17,6 @@ Problemy | https://github.com/tip4commit/tip4commit/issues
 Deweloperzy
 ==========
 
-If you would like to contribute to the development of tip4commit, you can find the contribution guidelines and installation instructions in the [developer README](https://github.com/tip4commit/tip4commit/wiki/Developer-README)
 Jeśli chcesz pomóc w tworzeniu tip4commit, przeczytaj instrucje kontrybucji i instrukcję instalacji w [README dla developerów](https://github.com/tip4commit/tip4commit/wiki/Developer-README).
 
 Licencje
