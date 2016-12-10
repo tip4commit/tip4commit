@@ -31,9 +31,9 @@ class BitcoinTipper
         end
       end
 
-      if users_waiting_for_withdrawal > 2
-        self.create_sendmany
-      end
+      # if users_waiting_for_withdrawal > 2
+      #   self.create_sendmany
+      # end
 
       Rails.logger.info "Traversing sendmanies..."
       Sendmany.where(txid: nil).each do |sendmany|

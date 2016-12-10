@@ -27,4 +27,10 @@ class Sendmany < ActiveRecord::Base
     end
 
   end
+
+  def to_csv
+    JSON.parse(self.data).map do |address, value|
+      [address, value / 1e8].join(',')
+    end.join("\n")
+  end
 end
