@@ -71,163 +71,163 @@ en:
   projects:
     index:
       find_project:
-        placeholder: Enter GitHub project URL or any keyword to find it...
-        button: Find project
+        placeholder: Nutzen Sie die GitHub-URL eines Projektes oder geben Sie relevante Schlüsselwörter ein...
+        button: Projekt suchen
       repository: Repository
-      description: Description
-      watchers: Watchers
-      balance: Balance
-      forked_from: forked from
-      support: Support project
+      description: Beschreibung
+      watchers: Beobachter
+      balance: Vorhandene Geldmenge
+      forked_from: Abzweigung von
+      support: Projekt unterstützen
     show:
-      title: "Contribute to %{project}"
-      fetch_pending: (Pending initial fetch)
-      edit_project: Change project settings
-      decide_tip_amounts: Decide tip amounts
-      disabled_notifications: "Project maintainers have decided not to notify new contributors about tips and they probably don't like this way of funding."
-      fee: "%{percentage} of deposited funds will be used to tip for new commits."
-      balance: Balance
-      deposits: deposits
-      custom_tip_size: (each new commit receives a percentage of available balance)
-      default_tip_size: "(each new commit receives %{percentage} of available balance)"
-      min_tip_size: "Minimum tip size is set to %{min_tip}, but if available balance is less than that then it will be sent as a smaller tip"
-      unconfirmed_amount: "(%{amount} unconfirmed)"
-      tipping_policies: Tipping policies
-      updated_by_user: "(Last updated by %{name} on %{date})"
-      updated_by_unknown: "(Last updated on %{date})"
-      tips_paid: Tips Paid
-      unclaimed_amount: "(%{amount} of this is unclaimed, and will be refunded to the project after being unclaimed for 1 month.)"
-      last_tips: Last Tips
-      see_all: see all
-      received: "received %{amount}"
-      will_receive: will receive a tip
-      for_commit: for commit
-      when_decided: when its amount is decided
-      next_tip: Next Tip
-      contribute_and_earn: Contribute and Earn
-      contribute_and_earn_description: "Donate bitcoins to this project or %{make_commits_link} and get tips for it. If your commit is accepted %{branch} by a project maintainer and there are bitcoins on its balance, you will get a tip!"
-      contribute_and_earn_branch: "to <strong>%{branch}</strong> branch"
-      make_commits_link: make commits
-      tell_us_bitcoin_address: "Just %{tell_us_link} your bitcoin address."
-      tell_us_link: tell us
-      sign_in: "Just check your email or %{sign_in_link}."
-      promote_project: Promote %{project}
-      embedding: Embedding
-      image_url: "Image URL:"
-      shield_title: tip for next commit
+      title: "Tragen Sie etwas zum %{project} bei"
+      fetch_pending: (Erstes Laden ist im Gang)
+      edit_project: Projekteinstellungen verändern
+      decide_tip_amounts: Höhe des Trinkgeldes einstellen
+      disabled_notifications: "Die Projektleiter haben sich entschlossen, neue Mitarbeiter nicht über Trinkgelder zu informieren."
+      fee: "%{percentage} der vorhandenen Geldmenge wird pro Beitrag als Trinkgeld vergeben."
+      balance: Vorhandene Geldmenge
+      deposits: Spenden
+      custom_tip_size: (Jeder Beitrag erhält einen Anteil der vorhandenen Geldmenge)
+      default_tip_size: "Jeder neue Beitrag erhält %{percentage} der vorhandenen Geldmenge"
+      min_tip_size: "Die minimale Trinkgeldmenge liegt bei %{min_tip}. Sollte aber nicht ausreichend Geld vorhanden sein, wird die Menge heruntergesetzt."
+      unconfirmed_amount: "(%{amount} nicht bestätigt)"
+      tipping_policies: Trinkgeld-Regeln
+      updated_by_user: "(Letzer Beitrag von %{name} am %{date})"
+      updated_by_unknown: "(Letzter Beitrag am %{date})"
+      tips_paid: Ausgezahlte Trinkgelder
+      unclaimed_amount: "(%{amount} hiervon wurden noch nicht beansprucht und werden nach einem Monat an das Projekt zurückgegeben.)"
+      last_tips: Letzte Trinkgelder
+      see_all: Alle ansehen
+      received: "%{amount} erhalten"
+      will_receive: wird ein Tringeld erhalten
+      for_commit: für den commit
+      when_decided: wenn die Menge festgelegt wurde
+      next_tip: Nächstes Trinkgeld
+      contribute_and_earn: Tragen Sie etwas bei und verdienen Sie
+      contribute_and_earn_description: "Spenden Sie Bitcoin an dieses Projekte oder %{make_commits_link} um Trinkgelder zu erhalten. Falls ihr Beitrag %{branch} von einem Projektleiter akzeptiert wird, erhalten Sie falls möglich ein Trinkgeld."
+      contribute_and_earn_branch: "zur <strong>%{branch}</strong> branch"
+      make_commits_link: Beiträge machen
+      tell_us_bitcoin_address: "Sie sollten ihre Bitcoin-Adresse %{tell_us_link}"
+      tell_us_link: angeben
+      sign_in: "Überprüfen Sie ihr E-Mail Fach oder %{sign_in_link}."
+      promote_project: Fördern Sie %{project}
+      embedding: Eingebettete
+      image_url: "Bild-URL:"
+      shield_title: Zunächst auszuzahlendes Trinkgeld
     edit:
-      project_settings: "%{project} project settings"
+      project_settings: "%{project} Projekteinstellungen"
       branch: Branch
-      default_branch: Default branch
-      tipping_policies: Tipping policies
-      hold_tips: "Do not send the tips immediately. Give collaborators the ability to modify the tips before they're sent"
-      save: Save the project settings
-      disable_notifications: Don't notify new contributors
+      default_branch: Standard-Branch
+      tipping_policies: Trinkgeld-Regeln
+      hold_tips: "Zahlen Sie Trinkgelder nicht sofort. Geben Sie Mitarbeitern die Möglichkeit, Trinkgelder zu ändern bevor diese ausgezahlt werden."
+      save: Projekteinstellungen speichern
+      disable_notifications: Neue Mitarbeiter nicht informieren
     decide_tip_amounts:
       commit: Commit
-      author: Author
-      message: Message
-      tip: Tip (relative to the project balance)
-      submit: Send the selected tip amounts
+      author: Urheber
+      message: Nachricht
+      tip: Trinkgeld (in Relation zur vorhanden Geldmenge)
+      submit: Die ausgewählten Trinkgelder auszahlen
     blacklisted:
-      title: Sorry, this project doesn't accept tips!
-      message: The author of this project has chosen to disallow tips for this project.
+      title: Verzeihung, dieses Projekt akzeptiert keine Trinkgelder!
+      message: Der Leiter dieses Projekts hat sich entschieden, für diese Projekt keine Trinkgelder zu erlauben.
   tips:
     index:
-      tips: Tips
-      project_tips: '%{project} tips'
-      user_tips: "%{user} tips"
-      created_at: Created At
-      commiter: Commiter
-      project: Project
+      tips: Trinkgelder
+      project_tips: '%{project} Trinkgelder'
+      user_tips: "%{user} Trinkgelder"
+      created_at: Erstellt am
+      commiter: Mitareiter
+      project: Projekt
       commit: Commit
-      amount: Amount
-      refunded: Refunded to project's deposit
-      undecided: The amount of the tip has not been decided yet
-      no_bitcoin_address: User didn't specify withdrawal address
-      below_threshold: "User's balance is below withdrawal threshold"
-      waiting: Waiting for withdrawal
-      error: (error sending transaction)
+      amount: Menge
+      refunded: An das Projekt zurückgezahlt
+      undecided: Die Höhe des Trinkgeldes wurde noch nicht festgelegt
+      no_bitcoin_address: Der Nutzer hat keine Bitcoin-Adresse angegeben
+      below_threshold: "Der Kontostand des Nutzers liegt unter der benötigten Menge"
+      waiting: Auf Abheben warten
+      error: (bei der Übertragung kam es zu einem Fehler)
   deposits:
     index:
-      project_deposits: '%{project} deposits'
-      deposits: Deposits
-      created_at: Created At
-      project: Project
-      amount: Amount
-      transaction: Transaction
-      confirmed: Confirmed
-      confirmed_yes: 'Yes'
-      confirmed_no: 'No'
+      project_deposits: '%{project} Spenden'
+      deposits: Spenden
+      created_at: Erstellt am
+      project: Projekt
+      amount: Menge
+      transaction: Transaktion
+      confirmed: Bestätigt
+      confirmed_yes: 'Ja'
+      confirmed_no: 'Nein'
   users:
     index:
-      title: Top Contributors
+      title: Top-Mitarbeiter
       name: Name
-      commits_count: Commits tipped
-      withdrawn: Withdrawn
+      commits_count: Bezahlte Beiträge
+      withdrawn: Abgehoben
     show:
-      balance: Balance
-      threshold: "You will get your money when your balance hits the threshold of %{threshold}"
-      see_all: see all
-      received: "%{time} received %{amount} for commit %{commit} in %{project}"
-      bitcoin_address_placeholder: Your bitcoin address
-      notify: Notify me about new tips (no more than one email per month)
-      submit_user: Update user info
-      change_password: Change your password
-      submit_password: Change my password
-      use_from_gravatar: Use from your gravatar profile
+      balance: Vorhandene Geldmenge
+      threshold: "Ihr Geld wird ausbezahlt sobald die Grenzmenge von %{threshold} erreicht wird"
+      see_all: alle ansehen
+      received: "%{time} hat %{amount} für seinen %{commit} im %{project} erhalten"
+      bitcoin_address_placeholder: Ihre Bitcoin-Adresse
+      notify: Informieren Sie mich (mit nicht mehr als einer E-Mail pro Monat) über neue Trinkgelder
+      submit_user: Nutzerinformationen aktualisieren
+      change_password: Passwort ändern
+      submit_password: Passwort ändern
+      use_from_gravatar: Von Ihrem Gravatarprofil aus nutzen
   withdrawals:
     index:
-      title: Last Withdrawals
-      created_at: Created At
-      transaction: Transaction
-      result: Result
-      error: Error
-      success: Success
+      title: Letzte Abhebungen
+      created_at: Erstellt am
+      transaction: Transaktion
+      result: Ergebnis
+      error: Fehler
+      success: Erfolg
   devise:
     sessions:
       new:
-        title: Sign in
-        remember_me: Remember me
-        submit: Sign in
+        title: Anmelden
+        remember_me: An mich erinnern
+        submit: Anmelden
     registrations:
       new:
-        title: Sign up
-        submit: Sign up
+        title: Registrieren
+        submit: Registrieren
     passwords:
       new:
-        title: Forgot your password?
-        submit: Send me reset password instructions
+        title: Passwort vergessen?
+        submit: Passwort zurücksetzen
       edit:
-        title: Change your password
-        submit: Change my password
+        title: Passwort ändern
+        submit: Passwort ändern
     confirmations:
       new:
-        title: Resend confirmation instructions
-        submit: Resend confirmation instructions
+        title: Bestätigung erneut versenden
+        submit: Bestätigung erneut versenden
     links:
-      sign_in: Sign in
-      sign_up: Sign up
-      recover: Forgot your password?
-      confirm: Didn't receive confirmation instructions?
-      sign_in_with: "Sign in with %{provider}"
+      sign_in: Anmelden
+      sign_up: Registrieren
+      recover: Passwort vergessen?
+      confirm: Bestätigung nicht erhalten?
+      sign_in_with: "Mit %{provider} einloggen"
     errors:
-      primary_email: your primary email address should be verified.
-      onmiauth_info: we were unable to fetch your information.
+      primary_email: Ihre primäre E-Mail Adresse konnte nicht bestätigt werden.
+      onmiauth_info: Wir konnten ihre Informationen nicht entnehmen.
   activerecord:
     attributes:
       user:
         email: E-mail
-        bitcoin_address: Bitcoin address
-        password: Password
-        password_confirmation: Password confirmation
-        display_name: Display name
+        bitcoin_address: Bitcoin-Adresse
+        password: Passwort
+        password_confirmation: Passwort-Bestätigung
+        display_name: Anzeigename
   omniauth_providers:
     github: GitHub
     bitbucket: BitBucket
   general:
     or: or
     disclaimer:
-      line1: "Tip4Commit is not affiliated with most of the projects."
-      line2: "There is no guarantee that tips will be claimed by developers."
-      line3: "By donating the funds you agree that they can be sent to the Free Software Foundation or elsewhere at Tip4Commit's discretion."
+      line1: "Tip4Commit ist mit den meisten Projekten in keiner Weise verbunden."
+      line2: "Es gibt keine Garantie, dass Entwickler Trinkgelder erhalten werden."
+      line3: "Durch Spenden akzeptieren Sie, dass ihre Spenden nach Belieben an die Free Software Foundation oder sonstige weitergeleitet werden können."
