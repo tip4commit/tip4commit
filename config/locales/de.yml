@@ -1,0 +1,233 @@
+en:
+  tip4commit: Tip4Commit
+  meta:
+    title: Tragen Sie zu Open-Source-Projekten bei
+    description: Spenden Sie bitcoins an Projekte die Sie interessieren oder fügen Sie commits hinzu um Trinkgelder zu erhalten
+  menu:
+    home: Home
+    projects: Unterstützte Projekte
+  footer:
+    text: "Der Quellcode dieser Anwendung ist auf %{github_link} Verfügbar und Sie können die Entwicklung %{support_link}."
+    github_link: GitHub
+    support_link: unterstützen
+    follow_link: Folgen Sie @tip4commit
+  links:
+    sign_up: Registrieren
+    sign_in: Anmelden
+    sign_in_imp: anmelden
+    sign_out: Abmelden
+    create_issue: Ticket erstellen
+  errors:
+    project_not_found: Projekt wurde nicht gefunden
+    opt_in_notice: "Aufgrund vergangener Beschwerden von Projektleitern fügen wir keine Projekte mehr automatisch hinzu. Projekte ohne verfügbare Spenden wurden entfernt. Wenn Sie ihr Projekt gerne hinzufügen möchten, müssen Sie ein %{create_issue_link}."
+    access_denied: Zugang verwährt
+    can_assign_more_tips: "Sie können nicht mehr als 100% der verfügbaren Summe vergeben."
+    wrong_bitcoin_address: Fehler beim Aktualisieren der Bitcoin-Adresse
+    user_not_found: Nutzer nicht gefunden
+    access_denied: Diese Aktion ist Ihnen nicht erlaubt!
+  notices:
+    project_updated: Die Projekteinstellungen wurden aktualisiert.
+    tips_decided: Die Höhe der Trinkgelder wurde eingestellt.
+    user_updated: Ihre Informationen wurden gespeichert.
+    user_unsubscribed: "Sie haben das Abo beendet. Es tut uns leid, falls wir Sie belästigt haben. Wenn Sie weiterhin Trinkgelder erhalten wollen, können Sie jedoch trotzdem ihre Bitcoin-Adresse angeben."
+  tip_amounts:
+    undecided: "Nicht festgelegt"
+    free: "Kostenlos: 0%"
+    tiny: "Minimal: 0.1%"
+    small: "Klein: 0.5%"
+    normal: "Normal: 1%"
+    big: "Groß: 2%"
+    huge: "Sehr groß: 5%"
+  js:
+    errors:
+      value:
+        invalid: Der Wert ist ungültig.
+      email:
+        invalid: Die E-Mail Adresse ist ungültig.
+        blank: Sie müssen eine E-Mail Adresse angeben!
+      password:
+        blank: Sie müssen ein Passwort angeben!
+        invalid: Die angegebenen Passwörter stimmen nicht überein!
+      password_confirmation:
+        blank: Sie müssen ihr Passwort bestätigen.
+        invalid: Die angegebenen Passwörter stimmen nicht überein!
+  home:
+    index:
+      see_projects: Projekte anschauen
+      how_does_it_work:
+        title: Wie funktioniert das Ganze?
+        text: Leute spenden Bitcoin an Projekte. Wird ein commit akzeptiert, erhält der Urheber automatisch ein Trinkgeld.
+        button: Informieren Sie sich über Bitcoin
+      donate:
+        title: Spenden
+        text: Finden Sie ein Projekt, das Ihnen gefällt und spenden Sie. Zusammen mit den Spenden anderer Interessenten wird das Geld verwendet um Trinkgelder an Mitarbeiter zu verteilen.
+        button: Projekt suchen oder hinzufügen
+      contribute:
+        title: Aushelfen
+        text: Reparieren Sie etwas! Wird ihre Veränderung akzeptiert, erhalten Sie ein Trinkgeld.
+        sign_in_text: "Sehen Sie nach einer Einladung in ihrem E-Mail-Fach oder folgen Sie diesem Link: %{sign_in_link}."
+        sign_up_text: "Wenn Sie noch keine Einladung erhalten haben, können Sie sich mit einer gültigen E-Mail Adresse %{sign_up_link}."
+        button: Unterstützte Projekte
+  projects:
+    index:
+      find_project:
+        placeholder: Nutzen Sie die GitHub-URL eines Projektes oder geben Sie relevante Schlüsselwörter ein...
+        button: Projekt suchen
+      repository: Repository
+      description: Beschreibung
+      watchers: Beobachter
+      balance: Vorhandene Geldmenge
+      forked_from: Abzweigung von
+      support: Projekt unterstützen
+    show:
+      title: "Tragen Sie etwas zum %{project} bei"
+      fetch_pending: (Erstes Laden ist im Gang)
+      edit_project: Projekteinstellungen verändern
+      decide_tip_amounts: Höhe des Trinkgeldes einstellen
+      disabled_notifications: "Die Projektleiter haben sich entschlossen, neue Mitarbeiter nicht über Trinkgelder zu informieren."
+      fee: "%{percentage} der vorhandenen Geldmenge wird pro Beitrag als Trinkgeld vergeben."
+      balance: Vorhandene Geldmenge
+      deposits: Spenden
+      custom_tip_size: (Jeder Beitrag erhält einen Anteil der vorhandenen Geldmenge)
+      default_tip_size: "Jeder neue Beitrag erhält %{percentage} der vorhandenen Geldmenge"
+      min_tip_size: "Die minimale Trinkgeldmenge liegt bei %{min_tip}. Sollte aber nicht ausreichend Geld vorhanden sein, wird die Menge heruntergesetzt."
+      unconfirmed_amount: "(%{amount} nicht bestätigt)"
+      tipping_policies: Trinkgeld-Regeln
+      updated_by_user: "(Letzer Beitrag von %{name} am %{date})"
+      updated_by_unknown: "(Letzter Beitrag am %{date})"
+      tips_paid: Ausgezahlte Trinkgelder
+      unclaimed_amount: "(%{amount} hiervon wurden noch nicht beansprucht und werden nach einem Monat an das Projekt zurückgegeben.)"
+      last_tips: Letzte Trinkgelder
+      see_all: Alle ansehen
+      received: "%{amount} erhalten"
+      will_receive: wird ein Tringeld erhalten
+      for_commit: für den commit
+      when_decided: wenn die Menge festgelegt wurde
+      next_tip: Nächstes Trinkgeld
+      contribute_and_earn: Tragen Sie etwas bei und verdienen Sie
+      contribute_and_earn_description: "Spenden Sie Bitcoin an dieses Projekte oder %{make_commits_link} um Trinkgelder zu erhalten. Falls ihr Beitrag %{branch} von einem Projektleiter akzeptiert wird, erhalten Sie falls möglich ein Trinkgeld."
+      contribute_and_earn_branch: "zur <strong>%{branch}</strong> branch"
+      make_commits_link: Beiträge machen
+      tell_us_bitcoin_address: "Sie sollten ihre Bitcoin-Adresse %{tell_us_link}"
+      tell_us_link: angeben
+      sign_in: "Überprüfen Sie ihr E-Mail Fach oder %{sign_in_link}."
+      promote_project: Fördern Sie %{project}
+      embedding: Eingebettete
+      image_url: "Bild-URL:"
+      shield_title: Zunächst auszuzahlendes Trinkgeld
+    edit:
+      project_settings: "%{project} Projekteinstellungen"
+      branch: Branch
+      default_branch: Standard-Branch
+      tipping_policies: Trinkgeld-Regeln
+      hold_tips: "Zahlen Sie Trinkgelder nicht sofort. Geben Sie Mitarbeitern die Möglichkeit, Trinkgelder zu ändern bevor diese ausgezahlt werden."
+      save: Projekteinstellungen speichern
+      disable_notifications: Neue Mitarbeiter nicht informieren
+    decide_tip_amounts:
+      commit: Commit
+      author: Urheber
+      message: Nachricht
+      tip: Trinkgeld (in Relation zur vorhanden Geldmenge)
+      submit: Die ausgewählten Trinkgelder auszahlen
+    blacklisted:
+      title: Verzeihung, dieses Projekt akzeptiert keine Trinkgelder!
+      message: Der Leiter dieses Projekts hat sich entschieden, für diese Projekt keine Trinkgelder zu erlauben.
+  tips:
+    index:
+      tips: Trinkgelder
+      project_tips: '%{project} Trinkgelder'
+      user_tips: "%{user} Trinkgelder"
+      created_at: Erstellt am
+      commiter: Mitareiter
+      project: Projekt
+      commit: Commit
+      amount: Menge
+      refunded: An das Projekt zurückgezahlt
+      undecided: Die Höhe des Trinkgeldes wurde noch nicht festgelegt
+      no_bitcoin_address: Der Nutzer hat keine Bitcoin-Adresse angegeben
+      below_threshold: "Der Kontostand des Nutzers liegt unter der benötigten Menge"
+      waiting: Auf Abheben warten
+      error: (bei der Übertragung kam es zu einem Fehler)
+  deposits:
+    index:
+      project_deposits: '%{project} Spenden'
+      deposits: Spenden
+      created_at: Erstellt am
+      project: Projekt
+      amount: Menge
+      transaction: Transaktion
+      confirmed: Bestätigt
+      confirmed_yes: 'Ja'
+      confirmed_no: 'Nein'
+  users:
+    index:
+      title: Top-Mitarbeiter
+      name: Name
+      commits_count: Bezahlte Beiträge
+      withdrawn: Abgehoben
+    show:
+      balance: Vorhandene Geldmenge
+      threshold: "Ihr Geld wird ausbezahlt sobald die Grenzmenge von %{threshold} erreicht wird"
+      see_all: alle ansehen
+      received: "%{time} hat %{amount} für seinen %{commit} im %{project} erhalten"
+      bitcoin_address_placeholder: Ihre Bitcoin-Adresse
+      notify: Informieren Sie mich (mit nicht mehr als einer E-Mail pro Monat) über neue Trinkgelder
+      submit_user: Nutzerinformationen aktualisieren
+      change_password: Passwort ändern
+      submit_password: Passwort ändern
+      use_from_gravatar: Von Ihrem Gravatarprofil aus nutzen
+  withdrawals:
+    index:
+      title: Letzte Abhebungen
+      created_at: Erstellt am
+      transaction: Transaktion
+      result: Ergebnis
+      error: Fehler
+      success: Erfolg
+  devise:
+    sessions:
+      new:
+        title: Anmelden
+        remember_me: An mich erinnern
+        submit: Anmelden
+    registrations:
+      new:
+        title: Registrieren
+        submit: Registrieren
+    passwords:
+      new:
+        title: Passwort vergessen?
+        submit: Passwort zurücksetzen
+      edit:
+        title: Passwort ändern
+        submit: Passwort ändern
+    confirmations:
+      new:
+        title: Bestätigung erneut versenden
+        submit: Bestätigung erneut versenden
+    links:
+      sign_in: Anmelden
+      sign_up: Registrieren
+      recover: Passwort vergessen?
+      confirm: Bestätigung nicht erhalten?
+      sign_in_with: "Mit %{provider} einloggen"
+    errors:
+      primary_email: Ihre primäre E-Mail Adresse konnte nicht bestätigt werden.
+      onmiauth_info: Wir konnten ihre Informationen nicht entnehmen.
+  activerecord:
+    attributes:
+      user:
+        email: E-mail
+        bitcoin_address: Bitcoin-Adresse
+        password: Passwort
+        password_confirmation: Passwort-Bestätigung
+        display_name: Anzeigename
+  omniauth_providers:
+    github: GitHub
+    bitbucket: BitBucket
+  general:
+    or: or
+    disclaimer:
+      line1: "Tip4Commit ist mit den meisten Projekten in keiner Weise verbunden."
+      line2: "Es gibt keine Garantie, dass Entwickler Trinkgelder erhalten werden."
+      line3: "Durch Spenden akzeptieren Sie, dass ihre Spenden nach Belieben an die Free Software Foundation oder sonstige weitergeleitet werden können."
