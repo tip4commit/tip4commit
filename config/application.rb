@@ -9,16 +9,6 @@ Bundler.require(:default, Rails.env)
 # load config.yaml preprocessed
 CONFIG ||= YAML::load(ERB.new(File.read("config/config.yml")).result)
 
-# define default blockchain urls
-merchant_url = "https://blockchain.info/merchant"
-transfer_url = "https://blockchain.info/tx"
-guid         = CONFIG["blockchain_info"]["guid"]
-CONFIG["blockchain_info"]["merchant_url"] = merchant_url
-CONFIG["blockchain_info"]["transfer_url"] = transfer_url
-CONFIG["blockchain_info"]["new_url"]      = "#{merchant_url}/#{guid}/new_address"
-CONFIG["blockchain_info"]["sendmany_url"] = "#{merchant_url}/#{guid}/sendmany"
-
-
 module T4c
   class Application < Rails::Application
 
