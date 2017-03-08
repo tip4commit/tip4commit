@@ -16,11 +16,13 @@ fr:
     sign_in: Se connecter
     sign_in_imp: se connecter
     sign_out: Se déconnecter
+    create_issue: Créer une issue
   errors:
     project_not_found: Projet non trouvé.
+    opt_in_notice: "En raison de plaintes de la part des mainteneurs de projets nous n'ajoutons plus automatiquement de projet. Les projets sans dépôts déjà existants ont été supprimés. Si vous voulez ajouter un projet, s'il vous plaît %{create_issue_link}."
     access_denied: Accès refusé
     can_assign_more_tips: "Vous ne pouvez pas attribuer plus de 100% de vos fonds disponibles."
-    wrong_bitcoin_address: Echec de mise à jour de l'adresse bitcoin
+    wrong_bitcoin_address: Échec de mise à jour de l'adresse bitcoin
     user_not_found: Utilisateur non trouvé
     access_denied: "Vous n'avez pas le droit d'effectuer cette action !"
   notices:
@@ -35,16 +37,16 @@ fr:
     small: "Petit : 0.5%"
     normal: "Normal : 1%"
     big: "Grand : 2%"
-    huge: "Géant : 5%"
+    huge: "Énorme : 5%"
   js:
     errors:
       value:
         invalid: Valeur non valide
       email:
         invalid: Adresse Email non valide
-        blank: L'Email est requis et doit être renseigné
+        blank: L'adresse Email est requise et doit être renseignée
       password:
-        blank: Les mot de passe est requis et doit être renseigné
+        blank: Le mot de passe est requis et doit être renseigné
         invalid: Le mot de passe et sa confirmation ne sont pas identiques
       password_confirmation:
         blank: La confirmation du mot de passe est requise et doit être renseignée
@@ -88,6 +90,7 @@ fr:
       deposits: dépôts
       custom_tip_size: (chaque nouvelle contribution reçoit un pourcentage des fonds disponibles)
       default_tip_size: "(chaque contribution reçoit %{percentage} des fonds disponsibles)"
+      min_tipe_size: "La taille minimum de pourboire a été définie à %{min_tip}, mais si les fonds sont inférieurs, un pouboire plus faible sera envoyé."
       unconfirmed_amount: "(%{amount} non confirmé)"
       tipping_policies: Politique des pourboires
       updated_by_user: "(Dernière mise à jour par %{name} le %{date})"
@@ -126,6 +129,9 @@ fr:
       message: Message
       tip: Pourboire (en fonction des fonds du projet)
       submit: Envoyer les pourboires
+    blacklisted:
+      title: "Désolé, ce projet n'accepte pas de pouboire !"
+      message: "L'auteur de ce projet a décidé de désactiver les pourboires pour ce projet."
   tips:
     index:
       tips: Pourboires
@@ -169,6 +175,7 @@ fr:
       submit_user: Mettre à jour
       change_password: Modifier votre mot de passe
       submit_password: Modifier mon mot de passe
+      use_from_gravatar: Utiliser votre profil gravatar
   withdrawals:
     index:
       title: Derniers Retraits
@@ -220,3 +227,7 @@ fr:
     bitbucket: BitBucket
   general:
     or: ou
+    disclaimer:
+      line1: "Tip4Commit n'est pas affilié avec la plupart des projets."
+      line2: "Il n'y a aucune garantie que les pourboires seront réclamés par les dévelopeurs."
+      line3: "En donnant des fonds vous acceptez qu'ils puissent être envoyés à la Free Software Foundation ou ailleurs, à la discrétion de Tip4Commit."
