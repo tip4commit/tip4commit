@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe User do
+describe User, type: :model do
   let(:user) { create(:user) }
 
   describe 'full_name' do

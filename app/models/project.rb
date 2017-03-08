@@ -1,7 +1,8 @@
 class Project < ActiveRecord::Base
   acts_as_paranoid
 
-  has_many :deposits # todo: only confirmed deposits
+  belongs_to :wallet
+  has_many :deposits # TODO: only confirmed deposits
   has_many :tips, inverse_of: :project
   accepts_nested_attributes_for :tips
   has_many :collaborators, autosave: true
@@ -18,6 +19,8 @@ class Project < ActiveRecord::Base
       scope.where_like(columns => phrases)
     end
   end
+
+  after_create :generate_bitcoin_address
 
   # before_save :check_tips_to_pay_against_avaiable_amount
 
@@ -262,5 +265,13 @@ class Project < ActiveRecord::Base
     else
       return nil
     end
+  end
+
+  def generate_bitcoin_address
+    wallet = Wallet.order(created_at: :asc).last
+    return unless wallet
+    self.wallet = wallet
+    self.bitcoin_address = wallet.generate_address
+    save
   end
 end

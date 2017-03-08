@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Deposit do
+describe Deposit, type: :model do
   let(:deposit) { create(:deposit) }
 
   describe 'Associations' do
