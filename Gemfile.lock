@@ -393,6 +393,7 @@ DEPENDENCIES
   kaminari (~> 0.15.0)
   kaminari-i18n
   less-rails (~> 2.4.2)
+  minitest
   money-tree
   mysql2
   octokit (~> 2.7.0)
