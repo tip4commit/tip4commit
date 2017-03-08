@@ -8,14 +8,6 @@ github:
   project_pages:
     "torvalds/linux": 30
 
-blockchain_info:
-  guid: "111111111111"
-  password: "111111111111"
-  callback_secret: "111111111111"
-  # api_key for https://alpha.blockchain.info/
-  api_key: "111111111111"
-  callback_secret2: "111111111111"
-
 bitcoind:
   rpc_connection_string: https://user:password@rpc.blockchain.info:443
   account: 1M4bS4gPyA6Kb8w7aXsgth9oUZWcRk73tQ

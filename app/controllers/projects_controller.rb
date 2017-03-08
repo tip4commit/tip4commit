@@ -26,8 +26,6 @@ class ProjectsController < ApplicationController
   def show
     render :blacklisted and return if BLACKLIST.include? @project.github_url
 
-    @project.update_bitcoin_address if @project.bitcoin_address.nil?
-
     @project_tips = @project.tips.with_address
     @recent_tips  = @project_tips.with_address.order(created_at: :desc).first(5)
   end
