@@ -236,4 +236,10 @@ class Project < ActiveRecord::Base
     self.bitcoin_address = wallet.generate_address
     save
   end
+
+  class << self
+    def export_labels
+      Hash[pluck(:bitcoin_address, :full_name)].to_json
+    end
+  end
 end
