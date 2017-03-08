@@ -16,7 +16,7 @@ describe Project, type: :model do
     it { should validate_presence_of(:host) }
     it { should validate_uniqueness_of(:full_name) }
     it { should validate_uniqueness_of(:github_id) }
-    it { should ensure_inclusion_of(:host).in_array([ "github", "bitbucket" ]) }
+    it { should validate_inclusion_of(:host).in_array %w(github bitbucket) }
   end
 
   describe 'bitcoin_address' do
