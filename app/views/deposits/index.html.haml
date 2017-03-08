@@ -22,7 +22,7 @@
             %td= link_to(deposit.project.full_name, pretty_project_path(deposit.project))
           %td= btc_human deposit.amount
           %td= btc_human deposit.fee
-          %td= link_to deposit.txid, "#{CONFIG["blockchain_info"]["transfer_url"]}/#{deposit.txid}", target: :blank
+          %td= link_to deposit.txid, "#{block_explorer_tx_url(deposit.txid)}", target: :blank
           %td= deposit.confirmed? ? t('.confirmed_yes') : t('.confirmed_no')
 
   = paginate @deposits

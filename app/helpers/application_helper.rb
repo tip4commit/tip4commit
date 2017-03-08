@@ -157,7 +157,7 @@ module ApplicationHelper
       hash = JSON.parse(response.body)
       hash["24h_avg"]
     end
-  end 
+  end
 
   def render_flash_messages
     html = []
@@ -183,5 +183,9 @@ module ApplicationHelper
     (list.join ', ')                                    +
     ((list.size < 2) ? "" : ",")                        +
     ((list.empty?)   ? "" : " #{conjunction} ") + last
+  end
+
+  def block_explorer_tx_url(txid)
+    "https://tradeblock.com/bitcoin/tx/#{txid}"
   end
 end
