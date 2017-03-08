@@ -45,10 +45,15 @@ gem 'easy_gravatar'
 gem 'byebug',             '~> 3.5.1'
 
 group :development do
-  gem 'capistrano',         '~> 3.0.1'
-  gem 'capistrano-rvm',     '~> 0.1.0', github: 'capistrano/rvm'
-  gem 'capistrano-bundler', '>= 1.1.0'
+  gem 'capistrano',         '~> 3.4.0'
+  gem 'capistrano-bundler', '~> 1.1.2'
   gem 'capistrano-rails',   '~> 1.1.0'
+  gem 'capistrano-rvm',     '~> 0.1.0'
+
+  # add ed25519 support to net-ssh
+  gem 'bcrypt_pbkdf',       '~> 1.0.0'
+  gem 'rbnacl',             '~> 3.4.0'
+  gem 'rbnacl-libsodium',   '~> 1.0.0'
 end
 
 group :development, :test do
