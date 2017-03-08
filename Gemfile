@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.2.4'
 
-gem 'rails',           '4.2.4'
+gem 'rails',           '4.2.8'
 gem 'mysql2',                      group: :production
 gem 'sass-rails',      '~> 4.0.0'
 gem 'haml-rails',      '~> 0.5.3'
@@ -63,5 +63,4 @@ group :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'rspec-activemodel-mocks'
-  gem 'minitest'
 end
