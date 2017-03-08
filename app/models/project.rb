@@ -263,11 +263,4 @@ class Project < ActiveRecord::Base
       return nil
     end
   end
-
-  # Receiving API v2
-  def generate_address2
-    new_address = Wallet.generate_address_and_register_callback
-    Rails.logger.info "Generated: #{new_address.inspect}"
-    self.update bitcoin_address2: new_address['address']
-  end
 end
