@@ -26,7 +26,7 @@ module T4c
 
   config.autoload_paths += %W(#{config.root}/lib)
   config.assets.initialize_on_precompile = true
-  config.available_locales = %w(en fr nl ru pl hr)
+  config.available_locales = %w(en fr nl ru pl hr de)
   end
 end
 
