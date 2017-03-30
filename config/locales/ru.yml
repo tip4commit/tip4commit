@@ -194,7 +194,7 @@ ru:
     registrations:
       new:
         title: Регистрация
-        submit: Войти
+        submit: Зарегистрироваться
     passwords:
       new:
         title: Забыли ваш пароль?
@@ -211,7 +211,7 @@ ru:
       sign_up: Регистрация
       recover: Забыли ваш пароль?
       confirm: Не получили письмо с подтверждением?
-      sign_in_with: "Войти с %{provider}"
+      sign_in_with: "Войти через %{provider}"
     errors:
       primary_email: ваш email адрес должен быть подтвержден.
       onmiauth_info: не удалось получить информацию.
@@ -229,3 +229,8 @@ ru:
     bitbucket: BitBucket
   general:
     or: или
+    disclaimer:
+      line1: "Tip4Commit не аффилирован с большинством проектов."
+      line2: "Нет гарантии, что чаевые будут востребованы разработчиками."
+      line3: "Жертвованием своих средств Вы соглашаетесь, что они могут быть отправлены Free Software Foundation или куда-либо ещё на усмотрение Tip4Commit."
+ 
