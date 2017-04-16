@@ -110,7 +110,7 @@ en:
       make_commits_link: make commits
       tell_us_bitcoin_address: "Just %{tell_us_link} your bitcoin address."
       tell_us_link: tell us
-      sign_in: "Just check your email or %{sign_in_link}."
+      sign_in: 'Just check your email or %{sign_in_link}.'
       promote_project: Promote %{project}
       embedding: Embedding
       image_url: "Image URL:"
