@@ -2,47 +2,44 @@ source 'https://rubygems.org'
 
 ruby '2.4.2'
 
-gem 'rails',           '4.2.8'
-gem 'mysql2',                      group: :production
-gem 'sass-rails',      '~> 4.0.0'
-gem 'haml-rails',      '~> 0.5.3'
-gem 'less-rails',      '~> 2.4.2'
-gem 'kaminari',        '~> 0.15.0'
-gem 'uglifier',        '>= 1.3.0'
-gem 'coffee-rails',    '~> 4.0.0'
-gem 'therubyracer',    '~> 0.12.2', platforms: :ruby
-gem 'jquery-rails',    '~> 3.0.4'
-gem 'turbolinks',      '~> 2.5.0'
-gem 'jquery-turbolinks'
-gem 'jbuilder',        '~> 1.5.3'
-gem 'airbrake',        '~> 3.1.15'
-gem 'devise',          '~> 3.5.2'
-gem 'omniauth',        '~> 1.1.4'
-gem 'omniauth-github', github: 'alexandrz/omniauth-github', branch: 'provide_emails'
-gem 'octokit',         '~> 2.7.0'
-gem 'sawyer',          '~> 0.5.2'
-gem 'twitter_bootstrap_form_for', github: 'stouset/twitter_bootstrap_form_for'
-gem 'twitter-bootstrap-rails',    github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
-gem 'bootstrap_form', github: 'bootstrap-ruby/rails-bootstrap-forms'
-gem 'sdoc', group: :doc, require: false
-gem 'cancancan'
-gem 'dusen'
-gem 'render_csv'
-gem 'demoji'
+gem 'rails', '4.2.10'
+
 gem 'acts_as_paranoid', github: 'ActsAsParanoid/acts_as_paranoid'
-
-gem "http_accept_language"
-gem 'rails-i18n'
-gem "i18n-js"
-gem 'kaminari-i18n'
+gem 'airbrake', '~> 3.1.15'
+gem 'bootstrap_form', github: 'bootstrap-ruby/rails-bootstrap-forms'
+gem 'cancancan'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'demoji'
+gem 'devise', '~> 3.5.2'
 gem 'devise-i18n'
-
-gem 'money-tree'
-gem 'rest-client'
-
+gem 'dusen', '~> 0.6.1'
 gem 'easy_gravatar'
-
-gem 'byebug',             '~> 3.5.1'
+gem 'haml-rails', '~> 0.5.3'
+gem 'http_accept_language'
+gem 'i18n-js'
+gem 'jbuilder', '~> 1.5.3'
+gem 'jquery-rails', '~> 3.0.4'
+gem 'jquery-turbolinks'
+gem 'kaminari', '~> 0.15.0'
+gem 'kaminari-i18n'
+gem 'less-rails', '~> 2.4.2'
+gem 'money-tree', '~> 0.9.0'
+gem 'mysql2', group: :production
+gem 'octokit', '~> 2.7.0'
+gem 'omniauth', '~> 1.1.4'
+gem 'omniauth-github', github: 'alexandrz/omniauth-github', branch: 'provide_emails'
+gem 'rails-i18n', '~> 4.0.0'
+gem 'render_csv'
+gem 'rest-client'
+gem 'sass-rails', '~> 4.0.0'
+gem 'sawyer', '~> 0.5.2'
+gem 'sdoc', group: :doc, require: false
+gem 'sidekiq'
+gem 'therubyracer', '~> 0.12.2', platforms: :ruby
+gem 'turbolinks', '~> 2.5.0'
+gem 'twitter-bootstrap-rails',    github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
+gem 'twitter_bootstrap_form_for', github: 'stouset/twitter_bootstrap_form_for'
+gem 'uglifier', '>= 1.3.0'
 
 group :development do
   gem 'capistrano',         '~> 3.4.0'
@@ -57,9 +54,9 @@ group :development do
 end
 
 group :development, :test do
-  gem 'sqlite3',            '~> 1.3.11'
   gem 'factory_girl_rails', '~> 4.3.0'
   gem 'rspec-rails',        '~> 3.5.0'
+  gem 'sqlite3',            '~> 1.3.11'
 end
 
 group :test do
