@@ -24,7 +24,11 @@ describe UserMailer do
     end
 
     it 'assigns users\' balance' do
-      expect(mail.body.encoded).to match("Please, log in and tell us your bitcoin address to get it.</p>\r\n<p>Your current balance is <nobr>0.00000010 Ƀ</nobr>")
+      expected_text = [
+        'Please, log in and tell us your bitcoin address to get it.</p>',
+        '<p>Your current balance is <nobr>0.00000010 Ƀ</nobr>'
+      ].join("\n")
+      expect(mail.body.encoded).to match expected_text
     end
 
     it 'useses secure protocol for links' do
