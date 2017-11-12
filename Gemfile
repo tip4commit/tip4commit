@@ -25,14 +25,14 @@ gem 'kaminari-i18n'
 gem 'less-rails', '~> 2.4.2'
 gem 'money-tree', '~> 0.9.0'
 gem 'mysql2', group: :production
-gem 'octokit', '~> 2.7.0'
+gem 'octokit', '~> 4.7.0'
 gem 'omniauth', '~> 1.1.4'
 gem 'omniauth-github', github: 'alexandrz/omniauth-github', branch: 'provide_emails'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'render_csv'
 gem 'rest-client'
 gem 'sass-rails', '~> 4.0.0'
-gem 'sawyer', '~> 0.5.2'
+gem 'sawyer', '~> 0.8.0'
 gem 'sdoc', group: :doc, require: false
 gem 'sidekiq'
 gem 'therubyracer', '~> 0.12.2', platforms: :ruby
@@ -65,4 +65,6 @@ group :test do
   gem 'rspec-activemodel-mocks'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov'
+  gem 'webmock'
+  gem 'vcr'
 end
