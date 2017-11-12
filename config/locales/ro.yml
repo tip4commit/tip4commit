@@ -1,0 +1,233 @@
+ro:
+  tip4commit: Tip4Commit
+  meta:
+    title: Contribuie la Open Source
+    description: Donează bitcoin la proiecte open source sau fă commit-uri și primești ciubuc.
+  menu:
+    home: Acasă
+    projects: Proiecte
+  footer:
+    text: "Codul sursa este aici %{github_link} și poți ajuta %{support_link} development-ul."
+    github_link: GitHub
+    support_link: support
+    follow_link: Urmărește @tip4commit
+  links:
+    sign_up: Înscriere
+    sign_in: Conectare
+    sign_in_imp: conectare
+    sign_out: Deconectare
+    create_issue: creează un tichet
+  errors:
+    project_not_found: Proiect de negăsit.
+    opt_in_notice: "Datorită plângerilor de la maintainers, nu mai adăugăm proiectele automat. Proiectele existente fără fonduri au fost scoase. Dacă vrei să adaugi proiectul tău, te rog %{create_issue_link}."
+    access_denied: Acces interzis
+    can_assign_more_tips: "Nu poți assigna mai mult decât 100% din fondurile disponibile."
+    wrong_bitcoin_address: Eroare la actualizarea adresei de bitcoin
+    user_not_found: Utilizator de negăsit
+    access_denied: Nu sunteți autorizat să efectuați această acțiune!
+  notices:
+    project_updated: Setările proiectului au fost actualizate
+    tips_decided: Sumele de ciubuc au fost definite
+    user_updated: Informațiile dvs. sunt salvate!
+    user_unsubscribed: V-ați dezabonat! Îmi pare rău că vă deranjăm. Deși, încă mai puteți să ne lăsați adresa dvs. de Bitcoin pentru a obține sfaturi.
+  tip_amounts:
+    undecided: Nehotărât
+    free: "Gratis: 0%"
+    tiny: "Minusculă: 0.1%"
+    small: "Mică: 0.5%"
+    normal: "Normală: 1%"
+    big: "Mare: 2%"
+    huge: "Uriașă: 5%"
+  js:
+    errors:
+      value:
+        invalid: Valoarea este invalidă
+      email:
+        invalid: Adresă de email invalidă
+        blank: E-mail este necesară și nu poate fi gol
+      password:
+        blank: Parola este necesară și nu poate fi goală
+        invalid: Parola și confirmarea acesteia nu sunt aceleași
+      password_confirmation:
+        blank: Confirmarea parolei este necesară și nu poate fi goală
+        invalid: Parola și confirmarea acesteia nu sunt aceleași
+  home:
+    index:
+      see_projects: Vezi proiectele
+      how_does_it_work:
+        title: Cum funcționează?
+        text: Oamenii donează Bitcoins pentru proiecte. Când cineva comite în depozitul de proiect, vom da automat autorului ciubuc.
+        button: Citește despre Bitcoin
+      donate:
+        title: Donează
+        text: Găsiți un proiect care vă place și depozitați Bitcoins în el. Donația dvs. va fi acumulată cu fondurile altor donatori pentru a da ciubuc pentru noi commit-uri.
+        button: Găsește sau adaugă proiect
+      contribute:
+        title: Contribuie
+        text: Du-te și repara ceva! În cazul în care commit-ul este acceptat de către maintainerul de proiect, vei primi ciubuc!
+        sign_in_text: "Verifica e-mail-ul pentru o invitație sau %{sign_in_link}."
+        sign_up_text: "Dacă nu ați primit încă o invitație, puteți %{sign_up_link} cu un email valid sau via"
+        button: Proiecte suportate
+  projects:
+    index:
+      find_project:
+        placeholder: Introduceți URL-ul proiectului GitHub sau orice cuvânt cheie pentru a găsi...
+        button: Găsește proiect
+      repository: Repository
+      description: Descriere
+      watchers: Urmăritori
+      balance: Balanță
+      forked_from: bifurcat din
+      support: Suportă proiectul
+    show:
+      title: "Contribuie la %{project}"
+      fetch_pending: (Primul fetch în curs)
+      edit_project: Schimba setările proiectului
+      decide_tip_amounts: Decide ciubucul
+      disabled_notifications: "Intretinatorii de proiect au decis să nu notifice noi colaboratori cu privire la sfaturi și, probabil, nu le place acest mod de finanțare."
+      fee: "%{percentage} din fondurile depozitate vor fi folosite ca si ciubuc."
+      balance: Balanță
+      deposits: depozite
+      custom_tip_size: (fiecare commit nou primeste un procent din balanță)
+      default_tip_size: "(fiecare commit nout primește %{percentage} din balanță)"
+      min_tip_size: "Ciubucul minim este %{min_tip}, dar dacă balanța este mai mică decât atâta, va fi trimisă ca un ciubuc mai mic"
+      unconfirmed_amount: "(%{amount} neconfirmat)"
+      tipping_policies: Reguli de ciubuc
+      updated_by_user: "(Ultima dată schimbat de %{name} la %{date})"
+      updated_by_unknown: "(Ultima schimbare pe %{date})"
+      tips_paid: Ciubucuri plătite
+      unclaimed_amount: "(Suma de %{amount} este nerevendicată, și va fi restituită la proiect după ce a fost nerevendicată timp de 1 lună.)"
+      last_tips: Ultimele ciubucuri
+      see_all: vezi toate
+      received: "primit %{amount}"
+      will_receive: o să primești ciubuc
+      for_commit: pt commit
+      when_decided: când cantitatea e decisă
+      next_tip: următorul ciubuc
+      contribute_and_earn: Contribuie și câștigă
+      contribute_and_earn_description: "Donează bitcoin la acest proiect sau %{make_commits_link} și primești ciubuc. Dacă commit-ul este acceptat pe %{branch} de către un maintainer, și există bitcoin în balanță, o să primești ciubuc."
+      contribute_and_earn_branch: "pe ramura <strong>%{branch}</strong>"
+      make_commits_link: fă commit-uri
+      tell_us_bitcoin_address: "Care e adresa ta de bitcoin %{tell_us_link}."
+      tell_us_link: spune
+      sign_in: "Verifică email-ul sau %{sign_in_link}."
+      promote_project: Promovează %{project}
+      embedding: Încorporare
+      image_url: "URL Poză:"
+      shield_title: ciubuc pentru următorul commit
+    edit:
+      project_settings: "%{project} setări proiect"
+      branch: Ramură
+      default_branch: Ramură principală
+      tipping_policies: Reguli de ciubuc
+      hold_tips: "Nu trimite imediat sfaturi. Dă colaboratori capacitatea de a modifica sfaturile înainte de a fi trimis"
+      save: Salvează setările proiectului
+      disable_notifications: Nu notifica contribuitori noi
+    decide_tip_amounts:
+      commit: Commit
+      author: Autor
+      message: Mesaj
+      tip: Ciubuc (relativ la balanța proiectului)
+      submit: Trimite ciubucul ales
+    blacklisted:
+      title: Ne pare rău, proiectul nu accepta ciubuc
+      message: Autorul acestui proiect a ales să interziceți sfaturi pentru acest proiect.
+  tips:
+    index:
+      tips: Ciubucuri
+      project_tips: '%{project} ciubucuri'
+      user_tips: "%{user} ciubucuri"
+      created_at: Creat la
+      commiter: Commiter
+      project: Proiect
+      commit: Commit
+      amount: Cantitate
+      refunded: Rambursată depozitul proiectului
+      undecided: Valoarea ciubucului nu a fost încă decis
+      no_bitcoin_address: Utilizatorul nu a specificat adresa de retragere
+      below_threshold: "Soldul utilizatorului este sub pragul de retragere"
+      waiting: Așteptăm retragere
+      error: (eroare la trimiterea tranzacției)
+  deposits:
+    index:
+      project_deposits: '%{project} depozite'
+      deposits: Depozite
+      created_at: Creat la
+      project: Proiect
+      amount: Cantitate
+      transaction: Tranzacție
+      confirmed: Confirmată
+      confirmed_yes: 'Da'
+      confirmed_no: 'Nu'
+  users:
+    index:
+      title: Contribuitori de top
+      name: Nume
+      commits_count: Ciubucuri
+      withdrawn: Retras
+    show:
+      balance: Balanță
+      threshold: "Vei primi banii atunci când soldul dvs. ajunge la pragul de %{threshold}"
+      see_all: vezi toate
+      received: "la %{time} am primit %{amount} pentru %{commit} în %{project}"
+      bitcoin_address_placeholder: Adresa ta de bitcoin
+      notify: Anunță-mă despre noi ciubucuri (nu mai mult de un e-mail pe lună)
+      submit_user: Modifica informațiile utilizatorului
+      change_password: Schimbă parola
+      submit_password: Schimbă parola
+      use_from_gravatar: Folosește din Gravatar
+  withdrawals:
+    index:
+      title: Ultimele retrageri
+      created_at: Creat la
+      transaction: Tranzacție
+      result: Resultat
+      error: Eroare
+      success: Succes
+  devise:
+    sessions:
+      new:
+        title: Înscriere
+        remember_me: Amintește-ți de mine
+        submit: Înscriere
+    registrations:
+      new:
+        title: Înregistrare
+        submit: Înregistrare
+    passwords:
+      new:
+        title: Ai uitat parola?
+        submit: Trimite instrucțiuni de resetare parolă
+      edit:
+        title: Schimbă parola
+        submit: Schimbă parola
+    confirmations:
+      new:
+        title: Retrimite instrucțiuni de confirmare
+        submit: Retrimite instrucțiuni de confirmare
+    links:
+      sign_in: Înscriere
+      sign_up: Înregistrare
+      recover: Ai uitat parola?
+      confirm: Nu ai primit instrucțiuni de confirmare?
+      sign_in_with: "Înscriere cu %{provider}"
+    errors:
+      primary_email: adresa ta de email principală trebuie verificată.
+      onmiauth_info: nu am putut aduce informațiile tale
+  activerecord:
+    attributes:
+      user:
+        email: E-mail
+        bitcoin_address: Adresă bitcoin
+        password: Parolă
+        password_confirmation: Confirmare parolă
+        display_name: Nume
+  omniauth_providers:
+    github: GitHub
+    bitbucket: BitBucket
+  general:
+    or: sau
+    disclaimer:
+      line1: "Tip4Commit nu este afiliat cu majoritatea proiectelor."
+      line2: "Nu există nici o garanție că ciubucurile vor fi luate de developeri"
+      line3: "Prin donarea fondurilor sunteți de acord că acestea pot fi trimise la Free Software Foundation sau în altă parte, la discreția Tip4Commit"
