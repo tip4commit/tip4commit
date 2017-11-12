@@ -3,6 +3,10 @@ require 'spec_helper'
 describe User, type: :model do
   let(:user) { create(:user) }
 
+  describe 'Associations' do
+    it { should have_many :tips }
+  end
+
   describe 'full_name' do
     context 'when name is present' do
       it 'returns name' do
