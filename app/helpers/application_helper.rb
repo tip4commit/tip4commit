@@ -163,8 +163,8 @@ module ApplicationHelper
     html = []
     flash.each do |_type, _message|
       alert_type = case _type
-        when :notice         then :success
-        when :alert, :error  then :danger
+        when 'notice'         then :success
+        when 'alert', 'error' then :danger
       end
       html << content_tag(:div, class: "alert alert-#{alert_type}"){ _message }
     end
