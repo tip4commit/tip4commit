@@ -155,7 +155,7 @@ module ApplicationHelper
       uri = URI('https://apiv2.bitcoinaverage.com/indices/global/ticker/BTC' + currency)
       response = Net::HTTP.get_response(uri)
       hash = JSON.parse(response.body)
-      hash['averages']['day']
+      hash['averages']['day'].to_f
     end
   end
 
