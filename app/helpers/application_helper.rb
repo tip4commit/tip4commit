@@ -1,8 +1,8 @@
 module ApplicationHelper
-  def btc_human amount, options = {}
+  def btc_human(amount, options = {})
     amount ||= 0
-    nobr = options.has_key?(:nobr) ? options[:nobr] : true
-    denom = options.has_key?(:denom) ? options[:denom] : (try(:current_user) ? current_user.denom : 0)
+    nobr = options.key?(:nobr) ? options[:nobr] : true
+    denom = options.key?(:denom) ? options[:denom] : (try(:current_user) ? current_user.denom : 0)
     if denom === 0
       btc = to_btc(amount)
     elsif denom === 1
@@ -54,135 +54,136 @@ module ApplicationHelper
     btc.html_safe
   end
 
-  def to_btc satoshies
-    "%.8f Ƀ" % (1.0*satoshies.to_i/1e8)
+  def to_btc(satoshies)
+    format('%.8f Ƀ', (1.0 * satoshies.to_i / 1e8))
   end
 
-  def to_mbtc satoshies
-    "%.5f mɃ" % (1.0*satoshies.to_i/1e5)
+  def to_mbtc(satoshies)
+    format('%.5f mɃ', (1.0 * satoshies.to_i / 1e5))
   end
 
-  def to_ubtc satoshies
-    "%.2f μɃ" % (1.0*satoshies.to_i/1e2)
+  def to_ubtc(satoshies)
+    format('%.2f μɃ', (1.0 * satoshies.to_i / 1e2))
   end
 
-  def to_satoshi satoshies
-    "%.0f Satoshi" % satoshies
+  def to_satoshi(satoshies)
+    format('%.0f Satoshi', satoshies)
   end
 
-  def to_usd satoshies
-    "$%.2f" % rate("USD", satoshies)
+  def to_usd(satoshies)
+    format('$%.2f', rate('USD', satoshies))
   end
 
-  def to_aud satoshies
-    "$%.2f" % rate("AUD", satoshies)
+  def to_aud(satoshies)
+    format('$%.2f', rate('AUD', satoshies))
   end
 
-  def to_eur satoshies
-    "%.2f€" % rate("EUR", satoshies)
+  def to_eur(satoshies)
+    format('%.2f€', rate('EUR', satoshies))
   end
 
-  def to_brl satoshies
-    "R$%.2f" % rate("BRL", satoshies)
+  def to_brl(satoshies)
+    format('R$%.2f', rate('BRL', satoshies))
   end
 
-  def to_cad satoshies
-    "$%.2f" % rate("CAD", satoshies)
+  def to_cad(satoshies)
+    format('$%.2f', rate('CAD', satoshies))
   end
 
-  def to_cny satoshies
-    "%.2f¥" % rate("CNY", satoshies)
+  def to_cny(satoshies)
+    format('%.2f¥', rate('CNY', satoshies))
   end
 
-  def to_gbp satoshies
-    "%.2f£" % rate("GBP", satoshies)
+  def to_gbp(satoshies)
+    format('%.2f£', rate('GBP', satoshies))
   end
 
-  def to_idr satoshies
-    "%.2f Rp" % rate("IDR", satoshies)
+  def to_idr(satoshies)
+    format('%.2f Rp', rate('IDR', satoshies))
   end
 
-  def to_ils satoshies
-    "%.2f₪" % rate("ILS", satoshies)
+  def to_ils(satoshies)
+    format('%.2f₪', rate('ILS', satoshies))
   end
 
-  def to_jpy satoshies
-    "%.2f¥" % rate("JPY", satoshies)
+  def to_jpy(satoshies)
+    format('%.2f¥', rate('JPY', satoshies))
   end
 
-  def to_mxn satoshies
-    "%.2f MXN" % rate("MXN", satoshies)
+  def to_mxn(satoshies)
+    format('%.2f MXN', rate('MXN', satoshies))
   end
 
-  def to_nok satoshies
-    "%.2f kr" % rate("NOK", satoshies)
+  def to_nok(satoshies)
+    format('%.2f kr', rate('NOK', satoshies))
   end
 
-  def to_nzd satoshies
-    "$%.2f" % rate("NZD", satoshies)
+  def to_nzd(satoshies)
+    format('$%.2f', rate('NZD', satoshies))
   end
 
-  def to_pln satoshies
-    "%.2f zł" % rate("PLN", satoshies)
+  def to_pln(satoshies)
+    format('%.2f zł', rate('PLN', satoshies))
   end
 
-  def to_ron satoshies
-    "%.2f lei" % rate("RON", satoshies)
+  def to_ron(satoshies)
+    format('%.2f lei', rate('RON', satoshies))
   end
 
-  def to_rub satoshies
-    "%.2f₽" % rate("RUB", satoshies)
+  def to_rub(satoshies)
+    format('%.2f₽', rate('RUB', satoshies))
   end
 
-  def to_sek satoshies
-    "%.2f kr" % rate("SEK", satoshies)
+  def to_sek(satoshies)
+    format('%.2f kr', rate('SEK', satoshies))
   end
 
-  def to_sgd satoshies
-    "%.2f S$" % rate("SGD", satoshies)
+  def to_sgd(satoshies)
+    format('%.2f S$', rate('SGD', satoshies))
   end
 
-  def to_zar satoshies
-    "%.2f R" % rate("ZAR", satoshies)
+  def to_zar(satoshies)
+    format('%.2f R', rate('ZAR', satoshies))
   end
 
   def rate(currency, satoshies)
-    satoshies*0.00000001*get_rate(currency)
+    satoshies * 0.00000001 * get_rate(currency)
   end
 
   def get_rate(currency)
-    Rails.cache.fetch("###" + currency, :expires_in => 24.hours) do
-      uri = URI('https://api.bitcoinaverage.com/ticker/' + currency + '/')
+    Rails.cache.fetch('###' + currency, expires_in: 24.hours) do
+      uri = URI('https://apiv2.bitcoinaverage.com/indices/global/ticker/BTC' + currency)
       response = Net::HTTP.get_response(uri)
       hash = JSON.parse(response.body)
-      hash["24h_avg"]
+      hash['averages']['day']
     end
   end
 
   def render_flash_messages
     html = []
-    flash.each do |_type, _message|
-      alert_type = case _type
-        when 'notice'         then :success
-        when 'alert', 'error' then :danger
-      end
-      html << content_tag(:div, class: "alert alert-#{alert_type}"){ _message }
+    flash.each do |type, message|
+      alert_type = case type
+                   when 'notice'          then :success
+                   when 'alert', 'error'  then :danger
+                   end
+      html << content_tag(:div, class: "alert alert-#{alert_type}") { message }
     end
     html.join("\n").html_safe
   end
 
   def commit_tag(sha1)
-    content_tag(:span, truncate(sha1, length: 10, omission: ""), class: "commit-sha")
+    content_tag(:span, truncate(sha1, length: 10, omission: ''), class: 'commit-sha')
   end
 
-  def list_friendly_text a_list , conjunction
+  def list_friendly_text(a_list, conjunction)
     # e.g. ['a']         => "a"
     #      ['a','b']     => "a or b"
     #      ['a','b','c'] => "a, b, or c"
-    list = a_list.map { |ea| ea.to_s } ; last = list.pop ;
+    list = a_list.map(&:to_s)
+    last = list.pop
     (list.join ', ')                                    +
-    ((list.size < 2) ? "" : ",")                        +
-    ((list.empty?)   ? "" : " #{conjunction} ") + last
+      (list.size < 2 ? '' : ',')                        +
+      (list.empty?   ? '' : " #{conjunction} ") + last
   end
 
   def block_explorer_tx_url(txid)
