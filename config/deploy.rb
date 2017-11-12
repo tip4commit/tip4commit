@@ -3,25 +3,24 @@ set :repo_url, 'git@github.com:tip4commit/tip4commit.git'
 
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
-set :deploy_to, "/home/apps/t4c"
+set :deploy_to, '/home/apps/t4c'
 set :scm, :git
 
 set :rvm_type, :user
-set :rvm_ruby_version, '2.2.4'
+set :rvm_ruby_version, '2.4.2'
 set :rvm_custom_path, '~/.rvm'
 
 set :format, :pretty
 # set :log_level, :debug
 # set :pty, true
 
-set :linked_files, %w{config/database.yml config/config.yml}
-set :linked_dirs, %w{log tmp}
+set :linked_files, %w[config/database.yml config/config.yml]
+set :linked_dirs, %w[log tmp]
 
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 set :keep_releases, 5
 
 namespace :deploy do
-
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
@@ -39,5 +38,4 @@ namespace :deploy do
   end
 
   after :finishing, 'deploy:cleanup'
-
 end
