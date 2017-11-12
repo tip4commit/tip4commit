@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/tip4commit/tip4commit?client_id=111111111111&client_secret=111111111111
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 4.7.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Sun, 12 Nov 2017 21:37:40 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '58'
+      X-Ratelimit-Reset:
+      - '1510526170'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Vary:
+      - Accept
+      Etag:
+      - W/"9136158723e4192ed1a473fa2e6a28a4"
+      Last-Modified:
+      - Sun, 12 Nov 2017 10:40:50 GMT
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Security-Policy:
+      - default-src 'none'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Runtime-Rack:
+      - '0.033402'
+      X-Github-Request-Id:
+      - 92F5:7E2F:32A3DE3:6966BA6:5A08BF24
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":15898794,"name":"tip4commit","full_name":"tip4commit/tip4commit","owner":{"login":"tip4commit","id":6398353,"avatar_url":"https://avatars3.githubusercontent.com/u/6398353?v=4","gravatar_id":"","url":"https://api.github.com/users/tip4commit","html_url":"https://github.com/tip4commit","followers_url":"https://api.github.com/users/tip4commit/followers","following_url":"https://api.github.com/users/tip4commit/following{/other_user}","gists_url":"https://api.github.com/users/tip4commit/gists{/gist_id}","starred_url":"https://api.github.com/users/tip4commit/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/tip4commit/subscriptions","organizations_url":"https://api.github.com/users/tip4commit/orgs","repos_url":"https://api.github.com/users/tip4commit/repos","events_url":"https://api.github.com/users/tip4commit/events{/privacy}","received_events_url":"https://api.github.com/users/tip4commit/received_events","type":"Organization","site_admin":false},"private":false,"html_url":"https://github.com/tip4commit/tip4commit","description":"Donate
+        bitcoins to open source projects or make commits and get tips for it.","fork":false,"url":"https://api.github.com/repos/tip4commit/tip4commit","forks_url":"https://api.github.com/repos/tip4commit/tip4commit/forks","keys_url":"https://api.github.com/repos/tip4commit/tip4commit/keys{/key_id}","collaborators_url":"https://api.github.com/repos/tip4commit/tip4commit/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/tip4commit/tip4commit/teams","hooks_url":"https://api.github.com/repos/tip4commit/tip4commit/hooks","issue_events_url":"https://api.github.com/repos/tip4commit/tip4commit/issues/events{/number}","events_url":"https://api.github.com/repos/tip4commit/tip4commit/events","assignees_url":"https://api.github.com/repos/tip4commit/tip4commit/assignees{/user}","branches_url":"https://api.github.com/repos/tip4commit/tip4commit/branches{/branch}","tags_url":"https://api.github.com/repos/tip4commit/tip4commit/tags","blobs_url":"https://api.github.com/repos/tip4commit/tip4commit/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/tip4commit/tip4commit/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/tip4commit/tip4commit/git/refs{/sha}","trees_url":"https://api.github.com/repos/tip4commit/tip4commit/git/trees{/sha}","statuses_url":"https://api.github.com/repos/tip4commit/tip4commit/statuses/{sha}","languages_url":"https://api.github.com/repos/tip4commit/tip4commit/languages","stargazers_url":"https://api.github.com/repos/tip4commit/tip4commit/stargazers","contributors_url":"https://api.github.com/repos/tip4commit/tip4commit/contributors","subscribers_url":"https://api.github.com/repos/tip4commit/tip4commit/subscribers","subscription_url":"https://api.github.com/repos/tip4commit/tip4commit/subscription","commits_url":"https://api.github.com/repos/tip4commit/tip4commit/commits{/sha}","git_commits_url":"https://api.github.com/repos/tip4commit/tip4commit/git/commits{/sha}","comments_url":"https://api.github.com/repos/tip4commit/tip4commit/comments{/number}","issue_comment_url":"https://api.github.com/repos/tip4commit/tip4commit/issues/comments{/number}","contents_url":"https://api.github.com/repos/tip4commit/tip4commit/contents/{+path}","compare_url":"https://api.github.com/repos/tip4commit/tip4commit/compare/{base}...{head}","merges_url":"https://api.github.com/repos/tip4commit/tip4commit/merges","archive_url":"https://api.github.com/repos/tip4commit/tip4commit/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/tip4commit/tip4commit/downloads","issues_url":"https://api.github.com/repos/tip4commit/tip4commit/issues{/number}","pulls_url":"https://api.github.com/repos/tip4commit/tip4commit/pulls{/number}","milestones_url":"https://api.github.com/repos/tip4commit/tip4commit/milestones{/number}","notifications_url":"https://api.github.com/repos/tip4commit/tip4commit/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/tip4commit/tip4commit/labels{/name}","releases_url":"https://api.github.com/repos/tip4commit/tip4commit/releases{/id}","deployments_url":"https://api.github.com/repos/tip4commit/tip4commit/deployments","created_at":"2014-01-14T10:26:24Z","updated_at":"2017-11-12T10:40:50Z","pushed_at":"2017-11-12T19:58:10Z","git_url":"git://github.com/tip4commit/tip4commit.git","ssh_url":"git@github.com:tip4commit/tip4commit.git","clone_url":"https://github.com/tip4commit/tip4commit.git","svn_url":"https://github.com/tip4commit/tip4commit","homepage":"https://tip4commit.com/","size":735,"stargazers_count":141,"watchers_count":141,"language":"Ruby","has_issues":true,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"forks_count":97,"mirror_url":null,"archived":false,"open_issues_count":48,"forks":97,"open_issues":48,"watchers":141,"default_branch":"master","organization":{"login":"tip4commit","id":6398353,"avatar_url":"https://avatars3.githubusercontent.com/u/6398353?v=4","gravatar_id":"","url":"https://api.github.com/users/tip4commit","html_url":"https://github.com/tip4commit","followers_url":"https://api.github.com/users/tip4commit/followers","following_url":"https://api.github.com/users/tip4commit/following{/other_user}","gists_url":"https://api.github.com/users/tip4commit/gists{/gist_id}","starred_url":"https://api.github.com/users/tip4commit/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/tip4commit/subscriptions","organizations_url":"https://api.github.com/users/tip4commit/orgs","repos_url":"https://api.github.com/users/tip4commit/repos","events_url":"https://api.github.com/users/tip4commit/events{/privacy}","received_events_url":"https://api.github.com/users/tip4commit/received_events","type":"Organization","site_admin":false},"network_count":97,"subscribers_count":17}'
+    http_version: 
+  recorded_at: Sun, 12 Nov 2017 21:37:40 GMT
+recorded_with: VCR 3.0.3

@@ -44,6 +44,7 @@ Feature: Visitors may search for and add projects
     And   I should see "seldon/seldons-project"
     And   there should not be a project avatar image visible
 
+  @vcr-ignore-params
   Scenario: Projects owned by an organization should show project avatar
     Given a "real-github" project named "tip4commit/tip4commit" exists
     And   I visit the "projects" page

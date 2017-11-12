@@ -128,6 +128,7 @@ Feature: The site routes pretty paths uniformly
     Then  I should be on the "home" page
     And   I should see "You are not authorized to perform this action"
 
+  @vcr
   Scenario: User show page is accessible via user name to that user
     Given I'm signed in as "seldon"
     When  I visit the "seldon user" page
@@ -136,6 +137,7 @@ Feature: The site routes pretty paths uniformly
     And   I should see "E-mail seldon@example.com"
     And   I should see "Bitcoin address"
 
+  @vcr
   Scenario: User show page is accessible via nickname to that user
     Given I'm signed in as "seldon"
     When  I browse to the explicit path "users/seldon"
