@@ -26,7 +26,7 @@ gem 'less-rails', '~> 2.4.2'
 gem 'money-tree', '~> 0.9.0'
 gem 'mysql2', group: :production
 gem 'octokit', '~> 4.7.0'
-gem 'omniauth', '~> 1.1.4'
+gem 'omniauth', '~> 1.7.1'
 gem 'omniauth-github', github: 'alexandrz/omniauth-github', branch: 'provide_emails'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'render_csv'
