@@ -1,0 +1,235 @@
+ko:
+  tip4commit: Tip4Commit
+  meta:
+    title: 오픈소스 기여하기
+    description: 오픈소스 프로젝트에 비트코인을 기부하거나 직접 커밋하여 팁을 받으세요.
+  menu:
+    home: 홈
+    projects: 지원되는 프로젝트들
+  footer:
+    text: "소스 코드는 %{github_link}에 있으며, 그의 개발에 %{support_link}할 수 있습니다."
+    github_link: GitHub
+    support_link: 기여
+    follow_link: \@tip4commit 팔로우
+  links:
+    sign_up: 회원가입
+    sign_in: 로그인
+    sign_in_imp: 로그인
+    sign_out: 로그아웃
+    create_issue: 이슈 제기
+  errors:
+    project_not_found: 찾고자 하는 프로젝트가 없습니다.
+    opt_in_notice: "프로젝트 담당자들의 이의제기로 인하여, 프로젝트들은 여기에 더 이상 자동으로 추가되지 않습니다.
+    잔고가 없는 프로젝트들은 삭제되었습니다. 당신의 프로젝트를 여기에 추가하고 싶다면, %{create_issue_link}해주세요.
+    "
+    access_denied: 권한 없음
+    can_assign_more_tips: "잔고의 100%보다 많은 양을 할당할 수 없습니다."
+    wrong_bitcoin_address: 비트코인 주소를 업데이트하던 중 에러 발생
+    user_not_found: 유저를 찾을 수 없음
+    access_denied: 실행 권한이 없습니다.
+  notices:
+    project_updated: 프로젝트 설정이 변경되었습니다.
+    tips_decided: 팁의 액수가 지정되었습니다.
+    user_updated: 정보가 저장되었습니다.
+    user_unsubscribed: "탈퇴하셨군요! 번거롭게 해 드려 죄송합니다. 하지만, 당신의 팁을 얻기 위해 당신의 비트코인 계좌를 남겨둘 수 있습니다."
+  tip_amounts:
+    undecided: "지정되지 않음"
+    free: "팁 없음: 0%"
+    tiny: "매우 조금: 0.1%"
+    small: "조금: 0.5%"
+    normal: "보통: 1%"
+    big: "많이: 2%"
+    huge: "매우 많이: 5%"
+  js:
+    errors:
+      value:
+        invalid: 값이 올바르지 않습니다.
+      email:
+        invalid: 이메일 주소가 명확하지 않습니다.
+        blank: 이메일 주소는 반드시 입력되어야 합니다.
+      password:
+        blank: 비밀번호는 반드시 입력되어야 합니다.
+        invalid: 비밀번호 확인란이 비밀번호와 일치하지 않습니다.
+      password_confirmation:
+        blank: 비밀번호 확인란은 반드시 입력되어야 합니다.
+        invalid: 비밀번호 확인란이 비밀번호와 일치하지 않습니다.
+  home:
+    index:
+      see_projects: 프로젝트 보기
+      how_does_it_work:
+        title: 작동 원리
+        text: 우선, 사람들이 프로젝트에 비트코인을 기부합니다. 그 후, 누군가의 커밋이 프로젝트에 반영된다면, 이 웹사이트에서 자동적으로 해당 개발자에게 팁을 지급합니다.
+        button: 비트코인이란?
+      donate:
+        title: 기부하기
+        text: 마음에 드는 프로젝트를 골라 비트코인을 기부하세요. 당신의 기부금은 다른 사람들의 기부금과 함께 새로운 커밋에 대한 팁으로 사용될 것입니다.
+        button: 프로젝트 찾기/추가하기
+      contribute:
+        title: 기여하기
+        text: 무언가를 고쳐 보세요! 당신의 커밋이 프로젝트 담당자에 의해 반영된다면, 당신은 팁을 얻을 것입니다!
+        sign_in_text: "초대나 회원 가입을 위해 이메일을 확인해보세요."
+        sign_up_text: "아직 초대를 받지 못했다면, 이메일로 회원가입할 수 있습니다."
+        button: 프로젝트 보기
+  projects:
+    index:
+      find_project:
+        placeholder: 찾고자 하는 GitHub 프로젝트의 URL이나 키워드 입력
+        button: 프로젝트 찾기
+      repository: Repository
+      description: 설명
+      watchers: Watchers
+      balance: 잔고
+      forked_from: forked from
+      support: 프로젝트 보기
+    show:
+      title: "%{project}에 기여"
+      fetch_pending: (초기 패치 대기중)
+      edit_project: 프로젝트 설정 변경
+      decide_tip_amounts: 팁 액수 지정
+      disabled_notifications: "프로젝트 담당자들은 새로운 기여자들에게 팁에 대해 알리지 않기로 했고, 아마 그들은 이런 식으로 지원받는 것을 원치 않을 것입니다."
+      fee: "잔고의 %{percentage} 가 새로운 커밋에 대한 팁으로 사용될 것입니다."
+      balance: 잔고
+      deposits: 지급 내역
+      custom_tip_size: (각각의 커밋에 대해 잔고의 몇 퍼센트가 지급됩니다.)
+      default_tip_size: "(각각의 커밋에 대해 잔고의 %{percentage}가 지급됩니다.)"
+      min_tip_size: "최소 팁 액수는 %{min_tip}이며, 잔고가 그보다 적을 경우 그만큼 더 적은 팁이 지급됩니다."
+      unconfirmed_amount: "(%{amount} 지정되지 않음)"
+      tipping_policies: 팁 지급 정책
+      updated_by_user: "(%{name}에 의해 %{date}에 마지막으로 업데이트됨)"
+      updated_by_unknown: "(%{date}에 마지막으로 업데이트됨)"
+      tips_paid: 지급된 팁 액수
+      unclaimed_amount: "(%{amount}의 액수가 수령되지 않았으며, 1달동안 수령하지 않을 경우 프로젝트에 반환될 것입니다.)"
+      last_tips: 가장 최근 팁 액수
+      see_all: 모두 보기
+      received: "%{amount}를 받음"
+      will_receive: 를 받을 예정
+      for_commit: (커밋당)
+      when_decided: 액수가 지정되고 났을 때
+      next_tip: 다음 팁
+      contribute_and_earn: 기여하고 얻기
+      contribute_and_earn_description: "이 프로젝트에 비트코인을 기부하거나, %{make_commits_link}하여 팁을 얻으세요. 당신의 커밋이 %{branch}에 프로젝트 담당자에 의해 반영되고, 프로젝트 잔고가 있다면, 당신은 팁을 받을 것입니다."
+      contribute_and_earn_branch: "to <strong>%{branch}</strong> branch"
+      make_commits_link: 커밋하기
+      tell_us_bitcoin_address: "당신의 비트코인 계좌를 %{tell_us_link}하세요."
+      tell_us_link: 입력
+      sign_in: "이메일을 확인하거나 %{sign_in_link}."
+      promote_project: \%{project} 홍보하기
+      embedding: 임베딩
+      image_url: "사진 URL:"
+      shield_title: 다음 커밋을 위한 팁 액수
+    edit:
+      project_settings: "%{project} 설정"
+      branch: 브랜치
+      default_branch: 기본 브랜치
+      tipping_policies: 팁 지급 정책
+      hold_tips: "팁을 즉시 기여하기보다는, 저자에게 팁을 조정하게 하세요."
+      save: 프로젝트 설정 변경사항 저장
+      disable_notifications: 새 기여자에게 알리지 말기
+    decide_tip_amounts:
+      commit: 커밋
+      author: 저자
+      message: 메시지
+      tip: 팁 (프로젝트 잔고에 대한)
+      submit: 선택한 팁 액수 송금하기
+    blacklisted:
+      title: 죄송합니다. 이 프로젝트는 팁을 지급하지 않습니다.
+      message: 이 프로젝트의 저자는 이 프로젝트에 대해 팁을 지급하지 않기로 결정했습니다.
+  tips:
+    index:
+      tips: 팁 내역
+      project_tips: '%{project} 팁'
+      user_tips: "%{user} 팁 내역"
+      created_at: 생성 시각
+      commiter: 저자
+      project: 프로젝트
+      commit: 커밋
+      amount: 양
+      refunded: 프로젝트 잔고에 반환됨
+      undecided: 팁의 액수가 지정되지 않음
+      no_bitcoin_address: 유저가 출금계좌를 설정하지 않음
+      below_threshold: "유저의 잔고가 최소 출금액수보다 적음"
+      waiting: 출금 대기중
+      error: (송금 중 에러 발생)
+  deposits:
+    index:
+      project_deposits: '%{project} 지급 내역'
+      deposits: 지급 내역
+      created_at: 생성 시각
+      project: 프로젝트
+      amount: 양
+      transaction: 송금
+      confirmed: 확인됨
+      confirmed_yes: 'Yes'
+      confirmed_no: 'No'
+  users:
+    index:
+      title: 기여자 순위
+      name: 이름
+      commits_count: 팁이 지급된 커밋
+      withdrawn: 취소됨
+    show:
+      balance: 잔고
+      threshold: "최소 %{threshold}보다 클 경우 돈을 지급받게 됩니다."
+      see_all: 모두 보기
+      received: "%{time}에 %{amount}를 %{project}에서의 %{commit}으로 받음"
+      bitcoin_address_placeholder: 비트코인 계좌
+      notify: 새 정보에 대한 알림(1달에 1개 이하의 이메일)
+      submit_user: 유저 정보 수정
+      change_password: 비밀번호 변경
+      submit_password: 비밀번호 변경
+      use_from_gravatar: Gravatr 프로필 사용
+  withdrawals:
+    index:
+      title: 최근 출금
+      created_at: 생성 시각
+      transaction: 송금
+      result: 결과
+      error: 실패
+      success: 성공
+  devise:
+    sessions:
+      new:
+        title: 로그인
+        remember_me: 유저 기억
+        submit: 로그인
+    registrations:
+      new:
+        title: 회원가입
+        submit: 회원가입
+    passwords:
+      new:
+        title: 비밀번호 찾기
+        submit: 비밀번호 재설정
+      edit:
+        title: 비밀번호 변경
+        submit: 비밀번호 변경
+    confirmations:
+      new:
+        title: 확인 절차 재전송
+        submit: 확인 절차 재전송
+    links:
+      sign_in: 로그인
+      sign_up: 회원가입
+      recover: 비밀번호 찾기
+      confirm: 확인 절차 재전송
+      sign_in_with: "%{provider}으로 로그인"
+    errors:
+      primary_email: 이메일이 확인되어야 합니다.
+      onmiauth_info: 유저 정보 확인 실패
+  activerecord:
+    attributes:
+      user:
+        email: 이메일
+        bitcoin_address: 비트코인 계좌번호
+        password: 비밀번호
+        password_confirmation: 비밀번호 확인
+        display_name: 닉네임
+  omniauth_providers:
+    github: GitHub
+    bitbucket: BitBucket
+  general:
+    or: 또는
+    disclaimer:
+      line1: "Tip4Commit은 대부분의 프로젝트에 해당되지 않습니다."
+      line2: "개발자에 의해 팁이 지급될 것이라고 보장하지 못합니다."
+      line3: "당신이 돈을 기부함으로써, 당신은 그 돈이 Free Software Foundation이나 Tip4Commit에 사용될 수 있음에 동의하게 됩니다."
