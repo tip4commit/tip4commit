@@ -19,7 +19,7 @@ es:
     create_issue: crea un problema
   errors:
     project_not_found: El proyecto no fue encontrado.
-    opt_in_notice: "Debido a varias quejas de mantenedores de proyectos, no agregamos proyectos automáticamente. Proyectos existentes sin depósitos han sido removidos. Si usted quiere agregar su proyecto, por favor %{create_issue_link}.
+    opt_in_notice: "Debido a varias quejas de mantenedores de proyectos, no agregamos proyectos automáticamente. Proyectos existentes sin depósitos han sido removidos. Si usted quiere agregar su proyecto, por favor %{create_issue_link}."
     access_denied: Acceso rechazado
     can_assign_more_tips: "No puede asignar más de 100% de los fondos disponibles."
     wrong_bitcoin_address: Ocurrió un error al actualizar su dirección de bitcoin
@@ -105,7 +105,7 @@ es:
       when_decided: cuando la cantidad sea decidida
       next_tip: Siguiente Propina
       contribute_and_earn: Contribuye y Gana
-      contribute_and_earn_description: "Dona Bitcoins a este proyecto o %{make_commits_link} y recibe propinas por ellos. Si tu commit es aceptado %{branch} por un mantenedor de proyecto y hay Bitcoins disponibles, ­recibirás una propina!"
+      contribute_and_earn_description: "Dona Bitcoins a este proyecto o %{make_commits_link} y recibe propinas por ellos. Si tu commit es aceptado %{branch} por un mantenedor de proyecto y hay Bitcoins disponibles, recibirás una propina!"
       contribute_and_earn_branch: "al <strong>%{branch}</strong> branch"
       make_commits_link: haz commits
       tell_us_bitcoin_address: Solo %{tell_us_link} su dirección de Bitcoin.
