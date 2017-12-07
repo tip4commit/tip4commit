@@ -24,7 +24,7 @@ es:
     can_assign_more_tips: "No puede asignar más de 100% de los fondos disponibles."
     wrong_bitcoin_address: Ocurrió un error al actualizar su dirección de bitcoin
     user_not_found: No se pudo encontrar el usuario
-    access_denied: ­Usted no está autorizado para realizar esa acción!
+    access_denied: Usted no está autorizado para realizar esa acción!
   notices:
     project_updated: Las configuraciones de su proyecto fueron actualizadas.
     tips_decided: La cantidad de propina ha sido definida.
@@ -64,7 +64,7 @@ es:
         button: Busca o agrega un proyecto
       contribute:
         title: Contribuye
-        text: Ve y arregla algo. Si tu commit es aceptado por el mantenedor del proyecto, ­recibirás una propina!
+        text: Ve y arregla algo. Si tu commit es aceptado por el mantenedor del proyecto, recibirás una propina!
         sign_in_text: "Solo cheque su bandeja por una invitación o %{sign_in_link}."
         sign_up_text: "Si usted a£n no ha recibido una invitación, se puede %{sign_up_link} con un correo electrónico valido."
         button: Proyectos soportados
