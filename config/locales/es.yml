@@ -24,7 +24,7 @@ es:
     can_assign_more_tips: "No puede asignar más de 100% de los fondos disponibles."
     wrong_bitcoin_address: Ocurrió un error al actualizar su dirección de bitcoin
     user_not_found: No se pudo encontrar el usuario
-    access_denied: Usted no está autorizado para realizar esa acción!
+    access_denied: ¡Usted no está autorizado para realizar esa acción!
   notices:
     project_updated: Las configuraciones de su proyecto fueron actualizadas.
     tips_decided: La cantidad de propina ha sido definida.
@@ -64,7 +64,7 @@ es:
         button: Busca o agrega un proyecto
       contribute:
         title: Contribuye
-        text: Ve y arregla algo. Si tu commit es aceptado por el mantenedor del proyecto, recibirás una propina!
+        text: Ve y arregla algo. Si tu commit es aceptado por el mantenedor del proyecto, ¡recibirás una propina!
         sign_in_text: "Solo cheque su bandeja por una invitación o %{sign_in_link}."
         sign_up_text: "Si usted aún no ha recibido una invitación, se puede %{sign_up_link} con un correo electrónico valido."
         button: Proyectos soportados
@@ -90,7 +90,7 @@ es:
       deposits: depositos
       custom_tip_size: (cada nuevo commit recibe un porcentaje del balance disponible)
       default_tip_size: "(cada nuevo commit recibe %{percentage} del balance disponible)"
-      min_tip_size: "La propina m¡nima es de %{min_tip}, pero si el balance disponible es menor de la propina m¡nima, una propina más pequeña será enviada"
+      min_tip_size: "La propina m¡nima es de %{min_tip}, pero si el balance disponible es menor de la propina mínima, una propina más pequeña será enviada"
       unconfirmed_amount: "(%{amount} no confirmado)"
       tipping_policies: Pol¡tica de propina
       updated_by_user: "(Ultimo cambio por %{name} el %{date})"
@@ -105,7 +105,7 @@ es:
       when_decided: cuando la cantidad sea decidida
       next_tip: Siguiente Propina
       contribute_and_earn: Contribuye y Gana
-      contribute_and_earn_description: "Dona Bitcoins a este proyecto o %{make_commits_link} y recibe propinas por ellos. Si tu commit es aceptado %{branch} por un mantenedor de proyecto y hay Bitcoins disponibles, recibirás una propina!"
+      contribute_and_earn_description: "Dona Bitcoins a este proyecto o %{make_commits_link} y recibe propinas por ellos. Si tu commit es aceptado %{branch} por un mantenedor de proyecto y hay Bitcoins disponibles, ¡recibirás una propina!"
       contribute_and_earn_branch: "al <strong>%{branch}</strong> branch"
       make_commits_link: haz commits
       tell_us_bitcoin_address: Solo %{tell_us_link} su dirección de Bitcoin.
