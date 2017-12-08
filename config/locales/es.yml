@@ -29,7 +29,7 @@ es:
     project_updated: Las configuraciones de su proyecto fueron actualizadas.
     tips_decided: La cantidad de propina ha sido definida.
     user_updated: La información ha sido actualizada.
-    user_unsubscribed: "Usted ya no recibirá notificaciones de nosotros. Nos disculpamos por haberte molestado. Pero a£n puede dejar su dirección de bitcoin para recibir sus propinas."
+    user_unsubscribed: "Usted ya no recibirá notificaciones de nosotros. Nos disculpamos por haberte molestado. Pero aún puede dejar su dirección de bitcoin para recibir sus propinas."
   tip_amounts:
     undecided: "Indeciso"
     free: "Gratis: 0%"
@@ -66,7 +66,7 @@ es:
         title: Contribuye
         text: Ve y arregla algo. Si tu commit es aceptado por el mantenedor del proyecto, recibirás una propina!
         sign_in_text: "Solo cheque su bandeja por una invitación o %{sign_in_link}."
-        sign_up_text: "Si usted a£n no ha recibido una invitación, se puede %{sign_up_link} con un correo electrónico valido."
+        sign_up_text: "Si usted aún no ha recibido una invitación, se puede %{sign_up_link} con un correo electrónico valido."
         button: Proyectos soportados
   projects:
     index:
