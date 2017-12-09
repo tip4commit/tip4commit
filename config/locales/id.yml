@@ -1,0 +1,233 @@
+en:
+  tip4commit: Tip4Commit
+  meta:
+    title: Kontribusi ke Open Source
+    description: Donasi bitcoin untuk proyek Open Source atau commit perubahan dan dapatkan tips.
+  menu:
+    home: Home
+    projects: proyek
+  footer:
+    text: "Source code bisa dicek di %{github_link} dan proyek juga dapat cek di- %{support_link}."
+    github_link: GitHub
+    support_link: support
+    follow_link: Follow @tip4commit
+  links:
+    sign_up: Daftar
+    sign_in: Masuk
+    sign_in_imp: masuk
+    sign_out: Keluar
+    create_issue: Buat Issue
+  errors:
+    project_not_found: proyek tidak ditemukan.
+    opt_in_notice: "Karena keluhan dari pemilik proyek, kami tidak menambahkan proyek secara otomatis lagi. Proyek yang ada tanpa deposit telah dihapus.  Jika Anda ingin menambahkan proyek Anda, silakan klik %{create_issue_link}."
+    access_denied: Akses ditolak
+    can_assign_more_tips: "proyek tidak dapat menetapkan lebih dari 100% dari dana yang tersedia."
+    wrong_bitcoin_address: Error ketika memperbarui alamat bitcoin
+    user_not_found: User tidak ditemukan
+    access_denied: Anda tidak berwenang melakukan tindakan ini!
+  notices:
+    project_updated: Settingan proyek telah diperbarui
+    tips_decided: Jumlah tips sudah ditetapkan
+    user_updated: Informasi proyek telah disimpan!
+    user_unsubscribed: "proyek telah berhenti berlangganan! Maaf atas ketidaknyamanannya. Meski begitu, Anda masih bisa meninggalkan alamat bitcoin Anda untuk mendapatkan tip Anda."
+  tip_amounts:
+    undecided: "Bimbang"
+    free: "Gratis: 0%"
+    tiny: "Sangat Kecil: 0.1%"
+    small: "Kecil: 0.5%"
+    normal: "Sedang: 1%"
+    big: "Besar: 2%"
+    huge: "Sangat Besar: 5%"
+  js:
+    errors:
+      value:
+        invalid: Nilai tidak valid
+      email:
+        invalid: Alamat email tidak valid
+        blank: Email harus diisi dan tidak boleh kosong
+      password:
+        blank: Password harus diisi dan tidak boleh kosong
+        invalid: Password tidak sama
+      password_confirmation:
+        blank: Password konfirmasi harus diisi dan tidak boleh kosong
+        invalid: Password tidak sama
+  home:
+    index:
+      see_projects: Lihat proyek
+      how_does_it_work:
+        title: Bagaimana cara kerjanya?
+        text: Orang menyumbangkan bitcoin untuk proyek. Ketika komit seseorang diterima dalam repositori proyek, kami secara otomatis memberi tip kepada kontributor.
+        button: Pelajari tentang Bitcoin
+      donate:
+        title: Donasi
+        text: Temukan proyek yang Anda sukai dan setorkan bitcoin ke dalamnya. Sumbangan Anda akan terakumulasi dengan dana donatur lain untuk diberikan sebagai tip untuk setiap perubahan baru.
+        button: Cari atau tambahkan proyek
+      contribute:
+        title: Membantu
+        text: Tambahkan atau perbaiki sesuatu! Jika perubahan proyek diterima oleh pemilik proyek, proyek akan mendapatkan tip!
+        sign_in_text: "Silahkan cek email untuk melihat undangan atau %{sign_in_link}."
+        sign_up_text: "Jika proyek tidak menerima undangan, proyek bisa %{sign_up_link} dengan alamat email yang valid"
+        button: Supported proyek
+  projects:
+    index:
+      find_project:
+        placeholder: Masukkan GitHub proyek URL atau keyword apapun untuk mencari proyek...
+        button: Temukan proyek
+      repository: Repository
+      description: Deskripsi
+      watchers: Pengintai
+      balance: Saldo
+      forked_from: Cabang dari
+      support: Support proyek
+    show:
+      title: "Membantu %{project}"
+      fetch_pending: (Gagal initial fetch)
+      edit_project: Rubah pengaturan proyek
+      decide_tip_amounts: Tentukan nilai tip
+      disabled_notifications: "Pemilik proyek telah memutuskan untuk tidak memberi tahu kontributor baru tentang tip dan mereka mungkin tidak menyukai cara pendanaan ini."
+      fee: "%{percentage} dana yang disetorkan akan digunakan untuk memberi tip pada komitmen baru."
+      balance: Saldo
+      deposits: setor
+      custom_tip_size: (setiap perubahan baru menerima persentase saldo yang tersedia)
+      default_tip_size: "(setiap perubahan baru menerima %{percentage} dari jumlah saldo yang tersedia)"
+      min_tip_size: "Jumlah tip minimum adalah %{min_tip}, Tapi bila tersedia saldo kurang dari itu maka akan dikirim sebagai tip yang lebih kecil"
+      unconfirmed_amount: "(%{amount} belum dikonfirmasi)"
+      tipping_policies: Aturan tip
+      updated_by_user: "(Perubahan terakhir oleh %{name} pada %{date})"
+      updated_by_unknown: "(Perubahan terakhir pada %{date})"
+      tips_paid: Tip yang sudah dibayarkan
+      unclaimed_amount: "(%{amount} yang belum di klaim, dan akan dikembalikan ke proyek setelah 1 bulan jika tidak diklaim.)"
+      last_tips: Tip tearkhir
+      see_all: Lihat semua
+      received: "Diterima %{amount}"
+      will_receive: akan menerima tip
+      for_commit: untuk perubahan
+      when_decided: kapan jumlahnya ditentukan
+      next_tip: tip berikutnya
+      contribute_and_earn: Bantu dan dapatkan tip
+      contribute_and_earn_description: "Donasi bitcoin ke proyek ini atau %{make_commits_link} dan dapatkan tipnya. Jika perubahan proyek diterima %{branch} oleh pemilik proyek dan saldo bitcoin tersedia, proyek akan mendapatkan tip!"
+      contribute_and_earn_branch: "Ke branch <strong>%{branch}</strong>"
+      make_commits_link: buat perubahan
+      tell_us_bitcoin_address: "Cantumkan %{tell_us_link} alamat bitcoin proyek."
+      tell_us_link: cantumkan
+      sign_in: "Silahkan cek email proyek atau %{sign_in_link}."
+      promote_project: Majukan %{project}
+      embedding: Penyematan
+      image_url: "Image URL:"
+      shield_title: tip untuk komit selanjutnya
+    edit:
+      project_settings: "%{project} settingan proyek"
+      branch: Branch
+      default_branch: Default branch
+      tipping_policies: Aturan tip
+      hold_tips: "Jangan segera mengirim tip. Berikan kolaborator untuk mengubah tip sebelum dikirim"
+      save: Simpan settingan proyek
+      disable_notifications: Jangan beritahu kontributor baru
+    decide_tip_amounts:
+      commit: Komit
+      author: Penulis
+      message: Pesan
+      tip: Tip (relatif terhadap saldo proyek)
+      submit: Kirim jumlah yang sudah ditentukan
+    blacklisted:
+      title: Maaf, proyek ini tidak menerima ini!
+      message: Penulis proyek ini telah melarang tip untuk proyek ini.
+  tips:
+    index:
+      tips: Tips
+      project_tips: '%{project} tips'
+      user_tips: "%{user} tips"
+      created_at: Dibuat pada
+      commiter: Penulis
+      project: Proyek
+      commit: Perubahan
+      amount: Jumlah
+      refunded: Dikembalikan ke proyek deposit
+      undecided: Jumlah tip belum ditentukan
+      no_bitcoin_address: Pengguna belum menentukan alamat penarikan
+      below_threshold: "Saldo pengguna berada di bawah ambang panarikan"
+      waiting: Menunggu penarikan
+      error: (kesalahan pengiriman transaksi)
+  deposits:
+    index:
+      project_deposits: '%{project} setor'
+      deposits: Setor
+      created_at: Dibuat pada
+      project: Proyek
+      amount: Jumlah
+      transaction: Transaksi
+      confirmed: Dikonfirmasi
+      confirmed_yes: 'Ya'
+      confirmed_no: 'Tidak'
+  users:
+    index:
+      title: Kontributor teratas
+      name: Nama
+      commits_count: Perubahan yang sudah di tip
+      withdrawn: Ditarik
+    show:
+      balance: Saldo
+      threshold: "Anda akan mendapatkan uang anda saat saldo anda mencapai ambang batas %{threshold}"
+      see_all: lihat semua
+      received: "%{time} diterima %{amount} untuk perubahan %{commit} di %{project}"
+      bitcoin_address_placeholder: Alamat bitcoin anda
+      notify: Beritahu saya tentang tip baru(tidak lebih dari satu email per bulan)
+      submit_user: Perbarui informasi pengguna
+      change_password: Rubah password anda
+      submit_password: Rubah password
+      use_from_gravatar: Gunakan dari profil gravatar anda
+  withdrawals:
+    index:
+      title: Penarikan Terakhir
+      created_at: Diabuat Pada
+      transaction: Transaksi
+      result: Hasil
+      error: Eror
+      success: Sukses
+  devise:
+    sessions:
+      new:
+        title: Masuk
+        remember_me: Ingat saya
+        submit: Masuk
+    registrations:
+      new:
+        title: Daftar
+        submit: Daftar
+    passwords:
+      new:
+        title: Lupa password?
+        submit: Kirim instruksi reset password
+      edit:
+        title: Rubah password anda
+        submit: Rubah password
+    confirmations:
+      new:
+        title: Kirim ulang konfirmasi
+        submit: Kirim ulang konfirmasi
+    links:
+      sign_in: Masuk
+      sign_up: Daftar
+      recover: Lupas password?
+      confirm: Tidak menerika konfirmasi?
+      sign_in_with: "Masuk dengan %{provider}"
+    errors:
+      primary_email: email utama harus terverifikasi.
+      onmiauth_info: tidak dapat mengambil informasi.
+  activerecord:
+    attributes:
+      user:
+        email: E-mail
+        bitcoin_address: Alamat bitcoin
+        password: Password
+        password_confirmation: Konfirmasi Password
+        display_name: Nama yang ditampilkan
+  omniauth_providers:
+    github: GitHub
+    bitbucket: BitBucket
+  general:
+    or: atau
+    disclaimer:
+      line1: "Tip4Commit tidak berafiliasi dengan sebagian besar proyek."
+      line2: "Tidak ada jaminan bahwa tip akan diklaim oleh pengembang."
+      line3: "Dengan menyumbangkan dana, Anda setuju bahwa mereka dapat dikirim ke Free Software Fondattion  atau tempat lain dengan kebijakan Tip4Commit."
