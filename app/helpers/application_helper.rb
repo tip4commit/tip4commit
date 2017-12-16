@@ -79,7 +79,7 @@ module ApplicationHelper
   end
 
   def to_eur(satoshies)
-    format('%.2f€', rate('EUR', satoshies))
+    format('€%.2f', rate('EUR', satoshies))
   end
 
   def to_brl(satoshies)
@@ -91,11 +91,11 @@ module ApplicationHelper
   end
 
   def to_cny(satoshies)
-    format('%.2f¥', rate('CNY', satoshies))
+    format('¥%.2f', rate('CNY', satoshies))
   end
 
   def to_gbp(satoshies)
-    format('%.2f£', rate('GBP', satoshies))
+    format('£%.2f', rate('GBP', satoshies))
   end
 
   def to_idr(satoshies)
@@ -107,7 +107,7 @@ module ApplicationHelper
   end
 
   def to_jpy(satoshies)
-    format('%.2f¥', rate('JPY', satoshies))
+    format('¥%.2f', rate('JPY', satoshies))
   end
 
   def to_mxn(satoshies)
