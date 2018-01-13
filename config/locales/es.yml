@@ -1,0 +1,233 @@
+es:
+  tip4commit: Tip4Commit
+  meta:
+    title: Contribuye a código abierto
+    description: Dona Bitcoins a proyectos de código abierto o haz commits y recibe propinas por ellos.
+  menu:
+    home: Inicio
+    projects: Proyectos soportados
+  footer:
+    text: "El código fuente está disponible en %{github_link} y también puedes %{support_link} su desarollo."
+    github_link: GitHub
+    support_link: apoyar
+    follow_link: S¡guenos en @tip4commit
+  links:
+    sign_up: registrar
+    sign_in: inicia sesión
+    sign_in_imp: inicie sesión
+    sign_out: Cerrar Sesión
+    create_issue: crea un problema
+  errors:
+    project_not_found: El proyecto no fue encontrado.
+    opt_in_notice: "Debido a varias quejas de mantenedores de proyectos, no agregamos proyectos automáticamente. Proyectos existentes sin depósitos han sido removidos. Si usted quiere agregar su proyecto, por favor %{create_issue_link}."
+    access_denied: Acceso rechazado
+    can_assign_more_tips: "No puede asignar más de 100% de los fondos disponibles."
+    wrong_bitcoin_address: Ocurrió un error al actualizar su dirección de bitcoin
+    user_not_found: No se pudo encontrar el usuario
+    access_denied: ¡Usted no está autorizado para realizar esa acción!
+  notices:
+    project_updated: Las configuraciones de su proyecto fueron actualizadas.
+    tips_decided: La cantidad de propina ha sido definida.
+    user_updated: La información ha sido actualizada.
+    user_unsubscribed: "Usted ya no recibirá notificaciones de nosotros. Nos disculpamos por haberte molestado. Pero aún puede dejar su dirección de bitcoin para recibir sus propinas."
+  tip_amounts:
+    undecided: "Indeciso"
+    free: "Gratis: 0%"
+    tiny: "Diminuto: 0.1%"
+    small: "Pequeño: 0.5%"
+    normal: "Normal: 1%"
+    big: "Grande: 2%"
+    huge: "Enorme: 5%"
+  js:
+    errors:
+      value:
+        invalid: Valor no válido.
+      email:
+        invalid: Correo electrónico no válido.
+        blank: El correo electrónico es requerido y no puede dejarlo en blanco.
+      password:
+        blank: La contraseña es requerida y no puede dejarlo en blanco.
+        invalid: Su contraseña no es igual a la contraseña de confirmación.
+      password_confirmation:
+        blank: La contraseña de confirmación es requerida y no puede dejarlo en blanco.
+        invalid: Su contraseña no es igual a la contraseña de confirmación.
+  home:
+    index:
+      see_projects: Ver proyectos
+      how_does_it_work:
+        title: ¿Como funciona?
+        text: La gente dona bitcoin a proyectos. Cuando el commit de alguien es agregada al proyecto, nosotros automáticamente le damos una propina al autor.
+        button: Aprende más sobre Bitcoin
+      donate:
+        title: Haz donaciones
+        text: Encuentra un proyecto que te guste y dónale bitcoins. Su donación será acumulada con los fondos de otros donadores para poder darse como propinas para nuevos commits.
+        button: Busca o agrega un proyecto
+      contribute:
+        title: Contribuye
+        text: Ve y arregla algo. Si tu commit es aceptado por el mantenedor del proyecto, ¡recibirás una propina!
+        sign_in_text: "Solo cheque su bandeja por una invitación o %{sign_in_link}."
+        sign_up_text: "Si usted aún no ha recibido una invitación, se puede %{sign_up_link} con un correo electrónico valido."
+        button: Proyectos soportados
+  projects:
+    index:
+      find_project:
+        placeholder: Enlace hacia un proyecto de GitHub o busque 
+        button: Busca proyecto
+      repository: Repositorio
+      description: Descripción
+      watchers: Seguidores
+      balance: Balance
+      forked_from: copiado de
+      support: Soporta este proyecto
+    show:
+      title: "Contribuye a %{project} "
+      fetch_pending: (Obtención inicial pendiente)
+      edit_project: Cambiar ajustes del proyecto
+      decide_tip_amounts: Decide cantidad de propina
+      disabled_notifications: "Mantenedores de proyectos han decidido no notificarles a nuevos contribuidores sobre las propinas y probablemente no les guste esta manera de financiamiento."
+      fee: "%{percentage} de los fondos serán usados como propinas para nuevos commits."
+      balance: Balance
+      deposits: depositos
+      custom_tip_size: (cada nuevo commit recibe un porcentaje del balance disponible)
+      default_tip_size: "(cada nuevo commit recibe %{percentage} del balance disponible)"
+      min_tip_size: "La propina m¡nima es de %{min_tip}, pero si el balance disponible es menor de la propina mínima, una propina más pequeña será enviada"
+      unconfirmed_amount: "(%{amount} no confirmado)"
+      tipping_policies: Pol¡tica de propina
+      updated_by_user: "(Ultimo cambio por %{name} el %{date})"
+      updated_by_unknown: "(Ultimo cambio el %{date})"
+      tips_paid: Propinas pagadas
+      unclaimed_amount: "(%{amount} no han sido reclamado, y será devuelto al proyecto después de un mes sin reclamacion.)"
+      last_tips: Ultimas propinas
+      see_all: Ver todas
+      received: "%{amount} recibió"
+      will_receive: recibirá una propina de 
+      for_commit: por el commit
+      when_decided: cuando la cantidad sea decidida
+      next_tip: Siguiente Propina
+      contribute_and_earn: Contribuye y Gana
+      contribute_and_earn_description: "Dona Bitcoins a este proyecto o %{make_commits_link} y recibe propinas por ellos. Si tu commit es aceptado %{branch} por un mantenedor de proyecto y hay Bitcoins disponibles, ¡recibirás una propina!"
+      contribute_and_earn_branch: "al <strong>%{branch}</strong> branch"
+      make_commits_link: haz commits
+      tell_us_bitcoin_address: Solo %{tell_us_link} su dirección de Bitcoin.
+      tell_us_link: d¡ganos
+      sign_in: "Solo cheque su bandeja o %{sign_in_link}."
+      promote_project: Promueve %{project}
+      embedding: Integraciones
+      image_url: "Enlace de Imagen:"
+      shield_title: propina para siguiente commit
+    edit:
+      project_settings: "Ajustes del proyecto %{project} "
+      branch: Branch
+      default_branch: Branch predeterminado
+      tipping_policies: Pol¡tica de propina
+      hold_tips: "No envié las propinas inmediatamente. Dele a los colaboradores la habilidad de modificar las propinas antes que sean enviadas"
+      save: Actualizar ajustes del proyecto
+      disable_notifications: No notifique a nuevos contribuidores
+    decide_tip_amounts:
+      commit: Commit
+      author: Autor
+      message: Mensaje
+      tip: Propina (relativo al balance del proyecto)
+      submit: Envia las propinas seleccionadas
+    blacklisted:
+      title: Lo sentimos mucho, pero esto proyecto no acepta propinas.
+      message: El autor de este proyecto ha deshabilitado propinas para este proyecto.
+  tips:
+    index:
+      tips: Consejos
+      project_tips: 'Consejos de %{project}'
+      user_tips: "Consejos de %{user}"
+      created_at: Creado en 
+      commiter: Commiter
+      project: Proyecto
+      commit: Commit
+      amount: Cantidad
+      refunded: Reembolsado al depósito del proyecto
+      undecided: La cantidad de la propina a£n no se ha decidido
+      no_bitcoin_address: El usuario no especifico una dirección de deposito
+      below_threshold: "El saldo del usuario no ha superado el umbral de retiro "
+      waiting: Esperando por el retiro
+      error: (error al procesar la transacción)
+  deposits:
+    index:
+      project_deposits: 'Depósitos de %{project}'
+      deposits: Depósitos
+      created_at: Creado en 
+      project: Proyecto
+      amount: Cantidad
+      transaction: Transacción
+      confirmed: Confirmado
+      confirmed_yes: 'Si'
+      confirmed_no: 'No'
+  users:
+    index:
+      title: Mayores Contribuidores
+      name: Nombre
+      commits_count: Commits propinadas
+      withdrawn: Retirado
+    show:
+      balance: Balance
+      threshold: "Podrás retirar su dinero cuando su balance llegue al umbral de %{threshold}."
+      see_all: Ver todos
+      received: "%{time} recibió %{amount} por el commit %{commit} en %{project} "
+      bitcoin_address_placeholder: Su dirección de Bitcoin
+      notify: Notif¡came sobre nuevas propinas (no más de un email por mes) 
+      submit_user: Cambiar información de usuario
+      change_password: Cambie su contraseña 
+      submit_password: Actualizar contraseña 
+      use_from_gravatar: Use el de su cuenta de gravatar
+  withdrawals:
+    index:
+      title: Retiros recientes
+      created_at: Creado en
+      transaction: Transacción
+      result: Resultado
+      error: Error
+      success: Exitoso
+  devise:
+    sessions:
+      new:
+        title: Iniciar Sesión
+        remember_me: Recuérdame
+        submit: Iniciar Sesión
+    registrations:
+      new:
+        title: Registración
+        submit: Registrar
+    passwords:
+      new:
+        title: ¿Olvido su contraseña?
+        submit: Mándame instrucciones para resetear mi contraseña
+      edit:
+        title: Cambie su contraseña
+        submit: Actualizar contraseña
+    confirmations:
+      new:
+        title: Mándeme de nuevo instrucciones de confirmación
+        submit: Mándeme de nuevo instrucciones de confirmación
+    links:
+      sign_in: Iniciar Sesión
+      sign_up: Registrar
+      recover: ¿Olvido su contraseña?
+      confirm: ¿No recibió instrucciones de confirmación?
+      sign_in_with: "Iniciar sesión con %{provider} "
+    errors:
+      primary_email: Su correo electrónico primario debe ser verificado.
+      onmiauth_info: No pudimos obtener tu información.
+  activerecord:
+    attributes:
+      user:
+        email: Correo Electrónico
+        bitcoin_address: Dirección de Bitcoin
+        password: Contraseña
+        password_confirmation: Contraseña de confirmación
+        display_name: Nombre publico
+  omniauth_providers:
+    github: GitHub
+    bitbucket: BitBucket
+  general:
+    or: O
+    disclaimer:
+      line1: "Tip4Commit no está asociado con la mayor¡a de los proyectos."
+      line2: "No hay ninguna garant¡a que las propinas sean reclamadas por los desarrolladores."
+      line3: "Al donar fondos, usted esta de acuerdo que los fondos podrán ser enviados a la fundación de software gratuito (Free Software Foundation) o a otra parte a nuestra discreción."
