@@ -1,0 +1,233 @@
+ja:
+  tip4commit: Tip4Commit
+  meta:
+    title: オープンソースに貢献しよう
+    description: オープンソースプロジェクトにビットコインを寄付して貢献する、またはコードを書いてチップを得よう
+  menu:
+    home: ホーム
+    projects: プロジェクト
+  footer:
+    text: "本サイトのソースコードは%{github_link}で公開されており、%{support_link}から貢献することもできます。"
+    github_link: GitHub
+    support_link: こちら
+    follow_link: "@tip4commit をフォロー"
+  links:
+    sign_up: 登録
+    sign_in: ログイン
+    sign_in_imp: ログイン
+    sign_out: ログアウト
+    create_issue: issueを作成してください
+  errors:
+    project_not_found: プロジェクトが見つかりませんでした。
+    opt_in_notice: "プロジェクト管理者からの要望によりプロジェクトは自動的に追加されないようにし、また、預金のないプロジェクトは削除しました。もしご自身のプロジェクトを追加したい場合は%{}。"
+    access_denied: アクセスが拒否されました。
+    can_assign_more_tips: "資金の100%を超えて割り当てることはできません。"
+    wrong_bitcoin_address: ビットコインアドレスの更新に失敗しました。
+    user_not_found: ユーザーが見つかりませんでした。
+    access_denied: この操作を行う権限がありません。
+  notices:
+    project_updated: プロジェクトの設定を更新しました。
+    tips_decided: チップの量を設定しました。
+    user_updated: ユーザー情報を保存しました。
+    user_unsubscribed: "購読を停止しました。ご迷惑をおかけして申し訳ありません。チップを得るためのビットコインアドレスは引き続き有効です。"
+  tip_amounts:
+    undecided: "未入力"
+    free: "無料: 0%"
+    tiny: "極小: 0.1%"
+    small: "小: 0.5%"
+    normal: "中: 1%"
+    big: "大: 2%"
+    huge: "特大: 5%"
+  js:
+    errors:
+      value:
+        invalid: 値が不正です。
+      email:
+        invalid: 不正なメールアドレスです。
+        blank: メールアドレスは必須です。
+      password:
+        blank: パスワードは必須です。
+        invalid: パスワードとパスワード確認が一致しません。
+      password_confirmation:
+        blank: パスワード確認は必須です。
+        invalid: パスワードとパスワード確認が一致しません。
+  home:
+    index:
+      see_projects: プロジェクトを見る
+      how_does_it_work:
+        title: どんな仕組み？
+        text: オープンソースプロジェクトにビットコインで寄付することができます。また、コミットがプロジェクトのレポジトリに取り込まれた場合に自動的にチップをコントリビューターに支払います。
+        button: ビットコインについて学ぶ
+      donate:
+        title: 寄付する
+        text: あなたの寄付したいプロジェクトを見つけて送金しましょう。あなたの寄付は、他の寄付者の寄付金とともに蓄積され、その資金は新たなコミットへのチップとして使用されます。
+        button: プロジェクトを探す
+      contribute:
+        title: コントリビュートする
+        text: 何かコードを書いてみましょう！あなたのコミットがプロジェクト管理者によって取り込まれればチップを得ることができます！
+        sign_in_text: "招待メールを確認する、または%{sign_in_link}してください。"
+        sign_up_text: "もしまだ招待メールを受け取っていなければ%{sign_up_link}リンクから登録してください。"
+        button: プロジェクトを探す
+  projects:
+    index:
+      find_project:
+        placeholder: GitHubプロジェクトのURL、または検索ワードを入力してください。
+        button: 検索
+      repository: レポジトリ
+      description: 説明
+      watchers: ウォッチャー
+      balance: 残高
+      forked_from: フォーク元
+      support: 支援する
+    show:
+      title: "%{project}に貢献する"
+      fetch_pending: （情報取得中）
+      edit_project: プロジェクトの設定変更
+      decide_tip_amounts: チップの金額を決める
+      disabled_notifications: "プロジェクト管理者によって、新しいコントリビューターにチップについて通知しないことになっています。（おそらく、この資金調達方法が好ましくないため）"
+      fee: "預金の%{percentage}が新しいコミットへのチップに使用されます。"
+      balance: 残高
+      deposits: 預金
+      custom_tip_size: （新しいコミットごとに利用可能な残高の一部を受け取ります）
+      default_tip_size: "（新しいコミットごとに利用可能な残高の%{percentage}を受け取る）"
+      min_tip_size: "最小のチップのサイズは%{min_tip}ですが利用可能残高がこれより低い場合、その金額がチップとして支払われます。"
+      unconfirmed_amount: "(%{amount}が未確認です)"
+      tipping_policies: チップポリシー
+      updated_by_user: "(最終更新者 %{name} 最終更新日 %{date})"
+      updated_by_unknown: "(最終更新日 %{date})"
+      tips_paid: 支払ったチップ
+      unclaimed_amount: "（このうち%{amount}は未請求です。１ヶ月間請求がない場合はプロジェクトに返金されます）"
+      last_tips: 最新のチップ
+      see_all: 全て見る
+      received: "が%{amount}受け取りました。"
+      will_receive: "はチップを受け取る予定です。"
+      for_commit: 対象のコミット
+      when_decided: （金額決定時）
+      next_tip: 次のチップ
+      contribute_and_earn: 貢献して収入を得る
+      contribute_and_earn_description: "ビットコインをプロジェクトに寄付するか、％{make_commits_link}しましょう。あなたのコミットがプロジェクト管理者によって％{branch}に受け入れられ、かつ利用可能残高がある場合はチップを得られます！"
+      contribute_and_earn_branch: "<strong>%{branch}</strong>"
+      make_commits_link: コミット
+      tell_us_bitcoin_address: "ビットコインアドレスを%{tell_us_link}から入力してください。"
+      tell_us_link: こちら
+      sign_in: "招待メールを確認する、または%{sign_in_link}してください。"
+      promote_project: "%{project}を応援する"
+      embedding: 埋め込み
+      image_url: "Image URL:"
+      shield_title: tip for next commit
+    edit:
+      project_settings: "%{project}のプロジェクト設定"
+      branch: ブランチ
+      default_branch: デフォルトブランチ
+      tipping_policies: チップポリシー
+      hold_tips: "チップをすぐに送金しない。共同管理者に送信前にチップの金額を修正する機会を提供する。"
+      save: プロジェクト設定を保存する
+      disable_notifications: 新しいコントリビューターに通知しない
+    decide_tip_amounts:
+      commit: コミット
+      author: 作者
+      message: メッセージ
+      tip: チップ（プロジェクトの残高との相対値）
+      submit: 選択したチップの金額を送る
+    blacklisted:
+      title: 申し訳ありませんが、このプロジェクトはチップを受け付けていません！
+      message: このプロジェクトの作者はチップを許容しない選択をしました。
+  tips:
+    index:
+      tips: チップ
+      project_tips: '%{project} チップ一覧'
+      user_tips: "%{user} チップ一覧"
+      created_at: 作成日
+      commiter: コミッター
+      project: プロジェクト
+      commit: コミット
+      amount: 金額
+      refunded: プロジェクに返金済
+      undecided: プロジェクトのチップ金額未決定
+      no_bitcoin_address: ユーザーのビットコインアドレス未登録
+      below_threshold: ユーザーの残高が出金最低金額以下
+      waiting: 出金待ち
+      error: （送金失敗）
+  deposits:
+    index:
+      project_deposits: '%{project} 預金'
+      deposits: 預金
+      created_at: 作成日
+      project: プロジェクト
+      amount: 金額
+      transaction: トランザクション
+      confirmed: 確認
+      confirmed_yes: '済'
+      confirmed_no: '未'
+  users:
+    index:
+      title: トップコントリビューター
+      name: 名前
+      commits_count: チップ総額
+      withdrawn: 出金額
+    show:
+      balance: 残高
+      threshold: "残高が出金可能額に達するとチップを手にすることができます。"
+      see_all: すべて見る
+      received: "%{time} %{project} への貢献 %{commit} により %{amount} 受領"
+      bitcoin_address_placeholder: ビットコインアドレス
+      notify: 新しいチップについて通知する（月に一度のみ）
+      submit_user: ユーザー情報を更新する
+      change_password: パスワードを変更する
+      submit_password: パスワードを変更する
+      use_from_gravatar: Gravatarのプロフィールを使用します
+  withdrawals:
+    index:
+      title: 最新の出金
+      created_at: 作成日
+      transaction: 取引
+      result: 結果
+      error: 失敗
+      success: 成功
+  devise:
+    sessions:
+      new:
+        title: ログイン
+        remember_me: 次回から自動ログインする
+        submit: ログイン
+    registrations:
+      new:
+        title: 登録
+        submit: 登録
+    passwords:
+      new:
+        title: パスワードをお忘れですか？
+        submit: 送信する
+      edit:
+        title: パスワードを変更する
+        submit: 変更
+    confirmations:
+      new:
+        title: 認証メールを再送する
+        submit: 送信する
+    links:
+      sign_in: ログイン
+      sign_up: 登録
+      recover: パスワードをお忘れですか？
+      confirm: 認証メールを受け取れませんでしたか？
+      sign_in_with: "%{provider}でログイン"
+    errors:
+      primary_email: メールアドレスを認証する必要があります。
+      onmiauth_info: 情報を取得することができませんでした。
+  activerecord:
+    attributes:
+      user:
+        email: メールアドレス
+        bitcoin_address: ビットコインアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+        display_name: 名前
+  omniauth_providers:
+    github: GitHub
+    bitbucket: BitBucket
+  general:
+    or: または
+    disclaimer:
+      line1: "Tip4Commitはほとんどのプロジェクトからアフィリエイト収入を得ていません。"
+      line2: "開発者がチップを必ず請求する保証はありません。"
+      line3: "寄付することにより、その資金をフリーソフトウェア財団または他の場所にTip4Commitの裁量で送金することに同意したことになります。"
