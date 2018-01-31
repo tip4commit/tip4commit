@@ -4,7 +4,7 @@ Tip4commit
 [![gorjeta para o próximo commit](https://tip4commit.com/projects/307.svg)](https://tip4commit.com/projects/307)
 [![Estado da build](https://travis-ci.org/tip4commit/tip4commit.svg?branch=master)](https://travis-ci.org/tip4commit/tip4commit)
 
-Doe bitcoins para projetos de codigo aberto ou receba gorjetas por colaborar no código.
+Doe bitcoins para projetos de código aberto ou receba gorjetas por colaborar no código.
 
 Nome | Ligação
 ----|----|
