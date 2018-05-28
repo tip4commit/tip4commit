@@ -1,0 +1,233 @@
+en:
+  tip4commit: Tip4Commit
+  meta:
+    title: 為開源做貢獻
+    description: 給開源項目捐獻比特幣或者通過提交代碼獲得打賞。
+  menu:
+    home: 主頁
+    projects: 支持的項目
+  footer:
+    text: "您可以在 %{github_link} 查看源代碼，或者 %{support_link} 這個項目的開發."
+    github_link: GitHub
+    support_link: 支持
+    follow_link: 關註 @tip4commit
+  links:
+    sign_up: 註冊
+    sign_in: 登錄
+    sign_in_imp: 登錄
+    sign_out: 註冊
+    create_issue: 創建壹個問題
+  errors:
+    project_not_found: 項目未找到。
+    opt_in_notice: "由於項目維護者的投訴，我們不再自動添加項目。沒有存款的現存項目已經被移除。如果您想添加您的項目，請 %{create_issue_link}."
+    access_denied: 拒絕訪問
+    can_assign_more_tips: "您不能分配超過 100% 的可用資金。"
+    wrong_bitcoin_address: 更新比特幣地址出錯
+    user_not_found: 未找到用戶
+    access_denied: 您不被允許執行此操作！
+  notices:
+    project_updated: 項目設置已經更新
+    tips_decided: 打賞總額已經成功定義
+    user_updated: 您的信息已保存!
+    user_unsubscribed: "您已成功註銷！抱歉給您帶來困擾。然而，您仍然可以給我們留下您的比特幣地址以獲得您的打賞。"
+  tip_amounts:
+    undecided: "未決定"
+    free: "免費: 0%"
+    tiny: "微小: 0.1%"
+    small: "偏小: 0.5%"
+    normal: "中等: 1%"
+    big: "偏大: 2%"
+    huge: "巨大: 5%"
+  js:
+    errors:
+      value:
+        invalid: 數值無效
+      email:
+        invalid: 無效電子郵箱地址
+        blank: 電子郵箱地址為必填且不能為空
+      password:
+        blank: 密碼為必填且不能為空
+        invalid: 密碼和確認密碼不相同
+      password_confirmation:
+        blank: 確認密碼為必填且不能為空
+        invalid: 密碼和確認密碼不相同
+  home:
+    index:
+      see_projects: 查看項目
+      how_does_it_work:
+        title: 它如何運行?
+        text: 人們給項目捐贈比特幣。當有人提交新的代碼並被接納到項目倉庫，我們將自動打賞提交的作者。
+        button: 了解更多關於比特幣的知識
+      donate:
+        title: 捐贈
+        text: 找到壹個您喜歡的項目並存入比特幣。您的捐贈將和其他捐贈者的金額壹起累積起來用於打賞給新的代碼提交。
+        button: 查找或添加項目
+      contribute:
+        title: 貢獻
+        text: 去修復壹些問題吧！如果您的提交被項目維護者接受，您將得到打賞！
+        sign_in_text: "請查收您的邀請郵件或者 %{sign_in_link}."
+        sign_up_text: "如果您還未收到邀請，您可以通過有效的郵箱地址 %{sign_up_link} 或者通過"
+        button: 支持的項目
+  projects:
+    index:
+      find_project:
+        placeholder: 輸入GitHub項目地址或者任意關鍵詞來查找...
+        button: 查找項目
+      repository: 倉庫
+      description: 描述
+      watchers: 觀察者
+      balance: 資金平衡
+      forked_from: 分岔自
+      support: 支持項目
+    show:
+      title: "貢獻給 %{project}"
+      fetch_pending: (未完成的初始拉取)
+      edit_project: 修改項目設置
+      decide_tip_amounts: 決定打賞金額
+      disabled_notifications: "項目維護者決定不再提醒新的貢獻者關於打賞的事情而且他們可能不喜歡這種方式的籌資。"
+      fee: "%{percentage} 的存款余額將被用於打賞新的代碼提交。"
+      balance: 資金平衡
+      deposits: 存款
+      custom_tip_size: (每個新提交將收到部分百分比的可用余額)
+      default_tip_size: "(每個新提交將收到 %{percentage} 的可用余額)"
+      min_tip_size: "最小打賞金額被設為 %{min_tip}，但如果可用余額小於最小打賞它將被當作壹筆更小的打賞發送"
+      unconfirmed_amount: "(%{amount} 未確定)"
+      tipping_policies: 打賞規則
+      updated_by_user: "(上壹次更新由 %{name} 於 %{date})"
+      updated_by_unknown: "(上壹次更新於 %{date})"
+      tips_paid: 已支付打賞
+      unclaimed_amount: "(%{amount} 無人認領，如果壹個月後仍然無人認領該筆金額將被退回給這個項目)"
+      last_tips: 最新打賞
+      see_all: 查看所有
+      received: "收到 %{amount}"
+      will_receive: 將接收壹次打賞
+      for_commit: 給代碼提交
+      when_decided: 當它的金額被確定
+      next_tip: 下壹次打賞
+      contribute_and_earn: 貢獻而獲取收益
+      contribute_and_earn_description: "捐贈比特幣給這個項目或者 %{make_commits_link} 來獲得打賞。如果您的代碼提交被接納 %{branch} 得到項目維護者認可而且項目有比特幣余額，您將獲得獎賞"
+      contribute_and_earn_branch: "給 <strong>%{branch}</strong> 分支"
+      make_commits_link: 提交代碼
+      tell_us_bitcoin_address: "請 %{tell_us_link} 您的比特幣地址。"
+      tell_us_link: 告訴我們
+      sign_in: "請告訴我們您的電子郵箱地址或 %{sign_in_link}."
+      promote_project: 推廣 %{project}
+      embedding: 嵌入
+      image_url: "圖片地址:"
+      shield_title: 打賞下壹個代碼提交
+    edit:
+      project_settings: "%{project} 項目設置"
+      branch: 分支
+      default_branch: 默認分支
+      tipping_policies: 打賞規則
+      hold_tips: "不要立即發送打賞。讓其他協作者可以在發送前修改打賞金額"
+      save: 保存項目設置
+      disable_notifications: 不要通知新的貢獻值
+    decide_tip_amounts:
+      commit: 代碼提交
+      author: 作者
+      message: 消息
+      tip: 打賞 (和項目資金平衡相關)
+      submit: 發送已選定的打賞金額
+    blacklisted:
+      title: 抱歉，這個項目不接受打賞！
+      message: 這個項目的作者選擇禁止項目打賞。
+  tips:
+    index:
+      tips: 打賞
+      project_tips: '%{project} 打賞'
+      user_tips: "%{user} 打賞"
+      created_at: 創建於
+      commiter: 代碼提交者
+      project: 項目
+      commit: 代碼提交
+      amount: 數額
+      refunded: 捐贈給了項目存款
+      undecided: 該打賞金額還未確定
+      no_bitcoin_address: 用戶沒有指定退款地址
+      below_threshold: "用戶的資金平衡低於退款門檻"
+      waiting: 等待退款
+      error: (發送交易錯誤)
+  deposits:
+    index:
+      project_deposits: '%{project} 存款'
+      deposits: 存款
+      created_at: 創建於
+      project: 項目
+      amount: 數額
+      transaction: 交易
+      confirmed: 已確認
+      confirmed_yes: '是'
+      confirmed_no: '否'
+  users:
+    index:
+      title: 最高貢獻者
+      name: 名字
+      commits_count: 已打賞的代碼提交
+      withdrawn: 已退款
+    show:
+      balance: 資金平衡
+      threshold: "您將收到您的錢，當您的資金平衡達到門檻 %{threshold} 的時候"
+      see_all: 查看所有
+      received: "%{time} 收到了 %{amount} 因為代碼提交 %{commit} 在 %{project}"
+      bitcoin_address_placeholder: 您的比特幣地址
+      notify: 通知我新的打賞 (每個月不多於壹封郵件)
+      submit_user: 更新用戶信息
+      change_password: 更改您的密碼
+      submit_password: 更改密碼
+      use_from_gravatar: 使用您的gravatar賬戶
+  withdrawals:
+    index:
+      title: 最後的退款
+      created_at: 創建於
+      transaction: 交易
+      result: 結果
+      error: 錯誤
+      success: 成功
+  devise:
+    sessions:
+      new:
+        title: 登錄
+        remember_me: 記住我
+        submit: 登錄
+    registrations:
+      new:
+        title: 註冊
+        submit: 註冊
+    passwords:
+      new:
+        title: 忘記您的密碼？
+        submit: 給我發送重設密碼的指引
+      edit:
+        title: 更改您的密碼
+        submit: 更改密碼
+    confirmations:
+      new:
+        title: 重新發送確認指引
+        submit: 重新發送確認指引
+    links:
+      sign_in: 登錄
+      sign_up: 註冊
+      recover: 忘記您的密碼？
+      confirm: 沒有收到確認指引？
+      sign_in_with: "用 %{provider}登錄"
+    errors:
+      primary_email: 您需要確認主要郵箱地址
+      onmiauth_info: 我們未成功獲取您的信息
+  activerecord:
+    attributes:
+      user:
+        email: 電子郵箱
+        bitcoin_address: 比特幣地址
+        password: 密碼
+        password_confirmation: 確認密碼
+        display_name: 顯示名稱
+  omniauth_providers:
+    github: GitHub
+    bitbucket: BitBucket
+  general:
+    or: 或者
+    disclaimer:
+      line1: "Tip4Commit 不隸屬於大多數項目。"
+      line2: "不保證開發人員將接受打賞。"
+      line3: "捐贈即代表您同意這些金額可以被發送給共享軟件聯盟或其他Tip4Commit裁定的地方。"
