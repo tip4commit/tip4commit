@@ -25,7 +25,7 @@ module T4c
 
     config.autoload_paths += %W[#{config.root}/lib]
     config.assets.initialize_on_precompile = true
-    config.available_locales = %w[en es fr nl ru pl hr de ro ko id ja cn hk]
+    config.available_locales = %w[en es fr nl ru pl hr de ro ko id ja pt my cn hk]
     config.active_job.queue_adapter = :sidekiq
   end
 end
