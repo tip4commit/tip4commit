@@ -60,7 +60,7 @@ en:
         button: Learn about Bitcoin
       donate:
         title: Donate
-        text: Find a project you like and deposit bitcoins into it. Your donation will be accumulated with the funds of other donators to give as tips for new commits.
+        text: Find a project you like and deposit bitcoins into it. Your donation will be accumulated with the funds of other donors to give as tips for new commits.
         button: Find or add a project
       contribute:
         title: Contribute
@@ -138,7 +138,7 @@ en:
       project_tips: '%{project} tips'
       user_tips: "%{user} tips"
       created_at: Created At
-      commiter: Commiter
+      commiter: Committer
       project: Project
       commit: Commit
       amount: Amount
