@@ -35,6 +35,7 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'sawyer', '~> 0.8.0'
 gem 'sdoc', group: :doc, require: false
 gem 'sidekiq'
+gem 'sprockets', '~> 2.12.5'
 gem 'therubyracer', '~> 0.12.2', platforms: :ruby
 gem 'turbolinks', '~> 2.5.0'
 gem 'twitter-bootstrap-rails',    github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
