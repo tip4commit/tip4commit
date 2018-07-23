@@ -4,7 +4,7 @@ Tip4commit
 [![tip for next commit](https://tip4commit.com/projects/307.svg)](https://tip4commit.com/projects/307)
 [![Build Status](https://travis-ci.org/tip4commit/tip4commit.svg?branch=master)](https://travis-ci.org/tip4commit/tip4commit)
 
-Спонсируйте проекты с открытым исходным кодом или получайте вознаграждения за вклад в код.
+Спонсируйте проекты с открытым исходным кодом или получайте вознаграждения за вклад в разработку.
 
 Имя | Ссылка
 ----|----|
