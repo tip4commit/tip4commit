@@ -14,7 +14,7 @@ Tip4commit
 Проблемы | https://github.com/tip4commit/tip4commit/issues
 Твиттер | https://twitter.com/tip4commit
 
-Раработчикам
+Разработчикам
 ==========
 
 Если вы желаете внести вклад в разработку проекта tip4commit, вы можете найти инструкции по внесению изменений в код и инструкции по установке в [инструкции разработчика](https://github.com/tip4commit/tip4commit/wiki/Developer-README)
