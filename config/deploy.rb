@@ -7,7 +7,7 @@ set :deploy_to, '/home/apps/t4c'
 set :scm, :git
 
 set :rvm_type, :user
-set :rvm_ruby_version, '2.4.2'
+set :rvm_ruby_version, '2.4.5'
 set :rvm_custom_path, '~/.rvm'
 
 set :format, :pretty
