@@ -2,7 +2,16 @@ require 'spec_helper'
 
 describe UserMailer do
   describe 'new_tip' do
-    let(:user) { mock_model User, name: 'kd', email: 'kd.engineer@yahoo.co.in', display_name: 'kuldeep aggarwal', login_token: 'my login token', balance: 10 }
+    let(:user) do
+      mock_model(
+        User,
+        name: 'kd',
+        email: 'kd.engineer@yahoo.co.in',
+        display_name: 'kuldeep aggarwal',
+        login_token: 'my login token',
+        balance: 10
+      )
+    end
     let(:project) { mock_model Project, full_name: 'logger-extension' }
     let(:tip) { mock_model Tip, amount: 0.0001, project: project }
     let(:mail) { UserMailer.new_tip(user, tip) }
@@ -27,7 +36,7 @@ describe UserMailer do
       expected_text = [
         'Please, log in and tell us your bitcoin address to get it.</p>',
         '<p>Your current balance is <nobr>0.00000010 Ƀ</nobr>'
-      ].join("\n")
+      ].join("\r\n")
       expect(mail.body.encoded).to match expected_text
     end
 

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.4.2'
 
-gem 'rails', '4.2.10'
+gem 'rails', '4.2.11'
 
 gem 'acts_as_paranoid', github: 'ActsAsParanoid/acts_as_paranoid'
 gem 'airbrake', '~> 3.1.15'
@@ -23,7 +23,7 @@ gem 'jquery-turbolinks'
 gem 'kaminari', '~> 0.15.0'
 gem 'kaminari-i18n'
 gem 'less-rails', '~> 2.4.2'
-gem 'money-tree', '~> 0.9.0'
+gem 'money-tree', '~> 0.10.0'
 gem 'mysql2', group: :production
 gem 'octokit', '~> 4.7.0'
 gem 'omniauth', '~> 1.7.1'
@@ -66,6 +66,6 @@ group :test do
   gem 'rspec-activemodel-mocks'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov'
-  gem 'webmock'
   gem 'vcr'
+  gem 'webmock'
 end
