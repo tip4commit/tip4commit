@@ -17,7 +17,7 @@
     %tbody
       - @deposits.each do |deposit|
         %tr
-          %td= l deposit.created_at, format: :short
+          %td= l deposit.created_at, format: :long
           - unless @project
             %td= link_to(deposit.project.full_name, pretty_project_path(deposit.project))
           %td= btc_human deposit.amount
