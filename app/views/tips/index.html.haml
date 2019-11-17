@@ -20,7 +20,7 @@
     %tbody
       - @tips.each do |tip|
         %tr
-          %td= l tip.created_at, format: :short
+          %td= l tip.created_at, format: :long
           - unless @user
             %td
               - if tip.user.nickname.blank?

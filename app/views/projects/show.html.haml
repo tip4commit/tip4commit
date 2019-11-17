@@ -78,7 +78,7 @@
       %ul
         - @recent_tips.each do |tip|
           %li
-            = l tip.created_at, format: :short
+            = l tip.created_at, format: :long
             - if tip.user.nickname.blank?
               = tip.user.display_name
             - else

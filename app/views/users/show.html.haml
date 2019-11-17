@@ -18,7 +18,7 @@
   %ul
     - @recent_tips.each do |tip|
       %li
-        = raw t('.received', time: l(tip.created_at, format: :short), amount: btc_human(tip.amount), commit: (tip.commit.start_with?('http') ? link_to('details', tip.commit, target: :blank) : link_to(tip.commit[0..6], "https://github.com/#{tip.project.full_name}/commit/#{tip.commit}", target: :blank)), project: link_to(tip.project.full_name, pretty_project_path(tip.project)))
+        = raw t('.received', time: l(tip.created_at, format: :long), amount: btc_human(tip.amount), commit: (tip.commit.start_with?('http') ? link_to('details', tip.commit, target: :blank) : link_to(tip.commit[0..6], "https://github.com/#{tip.project.full_name}/commit/#{tip.commit}", target: :blank)), project: link_to(tip.project.full_name, pretty_project_path(tip.project)))
 
 %p
   %strong= User.human_attribute_name(:email)
