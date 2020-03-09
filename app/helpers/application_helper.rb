@@ -151,11 +151,11 @@ module ApplicationHelper
   end
 
   def get_rate(currency)
-    Rails.cache.fetch('###' + currency, expires_in: 24.hours) do
-      uri = URI('https://apiv2.bitcoinaverage.com/indices/global/ticker/BTC' + currency)
+    Rails.cache.fetch('###' + currency, expires_in: 1.hours) do
+      uri = URI('https://api.coindesk.com/v1/bpi/currentprice/' + currency + '.json')
       response = Net::HTTP.get_response(uri)
       hash = JSON.parse(response.body)
-      hash['averages']['day'].to_f
+      hash['bpi'][currency]['rate_float'].to_f
     end
   end
 
