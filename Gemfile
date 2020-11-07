@@ -1,11 +1,12 @@
 source 'https://rubygems.org'
 
-ruby '2.4.5'
+ruby '2.4.9'
 
-gem 'rails', '4.2.11'
+gem 'rails', '4.2.11.3'
 
 gem 'acts_as_paranoid', github: 'ActsAsParanoid/acts_as_paranoid'
 gem 'airbrake', '~> 3.1.15'
+gem 'bcrypt', '~> 3.1.12'
 gem 'bootstrap_form', github: 'bootstrap-ruby/rails-bootstrap-forms'
 gem 'cancancan'
 gem 'coffee-rails', '~> 4.0.0'
@@ -24,7 +25,7 @@ gem 'kaminari', '~> 0.15.0'
 gem 'kaminari-i18n'
 gem 'less-rails', '~> 2.4.2'
 gem 'money-tree', '~> 0.10.0'
-gem 'mysql2', group: :production
+gem 'mysql2', '~> 0.4.10', group: :production
 gem 'octokit', '~> 4.7.0'
 gem 'omniauth', '~> 1.7.1'
 gem 'omniauth-github', github: 'alexandrz/omniauth-github', branch: 'provide_emails'
