@@ -51,8 +51,7 @@ group :development do
 
   # add ed25519 support to net-ssh
   gem 'bcrypt_pbkdf',       '~> 1.0.0'
-  gem 'rbnacl'
-  gem 'rbnacl-libsodium'
+  gem 'rbnacl',             '< 5'
 end
 
 group :development, :test do
