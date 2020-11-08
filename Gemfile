@@ -27,8 +27,8 @@ gem 'less-rails', '~> 2.4.2'
 gem 'money-tree', '~> 0.10.0'
 gem 'mysql2', '~> 0.4.10', group: :production
 gem 'octokit', '~> 4.7.0'
-gem 'omniauth', '~> 1.7.1'
-gem 'omniauth-github', github: 'alexandrz/omniauth-github', branch: 'provide_emails'
+gem 'omniauth', '~> 1.9.1'
+gem 'omniauth-github'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'render_csv'
 gem 'rest-client'
@@ -51,8 +51,8 @@ group :development do
 
   # add ed25519 support to net-ssh
   gem 'bcrypt_pbkdf',       '~> 1.0.0'
-  gem 'rbnacl',             '~> 3.4.0'
-  gem 'rbnacl-libsodium',   '~> 1.0.0'
+  gem 'rbnacl'
+  gem 'rbnacl-libsodium'
 end
 
 group :development, :test do
