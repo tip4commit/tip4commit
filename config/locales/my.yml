@@ -76,6 +76,7 @@ my:
       repository: Repositori
       description: Penghuraian
       watchers: Pemerhati
+      date_last_commit: Last Commit Date
       balance: Baki
       forked_from: dicabut dari
       support: Sokong projek

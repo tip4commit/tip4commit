@@ -76,6 +76,7 @@ de:
       repository: Repository
       description: Beschreibung
       watchers: Beobachter
+      date_last_commit: Last Commit Date
       balance: Vorhandene Geldmenge
       forked_from: Abzweigung von
       support: Projekt unterstützen

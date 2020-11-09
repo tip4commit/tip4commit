@@ -76,6 +76,7 @@ nl:
       repository: Repository
       description: Omschrijving
       watchers: Watchers
+      date_last_commit: Last Commit Date
       balance: Saldo
       forked_from: forked van
       support: Steun project

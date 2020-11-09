@@ -76,6 +76,7 @@ id:
       repository: Repository
       description: Deskripsi
       watchers: Pengintai
+      date_last_commit: Last Commit Date
       balance: Saldo
       forked_from: Cabang dari
       support: Support proyek

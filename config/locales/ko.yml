@@ -78,6 +78,7 @@ ko:
       repository: Repository
       description: 설명
       watchers: Watchers
+      date_last_commit: Last Commit Date
       balance: 잔고
       forked_from: forked from
       support: 프로젝트 보기

@@ -76,6 +76,7 @@ ja:
       repository: レポジトリ
       description: 説明
       watchers: ウォッチャー
+      date_last_commit: Last Commit Date
       balance: 残高
       forked_from: フォーク元
       support: 支援する

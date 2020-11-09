@@ -76,6 +76,7 @@ ro:
       repository: Repository
       description: Descriere
       watchers: Urmăritori
+      date_last_commit: Last Commit Date
       balance: Balanță
       forked_from: bifurcat din
       support: Suportă proiectul

@@ -76,6 +76,7 @@ es:
       repository: Repositorio
       description: Descripción
       watchers: Seguidores
+      date_last_commit: Last Commit Date
       balance: Balance
       forked_from: copiado de
       support: Soporta este proyecto

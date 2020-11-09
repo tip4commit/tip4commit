@@ -78,6 +78,7 @@ en:
       repository: Repository
       description: Description
       watchers: Watchers
+      date_last_commit: Last Commit Date
       balance: Balance
       forked_from: forked from
       support: Support project

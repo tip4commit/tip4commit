@@ -76,6 +76,7 @@ fr:
       repository: Dépôt
       description: Description
       watchers: Observateurs
+      date_last_commit: Last Commit Date
       balance: Fonds
       forked_from: forké depuis
       support: Subventionner
