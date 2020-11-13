@@ -3,15 +3,15 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def github
     @user = User.find_by(nickname: @omniauth_info.nickname) ||
-            User.find_by(email: @omniauth_info.verified_emails)
+            User.find_by(email: @omniauth_info.email)
 
     if @user.present?
-      if @omniauth_info.primary_email.present? && @user.email != @omniauth_info.primary_email
+      if @omniauth_info.email.present? && @user.email != @omniauth_info.email
         # update email if it has been changed
-        @user.update email: @omniauth_info.primary_email
+        @user.update email: @omniauth_info.email
       end
     else # user not found
-      if @omniauth_info.primary_email.present?
+      if @omniauth_info.email.present?
         @user = User.create_with_omniauth!(@omniauth_info)
       else
         set_flash_message(:error, :failure, kind: 'GitHub', reason: I18n.t('devise.errors.primary_email'))

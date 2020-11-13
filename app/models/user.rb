@@ -63,9 +63,10 @@ class User < ActiveRecord::Base
   def self.create_with_omniauth!(auth_info)
     generated_password = Devise.friendly_token.first(Devise.password_length.min)
     create do |user|
-      user.email    = auth_info.primary_email
+      user.email    = auth_info.email
       user.password = generated_password
       user.nickname = auth_info.nickname
+      user.display_name = auth_info.name
       user.skip_confirmation!
     end
   end
