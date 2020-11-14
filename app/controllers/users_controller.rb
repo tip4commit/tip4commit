@@ -34,6 +34,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    if params[:user][:email] == @user.email
+      sign_out(current_user)
+      @user.destroy
+      redirect_to root_url, notice: I18n.t('notices.account_deleted')
+    else
+      redirect_to @user, alert: I18n.t('errors.invalid_email')
+    end
+  end
 
   private
 

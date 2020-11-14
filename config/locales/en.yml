@@ -25,11 +25,13 @@ en:
     wrong_bitcoin_address: Error updating bitcoin address
     user_not_found: User not found
     access_denied: You are not authorized to perform this action!
+    invalid_email: Invalid email
   notices:
     project_updated: The project settings have been updated
     tips_decided: The tip amounts have been defined
     user_updated: Your information saved!
     user_unsubscribed: "You unsubscribed! Sorry for bothering you. Although, you can still leave us your bitcoin address to get your tips."
+    account_deleted: Your account was deleted
   tip_amounts:
     undecided: "Undecided"
     free: "Free: 0%"
@@ -176,6 +178,9 @@ en:
       change_password: Change your password
       submit_password: Change my password
       use_from_gravatar: Use from your gravatar profile
+      delete_account: Delete Account
+      delete_account_notice: Enter your bitcoin address and click the button below to delete your account. This account will be gone forever, but you will still be able to sign up with the same github account. Please be certain.
+      delete_account_confirm: Delete this account!
   withdrawals:
     index:
       title: Last Withdrawals
