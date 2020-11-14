@@ -13,3 +13,11 @@ end
 Given /^a developer named "(.*?)" exists (with|without?) a bitcoin address$/ do |nickname , with|
   (@users ||= {})[nickname] ||= (create_user nickname , (with.eql? 'with'))
 end
+
+Then /^a developer named "(.*?)" does not exist$/ do |nickname|
+  User.where(nickname: nickname).first.should be_nil
+end
+
+Then /^a developer named "(.*?)" exists$/ do |nickname|
+  User.where(nickname: nickname).first.should_not be_nil
+end

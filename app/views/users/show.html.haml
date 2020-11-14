@@ -45,3 +45,12 @@
   = f.password_field :password, autofocus: true, autocomplete: "off"
   = f.password_field :password_confirmation, autocomplete: "off"
   = f.submit t('.submit_password')
+
+%br
+%p
+  %strong= link_to t('.delete_account'), '#delete_user_form', data: {toggle: "collapse"}
+
+= twitter_bootstrap_form_for @user, html: {class: (params[:delete_user] ? '' : 'collapse'), id: 'delete_user_form', method: 'DELETE'} do |f|
+  %p= t('.delete_account_notice')
+  = f.text_field :email, value: '', autocomplete: "off"
+  = f.submit t('.delete_account_confirm'), class: 'btn-danger'
