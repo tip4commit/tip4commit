@@ -63,8 +63,6 @@ Given(/^a "(.*?)" project named "(.*?)" exists$/) do |provider , project_name|
     @current_project = create_github_project    project_name , false
   else raise "unknown provider \"#{provider}\""
   end
-
-  step "the project collaborators are:" , (Cucumber::Ast::Table.new [])
 end
 
 When /^regarding the "(.*?)" project named "(.*?)"$/ do |provider , project_name|
