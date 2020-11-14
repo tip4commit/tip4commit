@@ -133,8 +133,8 @@ Feature: The site routes pretty paths uniformly
     Given I'm signed in as "seldon"
     When  I visit the "seldon user" page
     Then  I should be on the "seldon user" page
-    And   I should see "seldon Balance 0.00000000 Ƀ"
-    And   I should see "E-mail seldon@example.com"
+    And   I should see "seldon\nBalance\n0.00000000 Ƀ"
+    And   I should see "E-mail\nseldon@example.com"
     And   I should see "Bitcoin address"
 
   @vcr
@@ -142,8 +142,8 @@ Feature: The site routes pretty paths uniformly
     Given I'm signed in as "seldon"
     When  I browse to the explicit path "users/seldon"
     Then  I should be on the "seldon user" page
-    And   I should see "seldon Balance 0.00000000 Ƀ"
-    And   I should see "E-mail seldon@example.com"
+    And   I should see "seldon\nBalance\n0.00000000 Ƀ"
+    And   I should see "E-mail\nseldon@example.com"
     And   I should see "Bitcoin address"
 
   Scenario: Unknown user tips page user name redirects to users page

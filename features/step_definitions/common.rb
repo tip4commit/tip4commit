@@ -140,7 +140,7 @@ Given(/^I check "(.*?)"$/) do |arg1|
 end
 
 Then(/^I should see "(.*?)"$/) do |arg1|
-  page.should have_content(arg1)
+  page.should have_content(arg1.gsub('\n', "\n"))
 end
 
 Then(/^I should not see "(.*?)"$/) do |arg1|

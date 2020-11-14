@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.4.9'
+ruby '2.5.8'
 
 gem 'rails', '4.2.11.3'
 
@@ -11,7 +11,7 @@ gem 'bootstrap_form', github: 'bootstrap-ruby/rails-bootstrap-forms'
 gem 'cancancan'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'demoji'
-gem 'devise', '~> 3.5.2'
+gem 'devise', '~> 4.7.3'
 gem 'devise-i18n'
 gem 'dusen', '~> 0.6.1'
 gem 'easy_gravatar'
@@ -61,10 +61,10 @@ group :development, :test do
 end
 
 group :test do
-  gem 'cucumber-rails', require: false
+  gem 'cucumber-rails',          '~> 1.0', require: false
   gem 'database_cleaner'
   gem 'rspec-activemodel-mocks'
-  gem 'shoulda-matchers', '~> 3.1'
+  gem 'shoulda-matchers',        '~> 3.1'
   gem 'simplecov'
   gem 'vcr'
   gem 'webmock'

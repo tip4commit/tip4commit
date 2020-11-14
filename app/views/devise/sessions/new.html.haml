@@ -1,5 +1,5 @@
 = twitter_bootstrap_form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-devise session_form' }) do |f|
-  = devise_error_messages!
+  = render "devise/shared/error_messages", resource: resource
   %h2= t('.title')
   = f.email_field :email, :autofocus => true
   = f.password_field :password, :autocomplete => "off"
