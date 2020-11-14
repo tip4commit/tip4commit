@@ -179,7 +179,7 @@ en:
       submit_password: Change my password
       use_from_gravatar: Use from your gravatar profile
       delete_account: Delete Account
-      delete_account_notice: Enter your bitcoin address and click the button below to delete your account. This account will be gone forever, but you will still be able to sign up with the same github account. Please be certain.
+      delete_account_notice: Enter your email address and click the button below to delete your account. This account will be gone forever, but you will still be able to sign up with the same github account. Please be certain.
       delete_account_confirm: Delete this account!
   withdrawals:
     index:
