@@ -15,7 +15,7 @@ gem 'devise', '~> 4.7.3'
 gem 'devise-i18n'
 gem 'dusen', '~> 0.6.1'
 gem 'easy_gravatar'
-gem 'haml-rails', '~> 0.5.3'
+gem 'haml-rails', '~> 1.0'
 gem 'http_accept_language'
 gem 'i18n-js'
 gem 'jbuilder', '~> 1.5.3'
@@ -56,7 +56,7 @@ end
 
 group :development, :test do
   gem 'factory_girl_rails', '~> 4.3.0'
-  gem 'rspec-rails',        '~> 3.5.0'
+  gem 'rspec-rails',        '~> 4.0'
   gem 'sqlite3',            '~> 1.3.11'
 end
 
