@@ -40,7 +40,7 @@ gem 'sidekiq'
 gem 'sprockets', '~> 2.12.5'
 gem 'therubyracer', '~> 0.12.2', platforms: :ruby
 gem 'turbolinks', '~> 2.5.0'
-gem 'twitter-bootstrap-rails',    github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
+gem 'twitter-bootstrap-rails'
 gem 'uglifier', '>= 1.3.0'
 
 group :development do
