@@ -8,7 +8,7 @@ gem 'acts_as_paranoid', github: 'ActsAsParanoid/acts_as_paranoid'
 gem 'airbrake', '~> 3.1.15'
 gem 'bcrypt', '~> 3.1.12'
 gem 'bech32', '~> 1.0.5'
-gem 'bootstrap_form', github: 'bootstrap-ruby/rails-bootstrap-forms'
+gem 'bootstrap_form', '~> 2.7.0'
 gem 'cancancan'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'demoji'
@@ -41,7 +41,6 @@ gem 'sprockets', '~> 2.12.5'
 gem 'therubyracer', '~> 0.12.2', platforms: :ruby
 gem 'turbolinks', '~> 2.5.0'
 gem 'twitter-bootstrap-rails',    github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
-gem 'twitter_bootstrap_form_for', github: 'stouset/twitter_bootstrap_form_for'
 gem 'uglifier', '>= 1.3.0'
 
 group :development do

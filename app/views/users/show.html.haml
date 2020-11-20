@@ -23,7 +23,7 @@
 %p
   %strong= User.human_attribute_name(:email)
 %p= @user.email
-= twitter_bootstrap_form_for @user do |f|
+= bootstrap_form_for @user do |f|
   = f.text_field :bitcoin_address, placeholder: t('.bitcoin_address_placeholder')
   - if @user.gravatar_bitcoin.present?
     %span.from-gravatar{data:{for: 'user[bitcoin_address]', value: @user.gravatar_bitcoin }}
@@ -33,14 +33,14 @@
     %span.from-gravatar{data:{for: 'user[display_name]', value: @user.gravatar_display_name }}
       = "#{t('.use_from_gravatar')}: #{@user.gravatar_display_name}"
   - if f.object.bitcoin_address.blank?
-    = f.check_box :unsubscribed, t('.notify'), { checked: !f.object.unsubscribed? }, '0', '1'
+    = f.check_box :unsubscribed, { label: t('.notify'), checked: !f.object.unsubscribed? }, '0', '1'
   %br
   = f.submit t('.submit_user')
 %br
 %p
   %strong= link_to t('.change_password'), '#new_password_form', data: {toggle: "collapse"}
 
-= twitter_bootstrap_form_for @user, html: {class: (params[:new_password] ? '' : 'collapse'), id: 'new_password_form'} do |f|
+= bootstrap_form_for @user, html: {class: (params[:new_password] ? '' : 'collapse'), id: 'new_password_form'} do |f|
   = hidden_field_tag :new_password, value: true
   = f.password_field :password, autofocus: true, autocomplete: "off"
   = f.password_field :password_confirmation, autocomplete: "off"
@@ -50,7 +50,7 @@
 %p
   %strong= link_to t('.delete_account'), '#delete_user_form', data: {toggle: "collapse"}
 
-= twitter_bootstrap_form_for @user, html: {class: (params[:delete_user] ? '' : 'collapse'), id: 'delete_user_form', method: 'DELETE'} do |f|
+= bootstrap_form_for @user, html: {class: (params[:delete_user] ? '' : 'collapse'), id: 'delete_user_form', method: 'DELETE'} do |f|
   %p= t('.delete_account_notice')
   = f.text_field :email, value: '', autocomplete: "off"
-  = f.submit t('.delete_account_confirm'), class: 'btn-danger'
+  = f.submit t('.delete_account_confirm'), class: 'btn btn-danger'

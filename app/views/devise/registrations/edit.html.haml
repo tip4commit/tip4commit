@@ -1,4 +1,4 @@
-= twitter_bootstrap_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, class: 'form-devise' }) do |f|
+= bootstrap_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, class: 'form-devise' }) do |f|
   %h2
     Edit #{resource_name.to_s.humanize}
   = render "devise/shared/error_messages", resource: resource
