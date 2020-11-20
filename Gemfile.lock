@@ -1,11 +1,3 @@
-GIT
-  remote: git://github.com/ActsAsParanoid/acts_as_paranoid.git
-  revision: ddcd1915179c73f74985af6bc8935321ca2fe08d
-  specs:
-    acts_as_paranoid (0.5.0.beta1)
-      activerecord (~> 4.0)
-      activesupport (~> 4.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -43,6 +35,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts_as_paranoid (0.6.3)
+      activerecord (>= 4.2, < 7.0)
+      activesupport (>= 4.2, < 7.0)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     airbrake (3.1.15)
@@ -381,7 +376,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_paranoid!
+  acts_as_paranoid
   airbrake (~> 3.1.15)
   bcrypt (~> 3.1.12)
   bcrypt_pbkdf (~> 1.0.0)

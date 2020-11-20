@@ -4,7 +4,7 @@ ruby '2.5.8'
 
 gem 'rails', '4.2.11.3'
 
-gem 'acts_as_paranoid', github: 'ActsAsParanoid/acts_as_paranoid'
+gem 'acts_as_paranoid'
 gem 'airbrake', '~> 3.1.15'
 gem 'bcrypt', '~> 3.1.12'
 gem 'bech32', '~> 1.0.5'
