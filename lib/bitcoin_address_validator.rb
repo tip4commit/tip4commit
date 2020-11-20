@@ -9,12 +9,41 @@ class BitcoinAddressValidator < ActiveModel::EachValidator
 
   private
 
+  BECH32_HRP = {
+    mainnet: 'bc',
+    testnet: 'tb'
+  }.freeze
+
+  def valid_bitcoin_address?(addr)
+    valid_segwit_address?(addr) || valid_legacy_address?(addr)
+  end
+
+  def valid_segwit_address?(addr)
+    segwit_addr = parse_segwit_address(addr)
+    return true if segwit_addr && segwit_addr.hrp == BECH32_HRP[CONFIG['network'].to_sym]
+
+    false
+  end
+
+  def parse_segwit_address(addr)
+    Bech32::SegwitAddr.new(addr)
+  rescue RuntimeError => e
+    return nil if e.message == 'Invalid address.'
+
+    raise
+  end
+
   B58Chars = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
   B58Base = B58Chars.length
 
-  def valid_bitcoin_address?(address)
+  EXPECTED_VERSIONS = {
+    mainnet: [0, 5],
+    testnet: [111, 196]
+  }.freeze
+
+  def valid_legacy_address?(address)
     if (address =~ /^[a-zA-Z1-9]{33,35}$/) and version = version(address)
-      if (expected_versions = CONFIG["address_versions"]).present?
+      if (expected_versions = EXPECTED_VERSIONS[CONFIG['network'].to_sym]).present?
         expected_versions.include?(version.ord)
       else
         true

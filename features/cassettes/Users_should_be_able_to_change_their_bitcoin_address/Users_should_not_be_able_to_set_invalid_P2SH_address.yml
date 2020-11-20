@@ -1,0 +1,419 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.gravatar.com/2a143fe61195731f2191768efee317a8.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - www.gravatar.com
+  response:
+    status:
+      code: 302
+      message: Found
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 20 Nov 2020 08:01:01 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+      P3p:
+      - CP="CAO PSA"
+      X-Frame-Options:
+      - SAMEORIGIN
+      Expires:
+      - Wed, 11 Jan 1984 05:00:00 GMT
+      Last-Modified:
+      - Fri, 20 Nov 2020 08:01:01 GMT
+      Cache-Control:
+      - no-cache, must-revalidate, max-age=0
+      Pragma:
+      - no-cache
+      Location:
+      - https://en.gravatar.com/2a143fe61195731f2191768efee317a8.json
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 20 Nov 2020 08:01:01 GMT
+- request:
+    method: get
+    uri: https://en.gravatar.com/2a143fe61195731f2191768efee317a8.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - en.gravatar.com
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 20 Nov 2020 08:01:01 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="CAO PSA"
+      Expires:
+      - Wed, 11 Jan 1984 05:00:00 GMT
+      Last-Modified:
+      - Fri, 20 Nov 2020 08:01:01 GMT
+      Cache-Control:
+      - no-cache, must-revalidate, max-age=0
+      Pragma:
+      - no-cache
+      X-Frame-Options:
+      - SAMEORIGIN
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS
+    body:
+      encoding: ASCII-8BIT
+      string: '"User not found"'
+    http_version: 
+  recorded_at: Fri, 20 Nov 2020 08:01:02 GMT
+- request:
+    method: get
+    uri: https://www.gravatar.com/2a143fe61195731f2191768efee317a8.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - www.gravatar.com
+  response:
+    status:
+      code: 302
+      message: Found
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 20 Nov 2020 08:01:02 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+      P3p:
+      - CP="CAO PSA"
+      X-Frame-Options:
+      - SAMEORIGIN
+      Expires:
+      - Wed, 11 Jan 1984 05:00:00 GMT
+      Last-Modified:
+      - Fri, 20 Nov 2020 08:01:02 GMT
+      Cache-Control:
+      - no-cache, must-revalidate, max-age=0
+      Pragma:
+      - no-cache
+      Location:
+      - https://en.gravatar.com/2a143fe61195731f2191768efee317a8.json
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 20 Nov 2020 08:01:02 GMT
+- request:
+    method: get
+    uri: https://en.gravatar.com/2a143fe61195731f2191768efee317a8.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - en.gravatar.com
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 20 Nov 2020 08:01:02 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="CAO PSA"
+      Expires:
+      - Wed, 11 Jan 1984 05:00:00 GMT
+      Last-Modified:
+      - Fri, 20 Nov 2020 08:01:02 GMT
+      Cache-Control:
+      - no-cache, must-revalidate, max-age=0
+      Pragma:
+      - no-cache
+      X-Frame-Options:
+      - SAMEORIGIN
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS
+    body:
+      encoding: ASCII-8BIT
+      string: '"User not found"'
+    http_version: 
+  recorded_at: Fri, 20 Nov 2020 08:01:02 GMT
+- request:
+    method: get
+    uri: https://www.gravatar.com/2a143fe61195731f2191768efee317a8.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - www.gravatar.com
+  response:
+    status:
+      code: 302
+      message: Found
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 20 Nov 2020 08:01:03 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+      P3p:
+      - CP="CAO PSA"
+      X-Frame-Options:
+      - SAMEORIGIN
+      Expires:
+      - Wed, 11 Jan 1984 05:00:00 GMT
+      Last-Modified:
+      - Fri, 20 Nov 2020 08:01:03 GMT
+      Cache-Control:
+      - no-cache, must-revalidate, max-age=0
+      Pragma:
+      - no-cache
+      Location:
+      - https://en.gravatar.com/2a143fe61195731f2191768efee317a8.json
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 20 Nov 2020 08:01:03 GMT
+- request:
+    method: get
+    uri: https://en.gravatar.com/2a143fe61195731f2191768efee317a8.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - en.gravatar.com
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 20 Nov 2020 08:01:03 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="CAO PSA"
+      Expires:
+      - Wed, 11 Jan 1984 05:00:00 GMT
+      Last-Modified:
+      - Fri, 20 Nov 2020 08:01:03 GMT
+      Cache-Control:
+      - no-cache, must-revalidate, max-age=0
+      Pragma:
+      - no-cache
+      X-Frame-Options:
+      - SAMEORIGIN
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS
+    body:
+      encoding: ASCII-8BIT
+      string: '"User not found"'
+    http_version: 
+  recorded_at: Fri, 20 Nov 2020 08:01:03 GMT
+- request:
+    method: get
+    uri: https://www.gravatar.com/2a143fe61195731f2191768efee317a8.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - www.gravatar.com
+  response:
+    status:
+      code: 302
+      message: Found
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 20 Nov 2020 08:01:03 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+      P3p:
+      - CP="CAO PSA"
+      X-Frame-Options:
+      - SAMEORIGIN
+      Expires:
+      - Wed, 11 Jan 1984 05:00:00 GMT
+      Last-Modified:
+      - Fri, 20 Nov 2020 08:01:03 GMT
+      Cache-Control:
+      - no-cache, must-revalidate, max-age=0
+      Pragma:
+      - no-cache
+      Location:
+      - https://en.gravatar.com/2a143fe61195731f2191768efee317a8.json
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 20 Nov 2020 08:01:04 GMT
+- request:
+    method: get
+    uri: https://en.gravatar.com/2a143fe61195731f2191768efee317a8.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - en.gravatar.com
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 20 Nov 2020 08:01:04 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      P3p:
+      - CP="CAO PSA"
+      Expires:
+      - Wed, 11 Jan 1984 05:00:00 GMT
+      Last-Modified:
+      - Fri, 20 Nov 2020 08:01:04 GMT
+      Cache-Control:
+      - no-cache, must-revalidate, max-age=0
+      Pragma:
+      - no-cache
+      X-Frame-Options:
+      - SAMEORIGIN
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS
+    body:
+      encoding: ASCII-8BIT
+      string: '"User not found"'
+    http_version: 
+  recorded_at: Fri, 20 Nov 2020 08:01:04 GMT
+recorded_with: VCR 3.0.3

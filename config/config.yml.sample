@@ -40,6 +40,5 @@ min_tip: 50000 # optional
 
 deposit_address: 1M4bS4gPyA6Kb8w7aXsgth9oUZWcRk73tQ
 
-address_versions: # 0/5 for bitcoin addresses, 111/196 for testnet, see chainparams.cpp
-  - 0
-  - 5
+# Can be testnet or mainnet
+network: mainnet
