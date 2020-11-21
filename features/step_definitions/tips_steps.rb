@@ -23,9 +23,9 @@ def add_new_commit(commit_id, nickname, params = {})
     commit: {
       message: "Some changes",
       author: {
-        email: "#{nickname}@example.com",
-      },
-    },
+        email: "#{nickname}@example.com"
+      }
+    }
   }
 
   project_id                            = @current_project.id
@@ -167,10 +167,10 @@ Given(/^I send a forged request to set the amount of the first undecided tip of 
       tips_attributes: {
         "0" => {
           id: tip.id,
-          amount_percentage: "5",
-        },
-      },
-    },
+          amount_percentage: "5"
+        }
+      }
+    }
   }
 
   page.driver.browser.process_and_follow_redirects(:patch, decide_tip_amounts_project_path(@current_project), params)
@@ -184,10 +184,10 @@ When(/^I send a forged request to change the percentage of commit "(.*?)" to "(.
       tips_attributes: {
         "0" => {
           id: tip.id,
-          amount_percentage: percentage,
-        },
-      },
-    },
+          amount_percentage: percentage
+        }
+      }
+    }
   }
 
   path = decide_tip_amounts_project_path @current_project

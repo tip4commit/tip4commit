@@ -90,18 +90,18 @@ class Tip < ApplicationRecord
   after_save :notify_user_if_just_decided
 
   def self.refund_unclaimed
-    unclaimed.non_refunded.
-    where.not(decided_at: nil).
-    where('tips.decided_at < ?', 1.month.ago).
-    find_each do |tip|
+    unclaimed.non_refunded
+    .where.not(decided_at: nil)
+    .where('tips.decided_at < ?', 1.month.ago)
+    .find_each do |tip|
       tip.touch :refunded_at
     end
   end
 
   def self.auto_decide_older_tips
-    undecided.non_refunded.
-    where('tips.created_at < ?', 1.month.ago).
-    find_each do |tip|
+    undecided.non_refunded
+    .where('tips.created_at < ?', 1.month.ago)
+    .find_each do |tip|
       tip.amount_percentage = 1
       tip.save
     end

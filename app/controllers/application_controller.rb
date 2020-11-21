@@ -41,8 +41,8 @@ class ApplicationController < ActionController::Base
         redirect_to project_deposits_pretty_path @project.host, @project.full_name
       end
     elsif is_pretty_path
-      @project = Project.where(host: params[:service]).
-                         where('lower(`full_name`) = ?', params[:repo].downcase).first
+      @project = Project.where(host: params[:service])
+                         .where('lower(`full_name`) = ?', params[:repo].downcase).first
     end
 
     if @project.nil?

@@ -6,18 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 17
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: leading, trailing
-Layout/DotPosition:
-  Exclude:
-    - 'app/controllers/application_controller.rb'
-    - 'app/controllers/deposits_controller.rb'
-    - 'app/controllers/tips_controller.rb'
-    - 'app/models/project.rb'
-    - 'app/models/tip.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyleAlignWith, Severity.
@@ -641,23 +629,6 @@ Style/TernaryParentheses:
   Exclude:
     - 'app/controllers/application_controller.rb'
     - 'features/step_definitions/home_steps.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyleForMultiline.
-# SupportedStylesForMultiline: comma, consistent_comma, no_comma
-Style/TrailingCommaInArrayLiteral:
-  Exclude:
-    - 'spec/lib/blacklist_spec.rb'
-
-# Offense count: 13
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyleForMultiline.
-# SupportedStylesForMultiline: comma, consistent_comma, no_comma
-Style/TrailingCommaInHashLiteral:
-  Exclude:
-    - 'features/step_definitions/common.rb'
-    - 'features/step_definitions/tips_steps.rb'
 
 # Offense count: 10
 # Cop supports --auto-correct.

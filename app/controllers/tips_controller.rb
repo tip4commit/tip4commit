@@ -15,9 +15,9 @@ class TipsController < ApplicationController
     else
       @tips = Tip.with_address.includes(:project)
     end
-    @tips = @tips.order(created_at: :desc).
-                  page(params[:page]).
-                  per(params[:per_page] || 30)
+    @tips = @tips.order(created_at: :desc)
+                  .page(params[:page])
+                  .per(params[:per_page] || 30)
     respond_to do |format|
       format.html
       format.csv { render csv: @tips, except: [:updated_at, :commit, :commit_message, :refunded_at, :decided_at], add_methods: [:user_name, :project_name, :decided?, :claimed?, :paid?, :refunded?, :txid] }

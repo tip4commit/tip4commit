@@ -29,8 +29,8 @@ def mock_github_user(nickname)
     "info" => {
       "nickname"        => nickname,
       "primary_email"   => email,
-      "verified_emails" => [email],
-    },
+      "verified_emails" => [email]
+    }
   }.to_ostruct
 
   step "a developer named \"#{nickname}\" exists without a bitcoin address"

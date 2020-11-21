@@ -6,7 +6,7 @@ describe Blacklist do
       "https://github.com/author/notips",
       "https://bitbucket.org/author/notips",
       "https://github.com/notips/*",
-      "https://bitbucket.org/notips/*",
+      "https://bitbucket.org/notips/*"
     ]
 
     list = Blacklist.new(urls)
