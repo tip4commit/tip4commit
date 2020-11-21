@@ -35,5 +35,4 @@ describe Deposit, type: :model do
   ensure
     CONFIG["our_fee"] = old_fee
   end
-
 end

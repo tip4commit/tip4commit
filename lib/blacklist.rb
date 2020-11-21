@@ -22,6 +22,7 @@ class Blacklist
   end
 
   private
+
   def normalize_url(url)
     url = url.clone
 

@@ -167,5 +167,4 @@ class Tip < ApplicationRecord
   def txid
     try(:sendmany).try(:txid)
   end
-
 end

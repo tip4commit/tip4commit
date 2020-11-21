@@ -64,6 +64,7 @@ class Bitbucket
   end
 
   protected
+
   def repository_path(full_name)
     "#{base_path}#{full_name}"
   end

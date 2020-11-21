@@ -25,5 +25,4 @@ class Deposit < ApplicationRecord
   def project_name
     project.full_name
   end
-
 end

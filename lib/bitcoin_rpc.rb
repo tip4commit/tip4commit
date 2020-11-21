@@ -3,7 +3,6 @@ require 'uri'
 require 'json'
 
 class BitcoinRPC
-
   def initialize(service_url, batch_mode = false)
     @service_url = service_url
     @uri = URI.parse(service_url)
@@ -21,6 +20,7 @@ class BitcoinRPC
       post_body = { 'method' => name, 'params' => args, 'id' => 'jsonrpc' }.to_json
       resp = JSON.parse( http_post_request(post_body) )
       raise JSONRPCError, resp['error'] if resp['error']
+
       resp['result']
     end
   end
@@ -29,6 +29,7 @@ class BitcoinRPC
     post_body = reqs.to_json
     resp = JSON.parse( http_post_request(post_body) )
     raise JSONRPCError, resp if resp.length != reqs.length
+
     resp
   end
 
@@ -37,5 +38,4 @@ class BitcoinRPC
   end
 
   class JSONRPCError < RuntimeError; end
-
 end

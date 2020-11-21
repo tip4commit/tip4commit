@@ -232,6 +232,7 @@ class Project < ApplicationRecord
   def generate_bitcoin_address
     wallet = Wallet.order(created_at: :asc).last
     return unless wallet
+
     self.wallet = wallet
     self.bitcoin_address = wallet.generate_address
     save

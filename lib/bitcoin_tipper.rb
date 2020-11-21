@@ -84,6 +84,7 @@ class BitcoinTipper
       outputs = {}
       User.find_each do |user|
         next unless user.ready_for_withdrawal?
+
         user.tips.decided.unpaid.each do |tip|
           tip.update_attribute :sendmany_id, sendmany.id
           outputs[user.bitcoin_address] ||= 0

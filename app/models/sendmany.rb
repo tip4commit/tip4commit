@@ -10,7 +10,6 @@ class Sendmany < ApplicationRecord
 
     update_attribute :is_error, true # it's a lock to prevent duplicates
 
-
     bitcoind = BitcoinRPC.new(CONFIG["bitcoind"]["rpc_connection_string"],false)
 
     begin
@@ -25,7 +24,6 @@ class Sendmany < ApplicationRecord
     rescue StandardError => e
       update_attribute :result, e.inspect
     end
-
   end
 
   def to_csv

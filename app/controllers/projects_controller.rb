@@ -57,6 +57,7 @@ class ProjectsController < ApplicationController
         return
       end
       raise "wrong data" if percentages.min < 0
+
       @project.attributes = params.require(:project).permit(tips_attributes: [:id, :amount_percentage])
       if @project.save
         message = I18n.t('notices.tips_decided')
@@ -68,7 +69,6 @@ class ProjectsController < ApplicationController
       end
     end
   end
-
 
   private
 

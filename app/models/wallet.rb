@@ -1,5 +1,4 @@
 class Wallet < ApplicationRecord
-
   validates :name, :xpub, presence: true
 
   def generate_address
