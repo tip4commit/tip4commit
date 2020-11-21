@@ -107,7 +107,7 @@ class Tip < ApplicationRecord
 
   def amount_percentage=(percentage)
     return if decided?
-    return if percentage.bank?
+    return if percentage.blank?
     return unless AVAILABLE_AMOUNTS.map(&:last).compact.map(&:to_s).include?(percentage.to_s)
 
     self.amount = (project.available_amount * (percentage.to_f / 100)).ceil
