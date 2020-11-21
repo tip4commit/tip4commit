@@ -1,4 +1,4 @@
-class CreateIndexesForProjects < ActiveRecord::Migration
+class CreateIndexesForProjects < ActiveRecord::Migration[4.2]
   def change
     add_index :projects, :full_name,                :unique => true
     add_index :projects, :github_id,                :unique => true

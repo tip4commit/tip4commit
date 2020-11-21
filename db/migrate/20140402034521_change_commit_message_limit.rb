@@ -1,4 +1,4 @@
-class ChangeCommitMessageLimit < ActiveRecord::Migration
+class ChangeCommitMessageLimit < ActiveRecord::Migration[4.2]
   def up
     change_column :tips, :commit_message, :text, limit: nil
   end

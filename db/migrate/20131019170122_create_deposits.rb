@@ -1,4 +1,4 @@
-class CreateDeposits < ActiveRecord::Migration
+class CreateDeposits < ActiveRecord::Migration[4.2]
   def change
     create_table :deposits do |t|
       t.references :project, index: true
