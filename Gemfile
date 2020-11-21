@@ -43,14 +43,15 @@ gem 'twitter-bootstrap-rails'
 gem 'uglifier'
 
 group :development do
-  gem 'capistrano',         '~> 3.4.0'
-  gem 'capistrano-bundler', '~> 1.1.2'
-  gem 'capistrano-rails',   '~> 1.1.0'
-  gem 'capistrano-rvm',     '~> 0.1.0'
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
 
   # add ed25519 support to net-ssh
-  gem 'bcrypt_pbkdf',       '~> 1.0.0'
-  gem 'rbnacl',             '< 5'
+  gem 'bcrypt_pbkdf'
+  gem 'ed25519'
+  gem 'rbnacl'
 end
 
 group :development, :test do
