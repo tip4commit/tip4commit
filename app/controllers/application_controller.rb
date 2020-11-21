@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
       end
     elsif is_pretty_path
       @project = Project.where(host: params[:service])
-                         .where('lower(`full_name`) = ?', params[:repo].downcase).first
+                        .where('lower(`full_name`) = ?', params[:repo].downcase).first
     end
 
     if @project.nil?

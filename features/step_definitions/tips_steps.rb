@@ -1,4 +1,3 @@
-
 Given(/^our fee is "(.*?)"$/) do |arg1|
   CONFIG["our_fee"] = arg1.to_f
 end

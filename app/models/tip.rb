@@ -91,17 +91,17 @@ class Tip < ApplicationRecord
 
   def self.refund_unclaimed
     unclaimed.non_refunded
-    .where.not(decided_at: nil)
-    .where('tips.decided_at < ?', 1.month.ago)
-    .find_each do |tip|
+             .where.not(decided_at: nil)
+             .where('tips.decided_at < ?', 1.month.ago)
+             .find_each do |tip|
       tip.touch :refunded_at
     end
   end
 
   def self.auto_decide_older_tips
     undecided.non_refunded
-    .where('tips.created_at < ?', 1.month.ago)
-    .find_each do |tip|
+             .where('tips.created_at < ?', 1.month.ago)
+             .find_each do |tip|
       tip.amount_percentage = 1
       tip.save
     end

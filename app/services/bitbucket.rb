@@ -24,7 +24,8 @@ class Bitbucket
       (data.fork_of.owner + "/" + data.fork_of.slug rescue ''),
       data.description,
       data.followers_count,
-      data.language)
+      data.language
+    )
   end
 
   def collaborators_info(project)

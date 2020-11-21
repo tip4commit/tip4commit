@@ -27,8 +27,8 @@ def mock_github_user(nickname)
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:github] = {
     "info" => {
-      "nickname"        => nickname,
-      "primary_email"   => email,
+      "nickname" => nickname,
+      "primary_email" => email,
       "verified_emails" => [email]
     }
   }.to_ostruct
@@ -97,7 +97,7 @@ def parse_path_from_page_string(page_string)
        when 'tips';            path = tips_path;
        when 'deposits';        path = deposits_path;
        when 'withdrawals';     path = withdrawals_path;
-    end
+       end
   end
 
   path || (raise "unknown page")

@@ -80,9 +80,9 @@ class ProjectsController < ApplicationController
 
   def projects_order
     {
-      'balance'     => { available_amount_cache: :desc, watchers_count: :desc, full_name: :asc },
-      'watchers'    => { watchers_count: :desc, available_amount_cache: :desc, full_name: :asc },
-      'repository'  => { full_name: :asc, available_amount_cache: :desc, watchers_count: :desc },
+      'balance' => { available_amount_cache: :desc, watchers_count: :desc, full_name: :asc },
+      'watchers' => { watchers_count: :desc, available_amount_cache: :desc, full_name: :asc },
+      'repository' => { full_name: :asc, available_amount_cache: :desc, watchers_count: :desc },
       'description' => { description: :asc, available_amount_cache: :desc, watchers_count: :desc, full_name: :asc }
     }.[](params[:order] || 'balance')
   end

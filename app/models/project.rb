@@ -98,7 +98,7 @@ class Project < ApplicationRecord
           select { |c| c.commit.author.email =~ Devise::email_regexp }.
           # Filter commited after t4c project creation
           select { |c| c.commit.committer.date > self.deposits.first.created_at }
-          .to_a.
+                   .to_a.
           # tip for older commits first
           reverse
       end
@@ -213,18 +213,18 @@ class Project < ApplicationRecord
 
   def self.find_or_create_by_url(project_url)
     project_name = project_url
-      .gsub(/https?\:\/\/github.com\//, '')
-      .gsub(/\#.+$/, '')
-      .gsub(' ', '')
+                   .gsub(/https?\:\/\/github.com\//, '')
+                   .gsub(/\#.+$/, '')
+                   .gsub(' ', '')
 
     Github.new.find_or_create_project project_name
   end
 
   def self.find_by_url(project_url)
     project_name = project_url
-      .gsub(/https?\:\/\/github.com\//, '')
-      .gsub(/\#.+$/, '')
-      .gsub(' ', '')
+                   .gsub(/https?\:\/\/github.com\//, '')
+                   .gsub(/\#.+$/, '')
+                   .gsub(' ', '')
 
     Github.new.find_project project_name
   end
