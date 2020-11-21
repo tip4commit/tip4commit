@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def load_project params
+  def load_project(params)
     return unless (is_via_project  = self.is_a? ProjectsController) ||
                   (is_via_tips     = self.is_a? TipsController    ) ||
                   (is_via_deposits = self.is_a? DepositsController)
@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def load_user params
+  def load_user(params)
     return unless (is_via_user = self.is_a? UsersController) ||
                   (is_via_tips = self.is_a? TipsController)
 

@@ -7,7 +7,7 @@ def bitbucket_projects
   [@bitbucket_project_1 , @bitbucket_project_2 , @bitbucket_project_3].compact
 end
 
-def create_github_project project_name , is_mock_project = true
+def create_github_project(project_name , is_mock_project = true)
   # NOTE: when is_mock_project is false the app will actually fetch via network
   #       this is the old "find or create" GUI functionality
   #           so obviously the actual repo must exist
@@ -41,11 +41,11 @@ def create_github_project project_name , is_mock_project = true
   new_project
 end
 
-def create_bitbicket_project project_name
+def create_bitbicket_project(project_name)
   raise "unknown provider" # nyi
 end
 
-def find_project service , project_name
+def find_project(service , project_name)
   project = Project.where(:host => service , :full_name => project_name).first
   project || (raise "Project '#{project_name.inspect}' not found")
 end
@@ -91,7 +91,7 @@ When /^the project syncs with the remote repo$/ do
   #     so we cache new_commits and collaborators and defer loading to this step
   #     which is intended to simulate the BitcoinTipper::work method
   project_owner_name = (@current_project.full_name.split '/').first
-  @new_commits     ||= {@current_project.id => Hash.new}
+  @new_commits     ||= { @current_project.id => Hash.new }
   @collaborators   ||= [project_owner_name]
   @collaborators << project_owner_name unless @collaborators.include? project_owner_name
 

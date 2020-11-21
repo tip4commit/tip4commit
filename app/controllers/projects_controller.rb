@@ -51,7 +51,7 @@ class ProjectsController < ApplicationController
     authorize! :decide_tip_amounts, @project
     if request.patch?
       @project.available_amount # preload anything required to get the amount, otherwise it's loaded during the assignation and there are undesirable consequences
-      percentages = params[:project][:tips_attributes].values.map{|tip| tip['amount_percentage'].to_f}
+      percentages = params[:project][:tips_attributes].values.map { |tip| tip['amount_percentage'].to_f }
       if percentages.sum > 100
         redirect_to decide_tip_amounts_project_path(@project), alert: I18n.t('errors.can_assign_more_tips')
         return
@@ -80,10 +80,10 @@ class ProjectsController < ApplicationController
 
   def projects_order
     {
-      'balance'     => {available_amount_cache: :desc, watchers_count: :desc, full_name: :asc},
-      'watchers'    => {watchers_count: :desc, available_amount_cache: :desc, full_name: :asc},
-      'repository'  => {full_name: :asc, available_amount_cache: :desc, watchers_count: :desc},
-      'description' => {description: :asc, available_amount_cache: :desc, watchers_count: :desc, full_name: :asc}
+      'balance'     => { available_amount_cache: :desc, watchers_count: :desc, full_name: :asc },
+      'watchers'    => { watchers_count: :desc, available_amount_cache: :desc, full_name: :asc },
+      'repository'  => { full_name: :asc, available_amount_cache: :desc, watchers_count: :desc },
+      'description' => { description: :asc, available_amount_cache: :desc, watchers_count: :desc, full_name: :asc }
     }.[](params[:order] || 'balance')
   end
 

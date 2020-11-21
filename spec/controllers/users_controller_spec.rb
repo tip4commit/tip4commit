@@ -130,8 +130,8 @@ describe UsersController, type: :controller do
       # reserved routes (rejected pertty url usernames)
       should_reject = ['' , '1' , '42']
 
-      accepted = should_accept.select {|ea|  ea =~ /\D+/}
-      rejected = should_reject.select {|ea| (ea =~ /\D+/).nil? }
+      accepted = should_accept.select { |ea|  ea =~ /\D+/ }
+      rejected = should_reject.select { |ea| (ea =~ /\D+/).nil? }
       (expect(accepted.size).to eq(should_accept.size)) &&
       (expect(rejected.size).to eq(should_reject.size))
     end

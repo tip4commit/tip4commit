@@ -85,7 +85,7 @@ describe ProjectsController, type: :controller do
         when :get
           get(action, params: { service: 'github', repo: a_project.full_name })
         when :patch
-          patch(action, params: { service: 'github', repo: a_project.full_name})
+          patch(action, params: { service: 'github', repo: a_project.full_name })
         end
         expect(response).to be_successful
       end

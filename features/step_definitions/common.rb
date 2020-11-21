@@ -21,7 +21,7 @@ After do |scenario|
 #   Cucumber.wants_to_quit = true if scenario.status.eql? :pending
 end
 
-def mock_github_user nickname
+def mock_github_user(nickname)
   email = "#{nickname.parameterize}@example.com"
 
   OmniAuth.config.test_mode = true
@@ -64,7 +64,7 @@ Given (/^I sign in as "(.*?)"$/) { |nickname| step "I'm signed in as \"#{nicknam
 
 Given (/^I sign out$/) { step "I'm not signed in" }
 
-def parse_path_from_page_string page_string
+def parse_path_from_page_string(page_string)
   path = nil
 
   # explicit cases
@@ -121,7 +121,7 @@ Then(/^I should be on the "(.*?)" page$/) do |page_string|
   actual.should eq expected
 end
 
-def find_element node_name
+def find_element(node_name)
   case node_name
   when "header" ; page.find '.masthead'
   end
@@ -164,7 +164,7 @@ When(/^the email counters are reset$/) do
 end
 
 When(/^I confirm the email address: "(.*?)"$/) do |email|
-  mail      = ActionMailer::Base.deliveries.select {|ea| ea.to.first.eql? email}.first
+  mail      = ActionMailer::Base.deliveries.select { |ea| ea.to.first.eql? email }.first
   mail_body = mail.body.raw_source
   token     = mail_body.split('?confirmation_token=')[1].split('">Confirm my account').first
   visit "/users/confirmation?confirmation_token=#{token}"

@@ -997,10 +997,3 @@ Style/WordArray:
   Exclude:
     - 'app/models/project.rb'
     - 'features/step_definitions/common.rb'
-
-# Offense count: 27
-# Cop supports --auto-correct.
-# Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
-# URISchemes: http, https
-Layout/LineLength:
-  Max: 238

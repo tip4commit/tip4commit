@@ -11,7 +11,7 @@ class Github
 
   attr_reader :client
 
-  def commits project
+  def commits(project)
     if project.branch.blank?
       commits = client.commits project.full_name
     else
@@ -30,7 +30,7 @@ class Github
     commits
   end
 
-  def repository_info project
+  def repository_info(project)
     if project.is_a?(String)
       client.repo project
     elsif project.is_a?(Project)
@@ -44,7 +44,7 @@ class Github
     end
   end
 
-  def find_or_create_project project_name
+  def find_or_create_project(project_name)
     if project = find_project(project_name)
       project
     elsif project_name =~ /\w+\/\w+/
@@ -61,16 +61,16 @@ class Github
     end
   end
 
-  def find_project project_name
+  def find_project(project_name)
     return Project.find_by(host: "github", full_name: project_name)
   end
 
-  def collaborators_info project
+  def collaborators_info(project)
     (client.get("/repos/#{project.full_name}/collaborators").map(&:login) rescue [project.full_name.split('/').first]) +
     (client.get("/orgs/#{project.full_name.split('/').first}/members").map(&:login) rescue [])
   end
 
-  def branches project
+  def branches(project)
     branches = client.get("/repos/#{project.full_name}/branches")
     last_response = client.last_response
     while last_response && last_response.rels[:next]
@@ -80,15 +80,15 @@ class Github
     branches.map(&:name)
   end
 
-  def repository_url project
+  def repository_url(project)
     "https://github.com/#{project.full_name}"
   end
 
-  def source_repository_url project
+  def source_repository_url(project)
     "https://github.com/#{project.source_full_name}"
   end
 
-  def commit_url project, commit
+  def commit_url(project, commit)
     "https://github.com/#{project.full_name}/commit/#{commit}"
   end
 end

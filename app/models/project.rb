@@ -24,7 +24,7 @@ class Project < ApplicationRecord
 
   # before_save :check_tips_to_pay_against_avaiable_amount
 
-  def update_repository_info repo
+  def update_repository_info(repo)
     self.github_id        = repo.id
     self.name             = repo.name
     self.full_name        = repo.full_name
@@ -93,11 +93,11 @@ class Project < ApplicationRecord
       commits = Timeout::timeout(90) do
         raw_commits.
           # Filter merge request
-          select{|c| !(c.commit.message =~ /^(Merge\s|auto\smerge)/)}.
+          select { |c| !(c.commit.message =~ /^(Merge\s|auto\smerge)/) }.
           # Filter fake emails
-          select{|c| c.commit.author.email =~ Devise::email_regexp }.
+          select { |c| c.commit.author.email =~ Devise::email_regexp }.
           # Filter commited after t4c project creation
-          select{|c| c.commit.committer.date > self.deposits.first.created_at }.
+          select { |c| c.commit.committer.date > self.deposits.first.created_at }.
           to_a.
           # tip for older commits first
           reverse
@@ -121,7 +121,7 @@ class Project < ApplicationRecord
     end
   end
 
-  def tip_for commit
+  def tip_for(commit)
     if (next_tip_amount > 0) && !Tip.exists?(commit: commit.sha)
       return unless (user = User.find_by_commit commit)
 
@@ -211,7 +211,7 @@ class Project < ApplicationRecord
     end
   end
 
-  def self.find_or_create_by_url project_url
+  def self.find_or_create_by_url(project_url)
     project_name = project_url.
       gsub(/https?\:\/\/github.com\//, '').
       gsub(/\#.+$/, '').
@@ -220,7 +220,7 @@ class Project < ApplicationRecord
     Github.new.find_or_create_project project_name
   end
 
-  def self.find_by_url project_url
+  def self.find_by_url(project_url)
     project_name = project_url.
       gsub(/https?\:\/\/github.com\//, '').
       gsub(/\#.+$/, '').

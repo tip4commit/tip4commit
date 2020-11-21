@@ -106,9 +106,11 @@ class Tip < ApplicationRecord
   end
 
   def amount_percentage=(percentage)
-    if undecided? and percentage.present? and AVAILABLE_AMOUNTS.map(&:last).compact.map(&:to_s).include?(percentage.to_s)
-      self.amount = (project.available_amount * (percentage.to_f / 100)).ceil
-    end
+    return if decided?
+    return if percentage.bank?
+    return unless AVAILABLE_AMOUNTS.map(&:last).compact.map(&:to_s).include?(percentage.to_s)
+
+    self.amount = (project.available_amount * (percentage.to_f / 100)).ceil
   end
 
   def notify_user

@@ -2,7 +2,7 @@ require "set"
 
 class Blacklist
   def initialize(urls)
-    urls = urls.map {|u| normalize_url(u) }
+    urls = urls.map { |u| normalize_url(u) }
 
     @urls = Set.new(urls)
   end

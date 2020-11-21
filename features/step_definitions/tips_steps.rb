@@ -15,7 +15,7 @@ Given(/^a deposit of "(.*?)" is made$/) do |deposit|
   Deposit.create!(project: @current_project, amount: deposit.to_d * 1e8, confirmations: 10)
 end
 
-def add_new_commit commit_id , nickname , params = {}
+def add_new_commit(commit_id , nickname , params = {})
   raise "duplicate commit_id" if (find_new_commit commit_id).present?
 
   defaults = {
@@ -34,7 +34,7 @@ def add_new_commit commit_id , nickname , params = {}
   @new_commits[project_id][commit_id]   = defaults.deep_merge params
 end
 
-def find_new_commit commit_id
+def find_new_commit(commit_id)
   (@new_commits || {}).each_value do |commits|
     return commits[commit_id] unless commits[commit_id].nil?
   end
@@ -57,11 +57,11 @@ Given(/^a new commit "([^"]*?)" is made$/) do |commit_id|
 end
 
 Given(/^a new commit "(.*?)" is made with parent "([^"]*?)"$/) do |commit_id, parent_commit_id|
-  add_new_commit commit_id , "unknown-user" , parents: [{sha: parent_commit_id}]
+  add_new_commit commit_id , "unknown-user" , parents: [{ sha: parent_commit_id }]
 end
 
-Given(/^a new commit "(.*?)" is made with parent "(.*?)" and "(.*?)"$/) do |commit_id, parentA_commit_id, parentB_commit_id|
-  params = { parents: [{sha: parentA_commit_id}, {sha: parentB_commit_id}], commit: {message: "Merge #{parentA_commit_id} and #{parentB_commit_id}"} }
+Given(/^a new commit "(.*?)" is made with parent "(.*?)" and "(.*?)"$/) do |commit_id, parent_a_commit_id, parent_b_commit_id|
+  params = { parents: [{ sha: parent_a_commit_id }, { sha: parent_b_commit_id }], commit: { message: "Merge #{parent_a_commit_id} and #{parent_b_commit_id}" } }
   add_new_commit commit_id , "unknown-user" , params
 end
 
@@ -69,14 +69,14 @@ Given(/^the author of commit "(.*?)" is "(.*?)"$/) do |commit_id , nickname|
   commit = find_new_commit commit_id
   raise "no such commit" if commit.nil?
 
-  commit.deep_merge!(author: {login: nickname}, commit: {author: {email: "#{nickname}@example.com"}})
+  commit.deep_merge!(author: { login: nickname }, commit: { author: { email: "#{nickname}@example.com" } })
 end
 
 Given(/^the message of commit "(.*?)" is "(.*?)"$/) do |commit_id , commit_msg|
   commit = find_new_commit commit_id
   raise "no such commit" if commit.nil?
 
-  commit.deep_merge!(commit: {message: commit_msg})
+  commit.deep_merge!(commit: { message: commit_msg })
 end
 
 Given(/^the most recent commit is "(.*?)"$/) do |commit_id|
@@ -133,7 +133,7 @@ When(/^I choose the amount "(.*?)" on all commits$/) do |arg1|
 end
 
 When(/^I send a forged request to enable tip holding on the project$/) do
-  page.driver.browser.process_and_follow_redirects(:patch, project_path(@current_project), project: {hold_tips: "1"})
+  page.driver.browser.process_and_follow_redirects(:patch, project_path(@current_project), project: { hold_tips: "1" })
 end
 
 Then(/^I should see an access denied$/) do

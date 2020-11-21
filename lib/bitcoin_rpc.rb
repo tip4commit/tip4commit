@@ -4,7 +4,7 @@ require 'json'
 
 class BitcoinRPC
 
-  def initialize(service_url, batch_mode=false)
+  def initialize(service_url, batch_mode = false)
     @service_url = service_url
     @uri = URI.parse(service_url)
     set_batch_mode(batch_mode)
@@ -18,7 +18,7 @@ class BitcoinRPC
     if (@batch_mode)
        { 'method' => name, 'params' => args, 'id' => 'jsonrpc', 'jsonrpc' => '2.0' }
     else
-      post_body = { 'method' => name, 'params' => args, 'id' => 'jsonrpc'}.to_json
+      post_body = { 'method' => name, 'params' => args, 'id' => 'jsonrpc' }.to_json
       resp = JSON.parse( http_post_request(post_body) )
       raise JSONRPCError, resp['error'] if resp['error']
       resp['result']
