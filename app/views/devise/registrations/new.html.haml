@@ -4,6 +4,6 @@
   = f.email_field :email, :autofocus => true
   = f.password_field :password, :autocomplete => "off"
   = f.password_field :password_confirmation, :autocomplete => "off"
-  = f.submit t('.submit')
+  = f.submit t('.submit'), class: 'btn btn-primary'
   %p
     = render "devise/shared/links"

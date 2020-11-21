@@ -1,3 +1,3 @@
-class Collaborator < ActiveRecord::Base
+class Collaborator < ApplicationRecord
   belongs_to :project
 end

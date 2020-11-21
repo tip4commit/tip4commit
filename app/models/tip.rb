@@ -1,4 +1,4 @@
-class Tip < ActiveRecord::Base
+class Tip < ApplicationRecord
   belongs_to :user
   belongs_to :sendmany
   belongs_to :project, inverse_of: :tips

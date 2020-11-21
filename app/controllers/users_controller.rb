@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, :load_user, :valid_user!, except: [:login, :index]
-  before_filter :redirect_to_pretty_url,                       only:   [:show]
+  before_action :redirect_to_pretty_url,                       only:   [:show]
 
   def show
     @user_tips   = @user.tips

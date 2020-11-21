@@ -1,4 +1,4 @@
-class Project < ActiveRecord::Base
+class Project < ApplicationRecord
   acts_as_paranoid
 
   belongs_to :wallet

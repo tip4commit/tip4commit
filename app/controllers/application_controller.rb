@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, :alert => I18n.t('errors.access_denied')
   end
 
-  before_filter :load_locale
+  before_action :load_locale
 
   private
 

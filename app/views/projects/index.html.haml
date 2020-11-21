@@ -15,10 +15,10 @@
       %thead
         %tr
           %th
-          %th= link_to_unless_current t('.repository'), params.merge(:order => 'repository')
-          %th= link_to_unless_current t('.description'), params.merge(:order => 'description')
-          %th= link_to_unless_current t('.watchers'), params.merge(:order => 'watchers')
-          %th= link_to_unless params[:order].blank? || params[:order] == 'balance', t('.balance'), params.merge(:order => 'balance')
+          %th= link_to_unless_current t('.repository'), permitted_params.merge(:order => 'repository')
+          %th= link_to_unless_current t('.description'), permitted_params.merge(:order => 'description')
+          %th= link_to_unless_current t('.watchers'), permitted_params.merge(:order => 'watchers')
+          %th= link_to_unless params[:order].blank? || params[:order] == 'balance', t('.balance'), permitted_params.merge(:order => 'balance')
           %th
       %tbody
         - @projects.to_a.reject{|p| BLACKLIST.include?(p.github_url) }.each do |project|

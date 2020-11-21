@@ -35,7 +35,7 @@
   - if f.object.bitcoin_address.blank?
     = f.check_box :unsubscribed, { label: t('.notify'), checked: !f.object.unsubscribed? }, '0', '1'
   %br
-  = f.submit t('.submit_user')
+  = f.submit t('.submit_user'), class: 'btn btn-primary'
 %br
 %p
   %strong= link_to t('.change_password'), '#new_password_form', data: {toggle: "collapse"}
@@ -44,7 +44,7 @@
   = hidden_field_tag :new_password, value: true
   = f.password_field :password, autofocus: true, autocomplete: "off"
   = f.password_field :password_confirmation, autocomplete: "off"
-  = f.submit t('.submit_password')
+  = f.submit t('.submit_password'), class: 'btn btn-primary'
 
 %br
 %p

@@ -20,7 +20,7 @@
     %i (we need your current password to confirm your changes)
     %br/
     = f.password_field :current_password, :autocomplete => "off"
-  %div= f.submit "Update"
+  %div= f.submit "Update", class: 'btn btn-primary'
   %p
     %h3 Cancel my account
   %p

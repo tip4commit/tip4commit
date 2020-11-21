@@ -1,4 +1,4 @@
-class Wallet < ActiveRecord::Base
+class Wallet < ApplicationRecord
 
   validates :name, :xpub, presence: true
 

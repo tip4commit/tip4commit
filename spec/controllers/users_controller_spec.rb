@@ -19,10 +19,8 @@ describe UsersController, type: :controller do
   end
 
   describe '#show' do
-#     let(:user) { mock_model User, id: 100000000 }
-#     let(:subject) { get :show, id: user.id }
     let(:user) { create(:user) }
-    let(:subject) { get :show , :nickname => user.nickname }
+    let(:subject) { get(:show, params: { nickname: user.nickname }) }
 
     context 'when logged in' do
       login_user
@@ -56,7 +54,7 @@ describe UsersController, type: :controller do
 
         context 'when viewing other\'s page' do
           let(:new_user) { create(:user) }
-          let(:subject) { get :show, id: new_user.id }
+          let(:subject) { get(:show, params: { id: new_user.id }) }
 
           it 'redirect to root_path' do
             expect(subject).to redirect_to root_path
@@ -70,7 +68,7 @@ describe UsersController, type: :controller do
       end
 
       context 'when user not found' do
-        let(:subject) { get :show , :nickname => 'unknown-user' }
+        let(:subject) { get(:show, params: { nickname: 'unknown-user' }) }
 
         it 'redirect to users_path' do
           expect(subject).to redirect_to users_path
