@@ -15,7 +15,7 @@ Given(/^a deposit of "(.*?)" is made$/) do |deposit|
   Deposit.create!(project: @current_project, amount: deposit.to_d * 1e8, confirmations: 10)
 end
 
-def add_new_commit(commit_id , nickname , params = {})
+def add_new_commit(commit_id, nickname, params = {})
   raise "duplicate commit_id" if (find_new_commit commit_id).present?
 
   defaults = {
@@ -42,37 +42,37 @@ def find_new_commit(commit_id)
   nil
 end
 
-Given(/^a new commit "([^"]*?)" is made by a developer named "(.*?)"$/) do |commit_id , nickname|
-  add_new_commit commit_id , nickname
+Given(/^a new commit "([^"]*?)" is made by a developer named "(.*?)"$/) do |commit_id, nickname|
+  add_new_commit commit_id, nickname
 end
 
-Given(/^(\d+) new commit.? (?:is|are) made by a developer named "(.*?)"$/) do |n_commits , nickname|
+Given(/^(\d+) new commit.? (?:is|are) made by a developer named "(.*?)"$/) do |n_commits, nickname|
   n_commits.to_i.times do
-    add_new_commit Digest::SHA1.hexdigest(SecureRandom.hex) , nickname
+    add_new_commit Digest::SHA1.hexdigest(SecureRandom.hex), nickname
   end
 end
 
 Given(/^a new commit "([^"]*?)" is made$/) do |commit_id|
-  add_new_commit commit_id , "unknown-user"
+  add_new_commit commit_id, "unknown-user"
 end
 
 Given(/^a new commit "(.*?)" is made with parent "([^"]*?)"$/) do |commit_id, parent_commit_id|
-  add_new_commit commit_id , "unknown-user" , parents: [{ sha: parent_commit_id }]
+  add_new_commit commit_id, "unknown-user", parents: [{ sha: parent_commit_id }]
 end
 
 Given(/^a new commit "(.*?)" is made with parent "(.*?)" and "(.*?)"$/) do |commit_id, parent_a_commit_id, parent_b_commit_id|
   params = { parents: [{ sha: parent_a_commit_id }, { sha: parent_b_commit_id }], commit: { message: "Merge #{parent_a_commit_id} and #{parent_b_commit_id}" } }
-  add_new_commit commit_id , "unknown-user" , params
+  add_new_commit commit_id, "unknown-user", params
 end
 
-Given(/^the author of commit "(.*?)" is "(.*?)"$/) do |commit_id , nickname|
+Given(/^the author of commit "(.*?)" is "(.*?)"$/) do |commit_id, nickname|
   commit = find_new_commit commit_id
   raise "no such commit" if commit.nil?
 
   commit.deep_merge!(author: { login: nickname }, commit: { author: { email: "#{nickname}@example.com" } })
 end
 
-Given(/^the message of commit "(.*?)" is "(.*?)"$/) do |commit_id , commit_msg|
+Given(/^the message of commit "(.*?)" is "(.*?)"$/) do |commit_id, commit_msg|
   commit = find_new_commit commit_id
   raise "no such commit" if commit.nil?
 
@@ -90,7 +90,7 @@ end
 When(/^the new commits are loaded$/) do
   raise "no commits have been assigned" if @new_commits.nil?
 
-  [@github_project_1 , @github_project_2 , @github_project_3].each do |project|
+  [@github_project_1, @github_project_2, @github_project_3].each do |project|
     next if project.nil?
 
     project.reload
@@ -176,7 +176,7 @@ Given(/^I send a forged request to set the amount of the first undecided tip of 
   page.driver.browser.process_and_follow_redirects(:patch, decide_tip_amounts_project_path(@current_project), params)
 end
 
-When(/^I send a forged request to change the percentage of commit "(.*?)" to "(.*?)"$/) do |commit , percentage|
+When(/^I send a forged request to change the percentage of commit "(.*?)" to "(.*?)"$/) do |commit, percentage|
   tip = @current_project.tips.detect { |t| t.commit == commit }
   tip.should_not be_nil
   params = {
@@ -191,7 +191,7 @@ When(/^I send a forged request to change the percentage of commit "(.*?)" to "(.
   }
 
   path = decide_tip_amounts_project_path @current_project
-  page.driver.browser.process_and_follow_redirects :patch , path , params
+  page.driver.browser.process_and_follow_redirects :patch, path, params
 end
 
 Then(/^the project should have (\d+) undecided tips$/) do |arg1|

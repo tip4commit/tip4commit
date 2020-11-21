@@ -30,7 +30,7 @@ module ProjectsHelper
   end
 
   def pretty_project_url(project)
-    root_url.gsub(/\/$/,'') + pretty_project_path(project)
+    root_url.gsub(/\/$/, '') + pretty_project_path(project)
   end
 
   def shield_url(project)

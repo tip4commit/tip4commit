@@ -36,13 +36,13 @@ class ApplicationController < ActionController::Base
        (project_id = (is_via_project)? params[:id] : params[:project_id]) &&
        (@project   = (Project.where :id => project_id).first)
       if    is_via_tips
-        redirect_to project_tips_pretty_path     @project.host , @project.full_name
+        redirect_to project_tips_pretty_path     @project.host, @project.full_name
       elsif is_via_deposits
-        redirect_to project_deposits_pretty_path @project.host , @project.full_name
+        redirect_to project_deposits_pretty_path @project.host, @project.full_name
       end
     elsif is_pretty_path
       @project = Project.where(host: params[:service]).
-                         where('lower(`full_name`) = ?' , params[:repo].downcase).first
+                         where('lower(`full_name`) = ?', params[:repo].downcase).first
     end
 
     if @project.nil?
@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
        (@user = User.where(:id => user_id).first)
       redirect_to user_tips_pretty_path @user.nickname if is_via_tips
     elsif is_pretty_path
-      @user = User.where('lower(`nickname`) = ?' , params[:nickname].downcase).first
+      @user = User.where('lower(`nickname`) = ?', params[:nickname].downcase).first
     end
 
     if @user.nil?

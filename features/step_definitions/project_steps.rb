@@ -1,13 +1,13 @@
 
 def github_projects
-  [@github_project_1 , @github_project_2 , @github_project_3].compact
+  [@github_project_1, @github_project_2, @github_project_3].compact
 end
 
 def bitbucket_projects
-  [@bitbucket_project_1 , @bitbucket_project_2 , @bitbucket_project_3].compact
+  [@bitbucket_project_1, @bitbucket_project_2, @bitbucket_project_3].compact
 end
 
-def create_github_project(project_name , is_mock_project = true)
+def create_github_project(project_name, is_mock_project = true)
   # NOTE: when is_mock_project is false the app will actually fetch via network
   #       this is the old "find or create" GUI functionality
   #           so obviously the actual repo must exist
@@ -24,8 +24,8 @@ def create_github_project(project_name , is_mock_project = true)
   end
 
   if is_mock_project
-    new_project = Project.create! :full_name       => project_name , # e.g. "me/my-project"
-                                  :github_id       => Digest::SHA1.hexdigest(project_name) ,
+    new_project = Project.create! :full_name       => project_name, # e.g. "me/my-project"
+                                  :github_id       => Digest::SHA1.hexdigest(project_name),
                                   :bitcoin_address => 'mq4NtnmQoQoPfNWEPbhSvxvncgtGo6L8WY'
   else
     new_project = Project.find_or_create_by_url project_name # e.g. "me/my-project"
@@ -45,12 +45,12 @@ def create_bitbicket_project(project_name)
   raise "unknown provider" # nyi
 end
 
-def find_project(service , project_name)
-  project = Project.where(:host => service , :full_name => project_name).first
+def find_project(service, project_name)
+  project = Project.where(:host => service, :full_name => project_name).first
   project || (raise "Project '#{project_name.inspect}' not found")
 end
 
-Given(/^a "(.*?)" project named "(.*?)" exists$/) do |provider , project_name|
+Given(/^a "(.*?)" project named "(.*?)" exists$/) do |provider, project_name|
   # NOTE: project owner will be automatically added as a collaborator
   #           e.g. "seldon" if project_name == "seldon/a-project"
   #       @current_project is also assigned in step 'regarding the "..." project named "..."'
@@ -60,14 +60,14 @@ Given(/^a "(.*?)" project named "(.*?)" exists$/) do |provider , project_name|
   when 'bitbucket'
     @current_project = create_bitbicket_project project_name
   when 'real-github'
-    @current_project = create_github_project    project_name , false
+    @current_project = create_github_project    project_name, false
   else raise "unknown provider \"#{provider}\""
   end
 end
 
-When /^regarding the "(.*?)" project named "(.*?)"$/ do |provider , project_name|
+When /^regarding the "(.*?)" project named "(.*?)"$/ do |provider, project_name|
   # NOTE: @current_project is also assigned in step 'a "..." project named "..." exists'
-  @current_project = find_project provider , project_name
+  @current_project = find_project provider, project_name
 end
 
 Given(/^the project collaborators are:$/) do |table|

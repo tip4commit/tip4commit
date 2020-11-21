@@ -27,9 +27,9 @@ def mock_github_user(nickname)
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:github] = {
     "info" => {
-      "nickname"        => nickname ,
-      "primary_email"   => email    ,
-      "verified_emails" => [email]  ,
+      "nickname"        => nickname,
+      "primary_email"   => email,
+      "verified_emails" => [email],
     },
   }.to_ostruct
 
@@ -75,14 +75,14 @@ def parse_path_from_page_string(page_string)
   model      = tokens[1]
   action     = tokens[2] || '' # '' => 'show'
   is_user    = model.eql? 'user'
-  is_project = ['github-project' , 'bitbucket-project'].include? model
+  is_project = ['github-project', 'bitbucket-project'].include? model
   if is_project
-    projects_paths = ['' , 'edit' , 'decide_tip_amounts' , 'tips' , 'deposits']
+    projects_paths = ['', 'edit', 'decide_tip_amounts', 'tips', 'deposits']
     is_valid_path  = projects_paths.include? action
     service        = model.split('-').first
     path           = "/#{service}/#{name}/#{action}" if is_valid_path
   elsif is_user
-    user_paths     = ['' , 'tips']
+    user_paths     = ['', 'tips']
     is_valid_path  = user_paths.include? action
     path           = "/users/#{name}/#{action}" if is_valid_path # TODO: nyi
 
@@ -131,7 +131,7 @@ Given(/^I click "(.*?)"$/) do |arg1|
   click_on(arg1)
 end
 
-Given(/^I click "(.*?)" within the "(.*?)" area$/) do |link_text , node_name|
+Given(/^I click "(.*?)" within the "(.*?)" area$/) do |link_text, node_name|
   within (find_element node_name) { click_on link_text }
 end
 

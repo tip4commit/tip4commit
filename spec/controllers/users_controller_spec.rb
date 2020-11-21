@@ -96,27 +96,27 @@ describe UsersController, type: :controller do
   describe "routing" do
     it "routes GET /users to User#index" do
       expect({ :get => "/users" }).to route_to(
-        :controller => "users" ,
+        :controller => "users",
         :action     => "index" )
     end
 
     it "routes GET /users/nick-name321 to User#show" do
       expect({ :get => "/users/nick-name321" }).to route_to(
-        :controller => "users" ,
-        :action     => "show"  ,
+        :controller => "users",
+        :action     => "show",
         :nickname   => "nick-name321"     )
     end
 
     it "routes GET /users/login to User#login" do
       expect({ :get => "/users/login" }).to route_to(
-        :controller => "users" ,
+        :controller => "users",
         :action     => "login" )
     end
 
     it "routes GET /users/1/tips to Tips#index" do
       expect({ :get => "/users/1/tips" }).to route_to(
-        :controller => "tips"  ,
-        :action     => "index" ,
+        :controller => "tips",
+        :action     => "index",
         :user_id    => "1"     )
     end
   end
@@ -126,9 +126,9 @@ describe UsersController, type: :controller do
 
     it "regex rejects reserved user paths" do
       # accepted pertty url usernames
-      should_accept = [' ' , 'logi' , 'ogin' , 's4c2' , '42x' , 'nick name' , 'kd']
+      should_accept = [' ', 'logi', 'ogin', 's4c2', '42x', 'nick name', 'kd']
       # reserved routes (rejected pertty url usernames)
-      should_reject = ['' , '1' , '42']
+      should_reject = ['', '1', '42']
 
       accepted = should_accept.select { |ea|  ea =~ /\D+/ }
       rejected = should_reject.select { |ea| (ea =~ /\D+/).nil? }
@@ -138,15 +138,15 @@ describe UsersController, type: :controller do
 
     it "routes GET /users/:nickname to User#show" do
       expect({ :get => "/users/#{user.nickname}" }).to route_to(
-        :controller => "users" ,
-        :action     => "show"  ,
+        :controller => "users",
+        :action     => "show",
         :nickname   => "kd"    )
     end
 
     it "routes GET /users/:nickname/tips to Tips#index" do
       expect({ :get => "/users/#{user.nickname}/tips" }).to route_to(
-        :controller => "tips"  ,
-        :action     => "index" ,
+        :controller => "tips",
+        :action     => "index",
         :nickname   => "kd"    )
     end
   end

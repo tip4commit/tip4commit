@@ -3,7 +3,7 @@ require 'ostruct'
 class Hash
   def to_ostruct
     o = OpenStruct.new(self)
-    each do |k,v|
+    each do |k, v|
       o.send(:"#{k}=", v.to_ostruct) if v.respond_to? :to_ostruct
     end
     o
