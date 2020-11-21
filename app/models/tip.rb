@@ -16,61 +16,71 @@ class Tip < ApplicationRecord
   validates :amount, numericality: { greater_or_equal_than: 0, allow_nil: true }
 
   scope :not_sent,      -> { where(sendmany_id: nil) }
+
   def not_sent?
     sendmany_id.nil?
   end
 
   scope :unpaid,        -> { non_refunded.not_sent }
+
   def unpaid?
     non_refunded? and not_sent?
   end
 
   scope :to_pay,        -> { unpaid.decided.not_free.with_address }
+
   def to_pay?
     unpaid? and decided? and !free? and with_address?
   end
 
   scope :free,          -> { where('amount = 0') }
   scope :not_free,      -> { where('amount > 0') }
+
   def free?
     amount == 0
   end
 
   scope :paid,          -> { where.not(sendmany_id: nil) }
+
   def paid?
     !!sendmany_id
   end
 
   scope :refunded,      -> { where.not(refunded_at: nil) }
+
   def refunded?
     !!refunded_at
   end
 
   scope :non_refunded,  -> { where(refunded_at: nil) }
+
   def non_refunded?
     !refunded?
   end
 
-  scope :unclaimed,     -> { joins(:user).
-                             unpaid.
-                             where('users.bitcoin_address' => ['', nil]) }
+  scope :unclaimed,     -> { joins(:user).unpaid.where('users.bitcoin_address' => ['', nil]) }
+
   def claimed?
     paid? || user.bitcoin_address.present?
   end
+
   def unclaimed?
     !claimed?
   end
 
   scope :with_address,  -> { joins(:user).where.not('users.bitcoin_address' => ['', nil]) }
+
   def with_address?
     user.bitcoin_address.present?
   end
 
   scope :decided,       -> { where.not(amount: nil) }
   scope :undecided,     -> { where(amount: nil) }
+
   def decided?
     !!amount
   end
+
   def undecided?
     !decided?
   end
