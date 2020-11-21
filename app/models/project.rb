@@ -11,7 +11,7 @@ class Project < ApplicationRecord
   accepts_nested_attributes_for :tipping_policies_text
 
   validates :full_name, :github_id, uniqueness: true, presence: true
-  validates :host, inclusion: [ "github", "bitbucket" ], presence: true
+  validates :host, inclusion: ["github", "bitbucket"], presence: true
 
   search_syntax do
     search_by :text do |scope, phrases|
@@ -166,7 +166,7 @@ class Project < ApplicationRecord
   end
 
   def next_tip_amount
-    next_tip_amount = (CONFIG["tip"]*available_amount).ceil
+    next_tip_amount = (CONFIG["tip"] * available_amount).ceil
     next_tip_amount = [next_tip_amount, CONFIG["min_tip"]].max if CONFIG["min_tip"]
     next_tip_amount = [next_tip_amount, available_amount].min
   end

@@ -32,9 +32,9 @@ def create_github_project(project_name, is_mock_project = true)
   end
 
   unless github_projects.include? new_project
-    if    @github_project_2.present? ; @github_project_3 = new_project ;
-    elsif @github_project_1.present? ; @github_project_2 = new_project ;
-    else                               @github_project_1 = new_project ;
+    if    @github_project_2.present?; @github_project_3 = new_project;
+    elsif @github_project_1.present?; @github_project_2 = new_project;
+    else @github_project_1 = new_project;
     end
   end
 

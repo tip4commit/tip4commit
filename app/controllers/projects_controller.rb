@@ -72,7 +72,7 @@ class ProjectsController < ApplicationController
 
   private
 
-  def load_project ; super params ; end ;
+  def load_project; super params; end;
 
   def project_params
     params.require(:project).permit(:branch, :disable_notifications, :hold_tips, tipping_policies_text_attributes: [:text])

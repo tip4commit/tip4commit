@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:bitcoin_address, :password, :password_confirmation, :unsubscribed, :display_name, :denom)
   end
 
-  def load_user ; super params ; end ;
+  def load_user; super params; end;
 
   def valid_user!
     if current_user != @user

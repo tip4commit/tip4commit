@@ -51,9 +51,9 @@ ActiveRecord::Schema.define(version: 20170308163825) do
     t.string   "host",                   limit: 255,   default: "github"
     t.boolean  "hold_tips",                            default: false
     t.datetime "info_updated_at"
-    t.string   "branch",                 limit: 255
+    t.string   "branch", limit: 255
     t.boolean  "disable_notifications"
-    t.string   "avatar_url",             limit: 255
+    t.string   "avatar_url", limit: 255
     t.datetime "deleted_at"
     t.string   "bitcoin_address2",       limit: 255
     t.integer  "wallet_id",              limit: 4
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 20170308163825) do
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,  null: false
+    t.integer  "sign_in_count", limit: 4, default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
@@ -127,7 +127,7 @@ ActiveRecord::Schema.define(version: 20170308163825) do
     t.string   "confirmation_token",     limit: 255
     t.string   "unconfirmed_email",      limit: 255
     t.string   "display_name",           limit: 255
-    t.integer  "denom",                  limit: 4,   default: 0
+    t.integer  "denom",                  limit: 4, default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(version: 20170308163825) do
   create_table "wallets", force: :cascade do |t|
     t.string   "name",               limit: 255
     t.string   "xpub",               limit: 255
-    t.integer  "last_address_index", limit: 4,   default: 1
+    t.integer  "last_address_index", limit: 4, default: 1
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
   end

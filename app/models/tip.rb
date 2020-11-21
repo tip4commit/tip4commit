@@ -15,19 +15,19 @@ class Tip < ApplicationRecord
 
   validates :amount, numericality: { greater_or_equal_than: 0, allow_nil: true }
 
-  scope :not_sent,      -> { where(sendmany_id: nil) }
+  scope :not_sent, -> { where(sendmany_id: nil) }
 
   def not_sent?
     sendmany_id.nil?
   end
 
-  scope :unpaid,        -> { non_refunded.not_sent }
+  scope :unpaid, -> { non_refunded.not_sent }
 
   def unpaid?
     non_refunded? and not_sent?
   end
 
-  scope :to_pay,        -> { unpaid.decided.not_free.with_address }
+  scope :to_pay, -> { unpaid.decided.not_free.with_address }
 
   def to_pay?
     unpaid? and decided? and !free? and with_address?
@@ -40,25 +40,25 @@ class Tip < ApplicationRecord
     amount == 0
   end
 
-  scope :paid,          -> { where.not(sendmany_id: nil) }
+  scope :paid, -> { where.not(sendmany_id: nil) }
 
   def paid?
     !!sendmany_id
   end
 
-  scope :refunded,      -> { where.not(refunded_at: nil) }
+  scope :refunded, -> { where.not(refunded_at: nil) }
 
   def refunded?
     !!refunded_at
   end
 
-  scope :non_refunded,  -> { where(refunded_at: nil) }
+  scope :non_refunded, -> { where(refunded_at: nil) }
 
   def non_refunded?
     !refunded?
   end
 
-  scope :unclaimed,     -> { joins(:user).unpaid.where('users.bitcoin_address' => ['', nil]) }
+  scope :unclaimed, -> { joins(:user).unpaid.where('users.bitcoin_address' => ['', nil]) }
 
   def claimed?
     paid? || user.bitcoin_address.present?
@@ -68,7 +68,7 @@ class Tip < ApplicationRecord
     !claimed?
   end
 
-  scope :with_address,  -> { joins(:user).where.not('users.bitcoin_address' => ['', nil]) }
+  scope :with_address, -> { joins(:user).where.not('users.bitcoin_address' => ['', nil]) }
 
   def with_address?
     user.bitcoin_address.present?
@@ -126,7 +126,7 @@ class Tip < ApplicationRecord
   def notify_user
     if amount && amount > 0 && user.bitcoin_address.blank? &&
         !user.unsubscribed && !project.disable_notifications &&
-        user.balance > 21000000*1e8
+        user.balance > 21000000 * 1e8
       if user.notified_at.nil? or user.notified_at < 30.days.ago
         begin
           UserMailer.new_tip(user, self).deliver

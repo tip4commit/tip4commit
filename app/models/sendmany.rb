@@ -15,7 +15,7 @@ class Sendmany < ApplicationRecord
     begin
       txid = bitcoind.sendmany(
         CONFIG["bitcoind"]["account"],
-        JSON.parse(data).map { |address, amount| { address => amount/1e8 } }.inject(&:merge)
+        JSON.parse(data).map { |address, amount| { address => amount / 1e8 } }.inject(&:merge)
       )
       if txid.present?
         update_attribute :is_error, false

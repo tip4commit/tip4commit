@@ -18,7 +18,7 @@ class BitcoinRPC
        { 'method' => name, 'params' => args, 'id' => 'jsonrpc', 'jsonrpc' => '2.0' }
     else
       post_body = { 'method' => name, 'params' => args, 'id' => 'jsonrpc' }.to_json
-      resp = JSON.parse( http_post_request(post_body) )
+      resp = JSON.parse(http_post_request(post_body))
       raise JSONRPCError, resp['error'] if resp['error']
 
       resp['result']
@@ -27,14 +27,14 @@ class BitcoinRPC
 
   def commit(reqs)
     post_body = reqs.to_json
-    resp = JSON.parse( http_post_request(post_body) )
+    resp = JSON.parse(http_post_request(post_body))
     raise JSONRPCError, resp if resp.length != reqs.length
 
     resp
   end
 
   def http_post_request(post_body)
-    RestClient.post( @service_url, post_body, :content_type => :json, :accept => :json ).body
+    RestClient.post(@service_url, post_body, :content_type => :json, :accept => :json).body
   end
 
   class JSONRPCError < RuntimeError; end

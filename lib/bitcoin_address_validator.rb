@@ -55,7 +55,7 @@ class BitcoinAddressValidator < ActiveModel::EachValidator
 
   def version(address)
     decoded = b58_decode(address, 25)
-    
+
     version = decoded[0, 1]
     checksum = decoded[-4, decoded.length]
     vh160 = decoded[0, decoded.length - 4]
@@ -71,7 +71,7 @@ class BitcoinAddressValidator < ActiveModel::EachValidator
     result = ""
 
     value.reverse.each_char do |c|
-      long_value += B58Chars.index(c) * (B58Base ** index)
+      long_value += B58Chars.index(c) * (B58Base**index)
       index += 1
     end
 

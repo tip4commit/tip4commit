@@ -22,7 +22,7 @@ T4c::Application.routes.draw do
   resources :deposits, :only => [:index]
   resources :withdrawals, :only => [:index]
   resources :users, :only => [:index, :show, :update, :destroy]
-  resources :projects, :only => [:index, :show, :update, :edit ] do
+  resources :projects, :only => [:index, :show, :update, :edit] do
     collection do
       get 'search'
     end

@@ -17,13 +17,13 @@ describe HomeController, type: :controller do
     it "routes GET / to Home#index" do
       expect({ :get => "/" }).to route_to(
         :controller => "home",
-        :action     => "index" )
+        :action     => "index")
     end
 
     it "routes GET /home to Home#index" do
       expect({ :get => "/" }).to route_to(
         :controller => "home",
-        :action     => "index" )
+        :action     => "index")
     end
 
     it "routes GET /users/999999/no-such-path to Home#index" do

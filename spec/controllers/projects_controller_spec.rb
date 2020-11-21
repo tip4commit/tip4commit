@@ -161,7 +161,7 @@ describe ProjectsController, type: :controller do
     it "routes GET /projects to Project#index" do
       expect({ :get => "/projects" }).to route_to(
         :controller => "projects",
-        :action     => "index"    )
+        :action     => "index")
     end
 
     it "routes GET /projects/search?query= to Project#search" do
@@ -169,56 +169,56 @@ describe ProjectsController, type: :controller do
         :controller => "projects",
         :action     => "search",
         :query      => "seldon",
-        :order      => "balance"  )
+        :order      => "balance")
     end
 
     it "routes GET /projects/1 to Project#show" do
       expect({ :get => "/projects/1" }).to route_to(
         :controller => "projects",
         :action     => "show",
-        :id         => "1"        )
+        :id         => "1")
     end
 
     it "routes GET /projects/1/edit to Project#edit" do
       expect({ :get => "/projects/1/edit" }).to route_to(
         :controller => "projects",
         :action     => "edit",
-        :id         => "1"        )
+        :id         => "1")
     end
 
     it "routes PUT /projects/1 to Project#update" do
       expect({ :put => "/projects/1" }).to route_to(
         :controller => "projects",
         :action     => "update",
-        :id         => "1"        )
+        :id         => "1")
     end
 
     it "routes GET /projects/1/decide_tip_amounts to Project#decide_tip_amounts" do
       expect({ :get => "/projects/1/decide_tip_amounts" }).to route_to(
         :controller => "projects",
         :action     => "decide_tip_amounts",
-        :id         => "1"        )
+        :id         => "1")
     end
 
     it "routes PATCH /projects/1/decide_tip_amounts to Project#decide_tip_amounts" do
       expect({ :patch => "/projects/1/decide_tip_amounts" }).to route_to(
         :controller => "projects",
         :action     => "decide_tip_amounts",
-        :id         => "1"                  )
+        :id         => "1")
     end
 
     it "routes GET /projects/1/tips to Tips#index" do
       expect({ :get => "/projects/1/tips" }).to route_to(
         :controller => "tips",
         :action     => "index",
-        :project_id => "1"        )
+        :project_id => "1")
     end
 
     it "routes GET /projects/1/deposits to Deposits#index" do
       expect({ :get => "/projects/1/deposits" }).to route_to(
         :controller => "deposits",
         :action     => "index",
-        :project_id => "1"        )
+        :project_id => "1")
     end
   end
 
@@ -244,7 +244,7 @@ describe ProjectsController, type: :controller do
         :controller => "projects",
         :action     => "decide_tip_amounts",
         :service    => "github",
-        :repo       => "test/test"              )
+        :repo       => "test/test")
     end
 
     it "routes GET /:provider/:repo/tips to Project#tips" do

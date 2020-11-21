@@ -12,7 +12,7 @@ class DepositsController < ApplicationController
                           per(params[:per_page] || 30)
     respond_to do |format|
       format.html
-      format.csv  { render csv: @deposits, except: [:updated_at, :confirmations, :fee_size], add_methods: [:project_name, :fee, :confirmed?] }
+      format.csv { render csv: @deposits, except: [:updated_at, :confirmations, :fee_size], add_methods: [:project_name, :fee, :confirmed?] }
     end
   end
 end

@@ -20,7 +20,7 @@ class TipsController < ApplicationController
                   per(params[:per_page] || 30)
     respond_to do |format|
       format.html
-      format.csv  { render csv: @tips, except: [:updated_at, :commit, :commit_message, :refunded_at, :decided_at], add_methods: [:user_name, :project_name, :decided?, :claimed?, :paid?, :refunded?, :txid] }
+      format.csv { render csv: @tips, except: [:updated_at, :commit, :commit_message, :refunded_at, :decided_at], add_methods: [:user_name, :project_name, :decided?, :claimed?, :paid?, :refunded?, :txid] }
     end
   end
 end

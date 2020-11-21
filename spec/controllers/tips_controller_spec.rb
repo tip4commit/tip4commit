@@ -12,7 +12,7 @@ describe TipsController, type: :controller do
     it "routes GET / to Tips#index" do
       expect({ :get => "/tips" }).to route_to(
         :controller => "tips",
-        :action     => "index" )
+        :action     => "index")
     end
   end
 end

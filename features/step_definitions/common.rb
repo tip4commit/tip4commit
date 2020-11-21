@@ -88,15 +88,15 @@ def parse_path_from_page_string(page_string)
 
   # implicit cases
   else case page_string
-       when 'home' ;            path = root_path ;
-       when 'sign_up' ;         path = new_user_registration_path ;
-       when 'sign_in' ;         path = new_user_session_path ;
-       when 'users' ;           path = users_path ;
-       when 'projects' ;        path = projects_path ;
-       when 'search' ;          path = search_projects_path ;
-       when 'tips' ;            path = tips_path ;
-       when 'deposits' ;        path = deposits_path ;
-       when 'withdrawals' ;     path = withdrawals_path ;
+       when 'home';            path = root_path;
+       when 'sign_up';         path = new_user_registration_path;
+       when 'sign_in';         path = new_user_session_path;
+       when 'users';           path = users_path;
+       when 'projects';        path = projects_path;
+       when 'search';          path = search_projects_path;
+       when 'tips';            path = tips_path;
+       when 'deposits';        path = deposits_path;
+       when 'withdrawals';     path = withdrawals_path;
     end
   end
 
@@ -113,17 +113,17 @@ end
 
 Then(/^I should be on the "(.*?)" page$/) do |page_string|
   expected = parse_path_from_page_string page_string rescue expected = page_string
-  actual   =  URI.decode(page.current_path)
+  actual = URI.decode(page.current_path)
 
   expected.chop! if (expected.end_with? '/') && (expected.size > 1)
-  actual  .chop! if (actual  .end_with? '/') && (actual  .size > 1)
+  actual.chop! if (actual.end_with? '/') && (actual.size > 1)
 
   actual.should eq expected
 end
 
 def find_element(node_name)
   case node_name
-  when "header" ; page.find '.masthead'
+  when "header"; page.find '.masthead'
   end
 end
 
@@ -170,4 +170,4 @@ When(/^I confirm the email address: "(.*?)"$/) do |email|
   visit "/users/confirmation?confirmation_token=#{token}"
 end
 
-Then  /^some magic stuff happens in the cloud$/ do ; true ; end ;
+Then /^some magic stuff happens in the cloud$/ do; true; end;
