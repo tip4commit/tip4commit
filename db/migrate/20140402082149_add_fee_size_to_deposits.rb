@@ -1,4 +1,4 @@
-class AddFeeSizeToDeposits < ActiveRecord::Migration
+class AddFeeSizeToDeposits < ActiveRecord::Migration[4.2]
   class Deposit < ActiveRecord::Base
   end
 

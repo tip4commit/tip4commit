@@ -1,8 +1,8 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :sendmany do
-    txid "txid"
-    data "MyText"
-    result "MyString"
-    is_error false
+    txid { 'txid' }
+    data { 'MyText' }
+    result { 'MyString' }
+    is_error { false }
   end
 end

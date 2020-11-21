@@ -1,4 +1,4 @@
-class AddSomeFieldsToProjects < ActiveRecord::Migration
+class AddSomeFieldsToProjects < ActiveRecord::Migration[4.2]
   def change
     add_column :projects, :name, :string
     add_column :projects, :full_name, :string

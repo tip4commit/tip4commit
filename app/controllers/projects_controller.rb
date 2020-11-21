@@ -3,8 +3,8 @@ require 'net/http'
 class ProjectsController < ApplicationController
   include ProjectsHelper
 
-  before_filter :load_project, only: [:show, :edit, :update, :decide_tip_amounts]
-  before_filter :redirect_to_pretty_url, only: [:show, :edit, :decide_tip_amounts]
+  before_action :load_project, only: [:show, :edit, :update, :decide_tip_amounts]
+  before_action :redirect_to_pretty_url, only: [:show, :edit, :decide_tip_amounts]
 
   def index
     @projects = Project.order(projects_order).page(params[:page]).per(30)

@@ -42,7 +42,7 @@ describe ProjectsController, type: :controller do
 
   describe 'GET #search' do
     context 'with existing repo that has been blacklisted' do
-      let(:subject) { get :search, query: "https://github.com/mitsuhiko/flask" }
+      let(:subject) { get(:search, params: { query: 'https://github.com/mitsuhiko/flask' }) }
 
       it 'renders blacklisted template' do
         expect(subject).to render_template :blacklisted
@@ -53,7 +53,7 @@ describe ProjectsController, type: :controller do
   describe 'POST #search' do
     it 'returns 200 status code' do
       post :search
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 
@@ -72,34 +72,42 @@ describe ProjectsController, type: :controller do
     context 'existing_project' do
       it 'via project id returns 302 status code' do
         case verb
-        when :get ;   get   action , :id => a_project.id
-        when :patch ; patch action , :id => a_project.id
+        when :get
+          get(action, params: { id: a_project.id })
+        when :patch
+          patch(action, params: { id: a_project.id })
         end
         expect(response).to be_redirect
       end
 
       it 'via project name returns 200 status code' do
         case verb
-        when :get ;   get   action , :service => 'github' , :repo => a_project.full_name
-        when :patch ; patch action , :service => 'github' , :repo => a_project.full_name
+        when :get
+          get(action, params: { service: 'github', repo: a_project.full_name })
+        when :patch
+          patch(action, params: { service: 'github', repo: a_project.full_name})
         end
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 
     context 'nonexisting_project' do
       it 'via project id returns 302 status code' do
         case verb
-        when :get ;   get   action , :id => 999999
-        when :patch ; patch action , :id => 999999
+        when :get
+          get(action, params: { id: 999999 })
+        when :patch
+          patch(action, params: { id: 999999 })
         end
         expect(response).to be_redirect
       end
 
       it 'via project name returns 200 status code' do
         case verb
-        when :get ;   get   action , :service => 'github' , :repo => 'no-such/project' ;
-        when :patch ; patch action , :service => 'github' , :repo => 'no-such/project' ;
+        when :get
+          get(action, params: { service: 'github', repo: 'no-such/project' })
+        when :patch
+          patch(action, params: { service: 'github', repo: 'no-such/project' })
         end
         expect(response).to be_redirect
       end
@@ -111,7 +119,7 @@ describe ProjectsController, type: :controller do
 
     context 'with existing repo that has been blacklisted' do
       let(:blacklisted_repo) { create(:project, host: "github", full_name: "mitsuhiko/flask") }
-      let(:subject) { get :show, service: "github", repo: blacklisted_repo.full_name }
+      let(:subject) { get(:show, params: { service: "github", repo: blacklisted_repo.full_name }) }
 
       it 'renders blacklisted template' do
         expect(subject).to render_template :blacklisted
@@ -124,7 +132,7 @@ describe ProjectsController, type: :controller do
 # TODO: requires logged in user who is project collaborator
 #     include_context 'accessing_project' , :get , :edit
 
-      get :edit , :service => 'github' , :repo => 'test/test'
+      get(:edit, params: { service: 'github' , repo: 'test/test' })
       expect(response).to be_redirect
     end
   end
@@ -134,7 +142,7 @@ describe ProjectsController, type: :controller do
 #     include_context 'accessing_project' , :get , :decide_tip_amounts
 
     it 'returns 302 status code' do
-      get :decide_tip_amounts , :service => 'github' , :repo => 'test/test'
+      get(:decide_tip_amounts, params: { service: 'github', repo: 'test/test' })
       expect(response).to be_redirect
     end
   end
@@ -144,7 +152,7 @@ describe ProjectsController, type: :controller do
 #     include_context 'accessing_project' , :patch , :decide_tip_amounts
 
     it 'returns 302 status code' do
-      patch :decide_tip_amounts , :service => 'github' , :repo => 'test/test'
+      patch(:decide_tip_amounts, params: { service: 'github' , repo: 'test/test' })
       expect(response).to be_redirect
     end
   end

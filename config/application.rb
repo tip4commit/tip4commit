@@ -27,8 +27,7 @@ module T4c
     config.assets.initialize_on_precompile = true
     config.available_locales = %w[en es fr nl ru pl hr de ro ko id ja pt my cn hk]
     config.active_job.queue_adapter = :sidekiq
-
-    config.active_record.raise_in_transactional_callbacks = true
+    config.active_record.sqlite3.represent_boolean_as_integer = true
   end
 end
 

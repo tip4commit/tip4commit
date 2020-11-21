@@ -1,4 +1,4 @@
-class AddProjectHost < ActiveRecord::Migration
+class AddProjectHost < ActiveRecord::Migration[4.2]
   class Project < ActiveRecord::Base
   end
 

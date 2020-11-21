@@ -1,4 +1,4 @@
-class AddConfirmationFieldsToUsers < ActiveRecord::Migration
+class AddConfirmationFieldsToUsers < ActiveRecord::Migration[4.2]
   def change
     add_column :users, :confirmed_at, :timestamp
     add_column :users, :confirmation_sent_at, :timestamp

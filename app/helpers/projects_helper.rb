@@ -37,4 +37,8 @@ module ProjectsHelper
   def shield_url project
     project_url project, format: :svg
   end
+
+  def permitted_params
+    params.permit(:order, :page)
+  end
 end

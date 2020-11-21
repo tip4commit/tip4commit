@@ -1,4 +1,4 @@
-class CreateTippingPoliciesTexts < ActiveRecord::Migration
+class CreateTippingPoliciesTexts < ActiveRecord::Migration[4.2]
   def change
     create_table :tipping_policies_texts do |t|
       t.belongs_to :project, index: true

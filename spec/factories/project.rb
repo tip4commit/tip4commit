@@ -1,15 +1,15 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :project do
-    url "MyString"
-    full_name "test/test"
-    github_id "1234567890"
+    url { 'MyString' }
+    full_name { 'test/test' }
+    github_id { '1234567890' }
 
     trait :github do
-      host 'github'
+      host { 'github' }
     end
 
     trait :bitbucket do
-      host 'bitbucket'
+      host { 'bitbucket' }
     end
   end
 end

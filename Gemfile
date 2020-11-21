@@ -2,47 +2,45 @@ source 'https://rubygems.org'
 
 ruby '2.5.8'
 
-gem 'rails', '4.2.11.3'
+gem 'rails', '5.2.4.4'
 
-gem 'acts_as_paranoid', github: 'ActsAsParanoid/acts_as_paranoid'
-gem 'airbrake', '~> 3.1.15'
-gem 'bcrypt', '~> 3.1.12'
-gem 'bech32', '~> 1.0.5'
-gem 'bootstrap_form', github: 'bootstrap-ruby/rails-bootstrap-forms'
+gem 'acts_as_paranoid'
+gem 'airbrake'
+gem 'bcrypt'
+gem 'bech32'
+gem 'bootstrap_form'
 gem 'cancancan'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails'
 gem 'demoji'
-gem 'devise', '~> 4.7.3'
+gem 'devise'
 gem 'devise-i18n'
-gem 'dusen', '~> 0.6.1'
+gem 'dusen'
 gem 'easy_gravatar'
-gem 'haml-rails', '~> 1.0'
+gem 'haml-rails'
 gem 'http_accept_language'
 gem 'i18n-js'
-gem 'jbuilder', '~> 1.5.3'
-gem 'jquery-rails', '~> 3.1'
+gem 'jbuilder'
+gem 'jquery-rails'
 gem 'jquery-turbolinks'
-gem 'kaminari', '~> 1.2.1'
+gem 'kaminari'
 gem 'kaminari-i18n'
-gem 'less-rails', '~> 2.4.2'
-gem 'money-tree', '~> 0.10.0'
-gem 'mysql2', '~> 0.4.10', group: :production
-gem 'octokit', '~> 4.7.0'
-gem 'omniauth', '~> 1.9.1'
+gem 'money-tree'
+gem 'mysql2', group: :production
+gem 'octokit'
+gem 'omniauth'
 gem 'omniauth-github'
-gem 'rails-i18n', '~> 4.0.0'
+gem 'rails-i18n'
 gem 'render_csv'
 gem 'rest-client'
-gem 'sass-rails', '~> 4.0.0'
-gem 'sawyer', '~> 0.8.0'
+gem 'sass-rails'
+gem 'sawyer'
 gem 'sdoc', group: :doc, require: false
 gem 'sidekiq'
-gem 'sprockets', '~> 2.12.5'
-gem 'therubyracer', '~> 0.12.2', platforms: :ruby
-gem 'turbolinks', '~> 2.5.0'
-gem 'twitter-bootstrap-rails',    github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
-gem 'twitter_bootstrap_form_for', github: 'stouset/twitter_bootstrap_form_for'
-gem 'uglifier', '>= 1.3.0'
+gem 'sprockets'
+gem 'therubyracer', platforms: :ruby
+gem 'turbolinks'
+gem 'twitter-bootstrap-rails'
+gem 'uglifier'
 
 group :development do
   gem 'capistrano',         '~> 3.4.0'
@@ -56,17 +54,18 @@ group :development do
 end
 
 group :development, :test do
-  gem 'factory_girl_rails', '~> 4.3.0'
-  gem 'rspec-rails',        '~> 4.0'
-  gem 'sqlite3',            '~> 1.3.11'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
+  gem 'sqlite3'
 end
 
 group :test do
-  gem 'cucumber-rails',          '~> 1.0', require: false
+  gem 'cucumber-rails', '~> 1.0', require: false
   gem 'database_cleaner'
   gem 'rspec-activemodel-mocks'
-  gem 'shoulda-matchers',        '~> 3.1'
+  gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'vcr'
   gem 'webmock'
+  gem 'rails-controller-testing'
 end

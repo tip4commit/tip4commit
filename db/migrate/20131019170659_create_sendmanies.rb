@@ -1,4 +1,4 @@
-class CreateSendmanies < ActiveRecord::Migration
+class CreateSendmanies < ActiveRecord::Migration[4.2]
   def change
     create_table :sendmanies do |t|
       t.string :txid

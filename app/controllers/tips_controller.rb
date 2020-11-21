@@ -1,6 +1,6 @@
 class TipsController < ApplicationController
-  before_filter { load_project params }
-  before_filter { load_user    params }
+  before_action { load_project params }
+  before_action { load_user    params }
 
   def index
     if @project.present?

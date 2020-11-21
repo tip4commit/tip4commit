@@ -55,7 +55,7 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
-  include FactoryGirl::Syntax::Methods
+  include FactoryBot::Syntax::Methods
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.extend ControllerMacros, type: :controller
 end

@@ -1,4 +1,4 @@
-class AddCommitMessageToTip < ActiveRecord::Migration
+class AddCommitMessageToTip < ActiveRecord::Migration[4.2]
   def change
     add_column :tips, :commit_message, :string
   end

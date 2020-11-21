@@ -1,4 +1,4 @@
-class Sendmany < ActiveRecord::Base
+class Sendmany < ApplicationRecord
   has_many :tips
 
   def total_amount
