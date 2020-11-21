@@ -2,7 +2,7 @@ T4c::Application.routes.draw do
   root 'home#index'
 
   devise_for :users,
-    :controllers => { :omniauth_callbacks => 'users/omniauth_callbacks' }
+             :controllers => { :omniauth_callbacks => 'users/omniauth_callbacks' }
 
   get '/users/login'                       => 'users#login' ,                                                                               :as => 'login_users'
   get '/users/:user_id/tips'               => 'tips#index' ,                    :constraints => { :user_id    => /\d+/ }                    , :as => 'user_tips'

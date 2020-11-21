@@ -16,9 +16,9 @@ After do |scenario|
   CONFIG["our_fee"] = @default_our_fee
   CONFIG["min_tip"] = @default_min_tip
 
-#   Cucumber.wants_to_quit = true if scenario.status.eql? :failed
-#   Cucumber.wants_to_quit = true if scenario.status.eql? :undefined
-#   Cucumber.wants_to_quit = true if scenario.status.eql? :pending
+  #   Cucumber.wants_to_quit = true if scenario.status.eql? :failed
+  #   Cucumber.wants_to_quit = true if scenario.status.eql? :undefined
+  #   Cucumber.wants_to_quit = true if scenario.status.eql? :pending
 end
 
 def mock_github_user(nickname)
@@ -88,15 +88,15 @@ def parse_path_from_page_string(page_string)
 
   # implicit cases
   else case page_string
-    when 'home' ;            path = root_path ;
-    when 'sign_up' ;         path = new_user_registration_path ;
-    when 'sign_in' ;         path = new_user_session_path ;
-    when 'users' ;           path = users_path ;
-    when 'projects' ;        path = projects_path ;
-    when 'search' ;          path = search_projects_path ;
-    when 'tips' ;            path = tips_path ;
-    when 'deposits' ;        path = deposits_path ;
-    when 'withdrawals' ;     path = withdrawals_path ;
+       when 'home' ;            path = root_path ;
+       when 'sign_up' ;         path = new_user_registration_path ;
+       when 'sign_in' ;         path = new_user_session_path ;
+       when 'users' ;           path = users_path ;
+       when 'projects' ;        path = projects_path ;
+       when 'search' ;          path = search_projects_path ;
+       when 'tips' ;            path = tips_path ;
+       when 'deposits' ;        path = deposits_path ;
+       when 'withdrawals' ;     path = withdrawals_path ;
     end
   end
 

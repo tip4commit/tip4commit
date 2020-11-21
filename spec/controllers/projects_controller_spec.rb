@@ -129,8 +129,8 @@ describe ProjectsController, type: :controller do
 
   describe 'GET #edit' do
     it 'returns 302 status code' do
-# TODO: requires logged in user who is project collaborator
-#     include_context 'accessing_project' , :get , :edit
+      # TODO: requires logged in user who is project collaborator
+      #     include_context 'accessing_project' , :get , :edit
 
       get(:edit, params: { service: 'github' , repo: 'test/test' })
       expect(response).to be_redirect
@@ -138,8 +138,8 @@ describe ProjectsController, type: :controller do
   end
 
   describe 'GET #decide_tip_amounts' do
-# TODO: requires logged in user who is project collaborator and some tips
-#     include_context 'accessing_project' , :get , :decide_tip_amounts
+    # TODO: requires logged in user who is project collaborator and some tips
+    #     include_context 'accessing_project' , :get , :decide_tip_amounts
 
     it 'returns 302 status code' do
       get(:decide_tip_amounts, params: { service: 'github', repo: 'test/test' })
@@ -148,8 +148,8 @@ describe ProjectsController, type: :controller do
   end
 
   describe 'PATCH #decide_tip_amounts' do
-# TODO: requires logged in user who is project collaborator and some tips
-#     include_context 'accessing_project' , :patch , :decide_tip_amounts
+    # TODO: requires logged in user who is project collaborator and some tips
+    #     include_context 'accessing_project' , :patch , :decide_tip_amounts
 
     it 'returns 302 status code' do
       patch(:decide_tip_amounts, params: { service: 'github' , repo: 'test/test' })
