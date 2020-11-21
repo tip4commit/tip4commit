@@ -4,7 +4,7 @@ class Tip < ApplicationRecord
   belongs_to :project, inverse_of: :tips
 
   AVAILABLE_AMOUNTS = [
-    ['undecided', ""],
+    ['undecided', ''],
     ['free',      0],
     ['tiny',      0.1],
     ['small',     0.5],

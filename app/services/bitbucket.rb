@@ -11,7 +11,7 @@ class Bitbucket
   attr_reader :agent
 
   def initialize
-    @agent = Sawyer::Agent.new("https://bitbucket.org")
+    @agent = Sawyer::Agent.new('https://bitbucket.org')
   end
 
   def repository_info(repository)
@@ -21,7 +21,7 @@ class Bitbucket
       data.slug,
       data.name,
       repository.full_name,
-      (data.fork_of.owner + "/" + data.fork_of.slug rescue ''),
+      ("#{data.fork_of.owner}/#{data.fork_of.slug}" rescue ''),
       data.description,
       data.followers_count,
       data.language
@@ -75,7 +75,7 @@ class Bitbucket
   end
 
   def base_path
-    "/api/1.0/repositories/"
+    '/api/1.0/repositories/'
   end
 
   def request(method, path)

@@ -56,7 +56,7 @@ class ProjectsController < ApplicationController
         redirect_to decide_tip_amounts_project_path(@project), alert: I18n.t('errors.can_assign_more_tips')
         return
       end
-      raise "wrong data" if percentages.min < 0
+      raise 'wrong data' if percentages.min < 0
 
       @project.attributes = params.require(:project).permit(tips_attributes: [:id, :amount_percentage])
       if @project.save

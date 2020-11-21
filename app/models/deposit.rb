@@ -19,7 +19,7 @@ class Deposit < ApplicationRecord
   end
 
   before_create do
-    self.fee_size = CONFIG["our_fee"]
+    self.fee_size = CONFIG['our_fee']
   end
 
   def project_name

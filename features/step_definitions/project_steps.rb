@@ -19,7 +19,7 @@ def create_github_project(project_name, is_mock_project = true)
      (@github_project_2.present? && (project_name.eql? @github_project_2.full_name))
     raise "duplicate project_name '#{project_name}'"
   elsif @github_project_3.present?
-    raise "the maximum of three test projects already exist"
+    raise 'the maximum of three test projects already exist'
   end
 
   if is_mock_project
@@ -41,7 +41,7 @@ def create_github_project(project_name, is_mock_project = true)
 end
 
 def create_bitbicket_project(project_name)
-  raise "unknown provider" # nyi
+  raise 'unknown provider' # nyi
 end
 
 def find_project(service, project_name)
@@ -99,7 +99,7 @@ When /^the project syncs with the remote repo$/ do
 end
 
 Then /^there should (.*)\s*be a project avatar image visible$/ do |should|
-  avatar_xpath = "//img[contains(@src, \"githubusercontent\")]"
+  avatar_xpath = '//img[contains(@src, "githubusercontent")]'
   if should.eql? 'not '
     page.should_not have_xpath avatar_xpath
   else

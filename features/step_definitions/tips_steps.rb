@@ -1,13 +1,13 @@
 Given(/^our fee is "(.*?)"$/) do |arg1|
-  CONFIG["our_fee"] = arg1.to_f
+  CONFIG['our_fee'] = arg1.to_f
 end
 
 Given(/^the tip percentage per commit is "(.*?)"$/) do |arg1|
-  CONFIG["tip"] = arg1.to_f
+  CONFIG['tip'] = arg1.to_f
 end
 
 Given(/^the minimum tip amount is "(.*?)"$/) do |arg1|
-  CONFIG["min_tip"] = arg1.to_f * 1e8
+  CONFIG['min_tip'] = arg1.to_f * 1e8
 end
 
 Given(/^a deposit of "(.*?)" is made$/) do |deposit|
@@ -15,12 +15,12 @@ Given(/^a deposit of "(.*?)" is made$/) do |deposit|
 end
 
 def add_new_commit(commit_id, nickname, params = {})
-  raise "duplicate commit_id" if (find_new_commit commit_id).present?
+  raise 'duplicate commit_id' if (find_new_commit commit_id).present?
 
   defaults = {
     sha: commit_id,
     commit: {
-      message: "Some changes",
+      message: 'Some changes',
       author: {
         email: "#{nickname}@example.com"
       }
@@ -52,28 +52,28 @@ Given(/^(\d+) new commit.? (?:is|are) made by a developer named "(.*?)"$/) do |n
 end
 
 Given(/^a new commit "([^"]*?)" is made$/) do |commit_id|
-  add_new_commit commit_id, "unknown-user"
+  add_new_commit commit_id, 'unknown-user'
 end
 
 Given(/^a new commit "(.*?)" is made with parent "([^"]*?)"$/) do |commit_id, parent_commit_id|
-  add_new_commit commit_id, "unknown-user", parents: [{ sha: parent_commit_id }]
+  add_new_commit commit_id, 'unknown-user', parents: [{ sha: parent_commit_id }]
 end
 
 Given(/^a new commit "(.*?)" is made with parent "(.*?)" and "(.*?)"$/) do |commit_id, parent_a_commit_id, parent_b_commit_id|
   params = { parents: [{ sha: parent_a_commit_id }, { sha: parent_b_commit_id }], commit: { message: "Merge #{parent_a_commit_id} and #{parent_b_commit_id}" } }
-  add_new_commit commit_id, "unknown-user", params
+  add_new_commit commit_id, 'unknown-user', params
 end
 
 Given(/^the author of commit "(.*?)" is "(.*?)"$/) do |commit_id, nickname|
   commit = find_new_commit commit_id
-  raise "no such commit" if commit.nil?
+  raise 'no such commit' if commit.nil?
 
   commit.deep_merge!(author: { login: nickname }, commit: { author: { email: "#{nickname}@example.com" } })
 end
 
 Given(/^the message of commit "(.*?)" is "(.*?)"$/) do |commit_id, commit_msg|
   commit = find_new_commit commit_id
-  raise "no such commit" if commit.nil?
+  raise 'no such commit' if commit.nil?
 
   commit.deep_merge!(commit: { message: commit_msg })
 end
@@ -87,7 +87,7 @@ Then(/^the most recent commit should be "(.*?)"$/) do |commit_id|
 end
 
 When(/^the new commits are loaded$/) do
-  raise "no commits have been assigned" if @new_commits.nil?
+  raise 'no commits have been assigned' if @new_commits.nil?
 
   [@github_project_1, @github_project_2, @github_project_3].each do |project|
     next if project.nil?
@@ -118,13 +118,13 @@ Then(/^the tip amount for commit "(.*?)" should be undecided$/) do |arg1|
 end
 
 When(/^I choose the amount "(.*?)" on commit "(.*?)"$/) do |arg1, arg2|
-  within find(".decide-tip-amounts-table tbody tr", text: arg2) do
+  within find('.decide-tip-amounts-table tbody tr', text: arg2) do
     choose arg1
   end
 end
 
 When(/^I choose the amount "(.*?)" on all commits$/) do |arg1|
-  all(".decide-tip-amounts-table tbody tr").each do |tr|
+  all('.decide-tip-amounts-table tbody tr').each do |tr|
     within tr do
       choose arg1
     end
@@ -132,11 +132,11 @@ When(/^I choose the amount "(.*?)" on all commits$/) do |arg1|
 end
 
 When(/^I send a forged request to enable tip holding on the project$/) do
-  page.driver.browser.process_and_follow_redirects(:patch, project_path(@current_project), project: { hold_tips: "1" })
+  page.driver.browser.process_and_follow_redirects(:patch, project_path(@current_project), project: { hold_tips: '1' })
 end
 
 Then(/^I should see an access denied$/) do
-  page.should have_content("You are not authorized to perform this action!")
+  page.should have_content('You are not authorized to perform this action!')
 end
 
 Then(/^the project should not hold tips$/) do
@@ -164,9 +164,9 @@ Given(/^I send a forged request to set the amount of the first undecided tip of 
   params = {
     project: {
       tips_attributes: {
-        "0" => {
+        '0' => {
           id: tip.id,
-          amount_percentage: "5"
+          amount_percentage: '5'
         }
       }
     }
@@ -181,7 +181,7 @@ When(/^I send a forged request to change the percentage of commit "(.*?)" to "(.
   params = {
     project: {
       tips_attributes: {
-        "0" => {
+        '0' => {
           id: tip.id,
           amount_percentage: percentage
         }

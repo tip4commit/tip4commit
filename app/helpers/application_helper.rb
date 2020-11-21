@@ -151,8 +151,8 @@ module ApplicationHelper
   end
 
   def get_rate(currency)
-    Rails.cache.fetch('###' + currency, expires_in: 1.hours) do
-      uri = URI('https://api.coindesk.com/v1/bpi/currentprice/' + currency + '.json')
+    Rails.cache.fetch("####{currency}", expires_in: 1.hours) do
+      uri = URI("https://api.coindesk.com/v1/bpi/currentprice/#{currency}.json")
       response = Net::HTTP.get_response(uri)
       hash = JSON.parse(response.body)
       hash['bpi'][currency]['rate_float'].to_f

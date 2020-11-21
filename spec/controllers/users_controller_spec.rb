@@ -93,42 +93,42 @@ describe UsersController, type: :controller do
     end
   end
 
-  describe "routing" do
-    it "routes GET /users to User#index" do
-      expect({ :get => "/users" }).to route_to(
-        :controller => "users",
-        :action => "index"
+  describe 'routing' do
+    it 'routes GET /users to User#index' do
+      expect({ :get => '/users' }).to route_to(
+        :controller => 'users',
+        :action => 'index'
       )
     end
 
-    it "routes GET /users/nick-name321 to User#show" do
-      expect({ :get => "/users/nick-name321" }).to route_to(
-        :controller => "users",
-        :action => "show",
-        :nickname => "nick-name321"
+    it 'routes GET /users/nick-name321 to User#show' do
+      expect({ :get => '/users/nick-name321' }).to route_to(
+        :controller => 'users',
+        :action => 'show',
+        :nickname => 'nick-name321'
       )
     end
 
-    it "routes GET /users/login to User#login" do
-      expect({ :get => "/users/login" }).to route_to(
-        :controller => "users",
-        :action => "login"
+    it 'routes GET /users/login to User#login' do
+      expect({ :get => '/users/login' }).to route_to(
+        :controller => 'users',
+        :action => 'login'
       )
     end
 
-    it "routes GET /users/1/tips to Tips#index" do
-      expect({ :get => "/users/1/tips" }).to route_to(
-        :controller => "tips",
-        :action => "index",
-        :user_id => "1"
+    it 'routes GET /users/1/tips to Tips#index' do
+      expect({ :get => '/users/1/tips' }).to route_to(
+        :controller => 'tips',
+        :action => 'index',
+        :user_id => '1'
       )
     end
   end
 
-  describe "pretty url routing" do
+  describe 'pretty url routing' do
     let(:user) { create(:user) }
 
-    it "regex rejects reserved user paths" do
+    it 'regex rejects reserved user paths' do
       # accepted pertty url usernames
       should_accept = [' ', 'logi', 'ogin', 's4c2', '42x', 'nick name', 'kd']
       # reserved routes (rejected pertty url usernames)
@@ -140,19 +140,19 @@ describe UsersController, type: :controller do
       (expect(rejected.size).to eq(should_reject.size))
     end
 
-    it "routes GET /users/:nickname to User#show" do
+    it 'routes GET /users/:nickname to User#show' do
       expect({ :get => "/users/#{user.nickname}" }).to route_to(
-        :controller => "users",
-        :action => "show",
-        :nickname => "kd"
+        :controller => 'users',
+        :action => 'show',
+        :nickname => 'kd'
       )
     end
 
-    it "routes GET /users/:nickname/tips to Tips#index" do
+    it 'routes GET /users/:nickname/tips to Tips#index' do
       expect({ :get => "/users/#{user.nickname}/tips" }).to route_to(
-        :controller => "tips",
-        :action => "index",
-        :nickname => "kd"
+        :controller => 'tips',
+        :action => 'index',
+        :nickname => 'kd'
       )
     end
   end

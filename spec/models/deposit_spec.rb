@@ -29,10 +29,10 @@ describe Deposit, type: :model do
   private
 
   def with_custom_fee
-    old_fee = CONFIG["our_fee"]
-    CONFIG["our_fee"] = 0.01
+    old_fee = CONFIG['our_fee']
+    CONFIG['our_fee'] = 0.01
     yield
   ensure
-    CONFIG["our_fee"] = old_fee
+    CONFIG['our_fee'] = old_fee
   end
 end

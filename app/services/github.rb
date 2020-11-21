@@ -50,7 +50,7 @@ class Github
     elsif project_name =~ /\w+\/\w+/
       begin
         repo = repository_info project_name
-        project = Project.find_or_create_by host: "github", full_name: repo.full_name
+        project = Project.find_or_create_by host: 'github', full_name: repo.full_name
         project.update_repository_info repo
         project
       rescue Octokit::NotFound
@@ -62,7 +62,7 @@ class Github
   end
 
   def find_project(project_name)
-    return Project.find_by(host: "github", full_name: project_name)
+    return Project.find_by(host: 'github', full_name: project_name)
   end
 
   def collaborators_info(project)

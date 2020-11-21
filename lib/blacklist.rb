@@ -1,4 +1,4 @@
-require "set"
+require 'set'
 
 class Blacklist
   def initialize(urls)
@@ -16,7 +16,7 @@ class Blacklist
 
     # Check for the author path.
     # https://github.com/author/*
-    url[url.rindex("/")..-1] = "/*"
+    url[url.rindex('/')..-1] = '/*'
 
     @urls.include?(url)
   end
@@ -26,13 +26,13 @@ class Blacklist
   def normalize_url(url)
     url = url.clone
 
-    if !url.start_with?("http://", "https://", "//")
-      if !url.start_with?("github.com", "bitbucket.org")
+    if !url.start_with?('http://', 'https://', '//')
+      if !url.start_with?('github.com', 'bitbucket.org')
         # Assume it is a shortened "author/project" path and
         # default to Github.
-        url.prepend("github.com/")
+        url.prepend('github.com/')
       end
-      url.prepend("https://")
+      url.prepend('https://')
     end
 
     uri = URI.parse(url)

@@ -79,7 +79,7 @@ class User < ApplicationRecord
   end
 
   def ready_for_withdrawal?
-    self.bitcoin_address.present? && self.balance >= CONFIG["min_payout"]
+    self.bitcoin_address.present? && self.balance >= CONFIG['min_payout']
   end
 
   private

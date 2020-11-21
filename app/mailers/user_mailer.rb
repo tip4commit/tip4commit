@@ -5,12 +5,12 @@ class UserMailer < ActionMailer::Base
     @user = user
     @tip  = tip
 
-    mail to: user.email, subject: "You received a tip for your commit"
+    mail to: user.email, subject: 'You received a tip for your commit'
   end
 
   def check_bitcoin_address(user)
     @user = user
 
-    mail to: user.email, subject: "Check your Bitcoin address"
+    mail to: user.email, subject: 'Check your Bitcoin address'
   end
 end

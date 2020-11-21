@@ -3,7 +3,7 @@ require 'digest'
 class BitcoinAddressValidator < ActiveModel::EachValidator
   def validate_each(record, field, value)
     unless value.blank? || valid_bitcoin_address?(value)
-      record.errors[field] << "Bitcoin address is invalid"
+      record.errors[field] << 'Bitcoin address is invalid'
     end
   end
 
@@ -68,7 +68,7 @@ class BitcoinAddressValidator < ActiveModel::EachValidator
   def b58_decode(value, length)
     long_value = 0
     index = 0
-    result = ""
+    result = ''
 
     value.reverse.each_char do |c|
       long_value += B58Chars.index(c) * (B58Base**index)

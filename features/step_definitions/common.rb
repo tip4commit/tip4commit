@@ -4,17 +4,17 @@ Before do
   # mock branches method to prevent api call
   Project.any_instance.stub(:branches).and_return(%w(master))
 
-  @default_tip     = CONFIG["tip"]
-  @default_our_fee = CONFIG["our_fee"]
-  @default_min_tip = CONFIG["min_tip"]
+  @default_tip     = CONFIG['tip']
+  @default_our_fee = CONFIG['our_fee']
+  @default_min_tip = CONFIG['min_tip']
 end
 
 After do |scenario|
   OmniAuth.config.test_mode = false
 
-  CONFIG["tip"]     = @default_tip
-  CONFIG["our_fee"] = @default_our_fee
-  CONFIG["min_tip"] = @default_min_tip
+  CONFIG['tip']     = @default_tip
+  CONFIG['our_fee'] = @default_our_fee
+  CONFIG['min_tip'] = @default_min_tip
 
   #   Cucumber.wants_to_quit = true if scenario.status.eql? :failed
   #   Cucumber.wants_to_quit = true if scenario.status.eql? :undefined
@@ -26,10 +26,10 @@ def mock_github_user(nickname)
 
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:github] = {
-    "info" => {
-      "nickname" => nickname,
-      "primary_email" => email,
-      "verified_emails" => [email]
+    'info' => {
+      'nickname' => nickname,
+      'primary_email' => email,
+      'verified_emails' => [email]
     }
   }.to_ostruct
 
@@ -43,18 +43,18 @@ end
 Given /^I'm signed in as "(.*?)"$/ do |nickname|
   mock_github_user nickname
   visit root_path
-  first(:link, "Sign in").click
-  click_on "Sign in with Github"
-  page.should have_content("Successfully authenticated")
+  first(:link, 'Sign in').click
+  click_on 'Sign in with Github'
+  page.should have_content('Successfully authenticated')
 end
 
 Given /^I'm not signed in$/ do
   visit root_path
-  if page.has_content?("Sign out")
-    click_on "Sign out"
-    page.should have_content("Signed out successfully")
+  if page.has_content?('Sign out')
+    click_on 'Sign out'
+    page.should have_content('Signed out successfully')
   else
-    page.should have_content("Sign in")
+    page.should have_content('Sign in')
   end
 
   OmniAuth.config.test_mode = false
@@ -100,7 +100,7 @@ def parse_path_from_page_string(page_string)
        end
   end
 
-  path || (raise "unknown page")
+  path || (raise 'unknown page')
 end
 
 Given(/^I visit the "(.*?)" page$/) do |page_string|
@@ -123,7 +123,7 @@ end
 
 def find_element(node_name)
   case node_name
-  when "header"; page.find '.masthead'
+  when 'header'; page.find '.masthead'
   end
 end
 

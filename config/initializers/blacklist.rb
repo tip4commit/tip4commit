@@ -1,2 +1,2 @@
 # Load the blacklist.
-BLACKLIST ||= Blacklist.new(YAML.load_file("config/blacklist.yml"))
+BLACKLIST ||= Blacklist.new(YAML.load_file('config/blacklist.yml'))
