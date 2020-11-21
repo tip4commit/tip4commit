@@ -57,16 +57,17 @@ end
 group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails'
+  gem 'rubocop'
   gem 'sqlite3'
 end
 
 group :test do
   gem 'cucumber-rails', '~> 1.0', require: false
   gem 'database_cleaner'
+  gem 'rails-controller-testing'
   gem 'rspec-activemodel-mocks'
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'vcr'
   gem 'webmock'
-  gem 'rails-controller-testing'
 end
