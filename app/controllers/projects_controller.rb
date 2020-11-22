@@ -5,8 +5,8 @@ require 'net/http'
 class ProjectsController < ApplicationController
   include ProjectsHelper
 
-  before_action :load_project, only: [:show, :edit, :update, :decide_tip_amounts]
-  before_action :redirect_to_pretty_url, only: [:show, :edit, :decide_tip_amounts]
+  before_action :load_project, only: %i[show edit update decide_tip_amounts]
+  before_action :redirect_to_pretty_url, only: %i[show edit decide_tip_amounts]
 
   def index
     @projects = Project.order(projects_order).page(params[:page]).per(30)
@@ -39,9 +39,7 @@ class ProjectsController < ApplicationController
   def update
     authorize! :update, @project
     @project.attributes = project_params
-    if @project.tipping_policies_text.try(:text_changed?)
-      @project.tipping_policies_text.user = current_user
-    end
+    @project.tipping_policies_text.user = current_user if @project.tipping_policies_text.try(:text_changed?)
     if @project.save
       redirect_to project_path(@project), notice: I18n.t('notices.project_updated')
     else
@@ -58,9 +56,9 @@ class ProjectsController < ApplicationController
         redirect_to decide_tip_amounts_project_path(@project), alert: I18n.t('errors.can_assign_more_tips')
         return
       end
-      raise 'wrong data' if percentages.min < 0
+      raise 'wrong data' if percentages.min.negative?
 
-      @project.attributes = params.require(:project).permit(tips_attributes: [:id, :amount_percentage])
+      @project.attributes = params.require(:project).permit(tips_attributes: %i[id amount_percentage])
       if @project.save
         message = I18n.t('notices.tips_decided')
         if @project.has_undecided_tips?
@@ -74,7 +72,9 @@ class ProjectsController < ApplicationController
 
   private
 
-  def load_project; super params; end;
+  def load_project
+    super params
+  end
 
   def project_params
     params.require(:project).permit(:branch, :disable_notifications, :hold_tips, tipping_policies_text_attributes: [:text])

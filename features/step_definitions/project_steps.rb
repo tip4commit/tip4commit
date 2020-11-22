@@ -24,18 +24,23 @@ def create_github_project(project_name, is_mock_project = true)
     raise 'the maximum of three test projects already exist'
   end
 
-  if is_mock_project
-    new_project = Project.create! full_name: project_name, # e.g. "me/my-project"
-                                  github_id: Digest::SHA1.hexdigest(project_name),
-                                  bitcoin_address: 'mq4NtnmQoQoPfNWEPbhSvxvncgtGo6L8WY'
-  else
-    new_project = Project.find_or_create_by_url project_name # e.g. "me/my-project"
-  end
+  new_project = if is_mock_project
+                  Project.create!(
+                    full_name: project_name, # e.g. "me/my-project"
+                    github_id: Digest::SHA1.hexdigest(project_name),
+                    bitcoin_address: 'mq4NtnmQoQoPfNWEPbhSvxvncgtGo6L8WY'
+                  )
+                else
+                  Project.find_or_create_by_url(project_name) # e.g. "me/my-project"
+                end
 
-  unless github_projects.include? new_project
-    if    @github_project_2.present?; @github_project_3 = new_project;
-    elsif @github_project_1.present?; @github_project_2 = new_project;
-    else @github_project_1 = new_project;
+  unless github_projects.include?(new_project)
+    if @github_project_2.present?
+      @github_project_3 = new_project
+    elsif @github_project_1.present?
+      @github_project_2 = new_project
+    else
+      @github_project_1 = new_project
     end
   end
 
@@ -92,7 +97,7 @@ When(/^the project syncs with the remote repo$/) do
   #     so we cache new_commits and collaborators and defer loading to this step
   #     which is intended to simulate the BitcoinTipper::work method
   project_owner_name = (@current_project.full_name.split '/').first
-  @new_commits     ||= { @current_project.id => Hash.new }
+  @new_commits     ||= { @current_project.id => {} }
   @collaborators   ||= [project_owner_name]
   @collaborators << project_owner_name unless @collaborators.include? project_owner_name
 

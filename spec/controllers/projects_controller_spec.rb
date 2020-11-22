@@ -96,9 +96,9 @@ describe ProjectsController, type: :controller do
       it 'via project id returns 302 status code' do
         case verb
         when :get
-          get(action, params: { id: 999999 })
+          get(action, params: { id: 999_999 })
         when :patch
-          patch(action, params: { id: 999999 })
+          patch(action, params: { id: 999_999 })
         end
         expect(response).to be_redirect
       end

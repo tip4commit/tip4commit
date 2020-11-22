@@ -4,7 +4,11 @@ module ApplicationHelper
   def btc_human(amount, options = {})
     amount ||= 0
     nobr = options.key?(:nobr) ? options[:nobr] : true
-    denom = options.key?(:denom) ? options[:denom] : (try(:current_user) ? current_user.denom : 0)
+    denom = if options.key?(:denom)
+              options[:denom]
+            else
+              (try(:current_user) ? current_user.denom : 0)
+            end
     if denom === 0
       btc = to_btc(amount)
     elsif denom === 1

@@ -16,7 +16,7 @@ class BitcoinRPC
   end
 
   def method_missing(name, *args)
-    if (@batch_mode)
+    if @batch_mode
       { 'method' => name, 'params' => args, 'id' => 'jsonrpc', 'jsonrpc' => '2.0' }
     else
       post_body = { 'method' => name, 'params' => args, 'id' => 'jsonrpc' }.to_json

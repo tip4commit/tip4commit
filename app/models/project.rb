@@ -13,11 +13,11 @@ class Project < ApplicationRecord
   accepts_nested_attributes_for :tipping_policies_text
 
   validates :full_name, :github_id, uniqueness: true, presence: true
-  validates :host, inclusion: ['github', 'bitbucket'], presence: true
+  validates :host, inclusion: %w[github bitbucket], presence: true
 
   search_syntax do
     search_by :text do |scope, phrases|
-      columns = [:full_name, :host, :description, :language]
+      columns = %i[full_name host description language]
       scope.where_like(columns => phrases)
     end
   end
@@ -30,13 +30,17 @@ class Project < ApplicationRecord
     self.github_id        = repo.id
     self.name             = repo.name
     self.full_name        = repo.full_name
-    self.source_full_name = repo.source.full_name rescue ''
+    self.source_full_name = begin
+      repo.source.full_name
+    rescue StandardError
+      ''
+    end
     self.description      = repo.description
     self.watchers_count   = repo.watchers_count
     self.language         = repo.language
     self.avatar_url       = repo.organization.rels[:avatar].href if repo.organization.present?
 
-    self.save!
+    save!
   end
 
   def update_collaborators(repo_collaborators)
@@ -46,24 +50,18 @@ class Project < ApplicationRecord
     existing_logins = existing_collaborators.map(&:login)
 
     existing_collaborators.each do |existing_collaborator|
-      unless repo_logins.include?(existing_collaborator.login)
-        existing_collaborator.mark_for_destruction
-      end
+      existing_collaborator.mark_for_destruction unless repo_logins.include?(existing_collaborator.login)
     end
 
     repo_collaborators.each do |repo_collaborator|
-      unless existing_logins.include?(repo_collaborator)
-        collaborators.build(login: repo_collaborator)
-      end
+      collaborators.build(login: repo_collaborator) unless existing_logins.include?(repo_collaborator)
     end
 
     save!
   end
 
   def repository_client
-    if host.present?
-      host.classify.constantize.new
-    end
+    host.classify.constantize.new if host.present?
   end
 
   def github_url
@@ -92,14 +90,14 @@ class Project < ApplicationRecord
 
   def new_commits
     begin
-      commits = Timeout::timeout(90) do
+      commits = Timeout.timeout(90) do
         raw_commits.
           # Filter merge request
-          select { |c| !(c.commit.message =~ /^(Merge\s|auto\smerge)/) }.
+          reject { |c| (c.commit.message =~ /^(Merge\s|auto\smerge)/) }.
           # Filter fake emails
-          select { |c| c.commit.author.email =~ Devise::email_regexp }.
+          select { |c| c.commit.author.email =~ Devise.email_regexp }.
           # Filter commited after t4c project creation
-          select { |c| c.commit.committer.date > self.deposits.first.created_at }
+          select { |c| c.commit.committer.date > deposits.first.created_at }
                    .to_a.
           # tip for older commits first
           reverse
@@ -124,22 +122,22 @@ class Project < ApplicationRecord
   end
 
   def tip_for(commit)
-    if (next_tip_amount > 0) && !Tip.exists?(commit: commit.sha)
+    if next_tip_amount.positive? && !Tip.exists?(commit: commit.sha)
       return unless (user = User.find_by_commit commit)
 
       user.update(nickname: commit.author.login) if commit.author.try(:login)
 
-      if hold_tips
-        amount = nil
-      else
-        amount = next_tip_amount
-      end
+      amount = if hold_tips
+                 nil
+               else
+                 next_tip_amount
+               end
 
       # create tip
-      tip = self.tips.create({ user: user,
-                               amount: amount,
-                               commit: commit.sha,
-                               commit_message: commit.commit.message })
+      tip = tips.create({ user: user,
+                          amount: amount,
+                          commit: commit.sha,
+                          commit_message: commit.commit.message })
 
       # tip.notify_user
 
@@ -148,7 +146,7 @@ class Project < ApplicationRecord
   end
 
   def donated
-    self.deposits.confirmed.map(&:available_amount).sum
+    deposits.confirmed.map(&:available_amount).sum
   end
 
   def available_amount
@@ -156,15 +154,15 @@ class Project < ApplicationRecord
   end
 
   def unconfirmed_amount
-    self.deposits.unconfirmed.where('created_at > ?', 7.days.ago).map(&:available_amount).sum
+    deposits.unconfirmed.where('created_at > ?', 7.days.ago).map(&:available_amount).sum
   end
 
   def tips_paid_amount
-    self.tips.decided.non_refunded.sum(:amount)
+    tips.decided.non_refunded.sum(:amount)
   end
 
   def tips_paid_unclaimed_amount
-    self.tips.decided.non_refunded.unclaimed.sum(:amount)
+    tips.decided.non_refunded.unclaimed.sum(:amount)
   end
 
   def next_tip_amount
@@ -178,29 +176,25 @@ class Project < ApplicationRecord
   end
 
   def self.update_cache
-    find_each do |project|
-      project.update_cache
-    end
+    find_each(&:update_cache)
   end
 
   def update_info
-    begin
-      update_repository_info(repository_info)
-      update_collaborators(collaborators_info)
-    rescue Octokit::BadGateway, Octokit::NotFound, Octokit::InternalServerError, Octokit::Forbidden,
-           Errno::ETIMEDOUT, Net::ReadTimeout, Faraday::Error::ConnectionFailed => e
-      Rails.logger.info "Project ##{id}: #{e.class} happened"
-    rescue StandardError => e
-      Airbrake.notify(e)
-    end
+    update_repository_info(repository_info)
+    update_collaborators(collaborators_info)
+  rescue Octokit::BadGateway, Octokit::NotFound, Octokit::InternalServerError, Octokit::Forbidden,
+         Errno::ETIMEDOUT, Net::ReadTimeout, Faraday::Error::ConnectionFailed => e
+    Rails.logger.info "Project ##{id}: #{e.class} happened"
+  rescue StandardError => e
+    Airbrake.notify(e)
   end
 
   def amount_to_pay
-    self.tips.to_pay.sum(:amount)
+    tips.to_pay.sum(:amount)
   end
 
   def has_undecided_tips?
-    self.tips.undecided.any?
+    tips.undecided.any?
   end
 
   def commit_url(commit)
@@ -208,14 +202,14 @@ class Project < ApplicationRecord
   end
 
   def check_tips_to_pay_against_avaiable_amount
-    if available_amount < 0
+    if available_amount.negative?
       raise "Not enough funds to pay the pending tips on #{inspect} (#{available_amount} < 0)"
     end
   end
 
   def self.find_or_create_by_url(project_url)
     project_name = project_url
-                   .gsub(/https?\:\/\/github.com\//, '')
+                   .gsub(%r{https?://github.com/}, '')
                    .gsub(/\#.+$/, '')
                    .gsub(' ', '')
 
@@ -224,7 +218,7 @@ class Project < ApplicationRecord
 
   def self.find_by_url(project_url)
     project_name = project_url
-                   .gsub(/https?\:\/\/github.com\//, '')
+                   .gsub(%r{https?://github.com/}, '')
                    .gsub(/\#.+$/, '')
                    .gsub(' ', '')
 

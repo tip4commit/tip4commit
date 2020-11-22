@@ -7,9 +7,9 @@ set :stage, :production
 # Supports bulk-adding hosts to roles, the primary
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
-role :app, %w{apps@50.116.2.58}
-role :web, %w{apps@50.116.2.58}
-role :db,  %w{apps@50.116.2.58}
+role :app, %w[apps@50.116.2.58]
+role :web, %w[apps@50.116.2.58]
+role :db,  %w[apps@50.116.2.58]
 
 set :rails_env, 'production'
 set :migration_role, 'db'

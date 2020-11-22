@@ -39,7 +39,7 @@ class Tip < ApplicationRecord
   scope :not_free,      -> { where('amount > 0') }
 
   def free?
-    amount == 0
+    amount.zero?
   end
 
   scope :paid, -> { where.not(sendmany_id: nil) }
@@ -126,9 +126,9 @@ class Tip < ApplicationRecord
   end
 
   def notify_user
-    if amount && amount > 0 && user.bitcoin_address.blank? &&
+    if amount&.positive? && user.bitcoin_address.blank? &&
        !user.unsubscribed && !project.disable_notifications &&
-       user.balance > 21000000 * 1e8
+       user.balance > 21_000_000 * 1e8
       if user.notified_at.nil? || (user.notified_at < 30.days.ago)
         begin
           UserMailer.new_tip(user, self).deliver

@@ -48,7 +48,7 @@ class BitcoinTipper
     def create_tips
       Rails.logger.info 'Traversing projects...'
       Project.find_each do |project|
-        if project.available_amount > 0
+        if project.available_amount.positive?
           Rails.logger.info " Project #{project.id} #{project.full_name}"
           project.tip_commits
         end

@@ -14,11 +14,11 @@ class Github
   attr_reader :client
 
   def commits(project)
-    if project.branch.blank?
-      commits = client.commits project.full_name
-    else
-      commits = client.commits project.full_name, sha: project.branch
-    end
+    commits = if project.branch.blank?
+                client.commits project.full_name
+              else
+                client.commits project.full_name, sha: project.branch
+              end
 
     last_response = client.last_response
     pages = (CONFIG['github']['project_pages'][project.full_name] || CONFIG['github']['pages'] || 1).to_i
@@ -33,9 +33,10 @@ class Github
   end
 
   def repository_info(project)
-    if project.is_a?(String)
+    case project
+    when String
       client.repo project
-    elsif project.is_a?(Project)
+    when Project
       if project.github_id.present?
         client.get "/repositories/#{project.github_id}"
       else
@@ -49,7 +50,7 @@ class Github
   def find_or_create_project(project_name)
     if project = find_project(project_name)
       project
-    elsif project_name =~ /\w+\/\w+/
+    elsif project_name =~ %r{\w+/\w+}
       begin
         repo = repository_info project_name
         project = Project.find_or_create_by host: 'github', full_name: repo.full_name
@@ -58,18 +59,24 @@ class Github
       rescue Octokit::NotFound
         nil
       end
-    else
-      nil
     end
   end
 
   def find_project(project_name)
-    return Project.find_by(host: 'github', full_name: project_name)
+    Project.find_by(host: 'github', full_name: project_name)
   end
 
   def collaborators_info(project)
-    (client.get("/repos/#{project.full_name}/collaborators").map(&:login) rescue [project.full_name.split('/').first]) +
-      (client.get("/orgs/#{project.full_name.split('/').first}/members").map(&:login) rescue [])
+    begin
+      client.get("/repos/#{project.full_name}/collaborators").map(&:login)
+    rescue StandardError
+      [project.full_name.split('/').first]
+    end +
+      begin
+        client.get("/orgs/#{project.full_name.split('/').first}/members").map(&:login)
+      rescue StandardError
+        []
+      end
   end
 
   def branches(project)

@@ -10,9 +10,9 @@ module ProjectsHelper
     last_tip = project.tips.order(:created_at).last
     if last_tip.nil? || (Time.now - last_tip.created_at > 30.days)
       'red'
-    elsif (Time.now - last_tip.created_at > 7.days)
+    elsif Time.now - last_tip.created_at > 7.days
       'yellow'
-    elsif (Time.now - last_tip.created_at > 1.day)
+    elsif Time.now - last_tip.created_at > 1.day
       'yellowgreen'
     else
       'green'
@@ -32,7 +32,7 @@ module ProjectsHelper
   end
 
   def pretty_project_url(project)
-    root_url.gsub(/\/$/, '') + pretty_project_path(project)
+    root_url.gsub(%r{/$}, '') + pretty_project_path(project)
   end
 
   def shield_url(project)

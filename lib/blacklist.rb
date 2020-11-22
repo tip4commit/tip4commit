@@ -12,9 +12,7 @@ class Blacklist
   def include?(url)
     url = normalize_url(url)
 
-    if @urls.include?(url)
-      return true
-    end
+    return true if @urls.include?(url)
 
     # Check for the author path.
     # https://github.com/author/*
@@ -28,8 +26,8 @@ class Blacklist
   def normalize_url(url)
     url = url.dup
 
-    if !url.start_with?('http://', 'https://', '//')
-      if !url.start_with?('github.com', 'bitbucket.org')
+    unless url.start_with?('http://', 'https://', '//')
+      unless url.start_with?('github.com', 'bitbucket.org')
         # Assume it is a shortened "author/project" path and
         # default to Github.
         url.prepend('github.com/')

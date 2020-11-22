@@ -31,19 +31,15 @@ class User < ApplicationRecord
   end
 
   def gravatar_bitcoin
-    begin
-      gravatar.get_value :currency, :bitcoin
-    rescue URI::InvalidURIError, NoMethodError => e
-      nil
-    end
+    gravatar.get_value :currency, :bitcoin
+  rescue URI::InvalidURIError, NoMethodError => e
+    nil
   end
 
   def gravatar_display_name
-    begin
-      gravatar.get_value :displayName
-    rescue URI::InvalidURIError, NoMethodError => e
-      nil
-    end
+    gravatar.get_value :displayName
+  rescue URI::InvalidURIError, NoMethodError => e
+    nil
   end
 
   def display_name
@@ -81,13 +77,13 @@ class User < ApplicationRecord
   end
 
   def ready_for_withdrawal?
-    self.bitcoin_address.present? && self.balance >= CONFIG['min_payout']
+    bitcoin_address.present? && balance >= CONFIG['min_payout']
   end
 
   private
 
   def gravatar
-    @gravatar ||= Gravatar::new(email)
+    @gravatar ||= Gravatar.new(email)
   end
 
   def set_login_token!

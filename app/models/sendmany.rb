@@ -29,7 +29,7 @@ class Sendmany < ApplicationRecord
   end
 
   def to_csv
-    JSON.parse(self.data).map do |address, value|
+    JSON.parse(data).map do |address, value|
       [address, value / 1e8].join(',')
     end.join("\n")
   end

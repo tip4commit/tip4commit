@@ -6,6 +6,6 @@ class Ability
   def initialize(user)
     return unless user && user.nickname.present?
 
-    can [:update, :decide_tip_amounts], Project, collaborators: { login: user.nickname }
+    can %i[update decide_tip_amounts], Project, collaborators: { login: user.nickname }
   end
 end

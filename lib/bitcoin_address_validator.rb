@@ -4,9 +4,7 @@ require 'digest'
 
 class BitcoinAddressValidator < ActiveModel::EachValidator
   def validate_each(record, field, value)
-    unless value.blank? || valid_bitcoin_address?(value)
-      record.errors[field] << 'Bitcoin address is invalid'
-    end
+    record.errors[field] << 'Bitcoin address is invalid' unless value.blank? || valid_bitcoin_address?(value)
   end
 
   private
@@ -77,7 +75,7 @@ class BitcoinAddressValidator < ActiveModel::EachValidator
       index += 1
     end
 
-    while long_value >= 256 do
+    while long_value >= 256
       div, mod = long_value.divmod 256
       result = mod.chr + result
       long_value = div
@@ -85,9 +83,7 @@ class BitcoinAddressValidator < ActiveModel::EachValidator
 
     result = long_value.chr + result
 
-    if result.length < length
-      result = 0.chr * (length - result.length) + result
-    end
+    result = 0.chr * (length - result.length) + result if result.length < length
 
     result
   end

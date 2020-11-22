@@ -23,7 +23,11 @@ class Bitbucket
       data.slug,
       data.name,
       repository.full_name,
-      ("#{data.fork_of.owner}/#{data.fork_of.slug}" rescue ''),
+      begin
+        "#{data.fork_of.owner}/#{data.fork_of.slug}"
+      rescue StandardError
+        ''
+      end,
       data.description,
       data.followers_count,
       data.language
@@ -41,7 +45,7 @@ class Bitbucket
   end
 
   def commits(repository)
-    # todo use repository.branch
+    # TODO: use repository.branch
     data = request :get, changesets_path(repository.full_name)
 
     data.changesets.map do |cs|
