@@ -9,7 +9,7 @@ Donate bitcoins to open source projects or receive tips for code contributions.
 Name | Link
 ----|----|
 Official site | https://tip4commit.com/
-Discussions | https://bitcointalk.org/index.php?topic=31580
+Discussions | https://bitcointalk.org/index.php?topic=315802.0
 FAQs | https://github.com/tip4commit/tip4commit/wiki/FAQ
 Issues | https://github.com/tip4commit/tip4commit/issues
 Twitter | https://twitter.com/tip4commit

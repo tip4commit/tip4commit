@@ -9,7 +9,7 @@ Dona Bitcoins a proyectos de código abierto o recibe propinas contribuciones de
 Nombre | Enlace
 ----|----|
 Sitio Oficial| https://tip4commit.com/
-Discusiones| https://bitcointalk.org/index.php?topic=31580
+Discusiones| https://bitcointalk.org/index.php?topic=315802.0
 Preguntas Frecuentes | https://github.com/tip4commit/tip4commit/wiki/FAQ
 Problemas| https://github.com/tip4commit/tip4commit/issues
 

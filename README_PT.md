@@ -9,7 +9,7 @@ Doe bitcoins para projetos de código aberto ou receba gorjetas por colaborar no
 Nome | Ligação
 ----|----|
 Site oficial| https://tip4commit.com/
-Discussões | https://bitcointalk.org/index.php?topic=31580
+Discussões | https://bitcointalk.org/index.php?topic=315802.0
 FAQs | https://github.com/tip4commit/tip4commit/wiki/FAQ
 Problemas | https://github.com/tip4commit/tip4commit/issues
 
