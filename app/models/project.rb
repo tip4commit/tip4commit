@@ -183,7 +183,7 @@ class Project < ApplicationRecord
     update_repository_info(repository_info)
     update_collaborators(collaborators_info)
   rescue Octokit::BadGateway, Octokit::NotFound, Octokit::InternalServerError, Octokit::Forbidden,
-         Errno::ETIMEDOUT, Net::ReadTimeout, Faraday::Error::ConnectionFailed => e
+         Errno::ETIMEDOUT, Net::ReadTimeout, Faraday::ConnectionFailed => e
     Rails.logger.info "Project ##{id}: #{e.class} happened"
   rescue StandardError => e
     Airbrake.notify(e)
