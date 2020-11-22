@@ -1,10 +1,10 @@
+# frozen_string_literal: true
+
 require 'digest'
 
 class BitcoinAddressValidator < ActiveModel::EachValidator
   def validate_each(record, field, value)
-    unless value.blank? || valid_bitcoin_address?(value)
-      record.errors[field] << "Bitcoin address is invalid"
-    end
+    record.errors[field] << 'Bitcoin address is invalid' unless value.blank? || valid_bitcoin_address?(value)
   end
 
   private
@@ -42,7 +42,7 @@ class BitcoinAddressValidator < ActiveModel::EachValidator
   }.freeze
 
   def valid_legacy_address?(address)
-    if (address =~ /^[a-zA-Z1-9]{33,35}$/) and version = version(address)
+    if (address =~ /^[a-zA-Z1-9]{33,35}$/) && (version = version(address))
       if (expected_versions = EXPECTED_VERSIONS[CONFIG['network'].to_sym]).present?
         expected_versions.include?(version.ord)
       else
@@ -55,7 +55,7 @@ class BitcoinAddressValidator < ActiveModel::EachValidator
 
   def version(address)
     decoded = b58_decode(address, 25)
-    
+
     version = decoded[0, 1]
     checksum = decoded[-4, decoded.length]
     vh160 = decoded[0, decoded.length - 4]
@@ -68,14 +68,14 @@ class BitcoinAddressValidator < ActiveModel::EachValidator
   def b58_decode(value, length)
     long_value = 0
     index = 0
-    result = ""
+    result = ''
 
     value.reverse.each_char do |c|
-      long_value += B58Chars.index(c) * (B58Base ** index)
+      long_value += B58Chars.index(c) * (B58Base**index)
       index += 1
     end
 
-    while long_value >= 256 do
+    while long_value >= 256
       div, mod = long_value.divmod 256
       result = mod.chr + result
       long_value = div
@@ -83,9 +83,7 @@ class BitcoinAddressValidator < ActiveModel::EachValidator
 
     result = long_value.chr + result
 
-    if result.length < length
-      result = 0.chr * (length - result.length) + result
-    end
+    result = 0.chr * (length - result.length) + result if result.length < length
 
     result
   end

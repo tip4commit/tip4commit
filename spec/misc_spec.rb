@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'Misc tets' do
@@ -6,7 +8,7 @@ describe 'Misc tets' do
   it 'has a flag image for each locale' do
     locales.each do |locale|
       path = File.join(Rails.root, 'app', 'assets', 'images', 'flags', "#{locale}.png")
-      expect(File.exists?(path)).to be_truthy, "#{locale} flag is missing"
+      expect(File.exist?(path)).to be_truthy, "#{locale} flag is missing"
     end
   end
 end

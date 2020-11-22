@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sawyer'
 
 class Bitbucket
@@ -11,34 +13,39 @@ class Bitbucket
   attr_reader :agent
 
   def initialize
-    @agent = Sawyer::Agent.new("https://bitbucket.org")
+    @agent = Sawyer::Agent.new('https://bitbucket.org')
   end
 
-  def repository_info repository
+  def repository_info(repository)
     data = request :get, repository_path(repository.full_name)
 
     Repository.new(
       data.slug,
       data.name,
       repository.full_name,
-      (data.fork_of.owner + "/" + data.fork_of.slug rescue ''),
+      begin
+        "#{data.fork_of.owner}/#{data.fork_of.slug}"
+      rescue StandardError
+        ''
+      end,
       data.description,
       data.followers_count,
-      data.language)
+      data.language
+    )
   end
 
-  def collaborators_info project
+  def collaborators_info(_project)
     # TODO
     []
   end
 
-  def branches project
+  def branches(_project)
     # TODO
     ['master']
   end
 
-  def commits repository
-    # todo use repository.branch
+  def commits(repository)
+    # TODO: use repository.branch
     data = request :get, changesets_path(repository.full_name)
 
     data.changesets.map do |cs|
@@ -51,32 +58,33 @@ class Bitbucket
     end
   end
 
-  def repository_url project
+  def repository_url(project)
     "https://bitbucket.org/#{project.full_name}"
   end
 
-  def source_repository_url project
+  def source_repository_url(project)
     "https://bitbucket.org/#{project.source_full_name}"
   end
 
-  def commit_url project, commit
+  def commit_url(project, commit)
     "https://bitbucket.org/#{project.full_name}/commits/#{commit}"
   end
 
   protected
-  def repository_path full_name
+
+  def repository_path(full_name)
     "#{base_path}#{full_name}"
   end
 
-  def changesets_path full_name
+  def changesets_path(full_name)
     "#{base_path}#{full_name}/changesets?limit=15"
   end
 
   def base_path
-    "/api/1.0/repositories/"
+    '/api/1.0/repositories/'
   end
 
-  def request method, path
+  def request(method, path)
     agent.call(method, path).data
   end
 end

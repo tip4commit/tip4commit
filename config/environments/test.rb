@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 T4c::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -13,8 +15,8 @@ T4c::Application.configure do
   config.eager_load = false
 
   # Configure static asset server for tests with Cache-Control for performance.
-  config.serve_static_files  = true
-  config.static_cache_control = "public, max-age=3600"
+  config.serve_static_files = true
+  config.static_cache_control = 'public, max-age=3600'
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
@@ -31,7 +33,7 @@ T4c::Application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { :host => 'tip4commit.com', :protocol => 'https' }
+  config.action_mailer.default_url_options = { host: 'tip4commit.com', protocol: 'https' }
   config.action_mailer.default_options = { from: 'no-reply@tip4commit.com' }
 
   # Print deprecation notices to the stderr.

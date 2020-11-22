@@ -1,8 +1,14 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def btc_human(amount, options = {})
     amount ||= 0
     nobr = options.key?(:nobr) ? options[:nobr] : true
-    denom = options.key?(:denom) ? options[:denom] : (try(:current_user) ? current_user.denom : 0)
+    denom = if options.key?(:denom)
+              options[:denom]
+            else
+              (try(:current_user) ? current_user.denom : 0)
+            end
     if denom === 0
       btc = to_btc(amount)
     elsif denom === 1
@@ -151,8 +157,8 @@ module ApplicationHelper
   end
 
   def get_rate(currency)
-    Rails.cache.fetch('###' + currency, expires_in: 1.hours) do
-      uri = URI('https://api.coindesk.com/v1/bpi/currentprice/' + currency + '.json')
+    Rails.cache.fetch("####{currency}", expires_in: 1.hours) do
+      uri = URI("https://api.coindesk.com/v1/bpi/currentprice/#{currency}.json")
       response = Net::HTTP.get_response(uri)
       hash = JSON.parse(response.body)
       hash['bpi'][currency]['rate_float'].to_f

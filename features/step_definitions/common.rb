@@ -1,70 +1,72 @@
+# frozen_string_literal: true
+
 Before do
   ActionMailer::Base.deliveries.clear
 
   # mock branches method to prevent api call
-  Project.any_instance.stub(:branches).and_return(%w(master))
+  Project.any_instance.stub(:branches).and_return(%w[master])
 
-  @default_tip     = CONFIG["tip"]
-  @default_our_fee = CONFIG["our_fee"]
-  @default_min_tip = CONFIG["min_tip"]
+  @default_tip     = CONFIG['tip']
+  @default_our_fee = CONFIG['our_fee']
+  @default_min_tip = CONFIG['min_tip']
 end
 
-After do |scenario|
+After do |_scenario|
   OmniAuth.config.test_mode = false
 
-  CONFIG["tip"]     = @default_tip
-  CONFIG["our_fee"] = @default_our_fee
-  CONFIG["min_tip"] = @default_min_tip
+  CONFIG['tip']     = @default_tip
+  CONFIG['our_fee'] = @default_our_fee
+  CONFIG['min_tip'] = @default_min_tip
 
-#   Cucumber.wants_to_quit = true if scenario.status.eql? :failed
-#   Cucumber.wants_to_quit = true if scenario.status.eql? :undefined
-#   Cucumber.wants_to_quit = true if scenario.status.eql? :pending
+  #   Cucumber.wants_to_quit = true if scenario.status.eql? :failed
+  #   Cucumber.wants_to_quit = true if scenario.status.eql? :undefined
+  #   Cucumber.wants_to_quit = true if scenario.status.eql? :pending
 end
 
-def mock_github_user nickname
+def mock_github_user(nickname)
   email = "#{nickname.parameterize}@example.com"
 
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:github] = {
-    "info" => {
-      "nickname"        => nickname ,
-      "primary_email"   => email    ,
-      "verified_emails" => [email]  ,
-    },
+    'info' => {
+      'nickname' => nickname,
+      'primary_email' => email,
+      'verified_emails' => [email]
+    }
   }.to_ostruct
 
   step "a developer named \"#{nickname}\" exists without a bitcoin address"
 end
 
-Given /^a GitHub user named "(.*?)" exists$/ do |nickname|
+Given(/^a GitHub user named "(.*?)" exists$/) do |nickname|
   mock_github_user nickname
 end
 
-Given /^I'm signed in as "(.*?)"$/ do |nickname|
+Given(/^I'm signed in as "(.*?)"$/) do |nickname|
   mock_github_user nickname
   visit root_path
-  first(:link, "Sign in").click
-  click_on "Sign in with Github"
-  page.should have_content("Successfully authenticated")
+  first(:link, 'Sign in').click
+  click_on 'Sign in with Github'
+  page.should have_content('Successfully authenticated')
 end
 
-Given /^I'm not signed in$/ do
+Given(/^I'm not signed in$/) do
   visit root_path
-  if page.has_content?("Sign out")
-    click_on "Sign out"
-    page.should have_content("Signed out successfully")
+  if page.has_content?('Sign out')
+    click_on 'Sign out'
+    page.should have_content('Signed out successfully')
   else
-    page.should have_content("Sign in")
+    page.should have_content('Sign in')
   end
 
   OmniAuth.config.test_mode = false
 end
 
-Given (/^I sign in as "(.*?)"$/) { |nickname| step "I'm signed in as \"#{nickname}\"" }
+Given(/^I sign in as "(.*?)"$/) { |nickname| step "I'm signed in as \"#{nickname}\"" }
 
-Given (/^I sign out$/) { step "I'm not signed in" }
+Given(/^I sign out$/) { step "I'm not signed in" }
 
-def parse_path_from_page_string page_string
+def parse_path_from_page_string(page_string)
   path = nil
 
   # explicit cases
@@ -75,36 +77,36 @@ def parse_path_from_page_string page_string
   model      = tokens[1]
   action     = tokens[2] || '' # '' => 'show'
   is_user    = model.eql? 'user'
-  is_project = ['github-project' , 'bitbucket-project'].include? model
+  is_project = %w[github-project bitbucket-project].include? model
   if is_project
-    projects_paths = ['' , 'edit' , 'decide_tip_amounts' , 'tips' , 'deposits']
+    projects_paths = ['', 'edit', 'decide_tip_amounts', 'tips', 'deposits']
     is_valid_path  = projects_paths.include? action
     service        = model.split('-').first
     path           = "/#{service}/#{name}/#{action}" if is_valid_path
   elsif is_user
-    user_paths     = ['' , 'tips']
+    user_paths     = ['', 'tips']
     is_valid_path  = user_paths.include? action
     path           = "/users/#{name}/#{action}" if is_valid_path # TODO: nyi
 
   # implicit cases
   else case page_string
-    when 'home' ;            path = root_path ;
-    when 'sign_up' ;         path = new_user_registration_path ;
-    when 'sign_in' ;         path = new_user_session_path ;
-    when 'users' ;           path = users_path ;
-    when 'projects' ;        path = projects_path ;
-    when 'search' ;          path = search_projects_path ;
-    when 'tips' ;            path = tips_path ;
-    when 'deposits' ;        path = deposits_path ;
-    when 'withdrawals' ;     path = withdrawals_path ;
-    end
+       when 'home' then            path = root_path
+       when 'sign_up' then         path = new_user_registration_path
+       when 'sign_in' then         path = new_user_session_path
+       when 'users' then           path = users_path
+       when 'projects' then        path = projects_path
+       when 'search' then          path = search_projects_path
+       when 'tips' then            path = tips_path
+       when 'deposits' then        path = deposits_path
+       when 'withdrawals' then     path = withdrawals_path
+       end
   end
 
-  path || (raise "unknown page")
+  path || (raise 'unknown page')
 end
 
 Given(/^I visit the "(.*?)" page$/) do |page_string|
-  visit parse_path_from_page_string page_string
+  visit parse_path_from_page_string(page_string)
 end
 
 Given(/^I browse to the explicit path "(.*?)"$/) do |url|
@@ -112,18 +114,22 @@ Given(/^I browse to the explicit path "(.*?)"$/) do |url|
 end
 
 Then(/^I should be on the "(.*?)" page$/) do |page_string|
-  expected = parse_path_from_page_string page_string rescue expected = page_string
-  actual   =  URI.decode(page.current_path)
+  expected = begin
+    parse_path_from_page_string(page_string)
+  rescue StandardError
+    expected = page_string
+  end
+  actual = URI.decode(page.current_path)
 
-  expected.chop! if (expected.end_with? '/') && (expected.size > 1)
-  actual  .chop! if (actual  .end_with? '/') && (actual  .size > 1)
+  expected = expected.chop if (expected.end_with? '/') && (expected.size > 1)
+  actual = actual.chop if (actual.end_with? '/') && (actual.size > 1)
 
   actual.should eq expected
 end
 
-def find_element node_name
+def find_element(node_name)
   case node_name
-  when "header" ; page.find '.masthead'
+  when 'header' then page.find '.masthead'
   end
 end
 
@@ -131,8 +137,8 @@ Given(/^I click "(.*?)"$/) do |arg1|
   click_on(arg1)
 end
 
-Given(/^I click "(.*?)" within the "(.*?)" area$/) do |link_text , node_name|
-  within (find_element node_name) { click_on link_text }
+Given(/^I click "(.*?)" within the "(.*?)" area$/) do |link_text, node_name|
+  within(find_element(node_name)) { click_on link_text }
 end
 
 Given(/^I check "(.*?)"$/) do |arg1|
@@ -164,10 +170,10 @@ When(/^the email counters are reset$/) do
 end
 
 When(/^I confirm the email address: "(.*?)"$/) do |email|
-  mail      = ActionMailer::Base.deliveries.select {|ea| ea.to.first.eql? email}.first
+  mail      = ActionMailer::Base.deliveries.select { |ea| ea.to.first.eql? email }.first
   mail_body = mail.body.raw_source
   token     = mail_body.split('?confirmation_token=')[1].split('">Confirm my account').first
   visit "/users/confirmation?confirmation_token=#{token}"
 end
 
-Then  /^some magic stuff happens in the cloud$/ do ; true ; end ;
+Then(/^some magic stuff happens in the cloud$/) { true }

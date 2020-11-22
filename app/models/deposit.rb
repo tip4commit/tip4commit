@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Deposit < ApplicationRecord
   belongs_to :project
 
@@ -19,11 +21,10 @@ class Deposit < ApplicationRecord
   end
 
   before_create do
-    self.fee_size = CONFIG["our_fee"]
+    self.fee_size = CONFIG['our_fee']
   end
 
   def project_name
     project.full_name
   end
-
 end

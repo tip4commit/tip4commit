@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 T4c::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -68,8 +70,8 @@ T4c::Application.configure do
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { :host => domain, :protocol => 'https' }
-  config.action_mailer.default_options = {from: 'no-reply@' + domain }
+  config.action_mailer.default_url_options = { host: domain, protocol: 'https' }
+  config.action_mailer.default_options = { from: "no-reply@#{domain}" }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).

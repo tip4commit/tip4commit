@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BitcoinTipper
   class << self
     def work_forever
@@ -46,7 +48,7 @@ class BitcoinTipper
     def create_tips
       Rails.logger.info 'Traversing projects...'
       Project.find_each do |project|
-        if project.available_amount > 0
+        if project.available_amount.positive?
           Rails.logger.info " Project #{project.id} #{project.full_name}"
           project.tip_commits
         end
@@ -84,6 +86,7 @@ class BitcoinTipper
       outputs = {}
       User.find_each do |user|
         next unless user.ready_for_withdrawal?
+
         user.tips.decided.unpaid.each do |tip|
           tip.update_attribute :sendmany_id, sendmany.id
           outputs[user.bitcoin_address] ||= 0

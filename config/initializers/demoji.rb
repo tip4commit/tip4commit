@@ -1,1 +1,3 @@
-ActiveRecord::Base.send :include, Demoji
+# frozen_string_literal: true
+
+ActiveRecord::Base.include Demoji

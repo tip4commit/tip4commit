@@ -1,22 +1,24 @@
+# frozen_string_literal: true
+
 class Github
   def initialize
     options = { client_id: CONFIG['github']['key'], client_secret: CONFIG['github']['secret'] }
     if CONFIG['github']['auto_paginate']
-      options.merge! :auto_paginate  => true
+      options.merge! auto_paginate: true
     else
-      options.merge! :per_page => 100
+      options.merge! per_page: 100
     end
     @client = Octokit::Client.new(options)
   end
 
   attr_reader :client
 
-  def commits project
-    if project.branch.blank?
-      commits = client.commits project.full_name
-    else
-      commits = client.commits project.full_name, sha: project.branch
-    end
+  def commits(project)
+    commits = if project.branch.blank?
+                client.commits project.full_name
+              else
+                client.commits project.full_name, sha: project.branch
+              end
 
     last_response = client.last_response
     pages = (CONFIG['github']['project_pages'][project.full_name] || CONFIG['github']['pages'] || 1).to_i
@@ -30,10 +32,11 @@ class Github
     commits
   end
 
-  def repository_info project
-    if project.is_a?(String)
+  def repository_info(project)
+    case project
+    when String
       client.repo project
-    elsif project.is_a?(Project)
+    when Project
       if project.github_id.present?
         client.get "/repositories/#{project.github_id}"
       else
@@ -44,33 +47,39 @@ class Github
     end
   end
 
-  def find_or_create_project project_name
+  def find_or_create_project(project_name)
     if project = find_project(project_name)
       project
-    elsif project_name =~ /\w+\/\w+/
+    elsif project_name =~ %r{\w+/\w+}
       begin
         repo = repository_info project_name
-        project = Project.find_or_create_by host: "github", full_name: repo.full_name
+        project = Project.find_or_create_by host: 'github', full_name: repo.full_name
         project.update_repository_info repo
         project
       rescue Octokit::NotFound
         nil
       end
-    else
-      nil
     end
   end
 
-  def find_project project_name
-    return Project.find_by(host: "github", full_name: project_name)
+  def find_project(project_name)
+    Project.find_by(host: 'github', full_name: project_name)
   end
 
-  def collaborators_info project
-    (client.get("/repos/#{project.full_name}/collaborators").map(&:login) rescue [project.full_name.split('/').first]) +
-    (client.get("/orgs/#{project.full_name.split('/').first}/members").map(&:login) rescue [])
+  def collaborators_info(project)
+    begin
+      client.get("/repos/#{project.full_name}/collaborators").map(&:login)
+    rescue StandardError
+      [project.full_name.split('/').first]
+    end +
+      begin
+        client.get("/orgs/#{project.full_name.split('/').first}/members").map(&:login)
+      rescue StandardError
+        []
+      end
   end
 
-  def branches project
+  def branches(project)
     branches = client.get("/repos/#{project.full_name}/branches")
     last_response = client.last_response
     while last_response && last_response.rels[:next]
@@ -80,15 +89,15 @@ class Github
     branches.map(&:name)
   end
 
-  def repository_url project
+  def repository_url(project)
     "https://github.com/#{project.full_name}"
   end
 
-  def source_repository_url project
+  def source_repository_url(project)
     "https://github.com/#{project.source_full_name}"
   end
 
-  def commit_url project, commit
+  def commit_url(project, commit)
     "https://github.com/#{project.full_name}/commit/#{commit}"
   end
 end

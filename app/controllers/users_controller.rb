@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :authenticate_user!, :load_user, :valid_user!, except: [:login, :index]
+  before_action :authenticate_user!, :load_user, :valid_user!, except: %i[login index]
   before_action :redirect_to_pretty_url,                       only:   [:show]
 
   def show
@@ -50,7 +52,9 @@ class UsersController < ApplicationController
     params.require(:user).permit(:bitcoin_address, :password, :password_confirmation, :unsubscribed, :display_name, :denom)
   end
 
-  def load_user ; super params ; end ;
+  def load_user
+    super params
+  end
 
   def valid_user!
     if current_user != @user

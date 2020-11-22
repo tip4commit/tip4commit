@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 class CreateDeposits < ActiveRecord::Migration[4.2]
   def change
     create_table :deposits do |t|
       t.references :project, index: true
       t.string :txid
       t.integer :confirmations
-      t.integer :duration, :default => 30.days.to_i
-      t.integer :paid_out, :limit => 8
+      t.integer :duration, default: 30.days.to_i
+      t.integer :paid_out, limit: 8
       t.datetime :paid_out_at
 
       t.timestamps

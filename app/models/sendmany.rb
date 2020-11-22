@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Sendmany < ApplicationRecord
   has_many :tips
 
@@ -10,13 +12,12 @@ class Sendmany < ApplicationRecord
 
     update_attribute :is_error, true # it's a lock to prevent duplicates
 
-
-    bitcoind = BitcoinRPC.new(CONFIG["bitcoind"]["rpc_connection_string"],false)
+    bitcoind = BitcoinRPC.new(CONFIG['bitcoind']['rpc_connection_string'], false)
 
     begin
       txid = bitcoind.sendmany(
-        CONFIG["bitcoind"]["account"],
-        JSON.parse(data).map { |address, amount| {address => amount/1e8} }.inject(&:merge)
+        CONFIG['bitcoind']['account'],
+        JSON.parse(data).map { |address, amount| { address => amount / 1e8 } }.inject(&:merge)
       )
       if txid.present?
         update_attribute :is_error, false
@@ -25,11 +26,10 @@ class Sendmany < ApplicationRecord
     rescue StandardError => e
       update_attribute :result, e.inspect
     end
-
   end
 
   def to_csv
-    JSON.parse(self.data).map do |address, value|
+    JSON.parse(data).map do |address, value|
       [address, value / 1e8].join(',')
     end.join("\n")
   end
