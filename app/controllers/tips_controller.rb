@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TipsController < ApplicationController
   before_action { load_project params }
   before_action { load_user    params }

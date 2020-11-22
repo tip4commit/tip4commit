@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 set :application, 't4c'
 set :repo_url, 'git@github.com:tip4commit/tip4commit.git'
 

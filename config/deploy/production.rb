@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 set :stage, :production
 
 # Simple Role Syntax

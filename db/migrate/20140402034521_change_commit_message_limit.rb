@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeCommitMessageLimit < ActiveRecord::Migration[4.2]
   def up
     change_column :tips, :commit_message, :text, limit: nil

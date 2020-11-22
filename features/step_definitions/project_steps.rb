@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def github_projects
   [@github_project_1, @github_project_2, @github_project_3].compact
 end

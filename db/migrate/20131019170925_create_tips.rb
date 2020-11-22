@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTips < ActiveRecord::Migration[4.2]
   def change
     create_table :tips do |t|

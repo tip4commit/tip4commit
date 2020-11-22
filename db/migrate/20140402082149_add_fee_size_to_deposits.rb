@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddFeeSizeToDeposits < ActiveRecord::Migration[4.2]
   class Deposit < ActiveRecord::Base
   end

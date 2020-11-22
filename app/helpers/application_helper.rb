@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def btc_human(amount, options = {})
     amount ||= 0

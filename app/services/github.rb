@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Github
   def initialize
     options = { client_id: CONFIG['github']['key'], client_secret: CONFIG['github']['secret'] }

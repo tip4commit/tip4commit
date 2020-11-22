@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Before do
   ActionMailer::Base.deliveries.clear
 
@@ -104,7 +106,7 @@ def parse_path_from_page_string(page_string)
 end
 
 Given(/^I visit the "(.*?)" page$/) do |page_string|
-  visit parse_path_from_page_string page_string
+  visit parse_path_from_page_string(page_string)
 end
 
 Given(/^I browse to the explicit path "(.*?)"$/) do |url|
@@ -112,11 +114,11 @@ Given(/^I browse to the explicit path "(.*?)"$/) do |url|
 end
 
 Then(/^I should be on the "(.*?)" page$/) do |page_string|
-  expected = parse_path_from_page_string page_string rescue expected = page_string
+  expected = parse_path_from_page_string(page_string) rescue expected = page_string
   actual = URI.decode(page.current_path)
 
-  expected.chop! if (expected.end_with? '/') && (expected.size > 1)
-  actual.chop! if (actual.end_with? '/') && (actual.size > 1)
+  expected = expected.chop if (expected.end_with? '/') && (expected.size > 1)
+  actual = actual.chop if (actual.end_with? '/') && (actual.size > 1)
 
   actual.should eq expected
 end

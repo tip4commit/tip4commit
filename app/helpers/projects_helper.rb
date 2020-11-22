@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ProjectsHelper
   def shield_btc_amount(amount)
     btc_amount = amount / 1e8

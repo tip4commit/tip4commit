@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Tip < ApplicationRecord
   belongs_to :user
   belongs_to :sendmany
@@ -11,7 +13,7 @@ class Tip < ApplicationRecord
     ['normal',    1],
     ['big',       2],
     ['huge',      5]
-  ]
+  ].freeze
 
   validates :amount, numericality: { greater_or_equal_than: 0, allow_nil: true }
 

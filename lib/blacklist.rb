@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'set'
 
 class Blacklist
@@ -24,7 +26,7 @@ class Blacklist
   private
 
   def normalize_url(url)
-    url = url.clone
+    url = url.dup
 
     if !url.start_with?('http://', 'https://', '//')
       if !url.start_with?('github.com', 'bitbucket.org')

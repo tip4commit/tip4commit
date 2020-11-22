@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BitcoinTipper
   class << self
     def work_forever

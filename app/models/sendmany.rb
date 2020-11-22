@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Sendmany < ApplicationRecord
   has_many :tips
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def create_user(nickname, has_bitcoiin_address)
   User.create do |user|
     user.name            = nickname

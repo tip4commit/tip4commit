@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DepositsController < ApplicationController
   before_action { load_project params }
 

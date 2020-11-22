@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 T4c::Application.routes.draw do
   root 'home#index'
 
