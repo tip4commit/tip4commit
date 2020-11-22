@@ -40,6 +40,6 @@ module ProjectsHelper
   end
 
   def permitted_params
-    params.permit(:order, :page)
+    params.permit(:order, :page, :query, :utf8)
   end
 end
