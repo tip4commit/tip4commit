@@ -127,9 +127,9 @@ class Tip < ApplicationRecord
 
   def notify_user
     if amount && amount > 0 && user.bitcoin_address.blank? &&
-        !user.unsubscribed && !project.disable_notifications &&
-        user.balance > 21000000 * 1e8
-      if user.notified_at.nil? or user.notified_at < 30.days.ago
+       !user.unsubscribed && !project.disable_notifications &&
+       user.balance > 21000000 * 1e8
+      if user.notified_at.nil? || (user.notified_at < 30.days.ago)
         begin
           UserMailer.new_tip(user, self).deliver
           user.touch :notified_at
@@ -141,7 +141,7 @@ class Tip < ApplicationRecord
   end
 
   def notify_user_if_just_decided
-    notify_user if amount_was.nil? and amount
+    notify_user if amount_was.nil? && amount
   end
 
   def check_amount_against_project

@@ -11,7 +11,7 @@ Before do
   @default_min_tip = CONFIG['min_tip']
 end
 
-After do |scenario|
+After do |_scenario|
   OmniAuth.config.test_mode = false
 
   CONFIG['tip']     = @default_tip
@@ -38,11 +38,11 @@ def mock_github_user(nickname)
   step "a developer named \"#{nickname}\" exists without a bitcoin address"
 end
 
-Given /^a GitHub user named "(.*?)" exists$/ do |nickname|
+Given(/^a GitHub user named "(.*?)" exists$/) do |nickname|
   mock_github_user nickname
 end
 
-Given /^I'm signed in as "(.*?)"$/ do |nickname|
+Given(/^I'm signed in as "(.*?)"$/) do |nickname|
   mock_github_user nickname
   visit root_path
   first(:link, 'Sign in').click
@@ -50,7 +50,7 @@ Given /^I'm signed in as "(.*?)"$/ do |nickname|
   page.should have_content('Successfully authenticated')
 end
 
-Given /^I'm not signed in$/ do
+Given(/^I'm not signed in$/) do
   visit root_path
   if page.has_content?('Sign out')
     click_on 'Sign out'
@@ -62,9 +62,9 @@ Given /^I'm not signed in$/ do
   OmniAuth.config.test_mode = false
 end
 
-Given (/^I sign in as "(.*?)"$/) { |nickname| step "I'm signed in as \"#{nickname}\"" }
+Given(/^I sign in as "(.*?)"$/) { |nickname| step "I'm signed in as \"#{nickname}\"" }
 
-Given (/^I sign out$/) { step "I'm not signed in" }
+Given(/^I sign out$/) { step "I'm not signed in" }
 
 def parse_path_from_page_string(page_string)
   path = nil
@@ -134,7 +134,7 @@ Given(/^I click "(.*?)"$/) do |arg1|
 end
 
 Given(/^I click "(.*?)" within the "(.*?)" area$/) do |link_text, node_name|
-  within (find_element node_name) { click_on link_text }
+  within(find_element(node_name)) { click_on link_text }
 end
 
 Given(/^I check "(.*?)"$/) do |arg1|
@@ -172,4 +172,4 @@ When(/^I confirm the email address: "(.*?)"$/) do |email|
   visit "/users/confirmation?confirmation_token=#{token}"
 end
 
-Then /^some magic stuff happens in the cloud$/ do; true; end;
+Then(/^some magic stuff happens in the cloud$/) { true }

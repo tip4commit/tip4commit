@@ -154,7 +154,7 @@ Given(/^the project has undedided tips$/) do
   @current_project.reload.should have_undecided_tips
 end
 
-Given(/^the project has (\d+) undecided tip$/) do |arg1|
+Given(/^the project has (\d+) undecided tip$/) do |_arg1|
   @current_project.tips.undecided.each(&:destroy)
   create(:undecided_tip, project: @current_project)
   @current_project.reload.should have_undecided_tips

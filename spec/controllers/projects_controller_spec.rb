@@ -59,14 +59,13 @@ describe ProjectsController, type: :controller do
     end
   end
 
-=begin TODO: NFG - No route matches {:controller=>"projects", :action=>"update"}
-  describe 'PUT #update' do
-    it 'returns 200 status code' do
-      put :update
-      response.should be_success
-    end
-  end
-=end
+  # TODO: NFG - No route matches {:controller=>"projects", :action=>"update"}
+  #   describe 'PUT #update' do
+  #     it 'returns 200 status code' do
+  #       put :update
+  #       response.should be_success
+  #     end
+  #   end
 
   shared_context 'accessing_project' do |verb, action|
     let(:a_project) { create :project, host: 'github', full_name: 'test/test' }

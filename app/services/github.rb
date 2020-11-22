@@ -69,7 +69,7 @@ class Github
 
   def collaborators_info(project)
     (client.get("/repos/#{project.full_name}/collaborators").map(&:login) rescue [project.full_name.split('/').first]) +
-    (client.get("/orgs/#{project.full_name.split('/').first}/members").map(&:login) rescue [])
+      (client.get("/orgs/#{project.full_name.split('/').first}/members").map(&:login) rescue [])
   end
 
   def branches(project)

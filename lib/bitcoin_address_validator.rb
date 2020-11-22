@@ -44,7 +44,7 @@ class BitcoinAddressValidator < ActiveModel::EachValidator
   }.freeze
 
   def valid_legacy_address?(address)
-    if (address =~ /^[a-zA-Z1-9]{33,35}$/) and version = version(address)
+    if (address =~ /^[a-zA-Z1-9]{33,35}$/) && (version = version(address))
       if (expected_versions = EXPECTED_VERSIONS[CONFIG['network'].to_sym]).present?
         expected_versions.include?(version.ord)
       else

@@ -42,7 +42,7 @@ def create_github_project(project_name, is_mock_project = true)
   new_project
 end
 
-def create_bitbicket_project(project_name)
+def create_bitbicket_project(_project_name)
   raise 'unknown provider' # nyi
 end
 
@@ -66,7 +66,7 @@ Given(/^a "(.*?)" project named "(.*?)" exists$/) do |provider, project_name|
   end
 end
 
-When /^regarding the "(.*?)" project named "(.*?)"$/ do |provider, project_name|
+When(/^regarding the "(.*?)" project named "(.*?)"$/) do |provider, project_name|
   # NOTE: @current_project is also assigned in step 'a "..." project named "..." exists'
   @current_project = find_project provider, project_name
 end
@@ -86,7 +86,7 @@ Given(/^the project collaborators are loaded$/) do
   end
 end
 
-When /^the project syncs with the remote repo$/ do
+When(/^the project syncs with the remote repo$/) do
   # in the real world a project has no information regarding commits
   #     nor collaborators until the worker thread initially fetches the repo
   #     so we cache new_commits and collaborators and defer loading to this step
@@ -100,7 +100,7 @@ When /^the project syncs with the remote repo$/ do
   step 'the project collaborators are loaded'
 end
 
-Then /^there should (.*)\s*be a project avatar image visible$/ do |should|
+Then(/^there should (.*)\s*be a project avatar image visible$/) do |should|
   avatar_xpath = '//img[contains(@src, "githubusercontent")]'
   if should.eql? 'not '
     page.should_not have_xpath avatar_xpath

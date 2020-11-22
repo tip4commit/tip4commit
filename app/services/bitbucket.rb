@@ -30,12 +30,12 @@ class Bitbucket
     )
   end
 
-  def collaborators_info(project)
+  def collaborators_info(_project)
     # TODO
     []
   end
 
-  def branches(project)
+  def branches(_project)
     # TODO
     ['master']
   end

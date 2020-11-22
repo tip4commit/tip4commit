@@ -139,7 +139,7 @@ describe UsersController, type: :controller do
       accepted = should_accept.select { |ea|  ea =~ /\D+/ }
       rejected = should_reject.select { |ea| (ea =~ /\D+/).nil? }
       (expect(accepted.size).to eq(should_accept.size)) &&
-      (expect(rejected.size).to eq(should_reject.size))
+        (expect(rejected.size).to eq(should_reject.size))
     end
 
     it 'routes GET /users/:nickname to User#show' do
