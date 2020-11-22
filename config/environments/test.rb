@@ -33,7 +33,7 @@ T4c::Application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { :host => 'tip4commit.com', :protocol => 'https' }
+  config.action_mailer.default_url_options = { host: 'tip4commit.com', protocol: 'https' }
   config.action_mailer.default_options = { from: 'no-reply@tip4commit.com' }
 
   # Print deprecation notices to the stderr.

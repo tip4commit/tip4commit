@@ -25,9 +25,9 @@ def create_github_project(project_name, is_mock_project = true)
   end
 
   if is_mock_project
-    new_project = Project.create! :full_name => project_name, # e.g. "me/my-project"
-                                  :github_id => Digest::SHA1.hexdigest(project_name),
-                                  :bitcoin_address => 'mq4NtnmQoQoPfNWEPbhSvxvncgtGo6L8WY'
+    new_project = Project.create! full_name: project_name, # e.g. "me/my-project"
+                                  github_id: Digest::SHA1.hexdigest(project_name),
+                                  bitcoin_address: 'mq4NtnmQoQoPfNWEPbhSvxvncgtGo6L8WY'
   else
     new_project = Project.find_or_create_by_url project_name # e.g. "me/my-project"
   end
@@ -47,7 +47,7 @@ def create_bitbicket_project(project_name)
 end
 
 def find_project(service, project_name)
-  project = Project.where(:host => service, :full_name => project_name).first
+  project = Project.where(host: service, full_name: project_name).first
   project || (raise "Project '#{project_name.inspect}' not found")
 end
 

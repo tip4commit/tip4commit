@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_path, :alert => I18n.t('errors.access_denied')
+    redirect_to root_path, alert: I18n.t('errors.access_denied')
   end
 
   before_action :load_locale
@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
 
     if (is_standard_path || is_association_path) &&
        (project_id = (is_via_project) ? params[:id] : params[:project_id]) &&
-       (@project   = (Project.where :id => project_id).first)
+       (@project   = (Project.where id: project_id).first)
       if    is_via_tips
         redirect_to project_tips_pretty_path     @project.host, @project.full_name
       elsif is_via_deposits
@@ -64,7 +64,7 @@ class ApplicationController < ActionController::Base
     if (is_standard_path || is_association_path) &&
        (user_id = (is_via_user && params[:id]) ||
                   (is_via_tips && params[:user_id])) &&
-       (@user = User.where(:id => user_id).first)
+       (@user = User.where(id: user_id).first)
       redirect_to user_tips_pretty_path @user.nickname if is_via_tips
     elsif is_pretty_path
       @user = User.where('lower(`nickname`) = ?', params[:nickname].downcase).first

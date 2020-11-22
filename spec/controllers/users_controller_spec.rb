@@ -97,32 +97,32 @@ describe UsersController, type: :controller do
 
   describe 'routing' do
     it 'routes GET /users to User#index' do
-      expect({ :get => '/users' }).to route_to(
-        :controller => 'users',
-        :action => 'index'
+      expect({ get: '/users' }).to route_to(
+        controller: 'users',
+        action: 'index'
       )
     end
 
     it 'routes GET /users/nick-name321 to User#show' do
-      expect({ :get => '/users/nick-name321' }).to route_to(
-        :controller => 'users',
-        :action => 'show',
-        :nickname => 'nick-name321'
+      expect({ get: '/users/nick-name321' }).to route_to(
+        controller: 'users',
+        action: 'show',
+        nickname: 'nick-name321'
       )
     end
 
     it 'routes GET /users/login to User#login' do
-      expect({ :get => '/users/login' }).to route_to(
-        :controller => 'users',
-        :action => 'login'
+      expect({ get: '/users/login' }).to route_to(
+        controller: 'users',
+        action: 'login'
       )
     end
 
     it 'routes GET /users/1/tips to Tips#index' do
-      expect({ :get => '/users/1/tips' }).to route_to(
-        :controller => 'tips',
-        :action => 'index',
-        :user_id => '1'
+      expect({ get: '/users/1/tips' }).to route_to(
+        controller: 'tips',
+        action: 'index',
+        user_id: '1'
       )
     end
   end
@@ -143,18 +143,18 @@ describe UsersController, type: :controller do
     end
 
     it 'routes GET /users/:nickname to User#show' do
-      expect({ :get => "/users/#{user.nickname}" }).to route_to(
-        :controller => 'users',
-        :action => 'show',
-        :nickname => 'kd'
+      expect({ get: "/users/#{user.nickname}" }).to route_to(
+        controller: 'users',
+        action: 'show',
+        nickname: 'kd'
       )
     end
 
     it 'routes GET /users/:nickname/tips to Tips#index' do
-      expect({ :get => "/users/#{user.nickname}/tips" }).to route_to(
-        :controller => 'tips',
-        :action => 'index',
-        :nickname => 'kd'
+      expect({ get: "/users/#{user.nickname}/tips" }).to route_to(
+        controller: 'tips',
+        action: 'index',
+        nickname: 'kd'
       )
     end
   end

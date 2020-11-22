@@ -12,9 +12,9 @@ describe DepositsController, type: :controller do
 
   describe 'routing' do
     it 'routes GET / to Deposits#index' do
-      expect({ :get => '/deposits' }).to route_to(
-        :controller => 'deposits',
-        :action => 'index'
+      expect({ get: '/deposits' }).to route_to(
+        controller: 'deposits',
+        action: 'index'
       )
     end
   end

@@ -36,7 +36,7 @@ class BitcoinRPC
   end
 
   def http_post_request(post_body)
-    RestClient.post(@service_url, post_body, :content_type => :json, :accept => :json).body
+    RestClient.post(@service_url, post_body, content_type: :json, accept: :json).body
   end
 
   class JSONRPCError < RuntimeError; end

@@ -2,7 +2,7 @@
 
 class ChangeProjectsDescription < ActiveRecord::Migration[4.2]
   def up
-    change_column :projects, :description, :text, :limit => nil
+    change_column :projects, :description, :text, limit: nil
   end
 
   def down
