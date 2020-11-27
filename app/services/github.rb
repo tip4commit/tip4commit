@@ -48,22 +48,23 @@ class Github
   end
 
   def find_or_create_project(project_name)
-    if project = find_project(project_name)
-      project
-    elsif project_name =~ %r{\w+/\w+}
-      begin
-        repo = repository_info project_name
-        project = Project.find_or_create_by host: 'github', full_name: repo.full_name
-        project.update_repository_info repo
-        project
-      rescue Octokit::NotFound
-        nil
-      end
-    end
+    find_project(project_name) || create_project(project_name)
   end
 
   def find_project(project_name)
     Project.find_by(host: 'github', full_name: project_name)
+  end
+
+  def create_project(project_name)
+    project_name =~ %r{\w+/\w+}
+    return unless project_name
+
+    repo = repository_info(project_name)
+    project = Project.find_or_create_by(host: 'github', full_name: repo.full_name)
+    project.update_repository_info(repo)
+    project
+  rescue Octokit::NotFound
+    nil
   end
 
   def collaborators_info(project)

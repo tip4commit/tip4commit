@@ -14,24 +14,21 @@ class ApplicationController < ActionController::Base
   private
 
   def load_locale
-    if params[:locale] && ::Rails.application.config.available_locales.include?(params[:locale])
-      I18n.locale = session[:locale] = params[:locale].to_sym
-      begin
-        redirect_to :back
-      rescue StandardError
-        true
-      end
-    elsif session[:locale]
-      I18n.locale = session[:locale]
-    elsif l = language_from_http_accept_language
-      I18n.locale = session[:locale] = l
-    end
+    locale = locale_from_params || session[:locale] || locale_from_http_accept_language
+    I18n.locale = session[:locale] = locale
+
+    redirect_back(fallback_location: root_path) if params[:locale].present?
   end
 
-  def language_from_http_accept_language
-    http_accept_language.compatible_language_from(::Rails.application.config.available_locales).to_sym
-  rescue StandardError
-    nil
+  def locale_from_params
+    return unless params[:locale]
+    return unless ::Rails.application.config.available_locales.include?(params[:locale])
+
+    params[:locale].to_sym
+  end
+
+  def locale_from_http_accept_language
+    http_accept_language.compatible_language_from(::Rails.application.config.available_locales)&.to_sym
   end
 
   def load_project(params)

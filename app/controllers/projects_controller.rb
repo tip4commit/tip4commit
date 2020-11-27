@@ -13,16 +13,15 @@ class ProjectsController < ApplicationController
   end
 
   def search
-    if params[:query].present?
-      if BLACKLIST.include?(params[:query])
-        render :blacklisted and return
-      elsif project = Project.find_by_url(params[:query])
-        redirect_to pretty_project_path(project) and return
-      end
-    end
+    query = params[:query] || ''
 
-    @projects = Project.search(params[:query].to_s).order(projects_order).page(params[:page]).per(30)
-    render :index
+    return render(:blacklisted) if BLACKLIST.include?(query)
+
+    project = Project.find_by_url(query)
+    return redirect_to(pretty_project_path(project)) if project
+
+    @projects = Project.search(query).order(projects_order).page(params[:page]).per(30)
+    render(:index)
   end
 
   def show
