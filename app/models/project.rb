@@ -202,9 +202,7 @@ class Project < ApplicationRecord
   end
 
   def check_tips_to_pay_against_avaiable_amount
-    if available_amount.negative?
-      raise "Not enough funds to pay the pending tips on #{inspect} (#{available_amount} < 0)"
-    end
+    raise "Not enough funds to pay the pending tips on #{inspect} (#{available_amount} < 0)" if available_amount.negative?
   end
 
   def self.find_or_create_by_url(project_url)

@@ -91,7 +91,7 @@ end
 When(/^the new commits are loaded$/) do
   raise 'no commits have been assigned' if @new_commits.nil?
 
-  [@github_project_1, @github_project_2, @github_project_3].each do |project|
+  [@github_project1, @github_project2, @github_project3].each do |project|
     next if project.nil?
 
     project.reload

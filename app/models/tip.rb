@@ -89,7 +89,6 @@ class Tip < ApplicationRecord
 
   before_save :check_amount_against_project
   before_save :touch_decided_at_if_decided
-  after_save :notify_user_if_just_decided
 
   def self.refund_unclaimed
     unclaimed.non_refunded
@@ -123,25 +122,6 @@ class Tip < ApplicationRecord
     return unless AVAILABLE_AMOUNTS.map(&:last).compact.map(&:to_s).include?(percentage.to_s)
 
     self.amount = (project.available_amount * (percentage.to_f / 100)).ceil
-  end
-
-  def notify_user
-    if amount&.positive? && user.bitcoin_address.blank? &&
-       !user.unsubscribed && !project.disable_notifications &&
-       user.balance > 21_000_000 * 1e8
-      if user.notified_at.nil? || (user.notified_at < 30.days.ago)
-        begin
-          UserMailer.new_tip(user, self).deliver
-          user.touch :notified_at
-        rescue Net::SMTPServerBusy => e
-          Rails.logger.info "Error: #{e.class}: #{e.message}"
-        end
-      end
-    end
-  end
-
-  def notify_user_if_just_decided
-    notify_user if amount_was.nil? && amount
   end
 
   def check_amount_against_project

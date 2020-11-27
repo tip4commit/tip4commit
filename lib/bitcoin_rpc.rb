@@ -5,7 +5,7 @@ require 'uri'
 require 'json'
 
 class BitcoinRPC
-  def initialize(service_url, batch_mode = false)
+  def initialize(service_url, batch_mode: false)
     @service_url = service_url
     @uri = URI.parse(service_url)
     @batch_mode = batch_mode

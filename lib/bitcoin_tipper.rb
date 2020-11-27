@@ -8,7 +8,7 @@ class BitcoinTipper
       end
     end
 
-    def work(withdraw = true)
+    def work(withdraw: true)
       create_tips
       update_projects_info
       check_and_withdrawal_funds if withdraw

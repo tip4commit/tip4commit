@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 def github_projects
-  [@github_project_1, @github_project_2, @github_project_3].compact
+  [@github_project1, @github_project2, @github_project3].compact
 end
 
 def bitbucket_projects
-  [@bitbucket_project_1, @bitbucket_project_2, @bitbucket_project_3].compact
+  [@bitbucket_project1, @bitbucket_project2, @bitbucket_project3].compact
 end
 
-def create_github_project(project_name, is_mock_project = true)
+def create_github_project(project_name, is_mock_project: true)
   # NOTE: when is_mock_project is false the app will actually fetch via network
   #       this is the old "find or create" GUI functionality
   #           so obviously the actual repo must exist
@@ -17,10 +17,10 @@ def create_github_project(project_name, is_mock_project = true)
   #           source_full_name , description , watchers_count , language
   #       up to three of each host are cached with a reference to the most recent
 
-  if (@github_project_1.present? && (project_name.eql? @github_project_1.full_name)) ||
-     (@github_project_2.present? && (project_name.eql? @github_project_2.full_name))
+  if (@github_project1.present? && (project_name.eql? @github_project1.full_name)) ||
+     (@github_project2.present? && (project_name.eql? @github_project2.full_name))
     raise "duplicate project_name '#{project_name}'"
-  elsif @github_project_3.present?
+  elsif @github_project3.present?
     raise 'the maximum of three test projects already exist'
   end
 
@@ -35,12 +35,12 @@ def create_github_project(project_name, is_mock_project = true)
                 end
 
   unless github_projects.include?(new_project)
-    if @github_project_2.present?
-      @github_project_3 = new_project
-    elsif @github_project_1.present?
-      @github_project_2 = new_project
+    if @github_project2.present?
+      @github_project3 = new_project
+    elsif @github_project1.present?
+      @github_project2 = new_project
     else
-      @github_project_1 = new_project
+      @github_project1 = new_project
     end
   end
 
@@ -62,11 +62,11 @@ Given(/^a "(.*?)" project named "(.*?)" exists$/) do |provider, project_name|
   #       @current_project is also assigned in step 'regarding the "..." project named "..."'
   case provider.downcase
   when 'github'
-    @current_project = create_github_project    project_name
+    @current_project = create_github_project(project_name)
   when 'bitbucket'
-    @current_project = create_bitbicket_project project_name
+    @current_project = create_bitbicket_project(project_name)
   when 'real-github'
-    @current_project = create_github_project    project_name, false
+    @current_project = create_github_project(project_name, is_mock_project: false)
   else raise "unknown provider \"#{provider}\""
   end
 end
