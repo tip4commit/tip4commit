@@ -15,9 +15,9 @@
   .pull-right
     - if @project.collaborators.empty?
       = t('.fetch_pending')
-    - if can? :update, @project
+    - if can?(:update, @project)
       = link_to t('.edit_project'), pretty_project_edit_path(@project), class: "btn btn-primary"
-    - if can? :decide_tip_amounts, @project and @project.has_undecided_tips?
+    - if can?(:decide_tip_amounts, @project) && @project.has_undecided_tips?
       = link_to t('.decide_tip_amounts'), pretty_project_decide_tip_amounts_path(@project), class: "btn btn-warning"
 
 .row

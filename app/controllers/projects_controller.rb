@@ -91,19 +91,16 @@ class ProjectsController < ApplicationController
   def redirect_to_pretty_url
     return unless request.get? && params[:id].present?
 
-    begin
-      respond_to do |format|
-        case action_name
-        when 'show'
-          path = pretty_project_path                    @project
-        when 'edit'
-          path = pretty_project_edit_path               @project
-        when 'decide_tip_amounts'
-          path = pretty_project_decide_tip_amounts_path @project
-        end
-        format.html { redirect_to path }
+    respond_to do |format|
+      case action_name
+      when 'show'
+        path = pretty_project_path(@project)
+      when 'edit'
+        path = pretty_project_edit_path(@project)
+      when 'decide_tip_amounts'
+        path = pretty_project_decide_tip_amounts_path(@project)
       end
-    rescue ActionController::UnknownFormat
+      format.html { redirect_to path }
     end
   end
 end

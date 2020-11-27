@@ -32,13 +32,13 @@ class User < ApplicationRecord
 
   def gravatar_bitcoin
     gravatar.get_value :currency, :bitcoin
-  rescue URI::InvalidURIError, NoMethodError => e
+  rescue URI::InvalidURIError, NoMethodError
     nil
   end
 
   def gravatar_display_name
     gravatar.get_value :displayName
-  rescue URI::InvalidURIError, NoMethodError => e
+  rescue URI::InvalidURIError, NoMethodError
     nil
   end
 

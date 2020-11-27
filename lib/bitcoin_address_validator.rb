@@ -33,8 +33,8 @@ class BitcoinAddressValidator < ActiveModel::EachValidator
     raise
   end
 
-  B58Chars = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
-  B58Base = B58Chars.length
+  B58_CHARS = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
+  B58_BASE = B58_CHARS.length
 
   EXPECTED_VERSIONS = {
     mainnet: [0, 5],
@@ -71,7 +71,7 @@ class BitcoinAddressValidator < ActiveModel::EachValidator
     result = ''
 
     value.reverse.each_char do |c|
-      long_value += B58Chars.index(c) * (B58Base**index)
+      long_value += B58_CHARS.index(c) * (B58_BASE**index)
       index += 1
     end
 

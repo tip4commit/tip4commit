@@ -8,11 +8,7 @@ class BitcoinRPC
   def initialize(service_url, batch_mode = false)
     @service_url = service_url
     @uri = URI.parse(service_url)
-    set_batch_mode(batch_mode)
-  end
-
-  def set_batch_mode(m)
-    @batch_mode = m
+    @batch_mode = batch_mode
   end
 
   def method_missing(name, *args)

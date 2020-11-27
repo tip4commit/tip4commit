@@ -66,15 +66,12 @@ class UsersController < ApplicationController
   def redirect_to_pretty_url
     return unless request.get? && params[:id].present? && @user.nickname.present?
 
-    begin
-      respond_to do |format|
-        case action_name
-        when 'show'
-          path = user_pretty_path @user.nickname
-        end
-        format.html { redirect_to path }
+    respond_to do |format|
+      case action_name
+      when 'show'
+        path = user_pretty_path @user.nickname
       end
-    rescue ActionController::UnknownFormat
+      format.html { redirect_to path }
     end
   end
 end

@@ -102,7 +102,7 @@ def parse_path_from_page_string(page_string)
        end
   end
 
-  path || (raise 'unknown page')
+  path || page_string
 end
 
 Given(/^I visit the "(.*?)" page$/) do |page_string|
@@ -114,12 +114,8 @@ Given(/^I browse to the explicit path "(.*?)"$/) do |url|
 end
 
 Then(/^I should be on the "(.*?)" page$/) do |page_string|
-  expected = begin
-    parse_path_from_page_string(page_string)
-  rescue StandardError
-    expected = page_string
-  end
-  actual = URI.decode(page.current_path)
+  expected = parse_path_from_page_string(page_string)
+  actual = CGI.unescape(page.current_path)
 
   expected = expected.chop if (expected.end_with? '/') && (expected.size > 1)
   actual = actual.chop if (actual.end_with? '/') && (actual.size > 1)

@@ -168,7 +168,7 @@ class Project < ApplicationRecord
   def next_tip_amount
     next_tip_amount = (CONFIG['tip'] * available_amount).ceil
     next_tip_amount = [next_tip_amount, CONFIG['min_tip']].max if CONFIG['min_tip']
-    next_tip_amount = [next_tip_amount, available_amount].min
+    [next_tip_amount, available_amount].min
   end
 
   def update_cache
