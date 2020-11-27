@@ -31,6 +31,7 @@ gem 'mysql2', group: :production
 gem 'octokit'
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'omniauth-rails_csrf_protection', '~> 0.1'
 gem 'rails-i18n'
 gem 'render_csv'
 gem 'rest-client'
