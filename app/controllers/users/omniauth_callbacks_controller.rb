@@ -30,10 +30,10 @@ module Users
 
     def load_omniauth_info
       @omniauth_info = request.env['omniauth.auth']['info']
-      unless @omniauth_info
-        set_flash_message(:error, :failure, kind: 'GitHub', reason: I18n.t('devise.errors.omniauth_info'))
-        redirect_to new_user_session_path and return
-      end
+      return if @omniauth_info
+
+      set_flash_message(:error, :failure, kind: 'GitHub', reason: I18n.t('devise.errors.omniauth_info'))
+      redirect_to new_user_session_path
     end
   end
 end

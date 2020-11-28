@@ -54,10 +54,10 @@ class ApplicationController < ActionController::Base
                         .where('lower(`full_name`) = ?', params[:repo].downcase).first
     end
 
-    if @project.nil?
-      flash[:error] = I18n.t('errors.project_not_found')
-      redirect_to projects_path
-    end
+    return if @project.present?
+
+    flash[:error] = I18n.t('errors.project_not_found')
+    redirect_to projects_path
   end
 
   def load_user(params)
@@ -77,9 +77,9 @@ class ApplicationController < ActionController::Base
       @user = User.where('lower(`nickname`) = ?', params[:nickname].downcase).first
     end
 
-    if @user.nil?
-      flash[:error] = I18n.t('errors.user_not_found')
-      redirect_to users_path
-    end
+    return if @user.present?
+
+    flash[:error] = I18n.t('errors.user_not_found')
+    redirect_to users_path
   end
 end

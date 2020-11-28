@@ -48,24 +48,24 @@ class ProjectsController < ApplicationController
 
   def decide_tip_amounts
     authorize! :decide_tip_amounts, @project
-    if request.patch?
-      @project.available_amount # preload anything required to get the amount, otherwise it's loaded during the assignation and there are undesirable consequences
-      percentages = params[:project][:tips_attributes].values.map { |tip| tip['amount_percentage'].to_f }
-      if percentages.sum > 100
-        redirect_to decide_tip_amounts_project_path(@project), alert: I18n.t('errors.can_assign_more_tips')
-        return
-      end
-      raise 'wrong data' if percentages.min.negative?
+    return unless request.patch?
 
-      @project.attributes = params.require(:project).permit(tips_attributes: %i[id amount_percentage])
-      if @project.save
-        message = I18n.t('notices.tips_decided')
-        if @project.has_undecided_tips?
-          redirect_to decide_tip_amounts_project_path(@project), notice: message
-        else
-          redirect_to @project, notice: message
-        end
-      end
+    @project.available_amount # preload anything required to get the amount, otherwise it's loaded during the assignation and there are undesirable consequences
+    percentages = params[:project][:tips_attributes].values.map { |tip| tip['amount_percentage'].to_f }
+    if percentages.sum > 100
+      redirect_to decide_tip_amounts_project_path(@project), alert: I18n.t('errors.can_assign_more_tips')
+      return
+    end
+    raise 'wrong data' if percentages.min.negative?
+
+    @project.attributes = params.require(:project).permit(tips_attributes: %i[id amount_percentage])
+    return unless @project.save
+
+    message = I18n.t('notices.tips_decided')
+    if @project.has_undecided_tips?
+      redirect_to decide_tip_amounts_project_path(@project), notice: message
+    else
+      redirect_to @project, notice: message
     end
   end
 

@@ -125,13 +125,14 @@ class Tip < ApplicationRecord
   end
 
   def check_amount_against_project
-    if amount && amount_changed?
-      available_amount = project.available_amount
-      available_amount -= amount_was if amount_was
-      if amount > available_amount
-        raise "Not enough funds on project to save #{inspect} (available: #{available_amount}). Project #{project.inspect} available_amount: #{project.available_amount} #{project.tips.count} tips: #{project.tips.map(&:amount).join(', ')}"
-      end
-    end
+    return unless amount && amount_changed?
+
+    available_amount = project.available_amount
+    available_amount -= amount_was if amount_was
+
+    return if amount <= available_amount
+
+    raise "Not enough funds on project to save #{inspect} (available: #{available_amount}). Project #{project.inspect} available_amount: #{project.available_amount} #{project.tips.count} tips: #{project.tips.map(&:amount).join(', ')}"
   end
 
   def touch_decided_at_if_decided

@@ -122,27 +122,29 @@ class Project < ApplicationRecord
   end
 
   def tip_for(commit)
-    if next_tip_amount.positive? && !Tip.exists?(commit: commit.sha)
-      return unless (user = User.find_by_commit commit)
+    return unless next_tip_amount.positive?
+    return if Tip.exists?(commit: commit.sha)
 
-      user.update(nickname: commit.author.login) if commit.author.try(:login)
+    user = User.find_by_commit(commit)
+    return if user.nil?
 
-      amount = if hold_tips
-                 nil
-               else
-                 next_tip_amount
-               end
+    user.update(nickname: commit.author.login) if commit.author.try(:login)
 
-      # create tip
-      tip = tips.create({ user: user,
-                          amount: amount,
-                          commit: commit.sha,
-                          commit_message: commit.commit.message })
+    amount = if hold_tips
+               nil
+             else
+               next_tip_amount
+             end
 
-      # tip.notify_user
+    # create a tip
+    tip = tips.create(
+      user: user,
+      amount: amount,
+      commit: commit.sha,
+      commit_message: commit.commit.message
+    )
 
-      Rails.logger.info "    Tip created #{tip.inspect}"
-    end
+    Rails.logger.info "    Tip created #{tip.inspect}"
   end
 
   def donated

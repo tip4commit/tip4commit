@@ -9,51 +9,52 @@ module ApplicationHelper
             else
               (try(:current_user) ? current_user.denom : 0)
             end
-    if denom === 0
+    case denom
+    when 0
       btc = to_btc(amount)
-    elsif denom === 1
+    when 1
       btc = to_mbtc(amount)
-    elsif denom === 2
+    when 2
       btc = to_ubtc(amount)
-    elsif denom === 3
+    when 3
       btc = to_satoshi(amount)
-    elsif denom === 4
+    when 4
       btc = to_usd(amount)
-    elsif denom === 5
+    when 5
       btc = to_eur(amount)
-    elsif denom === 6
+    when 6
       btc = to_aud(amount)
-    elsif denom === 7
+    when 7
       btc = to_brl(amount)
-    elsif denom === 8
+    when 8
       btc = to_cad(amount)
-    elsif denom === 9
+    when 9
       btc = to_cny(amount)
-    elsif denom === 10
+    when 10
       btc = to_gbp(amount)
-    elsif denom === 11
+    when 11
       btc = to_idr(amount)
-    elsif denom === 12
+    when 12
       btc = to_ils(amount)
-    elsif denom === 13
+    when 13
       btc = to_jpy(amount)
-    elsif denom === 14
+    when 14
       btc = to_mxn(amount)
-    elsif denom === 15
+    when 15
       btc = to_nok(amount)
-    elsif denom === 16
+    when 16
       btc = to_nzd(amount)
-    elsif denom === 17
+    when 17
       btc = to_pln(amount)
-    elsif denom === 18
+    when 18
       btc = to_ron(amount)
-    elsif denom === 19
+    when 19
       btc = to_rub(amount)
-    elsif denom === 20
+    when 20
       btc = to_sek(amount)
-    elsif denom === 21
+    when 21
       btc = to_sgd(amount)
-    elsif denom === 22
+    when 22
       btc = to_zar(amount)
     end
     btc = "<nobr>#{btc}</nobr>" if nobr

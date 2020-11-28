@@ -57,10 +57,10 @@ class UsersController < ApplicationController
   end
 
   def valid_user!
-    if current_user != @user
-      flash[:error] = I18n.t('errors.access_denied')
-      redirect_to root_path and return
-    end
+    return if current_user == @user
+
+    flash[:error] = I18n.t('errors.access_denied')
+    redirect_to root_path
   end
 
   def redirect_to_pretty_url
