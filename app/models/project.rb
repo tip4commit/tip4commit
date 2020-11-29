@@ -238,5 +238,9 @@ class Project < ApplicationRecord
     def export_labels
       Hash[pluck(:bitcoin_address, :full_name)].to_json
     end
+
+    def first_by_service_and_repo(service, repo)
+      where(host: service).where('lower(`full_name`) = ?', repo.downcase).first
+    end
   end
 end

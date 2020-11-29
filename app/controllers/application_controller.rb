@@ -31,33 +31,13 @@ class ApplicationController < ActionController::Base
     http_accept_language.compatible_language_from(::Rails.application.config.available_locales)&.to_sym
   end
 
-  def load_project(params)
-    return unless (is_via_project = is_a? ProjectsController) ||
-                  (is_via_tips     = is_a? TipsController) ||
-                  (is_via_deposits = is_a? DepositsController)
+  def pretty_project_path?
+    params[:service].present? && params[:repo].present?
+  end
 
-    is_standard_path    = params[:id].present? && is_via_project
-    is_association_path = params[:project_id].present?
-    is_pretty_path      = params[:service].present? && params[:repo].present?
-    return unless is_standard_path || is_association_path || is_pretty_path
-
-    if (is_standard_path || is_association_path) &&
-       (project_id = is_via_project ? params[:id] : params[:project_id]) &&
-       (@project   = (Project.where id: project_id).first)
-      if    is_via_tips
-        redirect_to project_tips_pretty_path     @project.host, @project.full_name
-      elsif is_via_deposits
-        redirect_to project_deposits_pretty_path @project.host, @project.full_name
-      end
-    elsif is_pretty_path
-      @project = Project.where(host: params[:service])
-                        .where('lower(`full_name`) = ?', params[:repo].downcase).first
-    end
-
-    return if @project.present?
-
+  def project_not_found
     flash[:error] = I18n.t('errors.project_not_found')
-    redirect_to projects_path
+    redirect_to(projects_path)
   end
 
   def load_user(params)

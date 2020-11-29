@@ -72,7 +72,13 @@ class ProjectsController < ApplicationController
   private
 
   def load_project
-    super params
+    @project = if pretty_project_path?
+                 Project.first_by_service_and_repo(params[:service], params[:repo])
+               else
+                 Project.where(id: params[:id]).first
+               end
+
+    project_not_found unless @project
   end
 
   def project_params

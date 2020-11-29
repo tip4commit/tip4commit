@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TipsController < ApplicationController
-  before_action { load_project params }
+  before_action { load_project }
   before_action { load_user    params }
 
   def index
@@ -24,5 +24,20 @@ class TipsController < ApplicationController
       format.html
       format.csv { render csv: @tips, except: %i[updated_at commit commit_message refunded_at decided_at], add_methods: %i[user_name project_name decided? claimed? paid? refunded? txid] }
     end
+  end
+
+  private
+
+  def load_project
+    return unless pretty_project_path? || params[:project_id].present?
+
+    if pretty_project_path?
+      @project = Project.first_by_service_and_repo(params[:service], params[:repo])
+    elsif params[:project_id].present?
+      @project = Project.where(id: params[:project_id]).first
+      redirect_to project_tips_pretty_path(@project.host, @project.full_name) if @project
+    end
+
+    project_not_found unless @project
   end
 end
