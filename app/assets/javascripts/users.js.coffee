@@ -39,7 +39,7 @@ load_bootstrap_validator = ->
           notEmpty:
             message: I18n.t('js.errors.password_confirmation.blank')
 
-$(document).on "ready page:load", load_bootstrap_validator
+$(document).on "ready turbolinks:load", load_bootstrap_validator
 
 $ ->
   $('.from-gravatar').click (e) ->

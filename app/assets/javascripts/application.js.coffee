@@ -7,7 +7,7 @@
 #= require i18n/translations
 #= require_tree .
 
-$(document).on "ready page:change", ->
+$(document).on "ready turbolinks:load", ->
 
   # Remove all global properties set by addthis, otherwise it won't reinitialize
   for i of window
