@@ -40,26 +40,8 @@ class ApplicationController < ActionController::Base
     redirect_to(projects_path)
   end
 
-  def load_user(params)
-    return unless (is_via_user = is_a? UsersController) ||
-                  (is_via_tips = is_a? TipsController)
-
-    return unless (is_standard_path    = params[:id].present? && is_via_user) ||
-                  (is_association_path = params[:user_id].present?) ||
-                  (is_pretty_path      = params[:nickname].present?)
-
-    if (is_standard_path || is_association_path) &&
-       (user_id = (is_via_user && params[:id]) ||
-                  (is_via_tips && params[:user_id])) &&
-       (@user = User.where(id: user_id).first)
-      redirect_to user_tips_pretty_path @user.nickname if is_via_tips
-    elsif is_pretty_path
-      @user = User.where('lower(`nickname`) = ?', params[:nickname].downcase).first
-    end
-
-    return if @user.present?
-
+  def user_not_found
     flash[:error] = I18n.t('errors.user_not_found')
-    redirect_to users_path
+    redirect_to(users_path)
   end
 end

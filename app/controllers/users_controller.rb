@@ -53,7 +53,10 @@ class UsersController < ApplicationController
   end
 
   def load_user
-    super params
+    @user = User.where(id: params[:id]).first if params[:id].present?
+    @user ||= User.first_by_nickname(params[:nickname]) if params[:nickname].present?
+
+    user_not_found unless @user
   end
 
   def valid_user!

@@ -50,34 +50,39 @@ class User < ApplicationRecord
     !unsubscribed?
   end
 
-  # Class Methods
-  def self.update_cache
-    includes(:tips).find_each do |user|
-      user.update commits_count: user.tips.count
-      user.update withdrawn_amount: user.tips.paid.sum(:amount)
-    end
-  end
-
-  def self.create_with_omniauth!(auth_info)
-    generated_password = Devise.friendly_token.first(Devise.password_length.min)
-    create do |user|
-      user.email    = auth_info.email
-      user.password = generated_password
-      user.nickname = auth_info.nickname
-      user.display_name = auth_info.name
-      user.skip_confirmation!
-    end
-  end
-
-  def self.find_by_commit(commit)
-    email = commit.commit.author.email
-    nickname = commit.author.try(:login)
-
-    find_by(email: email) || (nickname.blank? ? nil : find_by(nickname: nickname))
-  end
-
   def ready_for_withdrawal?
     bitcoin_address.present? && balance >= CONFIG['min_payout']
+  end
+
+  class << self
+    def update_cache
+      includes(:tips).find_each do |user|
+        user.update commits_count: user.tips.count
+        user.update withdrawn_amount: user.tips.paid.sum(:amount)
+      end
+    end
+
+    def create_with_omniauth!(auth_info)
+      generated_password = Devise.friendly_token.first(Devise.password_length.min)
+      create do |user|
+        user.email    = auth_info.email
+        user.password = generated_password
+        user.nickname = auth_info.nickname
+        user.display_name = auth_info.name
+        user.skip_confirmation!
+      end
+    end
+
+    def find_by_commit(commit)
+      email = commit.commit.author.email
+      nickname = commit.author.try(:login)
+
+      find_by(email: email) || (nickname.blank? ? nil : find_by(nickname: nickname))
+    end
+
+    def first_by_nickname(nickname)
+      where('lower(`nickname`) = ?', nickname.downcase).first
+    end
   end
 
   private

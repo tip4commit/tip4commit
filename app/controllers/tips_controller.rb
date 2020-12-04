@@ -2,7 +2,7 @@
 
 class TipsController < ApplicationController
   before_action { load_project }
-  before_action { load_user    params }
+  before_action { load_user }
 
   def index
     if @project.present?
@@ -39,5 +39,18 @@ class TipsController < ApplicationController
     end
 
     project_not_found unless @project
+  end
+
+  def load_user
+    return unless params[:user_id].present? || params[:nickname].present?
+
+    if params[:nickname].present?
+      @user = User.first_by_nickname(params[:nickname])
+    elsif params[:user_id].present?
+      @user = User.where(id: params[:user_id]).first
+      redirect_to user_tips_pretty_path(@user.nickname) if @user
+    end
+
+    user_not_found unless @user
   end
 end
