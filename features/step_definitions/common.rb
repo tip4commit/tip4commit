@@ -72,7 +72,7 @@ def parse_path_from_page_string(page_string)
   # explicit cases
   # e.g. "a-user/a-project github-project edit"
   # e.g. "a-user user edit"
-  tokens     = page_string.split ' '
+  tokens     = page_string.split
   name       = tokens[0]
   model      = tokens[1]
   action     = tokens[2] || '' # '' => 'show'
