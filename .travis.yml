@@ -6,7 +6,7 @@ git:
   depth: 10
 
 rvm:
-  - 2.5.8
+  - 2.6.6
 
 bundler_args: --without development --jobs=9 --retry=2 --quiet
 
