@@ -6,4 +6,4 @@ init = () ->
   $('.qrcode').each () ->
     $(this).qrcode($(this).attr('data-qrcode'));
 
-$(document).on 'ready turbolinks:load', init
+$(document).on 'turbolinks:load', init
