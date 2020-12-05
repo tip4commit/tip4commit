@@ -6,7 +6,7 @@ describe User, type: :model do
   let(:user) { create(:user) }
 
   describe 'Associations' do
-    it { should have_many :tips }
+    it { is_expected.to have_many :tips }
   end
 
   describe 'full_name' do
@@ -33,56 +33,56 @@ describe User, type: :model do
 
   describe 'bitcoin_address' do
     context 'when address is blank' do
-      it 'should be valid' do
+      it 'is valid' do
         user.bitcoin_address = ''
         expect(user).to be_valid
       end
     end
 
     context 'when address is valid p2pkh address' do
-      it 'should be valid' do
+      it 'is valid' do
         user.bitcoin_address = '1M4bS4gPyA6Kb8w7aXsgth9oUZWcRk73tQ'
         expect(user).to be_valid
       end
     end
 
     context 'when address is valid p2sh address' do
-      it 'should be valid' do
+      it 'is valid' do
         user.bitcoin_address = '3EktnHQD7RiAE6uzMj2ZifT9YgRrkSgzQX'
         expect(user).to be_valid
       end
     end
 
     context 'when address is valid bech32 P2WPKH address' do
-      it 'should be valid' do
+      it 'is valid' do
         user.bitcoin_address = 'BC1QW508D6QEJXTDG4Y5R3ZARVARY0C5XW7KV8F3T4'
         expect(user).to be_valid
       end
     end
 
     context 'when address is valid bech32 P2WSH address' do
-      it 'should be valid' do
+      it 'is valid' do
         user.bitcoin_address = 'bc1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3qccfmv3'
         expect(user).to be_valid
       end
     end
 
     context 'when address is not valid p2pkh' do
-      it 'should not be valid' do
+      it 'is not valid' do
         user.bitcoin_address = '1M4bS4gPyA6Kb8w7aXsgth9oUZXXXXXXXX'
         expect(user).not_to be_valid
       end
     end
 
     context 'when address is testnet bech32' do
-      it 'should not be valid' do
+      it 'is not valid' do
         user.bitcoin_address = 'tb1qw508d6qejxtdg4y5r3zarvary0c5xw7kxpjzsx'
         expect(user).not_to be_valid
       end
     end
 
     context 'when address is not valid bech32' do
-      it 'should not be valid' do
+      it 'is not valid' do
         user.bitcoin_address = 'tb1qw508d6qejxtdg4y5r3zarvary0c5xw7kxpjzsx'
         expect(user).not_to be_valid
       end

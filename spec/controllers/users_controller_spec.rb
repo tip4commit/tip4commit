@@ -30,6 +30,7 @@ describe UsersController, type: :controller do
       context 'when user found' do
         context 'when viewing own page' do
           before { allow(user).to receive(:id).and_return(@current_user.id) }
+
           it 'renders show template' do
             expect(subject).to render_template :show
           end

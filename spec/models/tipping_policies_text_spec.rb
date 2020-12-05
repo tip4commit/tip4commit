@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe TippingPoliciesText, type: :model do
   describe 'Associations' do
-    it { should belong_to :project }
-    it { should belong_to :user }
+    it { is_expected.to belong_to :project }
+    it { is_expected.to belong_to :user }
   end
 end

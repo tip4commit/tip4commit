@@ -1,6 +1,10 @@
 
 inherit_from: .rubocop_todo.yml
 
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
 AllCops:
   TargetRubyVersion: 2.6
   NewCops: enable
@@ -10,3 +14,8 @@ AllCops:
 
 Style/Documentation:
   Enabled: false
+
+Rails/DynamicFindBy:
+  Whitelist:
+    - find_by_url
+    - find_by_commit

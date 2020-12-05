@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update_attributes(users_params)
+    if @user.update(users_params)
       redirect_to @user, notice: I18n.t('notices.user_updated')
     else
       show

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AddProjectHost < ActiveRecord::Migration[4.2]
-  class Project < ActiveRecord::Base
+  class Project < ApplicationRecord
   end
 
   def change

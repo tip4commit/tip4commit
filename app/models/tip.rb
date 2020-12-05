@@ -136,7 +136,7 @@ class Tip < ApplicationRecord
   end
 
   def touch_decided_at_if_decided
-    self.decided_at = Time.now if amount_changed? && decided?
+    self.decided_at = Time.zone.now if amount_changed? && decided?
   end
 
   def project_name

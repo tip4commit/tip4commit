@@ -158,7 +158,7 @@ module ApplicationHelper
   end
 
   def get_rate(currency)
-    Rails.cache.fetch("####{currency}", expires_in: 1.hours) do
+    Rails.cache.fetch("####{currency}", expires_in: 1.hour) do
       uri = URI("https://api.coindesk.com/v1/bpi/currentprice/#{currency}.json")
       response = Net::HTTP.get_response(uri)
       hash = JSON.parse(response.body)
@@ -173,13 +173,13 @@ module ApplicationHelper
                    when 'notice'          then :success
                    when 'alert', 'error'  then :danger
                    end
-      html << content_tag(:div, class: "alert alert-#{alert_type}") { message }
+      html << tag.div(class: "alert alert-#{alert_type}") { message }
     end
     html.join("\n").html_safe
   end
 
   def commit_tag(sha1)
-    content_tag(:span, truncate(sha1, length: 10, omission: ''), class: 'commit-sha')
+    tag.span(truncate(sha1, length: 10, omission: ''), class: 'commit-sha')
   end
 
   def list_friendly_text(a_list, conjunction)

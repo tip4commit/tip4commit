@@ -17,14 +17,14 @@ describe 'CVE-2015-9284', type: :request do
       ActionController::Base.allow_forgery_protection = true
     end
 
+    after do
+      ActionController::Base.allow_forgery_protection = @allow_forgery_protection
+    end
+
     it do
       expect do
         post '/users/auth/github'
       end.to raise_error(ActionController::InvalidAuthenticityToken)
-    end
-
-    after do
-      ActionController::Base.allow_forgery_protection = @allow_forgery_protection
     end
   end
 end

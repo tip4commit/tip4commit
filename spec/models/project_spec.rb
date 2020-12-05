@@ -7,18 +7,18 @@ describe Project, type: :model do
   let(:project_of_bitbucket) { create(:project, :bitbucket) }
 
   describe 'Associations' do
-    it { should have_many(:deposits) }
-    it { should have_many(:tips) }
-    it { should belong_to(:wallet) }
+    it { is_expected.to have_many(:deposits) }
+    it { is_expected.to have_many(:tips) }
+    it { is_expected.to belong_to(:wallet) }
   end
 
   describe 'Validations' do
-    it { should validate_presence_of(:full_name) }
-    it { should validate_presence_of(:github_id) }
-    it { should validate_presence_of(:host) }
-    it { should validate_uniqueness_of(:full_name) }
-    it { should validate_uniqueness_of(:github_id) }
-    it { should validate_inclusion_of(:host).in_array %w[github bitbucket] }
+    it { is_expected.to validate_presence_of(:full_name) }
+    it { is_expected.to validate_presence_of(:github_id) }
+    it { is_expected.to validate_presence_of(:host) }
+    it { is_expected.to validate_uniqueness_of(:full_name) }
+    it { is_expected.to validate_uniqueness_of(:github_id) }
+    it { is_expected.to validate_inclusion_of(:host).in_array %w[github bitbucket] }
   end
 
   describe 'bitcoin_address' do
@@ -29,15 +29,15 @@ describe Project, type: :model do
       wallet
     end
 
-    it 'should generate a bitcoin address' do
+    it 'generates a bitcoin address' do
       expect(project.bitcoin_address).not_to be_blank
     end
 
-    it 'should connect project to the last wallet' do
+    it 'connects project to the last wallet' do
       expect(project.wallet).to eq wallet
     end
 
-    it 'should increment wallet\'s last_address_index' do
+    it "increments wallet's last_address_index" do
       expect { project }.to change { wallet.reload.last_address_index }.by 1
     end
   end

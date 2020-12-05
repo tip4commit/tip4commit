@@ -5,6 +5,7 @@ require 'spec_helper'
 describe ProjectsController, type: :controller do
   describe 'GET #index' do
     let(:subject) { get :index }
+
     before do
       allow(Project).to receive(:order).with(available_amount_cache: :desc, watchers_count: :desc, full_name: :asc).and_return(Project)
       allow(Project).to receive(:page).with(nil).and_return(Project)

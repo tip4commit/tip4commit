@@ -11,7 +11,7 @@ describe Blacklist do
       'https://bitbucket.org/notips/*'
     ]
 
-    list = Blacklist.new(urls)
+    list = described_class.new(urls)
 
     # Blacklisted projects.
     expect(list.include?('https://github.com/author/notips')).to eq(true)

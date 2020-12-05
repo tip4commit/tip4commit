@@ -6,7 +6,7 @@ describe Deposit, type: :model do
   let(:deposit) { create(:deposit) }
 
   describe 'Associations' do
-    it { should belong_to :project }
+    it { is_expected.to belong_to :project }
   end
 
   describe '#fee' do
