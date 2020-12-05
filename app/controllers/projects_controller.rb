@@ -107,6 +107,7 @@ class ProjectsController < ApplicationController
         path = pretty_project_decide_tip_amounts_path(@project)
       end
       format.html { redirect_to path }
+      format.svg
     end
   end
 end
