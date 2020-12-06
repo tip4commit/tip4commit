@@ -80,8 +80,8 @@ class User < ApplicationRecord
       find_by(email: email) || (nickname.blank? ? nil : find_by(nickname: nickname))
     end
 
-    def first_by_nickname(nickname)
-      where('lower(`nickname`) = ?', nickname.downcase).first
+    def find_by_nickname(nickname)
+      find_by('lower(`nickname`) = ?', nickname.downcase)
     end
   end
 

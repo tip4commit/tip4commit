@@ -32,7 +32,7 @@ class TipsController < ApplicationController
     return unless pretty_project_path? || params[:project_id].present?
 
     if pretty_project_path?
-      @project = Project.first_by_service_and_repo(params[:service], params[:repo])
+      @project = Project.find_by_service_and_repo(params[:service], params[:repo])
     elsif params[:project_id].present?
       @project = Project.where(id: params[:project_id]).first
       redirect_to project_tips_pretty_path(@project.host, @project.full_name) if @project
@@ -45,7 +45,7 @@ class TipsController < ApplicationController
     return unless params[:user_id].present? || params[:nickname].present?
 
     if params[:nickname].present?
-      @user = User.first_by_nickname(params[:nickname])
+      @user = User.find_by_nickname(params[:nickname])
     elsif params[:user_id].present?
       @user = User.where(id: params[:user_id]).first
       redirect_to user_tips_pretty_path(@user.nickname) if @user

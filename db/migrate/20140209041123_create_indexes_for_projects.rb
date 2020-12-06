@@ -2,7 +2,9 @@
 
 class CreateIndexesForProjects < ActiveRecord::Migration[4.2]
   def change
-    add_index :projects, :full_name,                unique: true
-    add_index :projects, :github_id,                unique: true
+    change_table :projects, bulk: true do |t|
+      t.index :full_name, unique: true
+      t.index :github_id, unique: true
+    end
   end
 end

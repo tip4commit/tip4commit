@@ -2,8 +2,10 @@
 
 class AddColumnsToUsers < ActiveRecord::Migration[4.2]
   def change
-    add_column :users, :nickname, :string
-    add_column :users, :name, :string
-    add_column :users, :image, :string
+    change_table :users, bulk: true do |t|
+      t.column :nickname, :string
+      t.column :name, :string
+      t.column :image, :string
+    end
   end
 end

@@ -19,3 +19,5 @@ Rails/DynamicFindBy:
   Whitelist:
     - find_by_url
     - find_by_commit
+    - find_by_service_and_repo
+    - find_by_nickname

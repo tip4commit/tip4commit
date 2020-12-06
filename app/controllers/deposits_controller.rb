@@ -24,7 +24,7 @@ class DepositsController < ApplicationController
     return unless pretty_project_path? || params[:project_id].present?
 
     if pretty_project_path?
-      @project = Project.first_by_service_and_repo(params[:service], params[:repo])
+      @project = Project.find_by_service_and_repo(params[:service], params[:repo])
     elsif params[:project_id].present?
       @project = Project.where(id: params[:project_id]).first
       redirect_to project_deposits_pretty_path(@project.host, @project.full_name) if @project

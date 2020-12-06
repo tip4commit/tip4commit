@@ -73,7 +73,7 @@ class ProjectsController < ApplicationController
 
   def load_project
     @project = if pretty_project_path?
-                 Project.first_by_service_and_repo(params[:service], params[:repo])
+                 Project.find_by_service_and_repo(params[:service], params[:repo])
                else
                  Project.where(id: params[:id]).first
                end

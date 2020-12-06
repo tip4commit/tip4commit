@@ -7,7 +7,7 @@ describe 'Misc tets' do
 
   it 'has a flag image for each locale' do
     locales.each do |locale|
-      path = File.join(Rails.root, 'app', 'assets', 'images', 'flags', "#{locale}.png")
+      path = Rails.root.join("app/assets/images/flags/#{locale}.png")
       expect(File.exist?(path)).to be_truthy, "#{locale} flag is missing"
     end
   end
