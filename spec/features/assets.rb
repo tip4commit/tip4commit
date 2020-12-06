@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe 'Misc tets' do
+describe 'Assets', type: :feature do
   let(:locales) { Rails.application.config.available_locales }
 
   it 'has a flag image for each locale' do

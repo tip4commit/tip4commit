@@ -9,13 +9,4 @@ describe WithdrawalsController, type: :controller do
       expect(response).to be_successful
     end
   end
-
-  describe 'routing' do
-    it 'routes GET / to Withdrawals#index' do
-      expect({ get: '/withdrawals' }).to route_to(
-        controller: 'withdrawals',
-        action: 'index'
-      )
-    end
-  end
 end

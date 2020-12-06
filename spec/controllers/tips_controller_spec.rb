@@ -9,13 +9,4 @@ describe TipsController, type: :controller do
       expect(response).to be_successful
     end
   end
-
-  describe 'routing' do
-    it 'routes GET / to Tips#index' do
-      expect({ get: '/tips' }).to route_to(
-        controller: 'tips',
-        action: 'index'
-      )
-    end
-  end
 end
