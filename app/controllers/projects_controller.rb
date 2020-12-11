@@ -49,8 +49,17 @@ class ProjectsController < ApplicationController
   def decide_tip_amounts
     authorize! :decide_tip_amounts, @project
     return unless request.patch?
+    return unless validate_project_tips
 
     @project.available_amount # preload anything required to get the amount, otherwise it's loaded during the assignation and there are undesirable consequences
+    return unless @project.update(permitted_project_tips_params)
+
+    tips_decided
+  end
+
+  private
+
+  def validate_project_tips
     percentages = params[:project][:tips_attributes].values.map { |tip| tip['amount_percentage'].to_f }
     if percentages.sum > 100
       redirect_to decide_tip_amounts_project_path(@project), alert: I18n.t('errors.can_assign_more_tips')
@@ -58,9 +67,14 @@ class ProjectsController < ApplicationController
     end
     raise 'wrong data' if percentages.min.negative?
 
-    @project.attributes = params.require(:project).permit(tips_attributes: %i[id amount_percentage])
-    return unless @project.save
+    true
+  end
 
+  def permitted_project_tips_params
+    params.require(:project).permit(tips_attributes: %i[id amount_percentage])
+  end
+
+  def tips_decided
     message = I18n.t('notices.tips_decided')
     if @project.has_undecided_tips?
       redirect_to decide_tip_amounts_project_path(@project), notice: message
@@ -68,8 +82,6 @@ class ProjectsController < ApplicationController
       redirect_to @project, notice: message
     end
   end
-
-  private
 
   def load_project
     @project = if pretty_project_path?
