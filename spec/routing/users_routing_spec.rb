@@ -33,6 +33,14 @@ RSpec.describe 'routes for Users', type: :routing do
     )
   end
 
+  it 'routes DELETE /users/1 to Tips#destroy' do
+    expect({ delete: '/users/1' }).to route_to(
+      controller: 'users',
+      action: 'destroy',
+      id: '1'
+    )
+  end
+
   describe 'pretty url routing' do
     let(:user) { create(:user) }
 
