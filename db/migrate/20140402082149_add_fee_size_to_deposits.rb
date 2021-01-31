@@ -8,8 +8,8 @@ class AddFeeSizeToDeposits < ActiveRecord::Migration[4.2]
     reversible do |dir|
       change_table :deposits, bulk: true do |t|
         t.column :fee_size, :float
-        dir.up { t.remove :duration, :integer }
-        dir.down { t.column :duration }
+        dir.up { t.remove :duration }
+        dir.down { t.column :duration, :integer }
       end
 
       # Update all existing deposits
