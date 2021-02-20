@@ -1,0 +1,23 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: tip4commit
+  username: root
+  password: password
+  pool: 5
+  timeout: 5000
+  host: database
+  port: 3306
+
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  database: tip4commit_test
+  username: root
+  password: password
+  pool: 5
+  timeout: 5000
+  host: database
+  host: database
+  port: 3306

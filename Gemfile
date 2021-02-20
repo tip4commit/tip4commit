@@ -27,7 +27,7 @@ gem 'jquery-turbolinks'
 gem 'kaminari'
 gem 'kaminari-i18n'
 gem 'money-tree'
-gem 'mysql2', group: :production
+gem 'mysql2'
 gem 'octokit'
 gem 'omniauth'
 gem 'omniauth-github'
