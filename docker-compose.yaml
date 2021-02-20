@@ -1,9 +1,41 @@
-version: '2'
+version: "3"
 services:
+  development:
+    build:
+      context: .
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/tip4commit
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
+
+  test:
+    build:
+      context: .
+    volumes:
+      - .:/tip4commit
+    depends_on:
+      - database
+    command: "./script/dev_docker/test.sh"
+    environment:
+      - RAILS_ENV=test
+
+  setup:
+    build:
+      context: .
+    volumes:
+      - .:/tip4commit
+    depends_on:
+      - database
+    command: "./script/dev_docker/setup.sh"
+
   database:
     image: mysql:5.5.62
     ports:
-      - '3306:3306'
+      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: tip4commit

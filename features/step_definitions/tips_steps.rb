@@ -61,10 +61,13 @@ Given(/^a new commit "(.*?)" is made with parent "([^"]*?)"$/) do |commit_id, pa
   add_new_commit commit_id, 'unknown-user', parents: [{ sha: parent_commit_id }]
 end
 
+# rubocop:disable Layout/LineLength
 Given(/^a new commit "(.*?)" is made with parent "(.*?)" and "(.*?)"$/) do |commit_id, parent_a_commit_id, parent_b_commit_id|
-  params = { parents: [{ sha: parent_a_commit_id }, { sha: parent_b_commit_id }], commit: { message: "Merge #{parent_a_commit_id} and #{parent_b_commit_id}" } }
+  params = { parents: [{ sha: parent_a_commit_id }, { sha: parent_b_commit_id }],
+             commit: { message: "Merge #{parent_a_commit_id} and #{parent_b_commit_id}" } }
   add_new_commit commit_id, 'unknown-user', params
 end
+# rubocop:enable Layout/LineLength
 
 Given(/^the author of commit "(.*?)" is "(.*?)"$/) do |commit_id, nickname|
   commit = find_new_commit commit_id

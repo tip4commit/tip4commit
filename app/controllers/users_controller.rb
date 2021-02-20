@@ -10,7 +10,10 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.order(withdrawn_amount: :desc, commits_count: :desc).where('commits_count > 0 AND withdrawn_amount > 0').page(params[:page]).per(30)
+    @users = User.order(withdrawn_amount: :desc, commits_count: :desc)
+                 .where('commits_count > 0 AND withdrawn_amount > 0')
+                 .page(params[:page])
+                 .per(30)
   end
 
   def update
@@ -49,7 +52,8 @@ class UsersController < ApplicationController
   private
 
   def users_params
-    params.require(:user).permit(:bitcoin_address, :password, :password_confirmation, :unsubscribed, :display_name, :denom)
+    params.require(:user).permit(:bitcoin_address, :password, :password_confirmation, :unsubscribed, :display_name,
+                                 :denom)
   end
 
   def load_user

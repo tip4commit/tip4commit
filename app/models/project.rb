@@ -130,11 +130,7 @@ class Project < ApplicationRecord
 
     user.update(nickname: commit.author.login) if commit.author.try(:login)
 
-    amount = if hold_tips
-               nil
-             else
-               next_tip_amount
-             end
+    amount = hold_tips ? nil : next_tip_amount
 
     # create a tip
     tip = tips.create(
@@ -204,7 +200,9 @@ class Project < ApplicationRecord
   end
 
   def check_tips_to_pay_against_avaiable_amount
-    raise "Not enough funds to pay the pending tips on #{inspect} (#{available_amount} < 0)" if available_amount.negative?
+    return unless available_amount.negative?
+
+    raise "Not enough funds to pay the pending tips on #{inspect} (#{available_amount} < 0)"
   end
 
   def self.find_or_create_by_url(project_url)

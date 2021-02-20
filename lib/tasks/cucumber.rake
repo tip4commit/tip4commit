@@ -27,7 +27,8 @@ unless ARGV.any? { |a| a =~ /^gems/ } # Don't load anything when running the gem
         t.profile = 'wip'
       end
 
-      Cucumber::Rake::Task.new({ rerun: 'test:prepare' }, 'Record failing features and run only them if any exist') do |t|
+      Cucumber::Rake::Task.new({ rerun: 'test:prepare' },
+                               'Record failing features and run only them if any exist') do |t|
         t.binary = vendored_cucumber_bin
         t.fork = true # You may get faster startup if you set this to false
         t.profile = 'rerun'

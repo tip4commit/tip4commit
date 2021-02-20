@@ -7,7 +7,8 @@ describe ProjectsController, type: :controller do
     let(:subject) { get :index }
 
     before do
-      allow(Project).to receive(:order).with(available_amount_cache: :desc, watchers_count: :desc, full_name: :asc).and_return(Project)
+      allow(Project).to receive(:order).with(available_amount_cache: :desc, watchers_count: :desc,
+                                             full_name: :asc).and_return(Project)
       allow(Project).to receive(:page).with(nil).and_return(Project)
       allow(Project).to receive(:per).with(30).and_return(Project)
       allow(Project).to receive(:to_a).and_return(Project)
@@ -23,7 +24,8 @@ describe ProjectsController, type: :controller do
     end
 
     it 'Project calls order' do
-      expect(Project).to receive(:order).with(available_amount_cache: :desc, watchers_count: :desc, full_name: :asc).and_return(Project)
+      expect(Project).to receive(:order).with(available_amount_cache: :desc, watchers_count: :desc,
+                                              full_name: :asc).and_return(Project)
       subject
     end
 
