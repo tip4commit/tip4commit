@@ -51,7 +51,9 @@ class ProjectsController < ApplicationController
     return unless request.patch?
     return unless validate_project_tips
 
-    @project.available_amount # preload anything required to get the amount, otherwise it's loaded during the assignation and there are undesirable consequences
+    # Preload anything required to get the amount, otherwise it's loaded during
+    # the assignation and there are undesirable consequences
+    @project.available_amount
     return unless @project.update(permitted_project_tips_params)
 
     tips_decided
@@ -94,7 +96,8 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:branch, :disable_notifications, :hold_tips, tipping_policies_text_attributes: [:text])
+    params.require(:project).permit(:branch, :disable_notifications, :hold_tips,
+                                    tipping_policies_text_attributes: [:text])
   end
 
   def projects_order

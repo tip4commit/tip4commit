@@ -22,12 +22,7 @@ describe Project, type: :model do
   end
 
   describe 'bitcoin_address' do
-    let(:wallet) { create(:wallet) }
-
-    before do
-      create(:wallet, xpub: 'xpub1key')
-      wallet
-    end
+    let!(:wallet) { create(:wallet) }
 
     it 'generates a bitcoin address' do
       expect(project.bitcoin_address).not_to be_blank
