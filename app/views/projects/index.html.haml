@@ -19,6 +19,7 @@
           %th= link_to_unless_current t('.description'), permitted_params.merge(:order => 'description')
           %th= link_to_unless_current t('.watchers'), permitted_params.merge(:order => 'watchers')
           %th= link_to_unless params[:order].blank? || params[:order] == 'balance', t('.balance'), permitted_params.merge(:order => 'balance')
+          %th= link_to_unless_current t('.date_last_commit'), permitted_params.merge(:order => 'date_last_commit')
           %th
       %tbody
         - @projects.to_a.reject{|p| BLACKLIST.include?(p.github_url) }.each do |project|
@@ -36,6 +37,7 @@
             %td= project.description
             %td.rjust= project.watchers_count
             %td.rjust= btc_human project.available_amount_cache
+            %td= l project.tips.with_address.order(created_at: :desc).first(1).created_at, format: :long
             %td= link_to t('.support'), pretty_project_path(project), class: 'btn btn-xs btn-success'
     = paginate @projects
   - else

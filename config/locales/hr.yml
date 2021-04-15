@@ -74,6 +74,7 @@ hr:
       repository: Repozitorij
       description: Opis
       watchers: Gledatelji
+      date_last_commit: Last Commit Date
       balance: Ravnoteža
       forked_from: Odvojeno od
       support: Podrži

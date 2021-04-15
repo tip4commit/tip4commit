@@ -80,6 +80,7 @@ ru:
       repository: Репозиторий
       description: Описание
       watchers: Наблюдателей
+      date_last_commit: Last Commit Date
       balance: Баланс
       forked_from: ответвление от
       support: "Поддержать проект"

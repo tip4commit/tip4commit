@@ -76,6 +76,7 @@ cn:
       repository: 仓库
       description: 描述
       watchers: 观察者
+      date_last_commit: Last Commit Date
       balance: 资金平衡
       forked_from: 分岔自
       support: 支持项目

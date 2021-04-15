@@ -74,6 +74,7 @@ pl:
       repository: Repozytorium
       description: Opis
       watchers: Obserwujący
+      date_last_commit: Last Commit Date
       balance: Saldo
       forked_from: "zforkowany"
       support: Pomoc
