@@ -5,9 +5,9 @@ hr:
     description: Donirajte bitcoine projektima otvorenog koda ili napravite promjene i zaradite napojnice.
   menu:
     home: Početna stranica
-    projects: Podržavani projekti
+    projects: Podržani projekti
   footer:
-    text: "Izvorni kod je dostupan na %{github_link}u a možete i %{support_link} razvoj."
+    text: "Izvorni kod je dostupan na %{github_link}-u a možete i %{support_link} razvoj."
     github_link: GitHub
     support_link: podržati
     follow_link: Prati @tip4commit
@@ -70,32 +70,32 @@ hr:
     index:
       find_project:
         placeholder: Upišite GitHub URL projekta kako biste dodali projekt ili bilo koju ključnu riječ da biste ga našli...
-        button: Nađi ili dodaj projekt
+        button: Pronađi ili dodaj projekt
       repository: Repozitorij
       description: Opis
-      watchers: Gledatelji
+      watchers: Pratitelji
       balance: Ravnoteža
       forked_from: Odvojeno od
-      support: Podrži
+      support: Doniraj
     show:
       title: "Doprinesi %{project}"
       fetch_pending: (Pending initial fetch)
       edit_project: Promijeni postavke projekta
       decide_tip_amounts: Odredi količinu napojnica
       disabled_notifications: "Održavatelji projekata su odlučili da neće obavjestiti nove doprinositelje o napojnicama i najvjerojatnije ne vole ovaj način isplate."
-      fee: "%{percentage} od položenih isplata će se koristiti kao napojnice za nove promjene."
+      fee: "%{percentage} donacija će se koristiti kao napojnice za nove promjene."
       balance: Ravnoteža
-      deposits: depoziti
+      deposits: donacije
       custom_tip_size: (svaka nova promjena dobiva određen postotak dostupnih bitcoina)
       default_tip_size: "(svaka nova promjena će dobiti %{percentage} dostupnih bitcoina)"
       unconfirmed_amount: "(%{amount} nepotvrđeno)"
       tipping_policies: Pravila o napojnicama
       updated_by_user: "(Zadnje promjenio %{name} %{date})"
       updated_by_unknown: "(Zadnje promjenjeno  %{date})"
-      tips_paid: Ukupno količina isplaćenih napojnica
+      tips_paid: Ukupna količina isplaćenih napojnica
       unclaimed_amount: "(%{amount} od ovog neostvarenog, i biti će isplaćeno u projekt nakon jednog mjeseca.)"
-      last_tips: Zadnje napojnice
-      see_all: Vidjeti sve
+      last_tips: Nedavne napojnice
+      see_all: vidi sve
       received: "je dobio %{amount}"
       will_receive: će dobiti napojnicu
       for_commit: za promjenu
@@ -109,7 +109,7 @@ hr:
       tell_us_link: nam recite
       sign_in: "Samo provjerite Vaš email ili %{sign_in_link}."
       promote_project: Promoviraj %{project}
-      embedding: Embedding
+      embedding: Ugrađivanje
       image_url: "URL slike:"
       shield_title: napojnica za sljedeću promjenu
     edit:
@@ -131,28 +131,29 @@ hr:
       tips: Napojnice
       project_tips: '%{project} napojnice'
       user_tips: "%{user} napojnice"
-      created_at: Stvoreno na
-      commiter: Commiter
+      created_at: Datum
+      commiter: Autor
       project: Projekt
       commit: Commit
       amount: Količina
-      refunded: Refunded to project's deposit
-      undecided: The amount of the tip has not been decided yet
-      no_bitcoin_address: User didn't specify withdrawal address
+      refunded: Vraćeno projektu
+      undecided: Količina još nije odlučena
+      no_bitcoin_address: Korisnik nije odredio odredišnu adresu
       below_threshold: "User's balance is below withdrawal threshold"
       waiting: Waiting for withdrawal
-      error: (error sending transaction)
+      error: (greška u slanju transakcije)
   deposits:
     index:
       project_deposits: '%{project} uplate'
-      deposits: Uplate
-      created_at: "Stvoreno na"
+      deposits: Donacije
+      created_at: "Datum"
       project: Projekt
       amount: Količina
       transaction: Transakcija
       confirmed: Potvrđeno
       confirmed_yes: 'Da'
       confirmed_no: 'Ne'
+      fee: 'Provizija'
   users:
     index:
       title: Top Contributors
@@ -189,21 +190,21 @@ hr:
         submit: Registracija
     passwords:
       new:
-        title: Zaboravili ste vašu lozinku?
-        submit: Poslati mi uputstva za resetiranje lozinke
+        title: Zaboravili ste Vašu lozinku?
+        submit: Pošalji uputstva za resetiranje lozinke
       edit:
         title: Promijenite vašu lozinku
         submit: Promijeniti svoju lozinku
     confirmations:
       new:
-        title: Ponovno poslati uputstva za potvrđivanje
-        submit: Ponovno poslati uputstva za potvrđivanje
+        title: Ponovno pošalji upute za potvrdu registracije
+        submit: Ponovno pošalji upute za potvrdu registracije
     links:
       sign_in: Prijava
       sign_up: Registracija
       recover: Zaboravili ste vašu lozinku?
-      confirm: Niste primili uputstva za potvrđivanje?
-      sign_in_with: "Prijavi se sa %{provider}"
+      confirm: Niste primili upute za potvrdu registracije?
+      sign_in_with: "Prijavi se sa %{provider} računom"
     errors:
       primary_email: vaša glavna email adresa bi trebala biti potvrđena.
       onmiauth_info: Nismo bili u stanju dohvatiti vašu informaciju.
@@ -211,7 +212,7 @@ hr:
     attributes:
       user:
         email: E-mail
-        bitcoin_address: Bitcoin adresa
+        bitcoin_address: BitCoin adresa
         password: Lozinka
         password_confirmation: Potvrda lozinke
         display_name: Prikazano ime
@@ -220,3 +221,7 @@ hr:
     bitbucket: BitBucket
   general:
     or: ili
+    disclaimer:
+      line1: "Tip4Commit nije povezan sa većinom projekata."
+      line2: "Nema garancije da će napojnice pripasti programerima.."
+      line3: "Doniranjem pristajete da novac može biti doniran Free Software Foundation-u ili bilo gdje drugdje odlukom Tip4Commit-a."
