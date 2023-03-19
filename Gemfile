@@ -2,8 +2,6 @@
 
 source 'https://rubygems.org'
 
-ruby '2.7.7'
-
 gem 'rails', '5.2.8.1'
 
 gem 'acts_as_paranoid'
