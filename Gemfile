@@ -38,7 +38,6 @@ gem 'rest-client'
 gem 'sass-rails'
 gem 'sawyer'
 gem 'sdoc', group: :doc, require: false
-gem 'sidekiq'
 gem 'sprockets'
 gem 'turbolinks'
 gem 'twitter-bootstrap-rails'

@@ -94,7 +94,6 @@ GEM
     coffee-script-source (1.12.2)
     commonjs (0.2.7)
     concurrent-ruby (1.2.2)
-    connection_pool (2.2.3)
     crack (0.4.4)
     crass (1.0.6)
     cucumber (3.2.0)
@@ -323,7 +322,6 @@ GEM
       ffi
     rbtree3 (0.6.0)
     rdoc (6.2.1)
-    redis (4.2.5)
     regexp_parser (1.8.2)
     render_csv (2.0.0)
       rails (>= 3.0)
@@ -400,10 +398,6 @@ GEM
     sexp_processor (4.15.1)
     shoulda-matchers (4.4.1)
       activesupport (>= 4.2.0)
-    sidekiq (6.1.2)
-      connection_pool (>= 2.2.2)
-      rack (~> 2.0)
-      redis (>= 4.2.0)
     simplecov (0.20.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -509,7 +503,6 @@ DEPENDENCIES
   sawyer
   sdoc
   shoulda-matchers
-  sidekiq
   simplecov
   sprockets
   sqlite3
