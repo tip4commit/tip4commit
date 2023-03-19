@@ -36,6 +36,7 @@ jobs:
 
     - name: Rubocop
       run: |
+        bundle exec rubocop --version
         bundle exec rubocop
 
     - name: Run RSpec
