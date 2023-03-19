@@ -12,6 +12,7 @@ jobs:
     strategy:
       matrix:
         ruby-version: [2.7.7, 3.0.5]
+        fail-fast: false
 
     steps:
     - name: Checkout code
