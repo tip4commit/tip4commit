@@ -28,15 +28,14 @@ jobs:
         bundle config path vendor/bundle
         bundle install --jobs=9 --retry=2 --without development --quiet
 
-    - name: Setup database
+    - name: Setup test database
       run: |
         cp config/config.yml.sample config/config.yml
         cp config/database.yml.sample config/database.yml
-        bundle exec rake db:migrate
+        bin/rails db:migrate RAILS_ENV=test
 
     - name: Rubocop
       run: |
-        bundle exec rubocop --version
         bundle exec rubocop
 
     - name: Run RSpec
