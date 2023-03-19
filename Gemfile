@@ -2,9 +2,9 @@
 
 source 'https://rubygems.org'
 
-ruby '2.6.6'
+ruby '2.7.7'
 
-gem 'rails', '5.2.4.4'
+gem 'rails', '5.2.4.6'
 
 gem 'acts_as_paranoid'
 gem 'airbrake'
@@ -40,7 +40,6 @@ gem 'sawyer'
 gem 'sdoc', group: :doc, require: false
 gem 'sidekiq'
 gem 'sprockets'
-gem 'therubyracer', platforms: :ruby
 gem 'turbolinks'
 gem 'twitter-bootstrap-rails'
 gem 'uglifier'
