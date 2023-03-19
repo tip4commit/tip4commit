@@ -1,0 +1,47 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: [2.6.6]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Ruby ${{ matrix.ruby-version }}
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true
+
+    - name: Install dependencies
+      run: |
+        bundle config path vendor/bundle
+        bundle install --jobs=9 --retry=2 --without development --quiet
+
+    - name: Setup database
+      run: |
+        cp config/config.yml.sample config/config.yml
+        cp config/database.yml.sample config/database.yml
+        bundle exec rake db:migrate
+
+    - name: Rubocop
+      run: |
+        bundle exec rubocop
+
+    - name: Run RSpec
+      run: |
+        bundle exec rake spec
+
+    - name: Run Cucumber
+      run: |
+        bundle exec rake cucumber
