@@ -11,7 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: [2.7.7, 3.0.5]
+        ruby-version:
+          - 2.7.7
+          # - 3.0.5 # TODO: Upgrade to Rails 6
       fail-fast: false
 
     steps:
