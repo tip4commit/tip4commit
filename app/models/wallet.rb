@@ -4,7 +4,7 @@ class Wallet < ApplicationRecord
   validates :name, :xpub, presence: true
 
   def generate_address
-    address = hd_wallet.node_for_path("0/#{last_address_index}.pub").to_address
+    address = address_by_index(last_address_index)
     self.last_address_index += 1
     save
     address

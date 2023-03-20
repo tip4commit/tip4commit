@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'rails', '5.2.8.1'
+gem 'rails', '6.0.6.1'
 
 gem 'acts_as_paranoid'
 gem 'airbrake'
@@ -55,6 +55,8 @@ end
 
 group :development, :test do
   gem 'factory_bot_rails'
+  gem 'pry'
+  gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'rubocop'
   gem 'rubocop-rails'
