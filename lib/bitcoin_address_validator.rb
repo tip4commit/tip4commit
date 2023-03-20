@@ -4,7 +4,9 @@ require 'digest'
 
 class BitcoinAddressValidator < ActiveModel::EachValidator
   def validate_each(record, field, value)
-    record.errors[field] << 'Bitcoin address is invalid' unless value.blank? || valid_bitcoin_address?(value)
+    return if value.blank? || valid_bitcoin_address?(value)
+
+    record.errors.add(field, :invalid, message: 'Bitcoin address is invalid')
   end
 
   private
