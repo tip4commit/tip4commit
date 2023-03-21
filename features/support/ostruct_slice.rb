@@ -3,7 +3,7 @@
 require 'ostruct'
 
 class OpenStruct
-  def slice(*args, &block)
-    marshal_dump.slice(*args, &block)
+  def slice(...)
+    marshal_dump.slice(...)
   end
 end

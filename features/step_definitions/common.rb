@@ -89,17 +89,18 @@ def parse_path_from_page_string(page_string)
     path           = "/users/#{name}/#{action}" if is_valid_path # TODO: nyi
 
   # implicit cases
-  else case page_string
-       when 'home' then            path = root_path
-       when 'sign_up' then         path = new_user_registration_path
-       when 'sign_in' then         path = new_user_session_path
-       when 'users' then           path = users_path
-       when 'projects' then        path = projects_path
-       when 'search' then          path = search_projects_path
-       when 'tips' then            path = tips_path
-       when 'deposits' then        path = deposits_path
-       when 'withdrawals' then     path = withdrawals_path
-       end
+  else
+    case page_string
+    when 'home' then            path = root_path
+    when 'sign_up' then         path = new_user_registration_path
+    when 'sign_in' then         path = new_user_session_path
+    when 'users' then           path = users_path
+    when 'projects' then        path = projects_path
+    when 'search' then          path = search_projects_path
+    when 'tips' then            path = tips_path
+    when 'deposits' then        path = deposits_path
+    when 'withdrawals' then     path = withdrawals_path
+    end
   end
 
   path || page_string

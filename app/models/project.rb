@@ -236,7 +236,7 @@ class Project < ApplicationRecord
 
   class << self
     def export_labels
-      Hash[pluck(:bitcoin_address, :full_name)].to_json
+      pluck(:bitcoin_address, :full_name).to_h.to_json
     end
 
     def find_by_service_and_repo(service, repo)

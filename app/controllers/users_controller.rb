@@ -4,13 +4,13 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, :load_user, :valid_user!, except: %i[login index]
   before_action :redirect_to_pretty_url,                       only:   [:show]
 
+  def index
+    @users = User.order(withdrawn_amount: :desc, commits_count: :desc).where('commits_count > 0 AND withdrawn_amount > 0').page(params[:page]).per(30)
+  end
+
   def show
     @user_tips   = @user.tips
     @recent_tips = @user_tips.includes(:project).order(created_at: :desc).first(5)
-  end
-
-  def index
-    @users = User.order(withdrawn_amount: :desc, commits_count: :desc).where('commits_count > 0 AND withdrawn_amount > 0').page(params[:page]).per(30)
   end
 
   def update

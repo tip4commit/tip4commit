@@ -85,7 +85,7 @@ class BitcoinAddressValidator < ActiveModel::EachValidator
 
     result = long_value.chr + result
 
-    result = 0.chr * (length - result.length) + result if result.length < length
+    result = (0.chr * (length - result.length)) + result if result.length < length
 
     result
   end

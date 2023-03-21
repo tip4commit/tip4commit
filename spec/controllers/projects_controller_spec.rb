@@ -69,7 +69,7 @@ describe ProjectsController, type: :controller do
   #   end
 
   shared_context 'accessing_project' do |verb, action|
-    let(:a_project) { create :project, host: 'github', full_name: 'test/test' }
+    let(:a_project) { create(:project, host: 'github', full_name: 'test/test') }
 
     context 'with existsing project' do
       it 'via project id returns 302 status code' do
