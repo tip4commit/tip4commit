@@ -76,13 +76,13 @@ class BitcoinTipper
       Rails.logger.info 'Creating sendmany'
       ActiveRecord::Base.transaction do
         sendmany = Sendmany.create
-        outs = calculate_outputs
+        outs = calculate_outputs(sendmany)
         sendmany.update_attribute :data, outs.to_json
         Rails.logger.info "  #{sendmany.inspect}"
       end
     end
 
-    def calculate_outputs
+    def calculate_outputs(sendmany)
       outputs = {}
       User.find_each do |user|
         next unless user.ready_for_withdrawal?
