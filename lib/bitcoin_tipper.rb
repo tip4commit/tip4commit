@@ -31,8 +31,8 @@ class BitcoinTipper
       #   self.create_sendmany
       # end
 
-      Rails.logger.info 'Traversing sendmanies...'
-      Sendmany.where(txid: nil).each(&:send_transaction)
+      # Rails.logger.info 'Traversing sendmanies...'
+      # Sendmany.where(txid: nil).each(&:send_transaction)
     end
 
     def auto_decide_older_tips
