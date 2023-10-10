@@ -29,6 +29,6 @@ module ApplicationHelper
   end
 
   def block_explorer_tx_url(txid)
-    "https://tradeblock.com/bitcoin/tx/#{txid}"
+    "https://mempool.space/tx/#{txid}"
   end
 end
