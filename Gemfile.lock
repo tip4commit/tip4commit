@@ -264,7 +264,7 @@ GEM
       net-protocol
     net-ssh (6.1.0)
     netrc (0.11.0)
-    nio4r (2.5.8)
+    nio4r (2.5.9)
     nokogiri (1.15.4-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.15.4-x86_64-linux)
@@ -303,7 +303,7 @@ GEM
     psych (5.1.0)
       stringio
     public_suffix (5.0.1)
-    puma (6.1.1)
+    puma (6.3.1)
       nio4r (~> 2.0)
     racc (1.7.1)
     rack (2.2.6.4)
