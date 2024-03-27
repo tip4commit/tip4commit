@@ -300,7 +300,7 @@ GEM
     pry-byebug (3.10.1)
       byebug (~> 11.0)
       pry (>= 0.13, < 0.15)
-    psych (5.1.0)
+    psych (5.1.2)
       stringio
     public_suffix (5.0.1)
     puma (6.3.1)
@@ -347,7 +347,7 @@ GEM
     rbnacl (7.1.1)
       ffi
     rbtree3 (0.6.0)
-    rdoc (6.5.0)
+    rdoc (6.6.3.1)
       psych (>= 4.0.0)
     regexp_parser (1.8.2)
     render_csv (2.0.0)
@@ -442,7 +442,7 @@ GEM
     sshkit (1.21.1)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    stringio (3.0.5)
+    stringio (3.1.0)
     temple (0.8.2)
     thor (1.2.1)
     tilt (2.0.10)
