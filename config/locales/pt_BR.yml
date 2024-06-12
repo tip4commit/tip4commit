@@ -1,0 +1,238 @@
+pt:
+  tip4commit: Tip4Commit
+  meta:
+    title: Contribua para Código Aberto
+    description: Doe bitcoins para projetos de código aberto ou faça commits e receba gorjetas por isso.
+  menu:
+    home: Início
+    projects: Projetos disponíveis
+  footer:
+    text: "Código fonte está disponível em %{github_link} e você também pode %{support_link} o seu desenvolvimento."
+    github_link: GitHub
+    support_link: apoiar
+    follow_link: Siga @tip4commit
+  links:
+    sign_up: Registar
+    sign_in: Entrar
+    sign_in_imp: entrar
+    sign_out: Sair
+    create_issue: Reportar um problema
+  errors:
+    project_not_found: Projeto não encontrado.
+    opt_in_notice: "Devido à queixas de gestores dos projetos, nós não adicionamos mais projetos automaticamente. Projetos existentes sem depósitos foram removidos. Se quiser adicionar o seu projeto, por favor %{create_issue_link}."
+    access_denied: Acesso negado
+    can_assign_more_tips: "Você não pode atribuir mais de 100% dos fundos disponíveis."
+    wrong_bitcoin_address: Erro atualizando endereço de bitcoin
+    user_not_found: Usuário não encontrado
+    access_denied: Você não está autorizado a realizar essa operação!
+    invalid_email: Email inválido
+  notices:
+    project_updated: As configurações do projeto foram atualizadas
+    tips_decided: As quantidades das gorjetas foram definidas
+    user_updated: A sua informação foi gravada!
+    user_unsubscribed: "Você se desinscreveu! Pedimos desculpa pelo aborrecimento. No entanto, você pode sempre nos deixar o seu endereço de bitcoin para receber as suas gorjetas."
+    account_deleted: Sua conta foi deletada
+  tip_amounts:
+    undecided: "Não definido"
+    free: "Grátis: 0%"
+    tiny: "Minúsculo: 0.1%"
+    small: "Pequeno: 0.5%"
+    normal: "Normal: 1%"
+    big: "Grande: 2%"
+    huge: "Enorme: 5%"
+  js:
+    errors:
+      value:
+        invalid: Valor inválido
+      email:
+        invalid: Endereço de Email inválido
+        blank: O Email é necessário e não pode ser vazio
+      password:
+        blank: A senha é necessária e não pode ser vazia
+        invalid: A senha e a sua confirmação não são iguais
+      password_confirmation:
+        blank: A confirmação da senha é necessária e não pode ser vazia
+        invalid: A senha e a sua confirmação não são iguais
+  home:
+    index:
+      see_projects: Ver projetos
+      how_does_it_work:
+        title: Como funciona?
+        text: Pessoas doam bitcoins para os projetos. Quando o commit é aceito no repositório do projeto, nós automaticamente damos uma gorjeta ao autor.
+        button: Aprenda sobre Bitcoin
+      donate:
+        title: Doe
+        text: Encontre um projeto que goste e doe bitcoins para ele. A sua doação será acumulada com os fundos de outros doadores para ser financiar as gorjetas de novos commits.
+        button: Encontre ou adicione um projeto
+      contribute:
+        title: Colabore
+        text: Arrume alguma coisa e faça seu commit! Quando ele for aprovado pelo gestor do projeto, você recebe a gorjeta!
+        sign_in_text: "Verifique o seu email por um convite ou %{sign_in_link}."
+        sign_up_text: "Se ainda não recebeu um convite, você pode %{sign_up_link} com um endereço de email válido ou via"
+        button: Projetos disponíveis
+  projects:
+    index:
+      find_project:
+        placeholder: Introduza o URL de um projeto GitHub ou qualquer palavra-chave para o encontrar...
+        button: Encontrar projeto
+      repository: Repositório
+      description: Descrição
+      watchers: Contribuidores
+      balance: Saldo
+      forked_from: Copiado de
+      support: Ajudar projeto
+    show:
+      title: "Colabore com %{project}"
+      fetch_pending: (Busca inicial pendente)
+      edit_project: Alterar configurações do projeto
+      decide_tip_amounts: Definir valor de gorjetas
+      disabled_notifications: "Os gestores dos projetos decidiram não notificar os novos colaboradores sobre as gorjetas e provavelmente não gostam desta forma de financiamento."
+      fee: "%{percentage} de fundos depositados que serão usados para gratificar novos commits."
+      balance: Saldo
+      deposits: depósitos
+      custom_tip_size: (cada novo commit recebe uma percentagem do saldo disponível)
+      default_tip_size: "(cada novo commit recebe %{percentage} do saldo disponível)"
+      min_tip_size: "A quantidade minima da gorjeta foi definida para %{min_tip}, mas se o saldo disponível for menos que isso então será enviada uma gorjeta menor"
+      unconfirmed_amount: "(%{amount} não confirmada)"
+      tipping_policies: Políticas de gorjetas
+      updated_by_user: "(Ultima atualização de %{name} em %{date})"
+      updated_by_unknown: "(Ultima atualização em %{date})"
+      tips_paid: Gorjetas pagas
+      unclaimed_amount: "(%{amount} do valor não foi solicitado, e será devolvido ao projeto se não for solicitado no período de 1 mês.)"
+      last_tips: Últimas gorjetas
+      see_all: ver todas
+      received: "recebido %{amount}"
+      will_receive: irá receber gorjeta
+      for_commit: por commit
+      when_decided: quando a quantidade for decidida
+      next_tip: Próxima gorjeta
+      contribute_and_earn: Colabore e Ganhe
+      contribute_and_earn_description: "Doe bitcoins para esta projeto ou %{make_commits_link} e receba gorjetas por isso. Se o seu commit for aceito %{branch} por um gestor do projeto e houver bitcoins no saldo, você receberá uma gorjeta!"
+      contribute_and_earn_branch: "para <strong>%{branch}</strong> branch"
+      make_commits_link: faça commits
+      tell_us_bitcoin_address: "Apenas %{tell_us_link} o seu endereço de bitcoin."
+      tell_us_link: diga-nos
+      sign_in: "Verifique o seu email ou %{sign_in_link}."
+      promote_project: Promova %{project}
+      embedding: Incorporação
+      image_url: "Imagem do URL:"
+      shield_title: Dê uma gorjeta para o próximo commit
+    edit:
+      project_settings: "%{project} configurações do projeto"
+      branch: Branch
+      default_branch: Branch padrão
+      tipping_policies: Políticas de gorjetas
+      hold_tips: "Não enviar as gorjetas imediatamente. Dar aos colaboradores a possibilidade de modificar as gorjetas antes de serem enviadas"
+      save: Gravar as configurações do projeto
+      disable_notifications: Não notificar novos colaboradores
+    decide_tip_amounts:
+      commit: Commit
+      author: Autor
+      message: Mensagem
+      tip: Gorjeta (relativa ao saldo do projeto)
+      submit: Enviar as quantidades selecionadas de gorjetas
+    blacklisted:
+      title: Desculpas, este projeto nao aceita gorjetas!
+      message: O autor deste projeto decidiu desabilitar as gorjetas para este projeto.
+  tips:
+    index:
+      tips: Gorjetas
+      project_tips: '%{project} gorjetas'
+      user_tips: "%{user} gorjetas"
+      created_at: Criado em
+      commiter: Commiter
+      project: Projeto
+      commit: Commit
+      amount: Quantidade
+      refunded: Devolvido ao saldo do projeto
+      undecided: A quantidade da gorjeta ainda não foi decidida
+      no_bitcoin_address: O utilizador ainda não especificou o endereço de levantamento
+      below_threshold: "O saldo do usuário é menor que o saldo mínimo necessário"
+      waiting: À espera de retirada
+      error: (erro ao enviar a transação)
+  deposits:
+    index:
+      project_deposits: '%{project} depósitos'
+      deposits: Depósitos
+      created_at: Criado em
+      project: Projeto
+      amount: Quantidade
+      transaction: Transação
+      confirmed: Confirmado
+      confirmed_yes: 'Sim'
+      confirmed_no: 'Não'
+  users:
+    index:
+      title: Top Colaboradores
+      name: Nome
+      commits_count: Commits gratificados
+      withdrawn: Retiradas
+    show:
+      balance: Saldo
+      threshold: "Receberá o seu dinheiro quando o saldo chegar a %{threshold}"
+      see_all: ver todos
+      received: "%{time} recebido %{amount} por commit %{commit} em %{project}"
+      bitcoin_address_placeholder: Seu endereço bitcoin
+      notify: Notificar-me sobre novas gorjetas (não mais que um email por mês)
+      submit_user: Atualizar informação de usuário
+      change_password: Mudar a sua senha
+      submit_password: Mudar senha
+      use_from_gravatar: Utilizar seu perfil gravatar
+      delete_account: Deletar conta
+      delete_account_notice: Digite seu email e clique no botão abaixo para deletar sua conta. Sua conta será excluida permanentemente, mas vocês ainda poderá se inscrever com uma conta do GitHub. Por favor, tenha certeza do que está fazendo.
+      delete_account_confirm: Deletar essa conta!
+  withdrawals:
+    index:
+      title: Últimas Retiradas
+      created_at: Criado em
+      transaction: Transação
+      result: Resultado
+      error: Erro
+      success: Sucesso
+  devise:
+    sessions:
+      new:
+        title: Entrar
+        remember_me: Lembrar-me
+        submit: Entrar
+    registrations:
+      new:
+        title: Registar
+        submit: Registar
+    passwords:
+      new:
+        title: Esqueceu-se sua senha?
+        submit: Enviar instruções para recuperar a senha
+      edit:
+        title: Mudar a sua senha
+        submit: Mudar senha
+    confirmations:
+      new:
+        title: Reenviar instruções de confirmação
+        submit: Reenviar instruções de confirmação
+    links:
+      sign_in: Entrar
+      sign_up: Registar
+      recover: Esqueceu sua senha?
+      confirm: Não recebeu instruções de confirmação?
+      sign_in_with: "Entrar com %{provider}"
+    errors:
+      primary_email: o seu endereço de email primário deve ser verificado.
+      onmiauth_info: não foi possível buscar a sua informação.
+  activerecord:
+    attributes:
+      user:
+        email: E-mail
+        bitcoin_address: Endereço bitcoin
+        password: Senha
+        password_confirmation: Confirmação de senha
+        display_name: Nome de exibição
+  omniauth_providers:
+    github: GitHub
+    bitbucket: BitBucket
+  general:
+    or: ou
+    disclaimer:
+      line1: "Tip4Commit não está afiliado com a maior parte dos projetos."
+      line2: "Não há garantia que as gorjetas serão pagas pelos colaboradores."
+      line3: "Ao doar você concorda que poderão ser enviados para a Free Software Foundation ou para qualquer outro lugar ao critério da Tip4Commit."
