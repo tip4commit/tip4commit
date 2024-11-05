@@ -25,9 +25,6 @@ jobs:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true
 
-    - name: Check OpenSSL Version
-      run: openssl version
-
     - name: Install dependencies
       run: |
         bundle config set without 'development'
