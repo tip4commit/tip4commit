@@ -233,6 +233,6 @@ en:
   general:
     or: or
     disclaimer:
-      line1: "Tip4Commit is not affiliated with most of the projects."
+      line1: "Tip4Commit is not affiliated with most of these projects."
       line2: "There is no guarantee that tips will be claimed by developers."
       line3: "By donating the funds you agree that they can be sent to the Free Software Foundation or elsewhere at Tip4Commit's discretion."
