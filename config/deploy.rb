@@ -8,7 +8,7 @@ set :repo_url, 'git@github.com:tip4commit/tip4commit.git'
 set :deploy_to, '/home/apps/t4c'
 
 set :rvm_type, :user
-set :rvm_ruby_version, '3.0.5'
+set :rvm_ruby_version, '3.2.6'
 set :rvm_custom_path, '~/.rvm'
 
 set :format, :pretty

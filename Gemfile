@@ -62,12 +62,13 @@ group :development, :test do
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :test do
   gem 'cucumber-rails', '~> 1.0', require: false
   gem 'database_cleaner'
+  gem 'matrix'
   gem 'rails-controller-testing'
   gem 'rspec-activemodel-mocks'
   gem 'shoulda-matchers'
