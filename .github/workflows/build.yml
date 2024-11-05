@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         ruby-version:
@@ -24,13 +24,6 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true
-
-    - name: Load OpenSSL ripemd160
-      run: |
-        sudo sed -i '/^\default = default_sect/a legacy = legacy_sect' /etc/ssl/openssl.cnf
-        sudo sed -i '/^\[default_sect\]/a activate = 1' /etc/ssl/openssl.cnf
-        echo "[legacy_sect]" | sudo tee -a /etc/ssl/openssl.cnf
-        echo "activate = 1" | sudo tee -a /etc/ssl/openssl.cnf
 
     - name: Install dependencies
       run: |
