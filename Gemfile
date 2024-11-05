@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'rails', '6.1.7.7'
+gem 'rails', '6.1.7.10'
 
 gem 'acts_as_paranoid'
 gem 'airbrake'
