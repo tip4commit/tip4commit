@@ -77,7 +77,7 @@ class User < ApplicationRecord
       email = commit.commit.author.email
       nickname = commit.author.try(:login)
 
-      find_by(email: email) || (nickname.blank? ? nil : find_by(nickname: nickname))
+      find_by(email:) || (nickname.blank? ? nil : find_by(nickname:))
     end
 
     def find_by_nickname(nickname)
@@ -94,7 +94,7 @@ class User < ApplicationRecord
   def set_login_token!
     loop do
       self.login_token = SecureRandom.urlsafe_base64
-      break login_token unless User.exists?(login_token: login_token)
+      break login_token unless User.exists?(login_token:)
     end
   end
 end

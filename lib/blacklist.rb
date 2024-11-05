@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'set'
-
 class Blacklist
   def initialize(urls)
     urls = urls.map { |u| normalize_url(u) }

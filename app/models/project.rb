@@ -138,8 +138,8 @@ class Project < ApplicationRecord
 
     # create a tip
     tip = tips.create(
-      user: user,
-      amount: amount,
+      user:,
+      amount:,
       commit: commit.sha,
       commit_message: commit.commit.message
     )
