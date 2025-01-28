@@ -67,7 +67,8 @@
 
         %p.pull-right
           - ::Rails.application.config.available_locales.each do |locale|
-            = link_to image_tag("flags/#{locale}.png"), "?locale=#{locale}", data: {no_turbolink: true}
+            - flag_basename = "flags/#{locale}"
+            = link_to image_tag("#{flag_basename}.png", srcset: { "#{flag_basename}@2x.png" => "2x", "#{flag_basename}@4x.png" => "4x" }, class: "flag"), "?locale=#{locale}", data: {no_turbolink: true}
         %p
           ©
           = link_to t('tip4commit'), 'http://tip4commit.com/', target: '_blank'
