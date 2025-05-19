@@ -32,3 +32,5 @@
 .rjust { text-align: right ; }
 
 .qrcode { text-align: center; }
+
+.flag { outline: 1px solid #ddd; }
