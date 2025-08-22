@@ -19,7 +19,6 @@
 /config/config.yml
 
 /public/assets
-.ruby-version
 .rspec
 
 coverage
