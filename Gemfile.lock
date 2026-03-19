@@ -73,7 +73,7 @@ GEM
       sshkit (>= 1.6.1, != 1.7.0)
     ast (2.4.2)
     backports (3.25.0)
-    bcrypt (3.1.16)
+    bcrypt (3.1.22)
     bcrypt_pbkdf (1.0.1)
     bech32 (1.4.2)
       thor (>= 1.1.0)
