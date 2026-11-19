@@ -63,4 +63,44 @@ describe Project, type: :model do
       end
     end
   end
+
+  describe 'finding a project by URL' do
+    let(:github) { instance_double(Github) }
+    let(:url) { 'https://github.com/example/my repo#readme' }
+
+    before { allow(Github).to receive(:new).and_return(github) }
+
+    it 'looks up the repository name taken from the URL' do
+      allow(github).to receive(:find_project).with('example/myrepo').and_return(:found)
+
+      expect(described_class.find_by_url(url)).to eq(:found)
+    end
+
+    it 'finds or creates the project for the repository name taken from the URL' do
+      allow(github).to receive(:find_or_create_project).with('example/myrepo').and_return(:created)
+
+      expect(described_class.find_or_create_by_url(url)).to eq(:created)
+    end
+  end
+
+  describe 'unexpected errors from the repository host' do
+    let(:logged) { a_string_including("Project ##{project.id}", 'RuntimeError', 'boom') }
+
+    before { allow(Airbrake).to receive(:notify) }
+
+    it 'logs the error class, message and project id from #new_commits' do
+      allow(project).to receive(:raw_commits).and_raise(RuntimeError, 'boom')
+      allow(project).to receive(:sleep)
+      expect(Rails.logger).to receive(:error).with(logged)
+
+      expect(project.new_commits).to eq []
+    end
+
+    it 'logs the error class, message and project id from #update_info' do
+      allow(project).to receive(:repository_info).and_raise(RuntimeError, 'boom')
+      expect(Rails.logger).to receive(:error).with(logged)
+
+      project.update_info
+    end
+  end
 end

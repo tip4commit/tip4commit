@@ -106,7 +106,7 @@ class Project < ApplicationRecord
            Errno::ETIMEDOUT, Net::ReadTimeout, Faraday::ConnectionFailed => e
       Rails.logger.info "Project ##{id}: #{e.class} happened"
     rescue StandardError => e
-      Airbrake.notify(e)
+      log_github_error(e)
     end
     sleep(1)
     commits || []
@@ -188,7 +188,7 @@ class Project < ApplicationRecord
          Errno::ETIMEDOUT, Net::ReadTimeout, Faraday::ConnectionFailed => e
     Rails.logger.info "Project ##{id}: #{e.class} happened"
   rescue StandardError => e
-    Airbrake.notify(e)
+    log_github_error(e)
   end
 
   def amount_to_pay
@@ -208,21 +208,15 @@ class Project < ApplicationRecord
   end
 
   def self.find_or_create_by_url(project_url)
-    project_name = project_url
-                   .gsub(%r{https?://github.com/}, '')
-                   .gsub(/\#.+$/, '')
-                   .gsub(' ', '')
-
-    Github.new.find_or_create_project project_name
+    Github.new.find_or_create_project project_name_from_url(project_url)
   end
 
   def self.find_by_url(project_url)
-    project_name = project_url
-                   .gsub(%r{https?://github.com/}, '')
-                   .gsub(/\#.+$/, '')
-                   .gsub(' ', '')
+    Github.new.find_project project_name_from_url(project_url)
+  end
 
-    Github.new.find_project project_name
+  private_class_method def self.project_name_from_url(project_url)
+    project_url.gsub(%r{https?://github.com/}, '').gsub(/\#.+$/, '').gsub(' ', '')
   end
 
   def generate_bitcoin_address
@@ -242,5 +236,12 @@ class Project < ApplicationRecord
     def find_by_service_and_repo(service, repo)
       where(host: service).find_by('lower(`full_name`) = ?', repo.downcase)
     end
+  end
+
+  private
+
+  def log_github_error(error)
+    Rails.logger.error "Project ##{id}: #{error.class}: #{error.message}"
+    Airbrake.notify(error)
   end
 end

@@ -28,7 +28,7 @@ gem 'kaminari'
 gem 'kaminari-i18n'
 gem 'money-tree'
 gem 'mysql2', group: :production
-gem 'octokit'
+gem 'octokit', '4.20.0'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection', '~> 0.1'
