@@ -26,11 +26,14 @@
       .panel-heading
         %h4.panel-title= t('projects.index.support')
       .panel-body
-        %p
-          %pre= @project.bitcoin_address
-          .qrcode.centered{data: {qrcode: "bitcoin:#{@project.bitcoin_address}"}}
-        %p
-          = t('.fee', percentage: number_to_percentage(100-CONFIG["our_fee"]*100, precision: 0))
+        - if CONFIG['deposits_paused']
+          %p= t('.deposits_paused')
+        - else
+          %p
+            %pre= @project.bitcoin_address
+            .qrcode.centered{data: {qrcode: "bitcoin:#{@project.bitcoin_address}"}}
+          %p
+            = t('.fee', percentage: number_to_percentage(100-CONFIG["our_fee"]*100, precision: 0))
     .alert.alert-warning
       %p= t('general.disclaimer.line2')
       %p= t('general.disclaimer.line3')

@@ -38,6 +38,9 @@ min_payout: 100000
 our_fee: 0.01
 min_tip: 50000 # optional
 
+# Uncomment to hide project deposit addresses
+# deposits_paused: true
+
 deposit_address: 1M4bS4gPyA6Kb8w7aXsgth9oUZWcRk73tQ
 
 # Can be testnet or mainnet
