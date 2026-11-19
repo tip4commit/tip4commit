@@ -5,6 +5,13 @@ class Tip < ApplicationRecord
   belongs_to :sendmany
   belongs_to :project, inverse_of: :tips
 
+  class AlreadyPaid < StandardError; end
+  class InsufficientFunds < StandardError; end
+
+  # Refund month starts at the later of decided_at and reopened_at (portable: no GREATEST).
+  REFUND_CLOCK_SQL = 'CASE WHEN tips.reopened_at IS NOT NULL AND tips.reopened_at > tips.decided_at ' \
+                     'THEN tips.reopened_at ELSE tips.decided_at END'
+
   AVAILABLE_AMOUNTS = [
     ['undecided', ''],
     ['free',      0],
@@ -93,7 +100,7 @@ class Tip < ApplicationRecord
   def self.refund_unclaimed
     unclaimed.non_refunded
              .where.not(decided_at: nil)
-             .where('tips.decided_at < ?', 1.month.ago)
+             .where("#{REFUND_CLOCK_SQL} < ?", 1.month.ago)
              .find_each do |tip|
       tip.touch :refunded_at
     end
@@ -101,10 +108,39 @@ class Tip < ApplicationRecord
 
   def self.auto_decide_older_tips
     undecided.non_refunded
-             .where('tips.created_at < ?', 1.month.ago)
+             .where('COALESCE(tips.reopened_at, tips.created_at) < ?', 1.month.ago)
              .find_each do |tip|
       tip.amount_percentage = 1
       tip.save
+    end
+  end
+
+  # Puts an unpaid tip back to undecided and restarts its one-month clock.
+  # Writes with update_columns on purpose: the callbacks must not run. The project's
+  # cached balance is refreshed afterwards (reopen! and unrefund! both change it).
+  # Works on a tip whose project was soft-deleted (project is then nil).
+  def reopen!
+    with_lock do
+      raise AlreadyPaid, "Tip #{id} is already paid" if paid?
+
+      now = Time.zone.now
+      update_columns(amount: nil, decided_at: nil, refunded_at: nil, reopened_at: now, updated_at: now)
+      refresh_project_cache
+    end
+  end
+
+  # Undoes a refund, keeping amount and decided_at, and restarts the one-month clock.
+  def unrefund!
+    with_lock do
+      raise AlreadyPaid, "Tip #{id} is already paid" if paid?
+      raise ArgumentError, "Tip #{id} is not refunded" unless refunded?
+
+      available = project.available_amount
+      raise InsufficientFunds, "Tip #{id}: #{amount} needed, #{available} available" if available < amount.to_i
+
+      now = Time.zone.now
+      update_columns(refunded_at: nil, reopened_at: now, updated_at: now)
+      refresh_project_cache
     end
   end
 
@@ -149,5 +185,14 @@ class Tip < ApplicationRecord
 
   def txid
     try(:sendmany).try(:txid)
+  end
+
+  private
+
+  # update_column skips validations, so the cache write cannot be silently refused the way
+  # Project#update_cache (update) is on a project that fails validation. A soft-deleted
+  # project (nil here) has no cache to refresh.
+  def refresh_project_cache
+    project&.update_column(:available_amount_cache, project.available_amount)
   end
 end

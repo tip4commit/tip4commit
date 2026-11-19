@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2026_11_19_111301) do
+ActiveRecord::Schema.define(version: 2026_11_19_111653) do
 
   create_table "collaborators", force: :cascade do |t|
     t.integer "project_id"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2026_11_19_111301) do
     t.datetime "refunded_at"
     t.text "commit_message"
     t.datetime "decided_at"
+    t.datetime "reopened_at"
     t.index ["project_id"], name: "index_tips_on_project_id"
     t.index ["sendmany_id"], name: "index_tips_on_sendmany_id"
     t.index ["user_id"], name: "index_tips_on_user_id"
