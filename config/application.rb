@@ -28,6 +28,13 @@ module T4c
     config.autoload_paths += %W[#{config.root}/lib]
     config.eager_load_paths += %W[#{config.root}/lib]
     config.assets.initialize_on_precompile = true
+    # Only takes effect where force_ssl is on (production). The health probe must
+    # answer over plain http, so it is excluded from the redirect. HSTS covers this
+    # host only, not its subdomains.
+    config.ssl_options = {
+      redirect: { exclude: ->(request) { request.path == '/up' } },
+      hsts: { subdomains: false, expires: 1.year }
+    }
     config.available_locales = %w[en es fr nl ru pl hr de ro ko id ja pt my cn hk]
   end
 end

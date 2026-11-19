@@ -25,14 +25,15 @@ T4c::Application.routes.draw do
   resources :withdrawals, only: [:index]
   resources :users, only: %i[index show update destroy]
   resources :projects, only: %i[index show update edit] do
-    collection do
-      get 'search'
-    end
+    get :search, on: :collection
     member do
       get   :decide_tip_amounts
       patch :decide_tip_amounts
     end
   end
+
+  # Liveness probe for the container healthcheck; deliberately skips the DB and GitHub.
+  get '/up' => proc { [200, { 'Content-Type' => 'text/plain' }, ['ok']] }
 
   get '*path' => 'home#index'
 end
