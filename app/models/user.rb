@@ -51,7 +51,19 @@ class User < ApplicationRecord
   end
 
   def ready_for_withdrawal?
-    bitcoin_address.present? && balance >= CONFIG['min_payout']
+    !payout_hold? && bitcoin_address.present? && balance >= CONFIG['min_payout']
+  end
+
+  # Holds are set only through these methods (never via params or validation).
+  # update_columns skips validations so a user with a bad address can still be held.
+  def hold_payouts!(reason)
+    raise ArgumentError, 'reason is required to hold payouts' if reason.blank?
+
+    update_columns(payout_hold: true, payout_hold_reason: reason) # rubocop:disable Rails/SkipsModelValidations
+  end
+
+  def release_payouts!
+    update_columns(payout_hold: false, payout_hold_reason: nil) # rubocop:disable Rails/SkipsModelValidations
   end
 
   class << self

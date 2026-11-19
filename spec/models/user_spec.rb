@@ -88,4 +88,45 @@ describe User, type: :model do
       end
     end
   end
+
+  describe 'payout hold' do
+    let(:user) { create(:user, bitcoin_address: '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2') }
+
+    before do
+      project = create(:project)
+      create(:deposit, project:, confirmations: Deposit::CONFIRMATIONS_NEEDED, amount: CONFIG['min_payout'] * 10)
+      create(:tip, user:, project:, amount: CONFIG['min_payout'])
+    end
+
+    it 'is ready for withdrawal when not held' do
+      expect(user).to be_ready_for_withdrawal
+    end
+
+    it 'is not ready while held and records the reason' do
+      user.hold_payouts!('address changed')
+      expect(user.reload).to be_payout_hold
+      expect(user).not_to be_ready_for_withdrawal
+      expect(user.payout_hold_reason).to eq 'address changed'
+    end
+
+    it 'is ready again after release and clears the reason' do
+      user.hold_payouts!('address changed')
+      user.release_payouts!
+      expect(user.reload).not_to be_payout_hold
+      expect(user).to be_ready_for_withdrawal
+      expect(user.payout_hold_reason).to be_nil
+    end
+
+    it 'requires a reason to hold' do
+      expect { user.hold_payouts!('  ') }.to raise_error(ArgumentError)
+      expect { user.hold_payouts!(nil) }.to raise_error(ArgumentError)
+      expect(user.reload).not_to be_payout_hold
+    end
+
+    it 'stays not ready when held without an address' do
+      user.update!(bitcoin_address: '')
+      user.hold_payouts!('x')
+      expect(user).not_to be_ready_for_withdrawal
+    end
+  end
 end

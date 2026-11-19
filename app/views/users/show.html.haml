@@ -1,4 +1,6 @@
 %h1= @user.display_name
+- if @user.payout_hold? && current_user == @user
+  .alert.alert-warning= t('.payout_hold')
 %p
   %strong= t('.balance')
 %p

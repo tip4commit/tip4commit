@@ -168,6 +168,7 @@ en:
       commits_count: Commits tipped
       withdrawn: Withdrawn
     show:
+      payout_hold: Payouts for this account are paused pending a review.
       balance: Balance
       threshold: "You will get your money when your balance hits the threshold of %{threshold}"
       see_all: see all

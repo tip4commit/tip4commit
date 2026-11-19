@@ -85,6 +85,7 @@ class BitcoinTipper
     def calculate_outputs(sendmany)
       outputs = {}
       User.find_each do |user|
+        next if user.payout_hold?
         next unless user.ready_for_withdrawal?
 
         user.tips.decided.unpaid.each do |tip|
