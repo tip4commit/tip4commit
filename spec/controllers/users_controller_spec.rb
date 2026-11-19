@@ -121,6 +121,8 @@ describe UsersController, type: :controller do
     render_views
     login_user
 
+    before { stub_gravatar_profiles }
+
     it 'is shown to the held user on their own profile' do
       @current_user.hold_payouts!('review')
       get :show, params: { nickname: @current_user.nickname }

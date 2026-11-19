@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - 'phase1-*'
   pull_request:
 
 jobs:

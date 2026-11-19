@@ -2,6 +2,5 @@
 
 require 'webmock/rspec'
 
-# Older specs still reach the network (e.g. gravatar from user views), so real connections stay
-# allowed by default.
-WebMock.allow_net_connect!
+# No spec reaches the network: stub every external request (see gravatar_stubs.rb).
+WebMock.disable_net_connect!(allow_localhost: true)
