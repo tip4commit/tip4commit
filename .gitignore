@@ -27,3 +27,5 @@ coverage
 /db/seeds.rb
 
 /.vscode/
+
+/config/storage.yml

@@ -26,6 +26,7 @@ module T4c
     # config.i18n.default_locale = :de
 
     config.autoload_paths += %W[#{config.root}/lib]
+    config.eager_load_paths += %W[#{config.root}/lib]
     config.assets.initialize_on_precompile = true
     config.available_locales = %w[en es fr nl ru pl hr de ro ko id ja pt my cn hk]
   end

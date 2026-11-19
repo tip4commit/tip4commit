@@ -2,6 +2,8 @@
 
 source 'https://rubygems.org'
 
+ruby '3.3.14'
+
 gem 'rails', '6.1.7.10'
 
 gem 'acts_as_paranoid'
@@ -43,6 +45,7 @@ gem 'twitter-bootstrap-rails'
 gem 'uglifier'
 
 group :development do
+  gem 'bundler-audit'
   gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
