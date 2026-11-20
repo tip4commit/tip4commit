@@ -25,6 +25,8 @@ module RatesHelper
     amount ||= 0
     convert_method_name = "to_#{DENOMINATIONS[denom].gsub('μ', 'u').downcase}"
     send(convert_method_name, amount)
+  rescue BitcoinRate::Unavailable
+    to_btc(amount)
   end
 
   def to_btc(satoshies)
@@ -124,11 +126,6 @@ module RatesHelper
   end
 
   def get_rate(currency)
-    Rails.cache.fetch("####{currency}", expires_in: 1.hour) do
-      uri = URI("https://api.coindesk.com/v1/bpi/currentprice/#{currency}.json")
-      response = Net::HTTP.get_response(uri)
-      hash = JSON.parse(response.body)
-      hash['bpi'][currency]['rate_float'].to_f
-    end
+    BitcoinRate.fetch(currency)
   end
 end
