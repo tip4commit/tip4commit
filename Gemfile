@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 ruby '3.3.14'
 
-gem 'rails', '~> 7.1.5'
+gem 'rails', '~> 8.1.4'
 
 gem 'acts_as_paranoid'
 gem 'airbrake'
@@ -21,7 +21,7 @@ gem 'dusen'
 gem 'easy_gravatar'
 gem 'haml-rails'
 gem 'http_accept_language'
-gem 'i18n-js'
+gem 'i18n-js', '~> 3.9'
 gem 'jbuilder'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
@@ -29,10 +29,11 @@ gem 'kaminari'
 gem 'kaminari-i18n'
 gem 'money-tree'
 gem 'mysql2', group: :production
-gem 'octokit', '4.20.0'
+gem 'oauth2', '>= 2.0.22'
+gem 'octokit'
 gem 'omniauth'
 gem 'omniauth-github'
-gem 'omniauth-rails_csrf_protection', '~> 0.1'
+gem 'omniauth-rails_csrf_protection'
 gem 'puma'
 gem 'rails-i18n'
 gem 'render_csv'
@@ -65,11 +66,11 @@ group :development, :test do
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
-  gem 'sqlite3', '~> 1.4'
+  gem 'sqlite3'
 end
 
 group :test do
-  gem 'cucumber-rails', '>= 3.0', require: false
+  gem 'cucumber-rails', require: false
   gem 'database_cleaner-active_record'
   gem 'rails-controller-testing'
   gem 'rspec-activemodel-mocks'
@@ -78,3 +79,5 @@ group :test do
   gem 'vcr'
   gem 'webmock'
 end
+
+gem 'faraday-retry', '~> 2.4'

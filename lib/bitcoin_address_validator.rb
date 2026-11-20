@@ -29,7 +29,7 @@ class BitcoinAddressValidator < ActiveModel::EachValidator
 
   def parse_segwit_address(addr)
     Bech32::SegwitAddr.new(addr)
-  rescue RuntimeError => e
+  rescue RuntimeError, ArgumentError => e
     return nil if e.message == 'Invalid address.'
 
     raise

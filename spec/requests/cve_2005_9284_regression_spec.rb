@@ -21,10 +21,10 @@ describe 'CVE-2015-9284', type: :request do
       ActionController::Base.allow_forgery_protection = @allow_forgery_protection
     end
 
-    it do
-      expect do
-        post '/users/auth/github'
-      end.to raise_error(ActionController::InvalidAuthenticityToken)
+    it 'does not start the provider request' do
+      post '/users/auth/github'
+      expect(response).to have_http_status(:unprocessable_content)
+      expect(response.location).to be_nil
     end
   end
 end

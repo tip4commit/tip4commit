@@ -56,7 +56,7 @@ Metrics/PerceivedComplexity:
 # ForbiddenPrefixes: is_, has_, have_
 # AllowedMethods: is_a?
 # MethodDefinitionMacros: define_method, define_singleton_method
-Naming/PredicateName:
+Naming/PredicatePrefix:
   Exclude:
     - 'app/models/project.rb'
 
@@ -81,7 +81,7 @@ RSpec/ExampleLength:
 # Offense count: 1
 # Configuration parameters: Include, CustomTransform, IgnoreMethods, SpecSuffixOnly.
 # Include: **/*_spec*rb*, **/spec/**/*
-RSpec/FilePath:
+RSpec/SpecFilePathFormat:
   Exclude:
     - 'spec/features/assets.rb'
 
@@ -116,12 +116,6 @@ RSpec/NamedSubject:
 # Configuration parameters: AllowedGroups.
 RSpec/NestedGroups:
   Max: 5
-
-# Offense count: 22
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: Inferences.
-RSpec/Rails/InferredSpecType:
-  Enabled: false
 
 # Offense count: 2
 RSpec/RepeatedExampleGroupBody:
@@ -209,3 +203,37 @@ Style/SelectByRegexp:
 # URISchemes: http, https
 Layout/LineLength:
   Max: 234
+
+# Added with the RuboCop 1.92 update.
+Rails/StrongParametersExpect:
+  Enabled: false
+
+Rails/ThreeStateBooleanColumn:
+  Exclude:
+    - 'db/migrate/2013*'
+    - 'db/migrate/2014*'
+
+Style/OneClassPerFile:
+  Exclude:
+    - 'features/support/to_ostruct.rb'
+
+Lint/UselessConstantScoping:
+  Exclude:
+    - 'lib/bitcoin_address_validator.rb'
+
+Rails/RootPathnameMethods:
+  Exclude:
+    - 'lib/tasks/cucumber.rake'
+    - 'spec/spec_helper.rb'
+
+RSpec/ReceiveMessages:
+  Exclude:
+    - 'spec/controllers/projects_controller_spec.rb'
+
+RSpec/SpecFilePathSuffix:
+  Exclude:
+    - 'spec/features/assets.rb'
+
+RSpec/PredicateMatcher:
+  Exclude:
+    - 'spec/features/assets.rb'

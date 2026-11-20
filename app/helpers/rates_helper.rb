@@ -28,15 +28,15 @@ module RatesHelper
   end
 
   def to_btc(satoshies)
-    format('%.8f Ƀ', (1.0 * satoshies.to_i / 1e8))
+    format('%.8f Ƀ', 1.0 * satoshies.to_i / 1e8)
   end
 
   def to_mbtc(satoshies)
-    format('%.5f mɃ', (1.0 * satoshies.to_i / 1e5))
+    format('%.5f mɃ', 1.0 * satoshies.to_i / 1e5)
   end
 
   def to_ubtc(satoshies)
-    format('%.2f μɃ', (1.0 * satoshies.to_i / 1e2))
+    format('%.2f μɃ', 1.0 * satoshies.to_i / 1e2)
   end
 
   def to_satoshi(satoshies)

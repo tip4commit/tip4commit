@@ -1,7 +1,7 @@
 
 inherit_from: .rubocop_todo.yml
 
-require:
+plugins:
   - rubocop-rails
   - rubocop-rspec
 
@@ -17,7 +17,7 @@ Style/Documentation:
   Enabled: false
 
 Rails/DynamicFindBy:
-  Whitelist:
+  AllowedMethods:
     - find_by_url
     - find_by_commit
     - find_by_service_and_repo

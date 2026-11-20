@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
     locale = locale_from_params || session[:locale] || locale_from_http_accept_language
     I18n.locale = session[:locale] = locale
 
-    redirect_back(fallback_location: root_path) if params[:locale].present?
+    redirect_back_or_to(root_path) if params[:locale].present?
   end
 
   def locale_from_params
