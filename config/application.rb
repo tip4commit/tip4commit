@@ -2,7 +2,16 @@
 
 require File.expand_path('boot', __dir__)
 
-require 'rails/all'
+require 'rails'
+# Only the frameworks the application uses. Active Storage, Action Mailbox,
+# Action Text and Action Cable are not loaded, so their routes and endpoints
+# do not exist.
+require 'active_model/railtie'
+require 'active_record/railtie'
+require 'action_controller/railtie'
+require 'action_view/railtie'
+require 'action_mailer/railtie'
+require 'sprockets/railtie'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

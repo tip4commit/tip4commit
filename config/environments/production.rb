@@ -46,10 +46,6 @@ T4c::Application.configure do
   # ssl_options (the /up exclusion) live in config/application.rb.
   config.force_ssl = true
 
-  # Active Storage is unused and config/storage.yml is git-ignored; without this,
-  # eager loading raises "Couldn't find Active Storage configuration".
-  config.active_storage.service_configurations = {}
-
   # Log to STDOUT so `docker logs` captures it.
   config.logger = ActiveSupport::TaggedLogging.new(ActiveSupport::Logger.new($stdout))
 
