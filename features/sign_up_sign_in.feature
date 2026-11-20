@@ -70,12 +70,12 @@ Feature: Visitors should be able to sign_up and sign_in
     And   I fill "Password" with: "unknown-users-password"
     And   I click "Sign in"
     Then  I should be on the "sign_in" page
-    And   I should see "Invalid E-mail or password"
+    And   I should see "Invalid e-mail or password"
     When  I fill "E-mail" with: "seldon@example.com"
     And   I fill "Password" with: "incorrect-password"
     And   I click "Sign in"
     Then  I should be on the "sign_in" page
-    And   I should see "Invalid E-mail or password"
+    And   I should see "Invalid e-mail or password"
 
   Scenario: Visitors should be able to sign up with an email address
     Given I'm not signed in

@@ -4,13 +4,14 @@ source 'https://rubygems.org'
 
 ruby '3.3.14'
 
-gem 'rails', '6.1.7.10'
+gem 'rails', '~> 7.0.8'
 
 gem 'acts_as_paranoid'
 gem 'airbrake'
 gem 'bcrypt'
 gem 'bech32'
 gem 'bootstrap_form'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'cancancan'
 gem 'coffee-rails'
 gem 'demoji'
@@ -41,7 +42,6 @@ gem 'sawyer'
 gem 'sdoc', group: :doc, require: false
 gem 'sprockets'
 gem 'turbolinks'
-gem 'twitter-bootstrap-rails'
 gem 'uglifier'
 
 group :development do
@@ -69,8 +69,8 @@ group :development, :test do
 end
 
 group :test do
-  gem 'cucumber-rails', '~> 1.0', require: false
-  gem 'database_cleaner'
+  gem 'cucumber-rails', '>= 3.0', require: false
+  gem 'database_cleaner-active_record'
   gem 'rails-controller-testing'
   gem 'rspec-activemodel-mocks'
   gem 'shoulda-matchers'

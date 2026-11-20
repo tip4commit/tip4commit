@@ -1,7 +1,7 @@
 #= require jquery
 #= require jquery.turbolinks
 #= require jquery_ujs
-#= require twitter/bootstrap
+#= require bootstrap-sprockets
 #= require turbolinks
 #= require i18n
 #= require i18n/translations
